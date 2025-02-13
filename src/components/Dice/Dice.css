@@ -1,0 +1,55 @@
+.dice {
+  background-color: #ececec;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  width: 4.5em;
+  height: 4.5em;
+}
+
+.dice:hover {
+  border-width: 2px;
+  color: black;
+}
+
+.dice:active {
+  transform: rotate(4deg);
+}
+
+.roll-all {
+  background-color: #ececec;
+}
+
+.roll-all:hover {
+  border-width: 2px;
+  color: black;
+  transition: transform 0.15s;
+}
+
+.dice-tray .roll-all:active {
+  transform: translateY(0.1em);
+}
+
+.dice-tray:has(.roll-all:active) .dice {
+  transform: rotate(4deg);
+}
+
+.dice-tray {
+  border-radius: 8px;
+  border: 3px solid rgb(58, 58, 58);
+  color: rgb(58, 58, 58);
+  font-size: 1.25em;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 1.2em 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dice-tray > * {
+  margin: 20px 20px;
+  color: rgb(58, 58, 58);
+}
+.dice-tray > * > * {
+  margin: 0px 20px;
+}
