@@ -1,5 +1,5 @@
 import "./App.css";
-import DiceTray from "./Dice/DiceTray";
+import DiceTray from "./components/Dice/DiceTray";
 
 function App() {
   return (
