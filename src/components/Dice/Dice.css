@@ -1,20 +1,32 @@
-.dice {
-  background-color: #ececec;
+/* individual dice */
+.die {
   cursor: pointer;
   transition: border-color 0.15s, transform 0.15s;
   width: 4.5em;
   height: 4.5em;
 }
 
-.dice:hover {
+.die:hover {
   border-width: 2px;
   color: black;
 }
 
-.dice:active {
+.die:active {
   transform: rotate(4deg);
 }
 
+/* white dice */
+.white {
+  background-color: #ececec;
+}
+/* black dice */
+.black {
+  background-color: #3f3f3f;
+  color: #ececec;
+  opacity: 0.5;
+}
+
+/* roll all button */
 .roll-all {
   background-color: #ececec;
 }
@@ -25,14 +37,15 @@
   transition: transform 0.15s;
 }
 
-.dice-tray .roll-all:active {
-  transform: translateY(0.1em);
+/* space for dice */
+.dice-space {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1em;
+  justify-content: center;
 }
 
-.dice-tray:has(.roll-all:active) .dice {
-  transform: rotate(4deg);
-}
-
+/* dice tray */
 .dice-tray {
   border-radius: 8px;
   border: 3px solid rgb(58, 58, 58);
@@ -44,7 +57,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 22em;
+  width: 26em;
+  min-height: 16em;
 }
 
 .dice-tray > * {
@@ -53,4 +67,12 @@
 }
 .dice-tray > * > * {
   margin: 0px 20px;
+}
+
+.dice-tray .roll-all:active {
+  transform: translateY(0.1em);
+}
+
+.dice-tray:has(.roll-all:active) .die {
+  transform: rotate(4deg);
 }

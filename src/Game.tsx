@@ -4,8 +4,11 @@ import { createClient } from "@supabase/supabase-js";
 // interfaces
 import { Database } from "./common/utils/supabase";
 
-// components and css
+// components
 import DiceTray from "./components/Dice/DiceTray";
+import AdventureCard from "./components/Cards/AdventureCard.tsx/AdventureCard";
+
+// css
 import "./Game.css";
 
 const supabaseUrl = "https://zisayqpykesvibypzfuy.supabase.co";
@@ -19,9 +22,10 @@ let { data: adventure_cards, error } = await supabase
 
 function Game() {
   return (
-    <>
+    <div style={{ display: "flex", alignItems: "center", gap: "2em" }}>
       <DiceTray />
-    </>
+      <AdventureCard card={adventure_cards[6]} />
+    </div>
   );
 }
 
