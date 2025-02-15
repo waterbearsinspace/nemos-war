@@ -1,9 +1,10 @@
 import { create } from "zustand";
-import { Dice } from "../../components/Dice/DiceInterface";
+import { Dice } from "../../components/Dice/DiceType";
 
 // Die constants and functions
 const dieMinInclusive = 1;
 const dieMaxExclusive = 7;
+// Roll a die with possible from dieMinInclusive to dieMaxExclusive - 1
 function randomDieRoll() {
   return Math.floor(
     Math.random() * (dieMinInclusive - dieMaxExclusive) + dieMaxExclusive

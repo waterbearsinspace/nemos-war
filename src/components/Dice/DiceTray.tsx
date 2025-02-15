@@ -1,4 +1,4 @@
-import D6 from "./D6";
+import Die from "./Dice";
 import { diceStore } from "../../common/stores/diceStore";
 
 export default function DiceTray() {
@@ -26,21 +26,21 @@ export default function DiceTray() {
     <div className="dice-tray">
       <div>Total: {total}</div>
       <div>
-        <D6
+        <Die
           die={{
             id: whiteDie1.id,
             value: whiteDie1.value,
             active: whiteDie1.active,
           }}
         />
-        <D6
+        <Die
           die={{
             id: whiteDie2.id,
             value: whiteDie2.value,
             active: whiteDie2.active,
           }}
         />
-        <D6
+        <Die
           die={{
             id: whiteDie3.id,
             value: whiteDie3.value,

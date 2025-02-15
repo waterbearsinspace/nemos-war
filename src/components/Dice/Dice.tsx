@@ -1,8 +1,8 @@
 import "./Dice.css";
 import { diceStore } from "../../common/stores/diceStore";
-import { Dice } from "./DiceInterface";
+import { Dice } from "./DiceType";
 
-export default function D6({ die }: { die: Dice }) {
+export default function Die({ die }: { die: Dice }) {
   const rollDie = diceStore((state) => state.rollDie);
 
   return (
