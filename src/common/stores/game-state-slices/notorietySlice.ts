@@ -1,0 +1,3 @@
+// notoriety level
+
+// thresholds

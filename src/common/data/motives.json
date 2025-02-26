@@ -1,0 +1,46 @@
+[
+  {
+    "id": 0,
+    "name": "Science",
+    "warships": 0,
+    "non_warships": -1,
+    "adventure_cards": 1,
+    "treasure": 0,
+    "liberation": 3,
+    "science_discovered": 6,
+    "wonders_seen": 4
+  },
+  {
+    "id": 1,
+    "name": "Explore",
+    "warships": -1,
+    "non_warships": 0,
+    "adventure_cards": 0,
+    "treasure": 1,
+    "liberation": 3,
+    "science_discovered": 4,
+    "wonders_seen": 7
+  },
+  {
+    "id": 2,
+    "name": "Anti Imperialism",
+    "warships": 0,
+    "non_warships": 2,
+    "adventure_cards": 0,
+    "treasure": -1,
+    "liberation": 6,
+    "science_discovered": 2,
+    "wonders_seen": 3
+  },
+  {
+    "id": 3,
+    "name": "War!",
+    "warships": 2,
+    "non_warships": 0,
+    "adventure_cards": -1,
+    "treasure": 0,
+    "liberation": 4,
+    "science_discovered": 3,
+    "wonders_seen": 2
+  }
+]

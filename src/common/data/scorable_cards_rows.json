@@ -1,0 +1,253 @@
+[
+  {
+    "id": 1,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 5,
+    "vp": {
+      "adventure_cards": 2
+    }
+  },
+  {
+    "id": 7,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 8,
+    "vp": {
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 9,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 10,
+    "vp": {
+      "adventure_cards": 3
+    }
+  },
+  {
+    "id": 11,
+    "vp": {
+      "adventure_cards": 0,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 12,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 14,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 15,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 16,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 17,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 18,
+    "vp": {
+      "wonders_seen": 1
+    }
+  },
+  {
+    "id": 19,
+    "vp": {
+      "adventure_cards": 1,
+      "science_discovered": 0
+    }
+  },
+  {
+    "id": 20,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 21,
+    "vp": {
+      "adventure_cards": 2
+    }
+  },
+  {
+    "id": 22,
+    "vp": {
+      "adventure_cards": 1,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 23,
+    "vp": {
+      "adventure_cards": 2
+    }
+  },
+  {
+    "id": 24,
+    "vp": {
+      "adventure_cards": 0,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 25,
+    "vp": {
+      "adventure_cards": 1,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 27,
+    "vp": {
+      "wonders_seen": 0
+    }
+  },
+  {
+    "id": 28,
+    "vp": {
+      "adventure_cards": 2,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 29,
+    "vp": {
+      "adventure_cards": 0
+    }
+  },
+  {
+    "id": 30,
+    "vp": {
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 31,
+    "vp": {
+      "adventure_cards": 4,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 32,
+    "vp": {
+      "adventure_cards": 3
+    }
+  },
+  {
+    "id": 33,
+    "vp": {
+      "adventure_cards": 2,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 34,
+    "vp": {
+      "wonders_seen": 1
+    }
+  },
+  {
+    "id": 35,
+    "vp": {
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 36,
+    "vp": {
+      "adventure_cards": 2
+    }
+  },
+  {
+    "id": 37,
+    "vp": {
+      "adventure_cards": 1
+    }
+  },
+  {
+    "id": 41,
+    "vp": {
+      "wonders_seen": 1
+    }
+  },
+  {
+    "id": 42,
+    "vp": {
+      "adventure_cards": 4
+    }
+  },
+  {
+    "id": 43,
+    "vp": {
+      "adventure_cards": 0,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 44,
+    "vp": {
+      "characers_remaining": 4
+    }
+  },
+  {
+    "id": 45,
+    "vp": {
+      "adventure_cards": 6
+    }
+  },
+  {
+    "id": 46,
+    "vp": {
+      "ship_resources_penalty": -8
+    }
+  },
+  {
+    "id": 47,
+    "vp": {
+      "adventure_cards": 0,
+      "science_discovered": 1
+    }
+  },
+  {
+    "id": 48,
+    "vp": {
+      "warships": 2,
+      "non_warships": 2
+    }
+  },
+  {
+    "id": 50,
+    "vp": {
+      "science_discovered": 1
+    }
+  }
+]

@@ -4,6 +4,7 @@ import { Dice } from "../../components/Dice/DiceType";
 // Die constants and functions
 const dieMinInclusive = 1;
 const dieMaxExclusive = 7;
+
 // Roll a die with possible from dieMinInclusive to dieMaxExclusive - 1
 function randomDieRoll() {
   return Math.floor(
@@ -11,7 +12,7 @@ function randomDieRoll() {
   );
 }
 
-// DiceStore - Information an all dice
+// DiceStore - Information an characterResourcesStoreall dice
 interface DiceStore {
   dice: Array<Dice>;
   rollDie: (dieId: string) => void;
@@ -34,7 +35,7 @@ export const diceStore = create<DiceStore>()((set) => ({
     {
       id: "w3",
       value: 1,
-      active: true,
+      active: false,
     },
     {
       id: "b1",
