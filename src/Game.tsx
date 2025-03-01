@@ -13,10 +13,6 @@ import DrawPile from "./components/Cards/DrawPile";
 import "./Game.css";
 
 // data
-import adventureCards from "./common/data/adventure_cards.json";
-import motives from "./common/data/motives.json";
-import { gameStateStore } from "./common/stores/gameStateStore";
-import { useEffect } from "react";
 import AdventureDeck from "./components/Cards/AdventureDeck";
 
 export default function Game() {

@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { Dice } from "../stores/";
 
 // Die constants and functions
 const dieMinInclusive = 1;
