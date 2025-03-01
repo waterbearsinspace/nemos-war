@@ -307,8 +307,68 @@
   },
   {
     "id": 1001,
-    "title": "Finale A",
-    "flavor_text": "Finale",
+    "title": "Act One",
+    "flavor_text": "The facts relating to this apparition (entered in various log-books) agreed in most respects as to the shape of the object or creature in question, the untiring rapidity of its movements, its surprising power of locomotion, and the peculiar life with which it seemed endowed. If it was a whale, its surpassed in size all those hitherto classified in science.",
+    "type": "prologue"
+  },
+  {
+    "id": 1002,
+    "title": "Act Two",
+    "flavor_text": "I was admiring the magnificent aspect of the ocean when Captain Nemo appared. He did not seem to be aware of my presence, and began a series of astronomoical observations. Then, when he had finished, he went and leant on the cage of the watch-light, and gazed abstractedly in the ocean.",
+    "type": "firstIntermission"
+  },
+  {
+    "id": 1003,
+    "title": "Act Three",
+    "flavor_text": "The Nautilus went at a frightful pace, forty miles an hour. It lterally tore through the water. Where was Captain Nemo? Had he succumbed? Were his companions dead with him?",
+    "type": "secondIntermission"
+  },
+  {
+    "id": 1004,
+    "title": "A Hollow Expansion",
+    "flavor_text": "\"What sort of craft is it, Ned?\" \"From its rigging and its lows masts,\" the Canadian replied, \"I bet it's a warship./ Here's hoping it pulls up and sinks this damned Nautilus!\"",
+    "type": "play"
+  },
+  {
+    "id": 9001,
+    "title": "The Maelstrom!",
+    "flavor_text": "\"Maelstrom! Maelstrom!\" they were shouting. The Maelstrom! Could a more frightening name have rung in our ears under more frightening circumstances?",
     "type": "test"
+  },
+  {
+    "id": 9002,
+    "title": "Return to Mystery Island",
+    "flavor_text": "Captain Nemo looked at the engineer as if he would have annihiliated him. Then, falling back upon the cushions, he murmered: \"After all, what does it matter; I am dying!\"",
+    "type": "play"
+  },
+  {
+    "id": 9003,
+    "title": "Another 1,000 Leagues",
+    "flavor_text": "If this is the case and Captain Nemo still inhabits the ocean - his adopted country - may the hate be appeased in that fierce heart! May the contemplation of so many wonders extinguish the spirit of vengeance in him! May the executioner pass away, and the scientist continue his peaceful exploration of the seas!",
+    "type": "play"
+  },
+  {
+    "id": 9004,
+    "title": "Bottom of the Sea",
+    "flavor_text": "Her strong light lit up the transparent waters, as the crypt became darkened. Then at length the vast effusion of electric effulgence was effaced, and the Nautilus, the tomb of Captain Nemo, rested upon the bottom of the sea.",
+    "type": "play"
+  },
+  {
+    "id": 9005,
+    "title": "Mutiny!",
+    "flavor_text": "...their murmurs after Captain Nemo's outburst caused Ned and I to exchange concerned looks. They were unquestionably loyal, but this day put that in doubt and we sensed a mutiny!",
+    "type": "test"
+  },
+  {
+    "id": 9006,
+    "title": "Modus Vivendi",
+    "flavor_text": "\"Mr. Disraeli,\" I began, \"a parley with Captain Nemo will not be easy, but as Her Majesty's envoy you can speak for the Great Powers and, I hope, assuage his savage heart.\"\n\"Professor, I completely understand. If we cannot compromise, however...\"",
+    "type": "test"
+  },
+  {
+    "id": 9007,
+    "title": "20,000 Leagues Under the Sea",
+    "flavor_text": "Not a fact has been ommitted, not a detail exaggerated. What I now affirm is, that I have a right to speak of these seas, under which, in less than ten months, I have crossed 20,000 leagues in that submarine tour of the world, which has revealed so many wonders.",
+    "type": "play"
   }
 ]

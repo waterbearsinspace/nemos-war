@@ -249,5 +249,42 @@
     "vp": {
       "science_discovered": 1
     }
+  },
+  {
+    "id": 9001,
+    "vp": {
+      "adventure_cards": 5
+    }
+  },
+  {
+    "id": 9002,
+    "vp": {
+      "adventure_cards": 5
+    }
+  },
+  {
+    "id": 9003,
+    "vp": {
+      "adventure_cards": 8
+    }
+  },
+  {
+    "id": 9004,
+    "vp": {
+      "adventure_cards": 15,
+      "vps": -8
+    }
+  },
+  {
+    "id": 9005,
+    "vp": {
+      "adventure_cards": 10
+    }
+  },
+  {
+    "id": 9006,
+    "vp": {
+      "adventure_cards": 12
+    }
   }
 ]

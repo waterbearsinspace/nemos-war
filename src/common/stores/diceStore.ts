@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Dice } from "../../components/Dice/DiceType";
+import { Dice } from "../stores/";
 
 // Die constants and functions
 const dieMinInclusive = 1;
@@ -11,6 +11,12 @@ function randomDieRoll() {
     Math.random() * (dieMinInclusive - dieMaxExclusive) + dieMaxExclusive
   );
 }
+
+export type Dice = {
+  id: string;
+  value: number;
+  active: boolean;
+};
 
 // DiceStore - Information an characterResourcesStoreall dice
 interface DiceStore {
@@ -35,7 +41,7 @@ export const diceStore = create<DiceStore>()((set) => ({
     {
       id: "w3",
       value: 1,
-      active: false,
+      active: true,
     },
     {
       id: "b1",

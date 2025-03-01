@@ -1,11 +1,6 @@
 import { diceStore } from "../../common/stores/diceStore";
 import "./Dice.css";
-
-type Dice = {
-  id: string;
-  value: number;
-  active: boolean;
-};
+import { Dice } from "../../common/stores/diceStore";
 
 function Die({ die }: { die: Dice }) {
   const rollDie = diceStore((state) => state.rollDie);
@@ -48,18 +43,21 @@ export default function DiceTray() {
   const rollAll = diceStore((state) => state.rollAllActive);
 
   return (
-    <div className="dice-tray">
-      <div>Total: {total}</div>
-      <div className="dice-space">
-        <Die die={whiteDie1} />
-        <Die die={whiteDie2} />
-        <Die die={whiteDie3} />
-        <Die die={blackDie1} />
-        <Die die={blackDie2} />
+    <div>
+      <h2>Dice Tray</h2>
+      <div className="dice-tray" style={{ marginBottom: "3rem" }}>
+        <div>Total: {total}</div>
+        <div className="dice-space">
+          <Die die={whiteDie1} />
+          <Die die={whiteDie2} />
+          <Die die={whiteDie3} />
+          <Die die={blackDie1} />
+          <Die die={blackDie2} />
+        </div>
+        <button className="roll-all" onClick={rollAll}>
+          Roll All
+        </button>
       </div>
-      <button className="roll-all" onClick={rollAll}>
-        Roll All
-      </button>
     </div>
   );
 }

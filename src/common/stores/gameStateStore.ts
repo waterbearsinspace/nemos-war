@@ -1,12 +1,24 @@
 // modules
 import { create } from "zustand";
 
-// interfaces
-import { MotiveSliceInterface } from "./game-state-slices/motiveSlice";
+// slices and interfaces
+import {
+  motiveSlice,
+  MotiveSliceInterface,
+} from "./game-state-slices/motiveSlice";
+import {
+  drawPileSlice,
+  DrawPileSliceInterface,
+} from "./game-state-slices/drawPileSlice";
+import {
+  adventureDeckSlice,
+  AdventureDeckSliceInterface,
+} from "./game-state-slices/adventureDeckSlice";
 
-// slices
-import { motiveSlice } from "./game-state-slices/motiveSlice";
-
-export const gameStateStore = create<MotiveSliceInterface>()((...a) => ({
+export const gameStateStore = create<
+  MotiveSliceInterface & DrawPileSliceInterface & AdventureDeckSliceInterface
+>()((...a) => ({
   ...motiveSlice(...a),
+  ...drawPileSlice(...a),
+  ...adventureDeckSlice(...a),
 }));

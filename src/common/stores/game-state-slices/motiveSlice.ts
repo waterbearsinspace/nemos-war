@@ -1,4 +1,5 @@
 import { StateCreator } from "zustand";
+import motives from "../../data/motives.json";
 
 export type MotiveType = {
   id: number;
@@ -10,18 +11,20 @@ export type MotiveType = {
   liberation: number;
   science_discovered: number;
   wonders_seen: number;
+  act_two_cards: number;
+  act_three_cards: number;
 };
 
 export interface MotiveSliceInterface {
-  motiveIndex: number;
-  setMotiveIndex: (by: number) => void;
+  currentMotive: number;
+  setCurrentMotive: (by: number) => void;
 }
 
 export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
-  motiveIndex: 0,
-  setMotiveIndex: (inc: number) => {
+  currentMotive: 0,
+  setCurrentMotive: (newMotive: number) => {
     set(() => ({
-      motiveIndex: inc,
+      currentMotive: newMotive,
     }));
   },
 });

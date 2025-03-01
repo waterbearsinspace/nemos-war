@@ -8,7 +8,9 @@
     "treasure": 0,
     "liberation": 3,
     "science_discovered": 6,
-    "wonders_seen": 4
+    "wonders_seen": 4,
+    "act_two_cards": 10,
+    "act_three_cards": 6
   },
   {
     "id": 1,
@@ -19,7 +21,9 @@
     "treasure": 1,
     "liberation": 3,
     "science_discovered": 4,
-    "wonders_seen": 7
+    "wonders_seen": 7,
+    "act_two_cards": 8,
+    "act_three_cards": 8
   },
   {
     "id": 2,
@@ -30,7 +34,9 @@
     "treasure": -1,
     "liberation": 6,
     "science_discovered": 2,
-    "wonders_seen": 3
+    "wonders_seen": 3,
+    "act_two_cards": 5,
+    "act_three_cards": 11
   },
   {
     "id": 3,
@@ -41,6 +47,8 @@
     "treasure": 0,
     "liberation": 4,
     "science_discovered": 3,
-    "wonders_seen": 2
+    "wonders_seen": 2,
+    "act_two_cards": 3,
+    "act_three_cards": 13
   }
 ]
