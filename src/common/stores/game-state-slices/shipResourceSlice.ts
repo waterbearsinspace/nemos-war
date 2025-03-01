@@ -9,7 +9,7 @@ interface ShipResourceStore {
 }
 
 // Keep track of ship resources
-export const shipResourceStore = create<ShipResourceStore>()((set) => ({
+export const shipResourceStore = (set) => ({
   resources: {
     nemo: 0,
     crew: 0,
@@ -18,4 +18,4 @@ export const shipResourceStore = create<ShipResourceStore>()((set) => ({
 
   // add ship resources
   // remove ship resources
-}));
+});
