@@ -13,6 +13,3 @@ export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
     }));
   },
 });
-
-// current motive
-// change motive
