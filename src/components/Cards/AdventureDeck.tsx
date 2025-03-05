@@ -11,7 +11,9 @@ export default function AdventureDeck() {
   const [adventureDeckIndex, setAdventureDeckIndex] = useState(0);
   const adventureDeck = gameStateStore((state) => state.adventureDeck);
 
-  let treasuresAvailable = gameStateStore((state) => state.treasuresAvailable);
+  let treasuresAvailable = gameStateStore(
+    (state) => state.adventureDeckTreasuresAvailable
+  );
 
   const handleClick = (inc: number) => {
     if (adventureDeckIndex + inc > adventureDeck.length - 1) {

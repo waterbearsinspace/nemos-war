@@ -7,7 +7,7 @@ import { AdventureCardType } from "../../../components/Cards/AdventureCard.tsx/A
 export interface AdventureDeckSliceInterface {
   adventureDeck: AdventureCardType[];
   setAdventureDeck: (newDrawPile: AdventureCardType[]) => void;
-  treasuresAvailable: number;
+  adventureDeckTreasuresAvailable: number;
 }
 
 export const adventureDeckSlice: StateCreator<
@@ -17,5 +17,5 @@ export const adventureDeckSlice: StateCreator<
   adventureDeck: [],
   setAdventureDeck: (newAdventureDeck) =>
     set(() => ({ adventureDeck: newAdventureDeck })),
-  treasuresAvailable: 1,
+  adventureDeckTreasuresAvailable: 1,
 });
