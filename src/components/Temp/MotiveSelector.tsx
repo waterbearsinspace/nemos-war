@@ -6,6 +6,7 @@ import motiveData from "../../common/data/motives.json";
 
 export default function MotiveSelector() {
   const motive = gameStateStore((state) => state.currentMotive);
+  const motiveFull = gameStateStore((state) => state);
   const setCurrentMotive = gameStateStore((state) => state.setCurrentMotive);
 
   const handleClick = (inc: number) => {
@@ -27,7 +28,7 @@ export default function MotiveSelector() {
     >
       <h2>Motive & Modifiers</h2>
       <div className="card">
-        <div className="type">{motiveData[motive]?.name}</div>
+        <div className="type">{motiveFull?.name}</div>
         <div
           style={{
             display: "flex",
@@ -38,17 +39,26 @@ export default function MotiveSelector() {
         >
           <div>
             <p>
-              Warships: {motiveData[motive].warships < 0 ? "" : "+"}
-              {motiveData[motive].warships}
+              Warships: {motiveFull.warships < 0 ? "" : "+"}
+              {motiveFull.warships}
             </p>
-            <p>Non-warships: +{motiveData[motive].non_warships}</p>
-            <p>Adventure Cards: +{motiveData[motive].adventure_cards}</p>
-            <p>Treasure: +{motiveData[motive].treasure}</p>
+            <p>
+              Non-warships: {motiveFull.non_warships < 0 ? "" : "+"}
+              {motiveFull.non_warships}
+            </p>
+            <p>
+              Adventure Cards: {motiveFull.adventure_cards < 0 ? "" : "+"}
+              {motiveFull.adventure_cards}
+            </p>
+            <p>
+              Treasure: {motiveFull.treasure < 0 ? "" : "+"}
+              {motiveFull.treasure}
+            </p>
           </div>
           <div>
-            <p>Liberation: x{motiveData[motive].liberation}</p>
-            <p>Science Discovered: x{motiveData[motive].science_discovered}</p>
-            <p>Wonders Seen: x{motiveData[motive].wonders_seen}</p>
+            <p>Liberation: x{motiveFull.liberation}</p>
+            <p>Science Discovered: x{motiveFull.science_discovered}</p>
+            <p>Wonders Seen: x{motiveFull.wonders_seen}</p>
           </div>
         </div>
       </div>
@@ -59,6 +69,13 @@ export default function MotiveSelector() {
           }}
         >
           ←
+        </button>
+        <button
+          onClick={() => {
+            console.log(motiveFull);
+          }}
+        >
+          <p>{":)"}</p>
         </button>
         <button
           onClick={() => {
