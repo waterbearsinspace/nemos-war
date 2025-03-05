@@ -5,5 +5,6 @@
 //      - valueText
 //      - exertValue
 
-// add ship resources
-// exert ship value
+// nemo
+// crew
+// hull
