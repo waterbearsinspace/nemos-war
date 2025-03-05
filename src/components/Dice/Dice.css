@@ -60,7 +60,6 @@
 .dice-tray {
   border-radius: 8px;
   border: 3px solid rgb(58, 58, 58);
-  color: rgb(58, 58, 58);
   font-size: 1.25em;
   font-weight: 700;
   font-family: inherit;
@@ -74,7 +73,6 @@
 
 .dice-tray > * {
   margin: 20px 20px;
-  color: rgb(58, 58, 58);
 }
 .dice-tray > * > * {
   margin: 0px 20px;
