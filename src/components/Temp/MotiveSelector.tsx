@@ -43,12 +43,12 @@ export default function MotiveSelector() {
               {motiveFull.warships}
             </p>
             <p>
-              Non-warships: {motiveFull.non_warships < 0 ? "" : "+"}
-              {motiveFull.non_warships}
+              Non-warships: {motiveFull.nonWarships < 0 ? "" : "+"}
+              {motiveFull.nonWarships}
             </p>
             <p>
-              Adventure Cards: {motiveFull.adventure_cards < 0 ? "" : "+"}
-              {motiveFull.adventure_cards}
+              Adventure Cards: {motiveFull.adventureCards < 0 ? "" : "+"}
+              {motiveFull.adventureCards}
             </p>
             <p>
               Treasure: {motiveFull.treasure < 0 ? "" : "+"}
@@ -57,8 +57,8 @@ export default function MotiveSelector() {
           </div>
           <div>
             <p>Liberation: x{motiveFull.liberation}</p>
-            <p>Science Discovered: x{motiveFull.science_discovered}</p>
-            <p>Wonders Seen: x{motiveFull.wonders_seen}</p>
+            <p>Science Discovered: x{motiveFull.scienceDiscovered}</p>
+            <p>Wonders Seen: x{motiveFull.wondersSeen}</p>
           </div>
         </div>
       </div>

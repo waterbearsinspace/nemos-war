@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "name": "Chief Engineer",
+    "survivingCharacterVp": 5
+  },
+  {
+    "id": 1,
+    "name": "First Officer",
+    "survivingCharacterVp": 7
+  },
+  {
+    "id": 2,
+    "name": "Second Officer",
+    "survivingCharacterVp": 3
+  },
+  {
+    "id": 3,
+    "name": "Conseil",
+    "survivingCharacterVp": 4
+  },
+  {
+    "id": 4,
+    "name": "Ned Land",
+    "survivingCharacterVp": 4
+  },
+  {
+    "id": 5,
+    "name": "Professor Aronnax",
+    "survivingCharacterVp": 5
+  }
+]

@@ -6,14 +6,14 @@ export interface MotiveSliceInterface {
   currentMotive: number;
   name: string;
   warships: number;
-  non_warships: number;
-  adventure_cards: number;
+  nonWarships: number;
+  adventureCards: number;
   treasure: number;
   liberation: number;
-  science_discovered: number;
-  wonders_seen: number;
-  act_two_cards: number;
-  act_three_cards: number;
+  scienceDiscovered: number;
+  wondersSeen: number;
+  actTwoCards: number;
+  actThreeCards: number;
   setCurrentMotive: (by: number) => void;
 }
 
@@ -21,14 +21,14 @@ export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
   currentMotive: 0,
   name: "War!",
   warships: 2,
-  non_warships: 0,
-  adventure_cards: -1,
+  nonWarships: 0,
+  adventureCards: -1,
   treasure: 0,
   liberation: 4,
-  science_discovered: 3,
-  wonders_seen: 2,
-  act_two_cards: 3,
-  act_three_cards: 13,
+  scienceDiscovered: 3,
+  wondersSeen: 2,
+  actTwoCards: 3,
+  actThreeCards: 13,
 
   setCurrentMotive: (newMotive: number) => {
     let motiveProps = motiveData[newMotive];
@@ -36,14 +36,14 @@ export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
       currentMotive: newMotive,
       name: motiveProps.name,
       warships: motiveProps.warships,
-      non_warships: motiveProps.non_warships,
-      adventure_cards: motiveProps.adventure_cards,
+      nonWarships: motiveProps.nonWarships,
+      adventureCards: motiveProps.adventureCards,
       treasure: motiveProps.treasure,
       liberation: motiveProps.liberation,
-      science_discovered: motiveProps.science_discovered,
-      wonders_seen: motiveProps.wonders_seen,
-      act_two_cards: motiveProps.act_two_cards,
-      act_three_cards: motiveProps.act_three_cards,
+      scienceDiscovered: motiveProps.scienceDiscovered,
+      wondersSeen: motiveProps.wondersSeen,
+      actTwoCards: motiveProps.actTwoCards,
+      actThreeCards: motiveProps.actThreeCards,
     }));
   },
 });

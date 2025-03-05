@@ -2,214 +2,214 @@
   {
     "id": 1,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 5,
     "vp": {
-      "adventure_cards": 2
+      "adventureCards": 2
     }
   },
   {
     "id": 7,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 8,
     "vp": {
-      "science_discovered": 1
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 9,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 10,
     "vp": {
-      "adventure_cards": 3
+      "adventureCards": 3
     }
   },
   {
     "id": 11,
     "vp": {
-      "adventure_cards": 0,
-      "science_discovered": 1
+      "adventureCards": 0,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 12,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 14,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 15,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 16,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 17,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 18,
     "vp": {
-      "wonders_seen": 1
+      "wondersSeen": 1
     }
   },
   {
     "id": 19,
     "vp": {
-      "adventure_cards": 1,
-      "science_discovered": 0
+      "adventureCards": 1,
+      "scienceDiscovered": 0
     }
   },
   {
     "id": 20,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 21,
     "vp": {
-      "adventure_cards": 2
+      "adventureCards": 2
     }
   },
   {
     "id": 22,
     "vp": {
-      "adventure_cards": 1,
-      "science_discovered": 1
+      "adventureCards": 1,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 23,
     "vp": {
-      "adventure_cards": 2
+      "adventureCards": 2
     }
   },
   {
     "id": 24,
     "vp": {
-      "adventure_cards": 0,
-      "science_discovered": 1
+      "adventureCards": 0,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 25,
     "vp": {
-      "adventure_cards": 1,
-      "science_discovered": 1
+      "adventureCards": 1,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 27,
     "vp": {
-      "wonders_seen": 0
+      "wondersSeen": 0
     }
   },
   {
     "id": 28,
     "vp": {
-      "adventure_cards": 2,
-      "science_discovered": 1
+      "adventureCards": 2,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 29,
     "vp": {
-      "adventure_cards": 0
+      "adventureCards": 0
     }
   },
   {
     "id": 30,
     "vp": {
-      "science_discovered": 1
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 31,
     "vp": {
-      "adventure_cards": 4,
-      "science_discovered": 1
+      "adventureCards": 4,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 32,
     "vp": {
-      "adventure_cards": 3
+      "adventureCards": 3
     }
   },
   {
     "id": 33,
     "vp": {
-      "adventure_cards": 2,
-      "science_discovered": 1
+      "adventureCards": 2,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 34,
     "vp": {
-      "wonders_seen": 1
+      "wondersSeen": 1
     }
   },
   {
     "id": 35,
     "vp": {
-      "science_discovered": 1
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 36,
     "vp": {
-      "adventure_cards": 2
+      "adventureCards": 2
     }
   },
   {
     "id": 37,
     "vp": {
-      "adventure_cards": 1
+      "adventureCards": 1
     }
   },
   {
     "id": 41,
     "vp": {
-      "wonders_seen": 1
+      "wondersSeen": 1
     }
   },
   {
     "id": 42,
     "vp": {
-      "adventure_cards": 4
+      "adventureCards": 4
     }
   },
   {
     "id": 43,
     "vp": {
-      "adventure_cards": 0,
-      "science_discovered": 1
+      "adventureCards": 0,
+      "scienceDiscovered": 1
     }
   },
   {
@@ -221,7 +221,7 @@
   {
     "id": 45,
     "vp": {
-      "adventure_cards": 6
+      "adventureCards": 6
     }
   },
   {
@@ -233,58 +233,58 @@
   {
     "id": 47,
     "vp": {
-      "adventure_cards": 0,
-      "science_discovered": 1
+      "adventureCards": 0,
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 48,
     "vp": {
       "warships": 2,
-      "non_warships": 2
+      "nonWarships": 2
     }
   },
   {
     "id": 50,
     "vp": {
-      "science_discovered": 1
+      "scienceDiscovered": 1
     }
   },
   {
     "id": 9001,
     "vp": {
-      "adventure_cards": 5
+      "adventureCards": 5
     }
   },
   {
     "id": 9002,
     "vp": {
-      "adventure_cards": 5
+      "adventureCards": 5
     }
   },
   {
     "id": 9003,
     "vp": {
-      "adventure_cards": 8
+      "adventureCards": 8
     }
   },
   {
     "id": 9004,
     "vp": {
-      "adventure_cards": 15,
+      "adventureCards": 15,
       "vps": -8
     }
   },
   {
     "id": 9005,
     "vp": {
-      "adventure_cards": 10
+      "adventureCards": 10
     }
   },
   {
     "id": 9006,
     "vp": {
-      "adventure_cards": 12
+      "adventureCards": 12
     }
   }
 ]

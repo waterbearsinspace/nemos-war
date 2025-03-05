@@ -34,21 +34,21 @@ export type Database = {
   };
   public: {
     Tables: {
-      adventure_cards: {
+      adventureCards: {
         Row: {
-          flavor_text: string;
+          flavorText: string;
           id: number;
           title: string;
           type: string;
         };
         Insert: {
-          flavor_text: string;
+          flavorText: string;
           id?: number;
           title: string;
           type: string;
         };
         Update: {
-          flavor_text?: string;
+          flavorText?: string;
           id?: number;
           title?: string;
           type?: string;
@@ -57,37 +57,37 @@ export type Database = {
       };
       motives: {
         Row: {
-          adventure_cards: number;
+          adventureCards: number;
           id: number;
           liberation: number;
           name: string;
-          non_warships: number;
-          science_discovered: number;
+          nonWarships: number;
+          scienceDiscovered: number;
           treasure: number;
           warships: number;
-          wonders_seen: number;
+          wondersSeen: number;
         };
         Insert: {
-          adventure_cards: number;
+          adventureCards: number;
           id?: number;
           liberation: number;
           name: string;
-          non_warships: number;
-          science_discovered: number;
+          nonWarships: number;
+          scienceDiscovered: number;
           treasure: number;
           warships: number;
-          wonders_seen: number;
+          wondersSeen: number;
         };
         Update: {
-          adventure_cards?: number;
+          adventureCards?: number;
           id?: number;
           liberation?: number;
           name?: string;
-          non_warships?: number;
-          science_discovered?: number;
+          nonWarships?: number;
+          scienceDiscovered?: number;
           treasure?: number;
           warships?: number;
-          wonders_seen?: number;
+          wondersSeen?: number;
         };
         Relationships: [];
       };
@@ -109,7 +109,7 @@ export type Database = {
             foreignKeyName: "scorable_cards_id_fkey";
             columns: ["id"];
             isOneToOne: true;
-            referencedRelation: "adventure_cards";
+            referencedRelation: "adventureCards";
             referencedColumns: ["id"];
           }
         ];
@@ -118,24 +118,24 @@ export type Database = {
         Row: {
           exertable: string[];
           id: number;
-          test_value: number;
+          testValue: number;
         };
         Insert: {
           exertable?: string[];
           id?: number;
-          test_value: number;
+          testValue: number;
         };
         Update: {
           exertable?: string[];
           id?: number;
-          test_value?: number;
+          testValue?: number;
         };
         Relationships: [
           {
             foreignKeyName: "test_cards_id_fkey";
             columns: ["id"];
             isOneToOne: true;
-            referencedRelation: "adventure_cards";
+            referencedRelation: "adventureCards";
             referencedColumns: ["id"];
           }
         ];

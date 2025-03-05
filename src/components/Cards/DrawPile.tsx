@@ -5,7 +5,7 @@ import { useState } from "react";
 import { gameStateStore } from "../../common/stores/gameStateStore";
 
 // data
-import adventureCards from "../../common/data/adventure_cards.json";
+import adventureCards from "../../common/data/adventureCards.json";
 
 // components
 import motives from "../../common/data/motives.json";
@@ -57,14 +57,14 @@ export default function DrawPile() {
 
     // act three: rising action + [motive]
     workingPile.push(adventureCards.find((card) => card.id == 1004));
-    pushNumCardsToWorking(motives[motive].act_three_cards);
+    pushNumCardsToWorking(motives[motive].actThreeCards);
     workingToFinished();
 
     // second intermission
     finishedDrawPile.push(adventureCards.find((card) => card.id == 1003));
 
     // act two: rising action + [motive]
-    pushNumCardsToWorking(motives[motive].act_two_cards);
+    pushNumCardsToWorking(motives[motive].actTwoCards);
     workingToFinished();
 
     // first intermission

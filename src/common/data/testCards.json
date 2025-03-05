@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "testValue": 7,
+    "exertable": ["nemo"]
+  },
+  {
+    "id": 6,
+    "testValue": 10,
+    "exertable": ["nemo"]
+  },
+  {
+    "id": 7,
+    "testValue": 10,
+    "exertable": ["nemo", "crew"]
+  },
+  {
+    "id": 9,
+    "testValue": 9,
+    "exertable": ["nemo", "crew"]
+  },
+  {
+    "id": 12,
+    "testValue": 8,
+    "exertable": ["nemo", "hull"]
+  },
+  {
+    "id": 14,
+    "testValue": 8,
+    "exertable": ["nemo"]
+  },
+  {
+    "id": 15,
+    "testValue": 10,
+    "exertable": ["crew"]
+  },
+  {
+    "id": 17,
+    "testValue": 9,
+    "exertable": ["hull"]
+  },
+  {
+    "id": 19,
+    "testValue": 10,
+    "exertable": ["crew"]
+  },
+  {
+    "id": 21,
+    "testValue": 8,
+    "exertable": ["nemo"]
+  },
+  {
+    "id": 24,
+    "testValue": 10,
+    "exertable": ["nemo", "hull"]
+  },
+  {
+    "id": 25,
+    "testValue": 11,
+    "exertable": ["nemo", "crew"]
+  },
+  {
+    "id": 27,
+    "testValue": 9,
+    "exertable": ["nemo"]
+  },
+  {
+    "id": 29,
+    "testValue": 9,
+    "exertable": ["crew", "hull"]
+  },
+  {
+    "id": 30,
+    "testValue": 9,
+    "exertable": ["nemo", "hull"]
+  },
+  {
+    "id": 32,
+    "testValue": 9,
+    "exertable": ["hull"]
+  },
+  {
+    "id": 33,
+    "testValue": 10,
+    "exertable": ["crew"]
+  },
+  {
+    "id": 34,
+    "testValue": 10,
+    "exertable": ["crew", "hull"]
+  },
+  {
+    "id": 37,
+    "testValue": 11,
+    "exertable": ["nemo", "crew"]
+  },
+  {
+    "id": 41,
+    "testValue": 9,
+    "exertable": []
+  },
+  {
+    "id": 43,
+    "testValue": 7,
+    "exertable": ["hull"]
+  },
+  {
+    "id": 47,
+    "testValue": 10,
+    "exertable": ["crew", "hull"]
+  },
+  {
+    "id": 49,
+    "testValue": 11,
+    "exertable": ["nemo", "crew"]
+  },
+  {
+    "id": 50,
+    "testValue": 10,
+    "exertable": ["nemo", "hull"]
+  }
+]

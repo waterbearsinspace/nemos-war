@@ -1,0 +1,374 @@
+[
+  {
+    "id": 1,
+    "title": "A Runaway Reef",
+    "flavorText": "The year 1866 was marked by a bizarre development, an unexplained and inexplicable phenomenon that surely no one has forgotten.",
+    "type": "test"
+  },
+  {
+    "id": 2,
+    "title": "Public Opinion",
+    "flavorText": "Traders, shipowners, captains of vessels, skippers, and master mariners from Europe and America, naval officers from every country, and at their heels the various national governments on these two continents, were all extremely disturbed by the business.",
+    "type": "play"
+  },
+  {
+    "id": 3,
+    "title": "As Master Wishes",
+    "flavorText": "In Conseil I had a seasoned specialist in biological classification, an enthusiast who could run with acrobatic agility up and down the whole ladder of branches, groups, classes, subclasses, orders, families, genera, subgenera, species, and varieties.",
+    "type": "keep"
+  },
+  {
+    "id": 4,
+    "title": "A Frigate's Demise",
+    "flavorText": "...two enormous waterspouts crashed onto the deck of the frigate, racing like a torrent from stem to stren, toppling crewmen, breaking spare masts and yardams from their lashings.",
+    "type": "play"
+  },
+  {
+    "id": 5,
+    "title": "At Full Steam",
+    "flavorText": "The Abraham Lincoln's speed increased. Its masts trembled down to their blocks, and swirls of smoke could barely squeeze through the narrow funnels.",
+    "type": "keep"
+  },
+  {
+    "id": 6,
+    "title": "Do No Harm",
+    "flavorText": "...they attacked me and I had to defend myself! All the same, I was content simply to put the frigate in a condition where it could do me no harm; it won't have any difficulty getting repairs at the nearest port.",
+    "type": "test"
+  },
+  {
+    "id": 7,
+    "title": "Ned Land's Tempers",
+    "flavorText": "Before I could make a single movement to prevent him, the Canadian rushed at the poor man, threw him down, held him by the throat. The steward was choking in the grip of those powerful hands.",
+    "type": "test"
+  },
+  {
+    "id": 8,
+    "title": "All By Electricity",
+    "flavorText": "Professor,\" said Captain Nemo, \"my electricity is not everybody's. I owe all to the ocean: it produces electricity, and electricity gives heat, light, motion, and, in a word, life to the Nautilus.",
+    "type": "keep"
+  },
+  {
+    "id": 9,
+    "title": "An Underwater Forest",
+    "flavorText": "Captain Nemo invites Professor Aronnax on a hunting trip that will take place tomorrow morning in his Crespo Island forests.",
+    "type": "test"
+  },
+  {
+    "id": 10,
+    "title": "Some Days Ashore",
+    "flavorText": "Stepping ashore had an exhilarating effect on me. Ned Land tested the soil with his foot, as if he were laying claim to it. Yet it had been only two months since we had become, as Captain Nemo expressed it, \"passengers on the Nautilus,\" in other words, the literal prisoners of its commander.",
+    "type": "keep"
+  },
+  {
+    "id": 11,
+    "title": "Aegri Somnia",
+    "flavorText": "The Nautilus floated in the midst of a phosphorescent bed which became quite dazzling. It was produced by myriads of luminous animalculae, whose brilliancy was increased as they glided over the metallic hull of the vessel.",
+    "type": "play"
+  },
+  {
+    "id": 12,
+    "title": "Captain Nemo's Thunderbolt",
+    "flavorText": "...when the first islander laid hands on the companionway railing, he was flung backward by some invisible power; Lord knows what! He ran off, howling in terror and wildly prancing around.",
+    "type": "test"
+  },
+  {
+    "id": 13,
+    "title": "Lost Time",
+    "flavorText": "...we had run aground at full tide, an inconvenient state of affairs for floating the Nautilus off. But although it could neither sink nor split open, it was in serious danger of being permanently attached to the reefs, and that would have been the finish of Captain Nemo's submersible.",
+    "type": "play"
+  },
+  {
+    "id": 14,
+    "title": "Troubled Dreams",
+    "flavorText": "I tried to keep my eyes open, but they closed in spite of me. I was in the grip of anguished hallucinations.",
+    "type": "test"
+  },
+  {
+    "id": 15,
+    "title": "The Coral Realm",
+    "flavorText": "Captain Nemo and his men had come to bury their companion in this communal resting place on the inaccessible ocean floor!",
+    "type": "test"
+  },
+  {
+    "id": 16,
+    "title": "The Indian Ocean",
+    "flavorText": "Now we begin the second part of this voyage under the seas. The first ended in that moving scene at the coral cemetery, which left a profound impression on my mind. And so Captain Nemo would live out his life entirely in the heart of this immense sea, and even his grave lay ready in its impenetrable depths.",
+    "type": "keep"
+  },
+  {
+    "id": 17,
+    "title": "A Novel Proposal",
+    "flavorText": "The first thing I noticed was a range of mountains about two thousand feet high, the shapes of which were most capricious. I knew that we were nearing the island of Ceylon, the pearl which hangs from the lobe of the Indian Peninsula.",
+    "type": "test"
+  },
+  {
+    "id": 18,
+    "title": "The Red Sea",
+    "flavorText": "The Greek and Latin historians do not speak favorably of the Red Sea... It is, he pretends, a sea subject to fearful hurricanes, strewn with inhospitable islands, and which offers nothing good either on its surface or in its depths.",
+    "type": "play"
+  },
+  {
+    "id": 19,
+    "title": "A Pearl Worth Ten Million",
+    "flavorText": "There, between its leaflike folds, I saw a loose pearl as big as a coconut. Its globular shape, perfect clarity, and wonderful orient made it a jewel of incalculable value. Carried away by curiosity, I stretched out my hand to take it, weight it, fondle it!",
+    "type": "keep"
+  },
+  {
+    "id": 20,
+    "title": "Ocean Wealth",
+    "flavorText": "I understand, Captain, I understand your delight at strolling in the midst of this wealth. You're a man who gathers his treasure in person. No museum in Europe owns such a collection of exhibits from the ocean.",
+    "type": "play"
+  },
+  {
+    "id": 21,
+    "title": "Jaws Wide Open!",
+    "flavorText": "The shark returned when I saw Captain Nemo rise suddenly, dagger in hand, ready to fight the monster. With wonderful quickness he buried his dagger deep into its side. A terrible combat ensued.",
+    "type": "test"
+  },
+  {
+    "id": 22,
+    "title": "The Arabian Tunnel",
+    "flavorText": "There's a passageway?\" \"Yes, an underground passageway that I've named the Arabian Tunnel. It starts below the Suez and leads to the Bay of Pelusium.",
+    "type": "keep"
+  },
+  {
+    "id": 23,
+    "title": "Commerce Scare!",
+    "flavorText": "The Shipping and Mercantile Gazette, the Lloyd's List, the Packet-Boat, and the Maritime and Colonial Review, all papers devoted to insurance companies which threatened to raise their rates of premium, were unanimous on this point. Public opinion had been pronounced.",
+    "type": "play"
+  },
+  {
+    "id": 24,
+    "title": "42° Centigrade",
+    "flavorText": "The panels had opened, and I could see a completely white sea around the Nautilus. Steaming sulfurous fumes uncoiled in the midst of waves bubbling like water in a boiler. I leaned my hand against one of the windows, but the heat was so great, I had to snatch it back.",
+    "type": "test"
+  },
+  {
+    "id": 25,
+    "title": "The Lost Continent",
+    "flavorText": "But Captain Nemo came over and stopped me with a gesture. Then, picking up a piece of chalky stone, he advanced to a black basaltic rock and scrawled this one word: ATLANTIS.",
+    "type": "test"
+  },
+  {
+    "id": 26,
+    "title": "The Treasure Fleet",
+    "flavorText": "Laden with their precious booty, the men returned to the Nautilus, disposed of their burden, and went back to this inexhaustible fishery of gold and silver.",
+    "type": "play"
+  },
+  {
+    "id": 27,
+    "title": "\"The earth wants not new continents, but new men.\"",
+    "flavorText": "May the contemplation of so many wonders extinguish forever the spirit of vengeance! May the judge disappear, and the philosopher continue the peaceful exploration of the sea!",
+    "type": "test"
+  },
+  {
+    "id": 28,
+    "title": "An Underwater Caolfield",
+    "flavorText": "Now then, right at this spot the sea covers entire forests that sank underwater in prehistoric times; today, turned to stone, transformed into carbon fuel, they offer me inexhaustible coal mines.",
+    "type": "keep"
+  },
+  {
+    "id": 29,
+    "title": "The Whales",
+    "flavorText": "...trying to crush the Nautilus with their sheer mass. Through the windows you could see their enormous mouths paved with teeth, their fearsome eyes.",
+    "type": "test"
+  },
+  {
+    "id": 30,
+    "title": "The Iceberg",
+    "flavorText": "Everything was frozen - even the noise. The Nautilus was then obliged to stop in its adventurous course amid these fields of ice. In spite of our efforts, the Nautilus remained immovable.",
+    "type": "test"
+  },
+  {
+    "id": 31,
+    "title": "The South Pole",
+    "flavorText": "...to overcome all the obstacles around the South Pole - even more unattainable than the North Pole, which still hadn't been reached by the boldest navigators - wasn't this an absolutely insane undertaking, one that could occur only in the brain of a madman?",
+    "type": "keep"
+  },
+  {
+    "id": 32,
+    "title": "Accident or Incident?",
+    "flavorText": "At three o'clock in the morning, I was awakened by a violent collision. I sat up in bed, listening in the darkness, and then was suddenly hurled into the middle of my stateroom. Apparently the Nautilus had gone aground, then heeled over sharply!",
+    "type": "test"
+  },
+  {
+    "id": 33,
+    "title": "Shortage of Air",
+    "flavorText": "How long,\" I asked, \"will the oxygen in the air tanks enable us to breathe on board?\"\n\nThe captain looked me straight in the eye. \"After tomorrow,\" he said, \"the air tanks will be empty.",
+    "type": "test"
+  },
+  {
+    "id": 34,
+    "title": "Attack of the Giant Squid",
+    "flavorText": "Just as we were crowding each other to reach the platform, two more arms lashed the air, swooped on the seaman stationed in front of Captain Nemo, and carried the fellow away with irresistible violence.",
+    "type": "test"
+  },
+  {
+    "id": 35,
+    "title": "The Gulf Stream",
+    "flavorText": "Ten days went by in this way. It was only on May 1st that the Nautilus openly resumed its north-bound course, after raising the Bahamas at the mouth of Old Bahama Channel. We then went with the current of the sea's greatest river, which has its own banks, fish, and temperature. I mean the Gulf Stream.",
+    "type": "keep"
+  },
+  {
+    "id": 36,
+    "title": "The Transatlantic Cable",
+    "flavorText": "We were about 500 miles from Heart's Content, at a depth of more than 1,400 fathoms, that I saw the electric cable lying on the bottom.",
+    "type": "keep"
+  },
+  {
+    "id": 37,
+    "title": "Aronnax's Determination",
+    "flavorText": "For seven months we've been aboard your vessel, and I ask you today, in the name of my companions as well as myself, if you intend to keep us here forever.\"\n\n\"Professor Aronnax,\" Captain Nemo said, \"I'll answer you today just as I did seven months ago: whoever boards the Nautilus must never leave it.",
+    "type": "test"
+  },
+  {
+    "id": 38,
+    "title": "A Capital Encounter",
+    "flavorText": "Soon the Canadian announced that the craft was a big battleship, a double-decker ironclad complete with ram. Dark, dense smoke burst from its two funnels. Its furled sails merged with the lines of its yardarms. The gaff of its fore-and-aft sail flew no flag.",
+    "type": "play"
+  },
+  {
+    "id": 39,
+    "title": "A Mass Execution",
+    "flavorText": "The poor ship then sank more swiftly. Its mastheads appeared, laden with victims, then its crosstrees bending under clusters of men, finally the peak of its mainmast. Then the dark mass disappeared, and with it a crew of corpses dragged under by fearsome eddies.",
+    "type": "play"
+  },
+  {
+    "id": 40,
+    "title": "A Sacrifice to the Gods",
+    "flavorText": "I am the law, and I am the judge! I am the oppressed, and there is the oppressor! Through him I have lost all that I loved, cherished, and venerated - country, wife, children, father, and mother. I saw all perish! All that I hate is there! Say no more!",
+    "type": "play"
+  },
+  {
+    "id": 41,
+    "title": "Captain Nemo's Diaries",
+    "flavorText": "For my part, I did not wish to bury with me my curious and novel studies. I had now the power to write the true book of the sea; and this book, sooner or later, I wished to see daylight.",
+    "type": "keep"
+  },
+  {
+    "id": 42,
+    "title": "Vanikoro",
+    "flavorText": "The Captain came up to me, put his finger on one spot of the chart, and said this single word: \"Vanikoro.\" The effect was magical! I rose suddenly.\n\n\"The Nautilus has brought us to Vanikoro?\" I asked. \"Yes, Professor.",
+    "type": "keep"
+  },
+  {
+    "id": 43,
+    "title": "Torres Straits",
+    "flavorText": "The Torres Straits are nearly thirty four leagues wide; but they are obstructed by an innumerable quantity of islands, islets, breakers, and rocks. The Nautilus, floating betwixt wind and water, went at a moderate pace. Her screw, like a cetacean's tail, beat the waves slowly.",
+    "type": "keep"
+  },
+  {
+    "id": 44,
+    "title": "The Grecian Archipelago",
+    "flavorText": "Prudence bids us profit by the first opportunity to leave the Nautilus. The occasion must be serious, and our first attempt must succeed: if it fails, we shall never find another, and Captain Nemo will never forgive us.",
+    "type": "play"
+  },
+  {
+    "id": 45,
+    "title": "Vigo Bay",
+    "flavorText": "This was the scene of the battle of the 22nd of October, 1702. Here, galleons laden for the Spanish Government had sunk. Here, Captain Nemo came, according to his wants, to pack up those millions with which he burdened the Nautilus.",
+    "type": "keep"
+  },
+  {
+    "id": 46,
+    "title": "Required Repairs",
+    "flavorText": "...the Nautilus seemed becalmed only a few yards beneath the surface of the waves. I supposed that the crew was occupied with interior repairs, rendered necessary by the violence of the mechanical movements of the machine.",
+    "type": "keep"
+  },
+  {
+    "id": 47,
+    "title": "Shakedown Maneuvers",
+    "flavorText": "Round the Nautilus the sea dashed furiously. \"This is a bad sea!\" remarked Ned Land. \"Detestable indeed, and one that does not suit a boat like the Nautilus.",
+    "type": "test"
+  },
+  {
+    "id": 48,
+    "title": "Prussia Declares War!",
+    "flavorText": "I suppose their Chancellor Bismarck will take them  to war after war, but it is their great naval base at Wilhelmshaven that concerns us now. What will Captain Nemo make of such an opportunity as Prussia's wars spread to the seas?",
+    "type": "play"
+  },
+  {
+    "id": 49,
+    "title": "The Korea Incident",
+    "flavorText": "Captain Nemo glowered at Ned for his remarks in favor of Americans and growled, \"Even now, Mr. Land, the Americans desire to force open trade with the reclusive Koreans. And, just as they did in Japan fifteen years ago, the Americans are sending a warfleet to articulate their interests.",
+    "type": "keep"
+  },
+  {
+    "id": 50,
+    "title": "Magnetic Mines",
+    "flavorText": "In the Nautilus' laboratory, Captain Nemo worked to counter the growing number of armored warships.",
+    "type": "test"
+  },
+  {
+    "id": 51,
+    "title": "The Chinese Treasure Fleet",
+    "flavorText": "M. Aronnax, a century before Europe's Age of Exploration, the Ming Emperor achieved suzerainty with the voyages of his great Treasure Fleet. China was a pre-eminent naval power, and I am charting their routes to the south and west of China.",
+    "type": "play"
+  },
+  {
+    "id": 1001,
+    "title": "Act One",
+    "flavorText": "The facts relating to this apparition (entered in various log-books) agreed in most respects as to the shape of the object or creature in question, the untiring rapidity of its movements, its surprising power of locomotion, and the peculiar life with which it seemed endowed. If it was a whale, its surpassed in size all those hitherto classified in science.",
+    "type": "prologue"
+  },
+  {
+    "id": 1002,
+    "title": "Act Two",
+    "flavorText": "I was admiring the magnificent aspect of the ocean when Captain Nemo appared. He did not seem to be aware of my presence, and began a series of astronomoical observations. Then, when he had finished, he went and leant on the cage of the watch-light, and gazed abstractedly in the ocean.",
+    "type": "firstIntermission"
+  },
+  {
+    "id": 1003,
+    "title": "Act Three",
+    "flavorText": "The Nautilus went at a frightful pace, forty miles an hour. It lterally tore through the water. Where was Captain Nemo? Had he succumbed? Were his companions dead with him?",
+    "type": "secondIntermission"
+  },
+  {
+    "id": 1004,
+    "title": "A Hollow Expansion",
+    "flavorText": "\"What sort of craft is it, Ned?\" \"From its rigging and its lows masts,\" the Canadian replied, \"I bet it's a warship./ Here's hoping it pulls up and sinks this damned Nautilus!\"",
+    "type": "play"
+  },
+  {
+    "id": 9001,
+    "title": "The Maelstrom!",
+    "flavorText": "\"Maelstrom! Maelstrom!\" they were shouting. The Maelstrom! Could a more frightening name have rung in our ears under more frightening circumstances?",
+    "type": "test"
+  },
+  {
+    "id": 9002,
+    "title": "Return to Mystery Island",
+    "flavorText": "Captain Nemo looked at the engineer as if he would have annihiliated him. Then, falling back upon the cushions, he murmered: \"After all, what does it matter; I am dying!\"",
+    "type": "play"
+  },
+  {
+    "id": 9003,
+    "title": "Another 1,000 Leagues",
+    "flavorText": "If this is the case and Captain Nemo still inhabits the ocean - his adopted country - may the hate be appeased in that fierce heart! May the contemplation of so many wonders extinguish the spirit of vengeance in him! May the executioner pass away, and the scientist continue his peaceful exploration of the seas!",
+    "type": "play"
+  },
+  {
+    "id": 9004,
+    "title": "Bottom of the Sea",
+    "flavorText": "Her strong light lit up the transparent waters, as the crypt became darkened. Then at length the vast effusion of electric effulgence was effaced, and the Nautilus, the tomb of Captain Nemo, rested upon the bottom of the sea.",
+    "type": "play"
+  },
+  {
+    "id": 9005,
+    "title": "Mutiny!",
+    "flavorText": "...their murmurs after Captain Nemo's outburst caused Ned and I to exchange concerned looks. They were unquestionably loyal, but this day put that in doubt and we sensed a mutiny!",
+    "type": "test"
+  },
+  {
+    "id": 9006,
+    "title": "Modus Vivendi",
+    "flavorText": "\"Mr. Disraeli,\" I began, \"a parley with Captain Nemo will not be easy, but as Her Majesty's envoy you can speak for the Great Powers and, I hope, assuage his savage heart.\"\n\"Professor, I completely understand. If we cannot compromise, however...\"",
+    "type": "test"
+  },
+  {
+    "id": 9007,
+    "title": "20,000 Leagues Under the Sea",
+    "flavorText": "Not a fact has been ommitted, not a detail exaggerated. What I now affirm is, that I have a right to speak of these seas, under which, in less than ten months, I have crossed 20,000 leagues in that submarine tour of the world, which has revealed so many wonders.",
+    "type": "play"
+  }
+]
