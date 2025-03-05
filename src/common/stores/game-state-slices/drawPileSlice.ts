@@ -13,9 +13,6 @@ export const drawPileSlice: StateCreator<DrawPileSliceInterface, []> = (
   set
 ) => ({
   drawPile: [],
+
   setDrawPile: (newDrawPile) => set(() => ({ drawPile: newDrawPile })),
 });
-
-// draw pile
-
-// draw card
