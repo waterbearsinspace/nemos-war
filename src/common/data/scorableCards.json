@@ -215,7 +215,7 @@
   {
     "id": 44,
     "vp": {
-      "characers_remaining": 4
+      "charactersRemaining": 4
     }
   },
   {
@@ -227,7 +227,7 @@
   {
     "id": 46,
     "vp": {
-      "ship_resources_penalty": -8
+      "shipResourcesPenalty": -8
     }
   },
   {
