@@ -9,7 +9,7 @@ import characterResourceData from "../../data/characterResources.json";
 type Character = {
   id: number;
   name: string;
-  survivingCharacterVp: number;
+  survivingCharacter: number;
 };
 
 export interface CharacterResourcesSliceInterface {
