@@ -1,0 +1,93 @@
+[
+  {
+    "id": 0,
+    "name": "Periscope Device",
+    "flavorText": "When Léon Foucault improved the reflecting telescope in 1857 by introducing a process of depositing a layyer of silver on glass telescope mirrors, Captain Nemo saw the potential of this idea in terms of a \"periscope\" device for the Nautilus.",
+    "vp": {
+      "adventureCards": 1
+    },
+    "cost": 3,
+    "motive": "War!"
+  },
+  {
+    "id": 1,
+    "name": "Monstrous Design",
+    "flavorText": "A sixteen-foot-long oarfish washed ashore on a Bermuda beach in 1860 and inspired the engineers of the Nautilus to consider altering the appearance of the ship to seem more like a mythological sea monster to camouflage their deeds.",
+    "vp": {
+      "adventureCards": 1
+    },
+    "cost": 3,
+    "motive": "Science"
+  },
+  {
+    "id": 2,
+    "name": "Hydro Drive",
+    "flavorText": "By compressing water taken in at the ship's bow and shooting it back into the ocean at an increased velocity from the ship's stern like a jet, the Nautilus could make an amazing 20 knots on the surface for an extended time.",
+    "vp": {
+      "scienceDiscovered": 1
+    },
+    "cost": 3,
+    "motive": "Explore"
+  },
+  {
+    "id": 3,
+    "name": "Double Hull",
+    "flavorText": "Ship armor was not entirely iron: there would be upward of 15\" of teak wood backing up the iron plating. The wood prevented spalling and absorbed the shock of a hit that would otherwise damage the structure of the ship.",
+    "vp": {
+      "adventureCards": 1
+    },
+    "cost": 3,
+    "motive": "Anti-Imperialism"
+  },
+  {
+    "id": 4,
+    "name": "Arcane Library",
+    "flavorText": "Captain Nemo's arcane library housed not only European culture and arts, but also many native histories and legends that helped im discover what the oceans might yield. This, along with electrolocation searching, revealed many secrets",
+    "vp": {
+      "wondersSeen": 1
+    },
+    "cost": 2
+  },
+  {
+    "id": 5,
+    "name": "Electro-Powered Crew Armor",
+    "flavorText": "Captain Nemo's idealism gave way to pragmatism when he added a specialized section of the crew to act as the ship's \"Marines.\"When ordered to do so, the would lead the close-in fighting required to capture crippled Warships.",
+    "vp": {
+      "scienceDiscovered": 1
+    },
+    "cost": 3
+  },
+  {
+    "id": 6,
+    "name": "Fog Machine",
+    "flavorText": "The notion of boiling sea water was easy: this would have to be done to keep the machines cool in any event. The trick was to expel the steam in such a way that it \"stuck.\" Adding particulates to the escaping steam solved that problem.",
+    "cost": 3
+  },
+  {
+    "id": 7,
+    "name": "Reinforced Armor",
+    "flavorText": "With heavier armor, the lighter guns on ships became ineffective as their shells simply bounced off. The important concern was buoyancy, so cork-filled compartments and watertight bulkheads were added.",
+    "vp": {
+      "adventureCards": 2
+    },
+    "cost": 4
+  },
+  {
+    "id": 8,
+    "name": "Steam Torpedoes",
+    "flavorText": "Early \"spar\" torpedoes were explosive charges attached to a pole extending from the ship. The invention of (expensive) mechanical independently-fired \"steam\" torpedoes was a novelty that could only come from Captain Nemo's Nautilus.",
+    "vp": {
+      "scienceDiscovered": 1
+    },
+    "cost": 4
+  },
+  {
+    "id": 9,
+    "name": "Strengthened Prow",
+    "flavorText": "Ramming as a naval cobat tactic fell out of use in the Age of Sail, but in the Age of Steam and armor plating the ram was resurrected in an effort to punch holes beneath the enemy's waterline. The results were quick and complete.",
+    "vp": {
+      "adventureCards": 2
+    },
+    "cost": 4
+  }
+]
