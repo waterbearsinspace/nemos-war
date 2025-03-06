@@ -2,10 +2,6 @@ import { StateCreator } from "zustand";
 
 import characterResourceData from "../../data/characterResources.json";
 
-// character resources' status
-
-// sacrifice character
-
 type Character = {
   id: number;
   name: string;

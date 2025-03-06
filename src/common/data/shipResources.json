@@ -1,0 +1,90 @@
+[
+  {
+    "id": 0,
+    "name": "nemo",
+    "maxValue": 6,
+    "statuses": [
+      "Broken",
+      "Unstable",
+      "Erratic",
+      "Steady",
+      "Determined",
+      "Strong",
+      "Nemo"
+    ],
+    "exertionDRM": [0, 3, 3, 3, 2, 2, 2],
+    "vp": [
+      {},
+      { "shipResourcesPenalty": -10 },
+      { "shipResourcesPenalty": 5 },
+      {},
+      {},
+      { "wondersSeen": 1 },
+      { "wondersSeen": 2 }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "crew",
+    "maxValue": 10,
+    "statuses": [
+      "Killed",
+      "Spent",
+      "Spent",
+      "Tired",
+      "Tired",
+      "Fit",
+      "Fit",
+      "Fit",
+      "Fresh",
+      "Fresh",
+      "Crew"
+    ],
+    "exertionDRM": [0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3],
+    "vp": [
+      {},
+      { "shipResourcesPenalty": -10 },
+      { "shipResourcesPenalty": -10 },
+      { "shipResourcesPenalty": -5 },
+      { "shipResourcesPenalty": -5 },
+      {},
+      {},
+      {},
+      { "survivingCharacter": 4 },
+      { "survivingCharacter": 8 },
+      { "survivingCharacter": 12 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "hull",
+    "maxValue": 10,
+    "statuses": [
+      "Shattered",
+      "Listing",
+      "Listing",
+      "Listing",
+      "Seaworthy",
+      "Seaworthy",
+      "Fighting Trim",
+      "Fighting Trim",
+      "Fighting Trim",
+      "Shipshape",
+      "Hull"
+    ],
+    "exertionDRM": [0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+    "vp": [
+      {},
+      { "shipResourcesPenalty": -20 },
+      { "shipResourcesPenalty": -15 },
+      { "shipResourcesPenalty": -10 },
+      { "shipResourcesPenalty": -5 },
+      {},
+      {},
+      {},
+      { "scienceDiscovered": 1 },
+      { "scienceDiscovered": 1 },
+      { "scienceDiscovered": 2 }
+    ]
+  }
+]

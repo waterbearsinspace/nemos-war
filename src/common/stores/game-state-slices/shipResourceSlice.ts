@@ -1,10 +1,48 @@
-// Keep track of ship resources
+import { StateCreator } from "zustand";
 
-// resource properties
-//      - value
-//      - valueText
-//      - exertValue
+import shipResourceData from "../../data/shipResources.json";
 
-// nemo
-// crew
-// hull
+type ShipResource = {
+  id: number;
+  name: string;
+  value: number;
+  maxValue: number;
+  statuses: string[];
+  exertionDRM: number[];
+  vp: Object[];
+};
+
+export interface ShipResourcesSliceInterface {
+  nemo: ShipResource;
+  hull: ShipResource;
+  crew: ShipResource;
+  adjustNemoValue: (by: number) => void;
+  adjustCrewValue: (by: number) => void;
+  adjustHullValue: (by: number) => void;
+}
+
+let nemoData = shipResourceData[0];
+let crewData = shipResourceData[1];
+let hullData = shipResourceData[2];
+
+export const shipResourceSlice: StateCreator<
+  ShipResourcesSliceInterface,
+  []
+> = (set) => ({
+  nemo: { ...nemoData, value: nemoData.maxValue },
+  crew: { ...crewData, value: crewData.maxValue },
+  hull: { ...hullData, value: hullData.maxValue },
+
+  adjustNemoValue: (by) =>
+    set((state) => ({
+      nemo: { ...state.nemo, value: state.nemo.value + by },
+    })),
+  adjustCrewValue: (by) =>
+    set((state) => ({
+      crew: { ...state.crew, value: state.crew.value + by },
+    })),
+  adjustHullValue: (by) =>
+    set((state) => ({
+      hull: { ...state.hull, value: state.hull.value + by },
+    })),
+});

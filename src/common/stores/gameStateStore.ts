@@ -18,15 +18,21 @@ import {
   characterResourceSlice,
   CharacterResourcesSliceInterface,
 } from "./game-state-slices/characterResourcesSlice";
+import {
+  shipResourceSlice,
+  ShipResourcesSliceInterface,
+} from "./game-state-slices/shipResourceSlice";
 
 export const gameStateStore = create<
   MotiveSliceInterface &
     DrawPileSliceInterface &
     AdventureDeckSliceInterface &
-    CharacterResourcesSliceInterface
+    CharacterResourcesSliceInterface &
+    ShipResourcesSliceInterface
 >()((...a) => ({
   ...motiveSlice(...a),
   ...drawPileSlice(...a),
   ...adventureDeckSlice(...a),
   ...characterResourceSlice(...a),
+  ...shipResourceSlice(...a),
 }));
