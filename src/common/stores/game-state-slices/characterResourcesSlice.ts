@@ -18,7 +18,7 @@ export interface CharacterResourcesSliceInterface {
   sacrificeCharacter: (id: number) => void;
 }
 
-// data
+// data and constants
 import characterResourceData from "../../data/characterResources.json";
 let chiefEngineerData = characterResourceData[0];
 let firstOfficerData = characterResourceData[1];

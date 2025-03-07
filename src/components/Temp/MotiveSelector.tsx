@@ -1,7 +1,7 @@
 // gameState
 import { gameStateStore } from "../../common/stores/gameStateStore";
 
-// data
+// data and constants
 import motiveData from "../../common/data/motives.json";
 
 export default function MotiveSelector() {

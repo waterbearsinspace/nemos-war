@@ -4,7 +4,7 @@ import { useState } from "react";
 // gameState
 import { gameStateStore } from "../../common/stores/gameStateStore";
 
-// data
+// data and constants
 import adventureCards from "../../common/data/adventureCards.json";
 
 // components

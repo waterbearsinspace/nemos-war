@@ -17,7 +17,7 @@ export interface MotiveSliceInterface {
   setCurrentMotive: (by: number) => void;
 }
 
-// data
+// data and constants
 import motiveData from "../../data/motives.json";
 
 // slice

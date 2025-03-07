@@ -12,7 +12,7 @@ import DrawPile from "./components/Cards/DrawPile";
 // css
 import "./Game.css";
 
-// data
+// data and constants
 import AdventureDeck from "./components/Cards/AdventureDeck";
 
 export default function Game() {

@@ -2,7 +2,6 @@
   {
     "id": 0,
     "name": "nemo",
-    "maxValue": 6,
     "statuses": [
       "Broken",
       "Unstable",
@@ -26,7 +25,6 @@
   {
     "id": 1,
     "name": "crew",
-    "maxValue": 10,
     "statuses": [
       "Killed",
       "Spent",
@@ -58,7 +56,6 @@
   {
     "id": 2,
     "name": "hull",
-    "maxValue": 10,
     "statuses": [
       "Shattered",
       "Listing",

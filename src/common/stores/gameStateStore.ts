@@ -31,6 +31,10 @@ import {
   ShipResourcesSliceInterface,
 } from "./game-state-slices/shipResourceSlice";
 import {
+  sunkenShipsSlice,
+  SunkenShipsSliceInterface,
+} from "./game-state-slices/sunkenShipsSlice";
+import {
   upgradesSlice,
   UpgradesSliceInterface,
 } from "./game-state-slices/upgradesSlice";
@@ -44,14 +48,16 @@ export const gameStateStore = create<
     KeptCardsSliceInterface &
     MotiveSliceInterface &
     ShipResourcesSliceInterface &
+    SunkenShipsSliceInterface &
     UpgradesSliceInterface
 >()((...a) => ({
-  ...motiveSlice(...a),
-  ...drawPileSlice(...a),
+  ...actionPointsSlice(...a),
   ...adventureDeckSlice(...a),
   ...characterResourceSlice(...a),
-  ...shipResourceSlice(...a),
+  ...drawPileSlice(...a),
   ...keptCardsSlice(...a),
+  ...motiveSlice(...a),
+  ...shipResourceSlice(...a),
+  ...sunkenShipsSlice(...a),
   ...upgradesSlice(...a),
-  ...actionPointsSlice(...a),
 }));

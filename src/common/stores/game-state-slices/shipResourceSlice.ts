@@ -6,7 +6,6 @@ type ShipResource = {
   id: number;
   name: string;
   value: number;
-  maxValue: number;
   statuses: string[];
   exertionDRM: number[];
   vp: Object[];
@@ -20,20 +19,23 @@ export interface ShipResourcesSliceInterface {
   adjustHullValue: (by: number) => void;
 }
 
-// data
+// data and constants
 import shipResourceData from "../../data/shipResources.json";
 let nemoData = shipResourceData[0];
 let crewData = shipResourceData[1];
 let hullData = shipResourceData[2];
+const nemoMax = 6;
+const crewMax = 10;
+const hullMax = 10;
 
 // slice
 export const shipResourceSlice: StateCreator<
   ShipResourcesSliceInterface,
   []
 > = (set) => ({
-  nemo: { ...nemoData, value: nemoData.maxValue },
-  crew: { ...crewData, value: crewData.maxValue },
-  hull: { ...hullData, value: hullData.maxValue },
+  nemo: { ...nemoData, value: nemoMax },
+  crew: { ...crewData, value: crewMax },
+  hull: { ...hullData, value: hullMax },
 
   adjustNemoValue: (by) =>
     set((state) => ({
