@@ -16,3 +16,9 @@
 //      - resolve card
 // placement phase
 // action phase
+
+// states
+// 0: menu
+// 1-9: reserved
+// 10: setup
+//

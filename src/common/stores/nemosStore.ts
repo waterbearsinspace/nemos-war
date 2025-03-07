@@ -5,42 +5,33 @@ import { create } from "zustand";
 import {
   actionPointsSlice,
   ActionPointsSliceInterface,
-} from "./game-state-slices/actionPointsSlice";
+} from "./slices/actionPointsSlice";
 import {
   adventureDeckSlice,
   AdventureDeckSliceInterface,
-} from "./game-state-slices/adventureDeckSlice";
+} from "./slices/adventureDeckSlice";
 import {
   characterResourceSlice,
   CharacterResourcesSliceInterface,
-} from "./game-state-slices/characterResourcesSlice";
-import {
-  drawPileSlice,
-  DrawPileSliceInterface,
-} from "./game-state-slices/drawPileSlice";
+} from "./slices/characterResourcesSlice";
+import { drawPileSlice, DrawPileSliceInterface } from "./slices/drawPileSlice";
 import {
   keptCardsSlice,
   KeptCardsSliceInterface,
-} from "./game-state-slices/keptCardsSlice";
-import {
-  motiveSlice,
-  MotiveSliceInterface,
-} from "./game-state-slices/motiveSlice";
+} from "./slices/keptCardsSlice";
+import { motiveSlice, MotiveSliceInterface } from "./slices/motiveSlice";
 import {
   shipResourceSlice,
   ShipResourcesSliceInterface,
-} from "./game-state-slices/shipResourceSlice";
+} from "./slices/shipResourceSlice";
 import {
   sunkenShipsSlice,
   SunkenShipsSliceInterface,
-} from "./game-state-slices/sunkenShipsSlice";
-import {
-  upgradesSlice,
-  UpgradesSliceInterface,
-} from "./game-state-slices/upgradesSlice";
+} from "./slices/sunkenShipsSlice";
+import { upgradesSlice, UpgradesSliceInterface } from "./slices/upgradesSlice";
 
 // store
-export const gameStateStore = create<
+export const nemosStore = create<
   ActionPointsSliceInterface &
     AdventureDeckSliceInterface &
     CharacterResourcesSliceInterface &

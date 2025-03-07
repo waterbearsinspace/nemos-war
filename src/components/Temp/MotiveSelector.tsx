@@ -1,13 +1,13 @@
-// gameState
-import { gameStateStore } from "../../common/stores/gameStateStore";
+// game store
+import { nemosStore } from "../../common/stores/nemosStore";
 
 // data and constants
 import motiveData from "../../common/data/motives.json";
 
 export default function MotiveSelector() {
-  const motive = gameStateStore((state) => state.currentMotive);
-  const motiveFull = gameStateStore((state) => state);
-  const setCurrentMotive = gameStateStore((state) => state.setCurrentMotive);
+  const motive = nemosStore((state) => state.currentMotive);
+  const motiveFull = nemosStore((state) => state);
+  const setCurrentMotive = nemosStore((state) => state.setCurrentMotive);
 
   const handleClick = (inc: number) => {
     if (motive + inc > motiveData.length - 1) {

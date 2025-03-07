@@ -1,8 +1,8 @@
 // modules
 import { useState } from "react";
 
-// gameState
-import { gameStateStore } from "../../common/stores/gameStateStore";
+// game store
+import { nemosStore } from "../../common/stores/nemosStore";
 
 // data and constants
 import adventureCards from "../../common/data/adventureCards.json";
@@ -16,11 +16,11 @@ import { shuffleArray } from "../../common/utils/utils";
 
 export default function DrawPile() {
   const [drawPileIndex, setDrawPileIndex] = useState(0);
-  const drawPile = gameStateStore((state) => state.drawPile);
+  const drawPile = nemosStore((state) => state.drawPile);
 
-  let motive = gameStateStore((state) => state.currentMotive);
-  let setDrawPile = gameStateStore((state) => state.setDrawPile);
-  let setAdventureDeck = gameStateStore((state) => state.setAdventureDeck);
+  let motive = nemosStore((state) => state.currentMotive);
+  let setDrawPile = nemosStore((state) => state.setDrawPile);
+  let setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
 
   let setupDrawPile = () => {
     let finishedDrawPile: any = [];
@@ -105,7 +105,7 @@ export default function DrawPile() {
     >
       <h2>Draw Pile</h2>
       <AdventureCard
-        card={gameStateStore((state) => state.drawPile[drawPileIndex])}
+        card={nemosStore((state) => state.drawPile[drawPileIndex])}
       />
       <div className="button-wrapper">
         <button

@@ -1,17 +1,17 @@
 // modules
 import { useState } from "react";
 
-// gameState
-import { gameStateStore } from "../../common/stores/gameStateStore";
+// game store
+import { nemosStore } from "../../common/stores/nemosStore";
 
 // components
 import AdventureCard from "./AdventureCard.tsx/AdventureCard";
 
 export default function AdventureDeck() {
   const [adventureDeckIndex, setAdventureDeckIndex] = useState(0);
-  const adventureDeck = gameStateStore((state) => state.adventureDeck);
+  const adventureDeck = nemosStore((state) => state.adventureDeck);
 
-  let treasuresAvailable = gameStateStore(
+  let treasuresAvailable = nemosStore(
     (state) => state.adventureDeckTreasuresAvailable
   );
 
@@ -34,9 +34,7 @@ export default function AdventureDeck() {
     >
       <h2>Adventure Deck</h2>
       <AdventureCard
-        card={gameStateStore(
-          (state) => state.adventureDeck[adventureDeckIndex]
-        )}
+        card={nemosStore((state) => state.adventureDeck[adventureDeckIndex])}
       />
       <div
         className="button-wrapper"
