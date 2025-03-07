@@ -13,11 +13,33 @@ type Upgrade = {
 export interface UpgradesSliceInterface {
   currentUpgrades: Upgrade[];
   possibleUpgrades: Upgrade[];
-  // set current upgrades
-  // set possible upgrades
+  unusedUpgrades: Upgrade[];
+  addToCurrentUpgrades: (newUpgrade: Upgrade) => void;
+  addToPossibleUpgrades: (newUpgrade: Upgrade) => void;
 }
 
 // slice
 export const upgradesSlice: StateCreator<UpgradesSliceInterface, []> = (
   set
-) => ({ currentUpgrades: [], possibleUpgrades: [] });
+) => ({
+  currentUpgrades: [],
+  possibleUpgrades: [],
+  unusedUpgrades: [],
+
+  addToCurrentUpgrades: (newUpgrade) => {
+    set((state) => ({
+      currentUpgrades: [...state.currentUpgrades, newUpgrade],
+      possibleUpgrades: state.possibleUpgrades.filter((upgrade) => {
+        return upgrade.id != newUpgrade.id;
+      }),
+    }));
+  },
+  addToPossibleUpgrades: (newUpgrade) => {
+    set((state) => ({
+      possibleUpgrades: [...state.possibleUpgrades, newUpgrade],
+      unusedUpgrades: state.unusedUpgrades.filter((upgrade) => {
+        return upgrade.id != newUpgrade.id;
+      }),
+    }));
+  },
+});
