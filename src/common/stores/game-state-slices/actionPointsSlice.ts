@@ -8,6 +8,10 @@ export interface ActionPointsSliceInterface {
   cleanUpActionPoints: () => void;
 }
 
+// data and constants
+const maxActionPoints = 5;
+const maxSavedActionPoints = 1;
+
 // slice
 export const actionPointsSlice: StateCreator<ActionPointsSliceInterface, []> = (
   set
@@ -16,12 +20,17 @@ export const actionPointsSlice: StateCreator<ActionPointsSliceInterface, []> = (
 
   adjustActionPoints: (by) =>
     set((state) => ({
-      currentActionPoints: state.currentActionPoints + by,
+      currentActionPoints:
+        state.currentActionPoints + by > maxActionPoints
+          ? maxActionPoints
+          : state.currentActionPoints + by,
     })),
 
   cleanUpActionPoints: () =>
     set((state) => ({
       currentActionPoints:
-        state.currentActionPoints > 1 ? 1 : state.currentActionPoints,
+        state.currentActionPoints > maxSavedActionPoints
+          ? maxSavedActionPoints
+          : state.currentActionPoints,
     })),
 });

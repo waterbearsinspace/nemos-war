@@ -39,14 +39,26 @@ export const shipResourceSlice: StateCreator<
 
   adjustNemoValue: (by) =>
     set((state) => ({
-      nemo: { ...state.nemo, value: state.nemo.value + by },
+      nemo: {
+        ...state.nemo,
+        value:
+          state.nemo.value + by > nemoMax ? nemoMax : state.nemo.value + by,
+      },
     })),
   adjustCrewValue: (by) =>
     set((state) => ({
-      crew: { ...state.crew, value: state.crew.value + by },
+      crew: {
+        ...state.crew,
+        value:
+          state.crew.value + by > crewMax ? crewMax : state.crew.value + by,
+      },
     })),
   adjustHullValue: (by) =>
     set((state) => ({
-      hull: { ...state.hull, value: state.hull.value + by },
+      hull: {
+        ...state.hull,
+        value:
+          state.hull.value + by > hullMax ? hullMax : state.hull.value + by,
+      },
     })),
 });
