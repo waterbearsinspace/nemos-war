@@ -1,7 +1,7 @@
+// modules
 import { StateCreator } from "zustand";
 
-import shipResourceData from "../../data/shipResources.json";
-
+// types and interfaces
 type ShipResource = {
   id: number;
   name: string;
@@ -11,7 +11,6 @@ type ShipResource = {
   exertionDRM: number[];
   vp: Object[];
 };
-
 export interface ShipResourcesSliceInterface {
   nemo: ShipResource;
   hull: ShipResource;
@@ -21,10 +20,13 @@ export interface ShipResourcesSliceInterface {
   adjustHullValue: (by: number) => void;
 }
 
+// data
+import shipResourceData from "../../data/shipResources.json";
 let nemoData = shipResourceData[0];
 let crewData = shipResourceData[1];
 let hullData = shipResourceData[2];
 
+// slice
 export const shipResourceSlice: StateCreator<
   ShipResourcesSliceInterface,
   []

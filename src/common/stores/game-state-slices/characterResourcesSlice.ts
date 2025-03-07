@@ -1,13 +1,12 @@
+// modules
 import { StateCreator } from "zustand";
 
-import characterResourceData from "../../data/characterResources.json";
-
+// types and interfaces
 type Character = {
   id: number;
   name: string;
   survivingCharacter: number;
 };
-
 export interface CharacterResourcesSliceInterface {
   chiefEngineer: Character;
   firstOfficer: Character;
@@ -19,6 +18,8 @@ export interface CharacterResourcesSliceInterface {
   sacrificeCharacter: (id: number) => void;
 }
 
+// data
+import characterResourceData from "../../data/characterResources.json";
 let chiefEngineerData = characterResourceData[0];
 let firstOfficerData = characterResourceData[1];
 let secondOfficerData = characterResourceData[2];
@@ -26,6 +27,7 @@ let conseilData = characterResourceData[3];
 let nedLandData = characterResourceData[4];
 let professorAronnaxData = characterResourceData[5];
 
+// slice
 export const characterResourceSlice: StateCreator<
   CharacterResourcesSliceInterface,
   []

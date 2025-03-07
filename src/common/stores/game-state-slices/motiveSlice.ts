@@ -1,7 +1,7 @@
+// modules
 import { StateCreator } from "zustand";
 
-import motiveData from "../../data/motives.json";
-
+// types and interfaces
 export interface MotiveSliceInterface {
   currentMotive: number;
   name: string;
@@ -17,6 +17,10 @@ export interface MotiveSliceInterface {
   setCurrentMotive: (by: number) => void;
 }
 
+// data
+import motiveData from "../../data/motives.json";
+
+// slice
 export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
   currentMotive: 0,
   name: "War!",

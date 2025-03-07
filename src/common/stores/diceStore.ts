@@ -1,6 +1,20 @@
+// module
 import { create } from "zustand";
 
-// Die constants and functions
+// types and interfaces
+export type Dice = {
+  id: string;
+  value: number;
+  active: boolean;
+};
+interface DiceStore {
+  dice: Array<Dice>;
+  rollDie: (dieId: string) => void;
+  rollAllActive: () => void;
+}
+
+// constants and functions
+// min (inclusive) and max (exclusive) of die roll
 const dieMinInclusive = 1;
 const dieMaxExclusive = 7;
 
@@ -11,19 +25,7 @@ function randomDieRoll() {
   );
 }
 
-export type Dice = {
-  id: string;
-  value: number;
-  active: boolean;
-};
-
-// DiceStore - Information an characterResourcesStoreall dice
-interface DiceStore {
-  dice: Array<Dice>;
-  rollDie: (dieId: string) => void;
-  rollAllActive: () => void;
-}
-
+// slice
 export const diceStore = create<DiceStore>()((set) => ({
   // Array of all dice
   dice: [

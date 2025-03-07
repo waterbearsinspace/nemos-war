@@ -3,13 +3,9 @@ import { create } from "zustand";
 
 // slices and interfaces
 import {
-  motiveSlice,
-  MotiveSliceInterface,
-} from "./game-state-slices/motiveSlice";
-import {
-  drawPileSlice,
-  DrawPileSliceInterface,
-} from "./game-state-slices/drawPileSlice";
+  actionPointsSlice,
+  ActionPointsSliceInterface,
+} from "./game-state-slices/actionPointsSlice";
 import {
   adventureDeckSlice,
   AdventureDeckSliceInterface,
@@ -19,20 +15,43 @@ import {
   CharacterResourcesSliceInterface,
 } from "./game-state-slices/characterResourcesSlice";
 import {
+  drawPileSlice,
+  DrawPileSliceInterface,
+} from "./game-state-slices/drawPileSlice";
+import {
+  keptCardsSlice,
+  KeptCardsSliceInterface,
+} from "./game-state-slices/keptCardsSlice";
+import {
+  motiveSlice,
+  MotiveSliceInterface,
+} from "./game-state-slices/motiveSlice";
+import {
   shipResourceSlice,
   ShipResourcesSliceInterface,
 } from "./game-state-slices/shipResourceSlice";
+import {
+  upgradesSlice,
+  UpgradesSliceInterface,
+} from "./game-state-slices/upgradesSlice";
 
+// store
 export const gameStateStore = create<
-  MotiveSliceInterface &
-    DrawPileSliceInterface &
+  ActionPointsSliceInterface &
     AdventureDeckSliceInterface &
     CharacterResourcesSliceInterface &
-    ShipResourcesSliceInterface
+    DrawPileSliceInterface &
+    KeptCardsSliceInterface &
+    MotiveSliceInterface &
+    ShipResourcesSliceInterface &
+    UpgradesSliceInterface
 >()((...a) => ({
   ...motiveSlice(...a),
   ...drawPileSlice(...a),
   ...adventureDeckSlice(...a),
   ...characterResourceSlice(...a),
   ...shipResourceSlice(...a),
+  ...keptCardsSlice(...a),
+  ...upgradesSlice(...a),
+  ...actionPointsSlice(...a),
 }));
