@@ -4,7 +4,7 @@ import { StateCreator } from "zustand";
 // types and interfaces
 export interface ActionPointsSliceInterface {
   currentActionPoints: number;
-  setActionPoints: (by: number) => void;
+  adjustActionPoints: (by: number) => void;
   cleanUpActionPoints: () => void;
 }
 
@@ -14,7 +14,7 @@ export const actionPointsSlice: StateCreator<ActionPointsSliceInterface, []> = (
 ) => ({
   currentActionPoints: 0,
 
-  setActionPoints: (by) =>
+  adjustActionPoints: (by) =>
     set((state) => ({
       currentActionPoints: state.currentActionPoints + by,
     })),

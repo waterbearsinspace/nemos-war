@@ -7,7 +7,7 @@ export interface AdventureDeckSliceInterface {
   adventureDeck: AdventureCardType[];
   adventureDeckTreasuresAvailable: number;
   setAdventureDeck: (newDrawPile: AdventureCardType[]) => void;
-  setAdventureDeckTreasures: (by: number) => void;
+  adjustAdventureDeckTreasures: (by: number) => void;
 }
 
 // slice
@@ -21,7 +21,7 @@ export const adventureDeckSlice: StateCreator<
   setAdventureDeck: (newAdventureDeck) =>
     set(() => ({ adventureDeck: newAdventureDeck })),
 
-  setAdventureDeckTreasures: (by) =>
+  adjustAdventureDeckTreasures: (by) =>
     set((state) => ({
       adventureDeckTreasuresAvailable:
         state.adventureDeckTreasuresAvailable + by,
