@@ -1,0 +1,90 @@
+[
+  {
+    "id": 0,
+    "type": "wonder",
+    "name": "The Abyss",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 1,
+    "type": "wonder",
+    "name": "Bermuda Triangle",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 2,
+    "type": "wonder",
+    "name": "City of Khambhat",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 3,
+    "type": "wonder",
+    "name": "City of Pavloperti",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 4,
+    "type": "wonder",
+    "name": "Cleopatra's Palace (Alexandria)",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 5,
+    "type": "wonder",
+    "name": "Deep See Vents",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 6,
+    "type": "wonder",
+    "name": "Great Barrier Reef",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 7,
+    "type": "wonder",
+    "name": "Lost City of Dwarka",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 8,
+    "type": "wonder",
+    "name": "Lost Mayan City",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 9,
+    "type": "wonder",
+    "name": "Mariana Trench",
+    "vp": {
+      "wondersSeen": 1
+    }
+  },
+  {
+    "id": 10,
+    "type": "wonder",
+    "name": "Pyramids of Yonaguni",
+    "vp": {
+      "wondersSeen": 1
+    }
+  }
+]
