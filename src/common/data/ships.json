@@ -702,16 +702,8 @@
     "vp": {
       "warships": 0
     },
-    "flipName": "Abraham Lincoln",
     "flipAttackStrength": 7,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 0,
-    "flipGroupId": "I",
-    "flipNationality": "American",
-    "flipShipClass": "Frigate Warship",
-    "flipVp": {
-      "warships": 0
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 31,
@@ -725,16 +717,8 @@
     "vp": {
       "warships": 1
     },
-    "flipName": "Arapiles",
     "flipAttackStrength": 7,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "Spanish",
-    "flipShipClass": "Armored Frigate Warship",
-    "flipVp": {
-      "warships": 1
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 32,
@@ -748,16 +732,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Belliqueuse",
     "flipAttackStrength": 8,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "French",
-    "flipShipClass": "Ironclad Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 33,
@@ -771,13 +747,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Ferdinand Max",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
     "flipGroupId": "I",
-    "flipNationality": "Austrian",
-    "flipShipClass": "Ironclad Warship",
     "flipVp": {
       "warships": 3
     }
@@ -794,16 +765,8 @@
     "vp": {
       "warships": 0
     },
-    "flipName": "Fujiyama",
     "flipAttackStrength": 7,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 0,
-    "flipGroupId": "I",
-    "flipNationality": "Japanese",
-    "flipShipClass": "Frigate Warship",
-    "flipVp": {
-      "warships": 0
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 35,
@@ -817,16 +780,8 @@
     "vp": {
       "warships": 0
     },
-    "flipName": "Giuseppe Garibaldi",
     "flipAttackStrength": 7,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 0,
-    "flipGroupId": "I",
-    "flipNationality": "Italian",
-    "flipShipClass": "Frigate Warship",
-    "flipVp": {
-      "warships": 0
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 36,
@@ -840,10 +795,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Huascar",
     "flipAttackStrength": 6,
     "flipDefenseStrength": 8,
-    "flipNotoriety": 1,
     "flipGroupId": "I",
     "flipNationality": "",
     "flipShipClass": "Pirate Warship",
@@ -863,16 +816,8 @@
     "vp": {
       "warships": 1
     },
-    "flipName": "Jylland",
     "flipAttackStrength": 7,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "Danish",
-    "flipShipClass": "Armored Frigate Warship",
-    "flipVp": {
-      "warships": 1
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 38,
@@ -886,16 +831,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Lord Clyde",
     "flipAttackStrength": 8,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Ironclad Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 39,
@@ -909,16 +846,8 @@
     "vp": {
       "warships": 3
     },
-    "flipName": "Royal Sovereign",
     "flipAttackStrength": 9,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Ironside Warship",
-    "flipVp": {
-      "warships": 3
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 40,
@@ -932,16 +861,9 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Ryujo",
     "flipAttackStrength": 8,
     "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "Japanese",
-    "flipShipClass": "Ironclad Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 41,
@@ -959,10 +881,7 @@
     "flipName": "Sea Serpent & Baby",
     "flipAttackStrength": 12,
     "flipDefenseStrength": 10,
-    "flipNotoriety": 0,
     "flipGroupId": "I",
-    "flipNationality": "",
-    "flipShipClass": "Monster",
     "flipVp": {
       "warships": 7,
       "scienceDiscovered": 1
@@ -980,7 +899,6 @@
     "vp": {
       "warships": 1
     },
-    "flipName": "Shenandoah",
     "flipAttackStrength": 6,
     "flipDefenseStrength": 8,
     "flipNotoriety": 0,
@@ -1003,16 +921,8 @@
     "vp": {
       "warships": 1
     },
-    "flipName": "Thémis",
     "flipAttackStrength": 7,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "French",
-    "flipShipClass": "Armored Frigate Warship",
-    "flipVp": {
-      "warships": 1
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 44,
@@ -1026,16 +936,8 @@
     "vp": {
       "warships": 5
     },
-    "flipName": "Bellerophon",
     "flipAttackStrength": 12,
-    "flipDefenseStrength": 12,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Battleship",
-    "flipVp": {
-      "warships": 5
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 45,
@@ -1049,16 +951,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Idaho",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "American",
-    "flipShipClass": "Steam Cruiser Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 46,
@@ -1072,16 +966,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Repulse",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 47,
@@ -1095,16 +981,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Victoria",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 48,
@@ -1118,16 +996,8 @@
     "vp": {
       "warships": 5
     },
-    "flipName": "Friedrich Carl",
     "flipAttackStrength": 11,
-    "flipDefenseStrength": 12,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "German",
-    "flipShipClass": "Battleship",
-    "flipVp": {
-      "warships": 5
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 49,
@@ -1141,16 +1011,8 @@
     "vp": {
       "warships": 5
     },
-    "flipName": "Kniaz Pozharsky",
     "flipAttackStrength": 11,
-    "flipDefenseStrength": 12,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "Russian",
-    "flipShipClass": "Battleship",
-    "flipVp": {
-      "warships": 5
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 50,
@@ -1165,17 +1027,8 @@
       "warships": 5,
       "scienceDiscovered": 1
     },
-    "flipName": "La France",
     "flipAttackStrength": 12,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "French",
-    "flipShipClass": "Airship",
-    "flipVp": {
-      "warships": 5,
-      "scienceDiscovered": 1
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 51,
@@ -1189,16 +1042,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Moshun",
     "flipAttackStrength": 9,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "Japanese",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 52,
@@ -1212,16 +1057,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Borda",
     "flipAttackStrength": 9,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "French",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 53,
@@ -1235,16 +1072,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Buffel",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "Dutch",
-    "flipShipClass": "Ram Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 54,
@@ -1258,16 +1087,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Kōtetsu",
     "flipAttackStrength": 8,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "Japanese",
-    "flipShipClass": "Ironclad Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 55,
@@ -1281,16 +1102,8 @@
     "vp": {
       "warships": 2
     },
-    "flipName": "Numancia",
     "flipAttackStrength": 8,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "Spanish",
-    "flipShipClass": "Ironclad Warship",
-    "flipVp": {
-      "warships": 2
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 56,
@@ -1304,16 +1117,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Captain",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 57,
@@ -1327,16 +1132,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Hercules",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 58,
@@ -1350,16 +1147,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "König Wilhelm",
     "flipAttackStrength": 9,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "German",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 59,
@@ -1373,16 +1162,8 @@
     "vp": {
       "warships": 3
     },
-    "flipName": "Prince Albert",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Ironside Warship",
-    "flipVp": {
-      "warships": 3
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 60,
@@ -1396,16 +1177,8 @@
     "vp": {
       "warships": 7
     },
-    "flipName": "Audacious",
     "flipAttackStrength": 12,
-    "flipDefenseStrength": 13,
-    "flipNotoriety": 3,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Battleship",
-    "flipVp": {
-      "warships": 7
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 61,
@@ -1419,13 +1192,9 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Devastation",
     "flipAttackStrength": 11,
     "flipDefenseStrength": 12,
-    "flipNotoriety": 2,
     "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Ironside Warship",
     "flipVp": {
       "warships": 5
     }
@@ -1442,16 +1211,8 @@
     "vp": {
       "warships": 7
     },
-    "flipName": "Invincible",
     "flipAttackStrength": 12,
-    "flipDefenseStrength": 13,
-    "flipNotoriety": 3,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Battleship",
-    "flipVp": {
-      "warships": 7
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 63,
@@ -1465,13 +1226,9 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Monarch",
     "flipAttackStrength": 11,
     "flipDefenseStrength": 12,
-    "flipNotoriety": 2,
     "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Ironside Warship",
     "flipVp": {
       "warships": 5
     }
@@ -1488,16 +1245,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Omaha",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "American",
-    "flipShipClass": "Ironside Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 65,
@@ -1511,16 +1260,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Sinop",
     "flipAttackStrength": 9,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "Russian",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 66,
@@ -1534,16 +1275,8 @@
     "vp": {
       "warships": 4
     },
-    "flipName": "Zealous",
     "flipAttackStrength": 11,
-    "flipDefenseStrength": 11,
-    "flipNotoriety": 2,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Ironside Warship",
-    "flipVp": {
-      "warships": 4
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 67,
@@ -1557,16 +1290,8 @@
     "vp": {
       "warships": 3
     },
-    "flipName": "Cerberus",
     "flipAttackStrength": 10,
-    "flipDefenseStrength": 10,
-    "flipNotoriety": 1,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Capital Warship",
-    "flipVp": {
-      "warships": 3
-    }
+    "flipGroupId": "I"
   },
   {
     "id": 68,
@@ -1580,15 +1305,7 @@
     "vp": {
       "warships": 0
     },
-    "flipName": "Glasgow",
     "flipAttackStrength": 8,
-    "flipDefenseStrength": 9,
-    "flipNotoriety": 0,
-    "flipGroupId": "I",
-    "flipNationality": "British",
-    "flipShipClass": "Frigate Warship",
-    "flipVp": {
-      "warships": 0
-    }
+    "flipGroupId": "I"
   }
 ]
