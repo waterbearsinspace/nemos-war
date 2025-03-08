@@ -16,6 +16,7 @@ export interface UpgradesSliceInterface {
   unusedUpgrades: Upgrade[];
   addToCurrentUpgrades: (newUpgrade: Upgrade) => void;
   addToPossibleUpgrades: (newUpgrade: Upgrade) => void;
+  setUnusedUpgrades: (newUnusedUpgrades: Upgrade[]) => void;
 }
 
 // slice
@@ -40,6 +41,11 @@ export const upgradesSlice: StateCreator<UpgradesSliceInterface, []> = (
       unusedUpgrades: state.unusedUpgrades.filter((upgrade) => {
         return upgrade.id != newUpgrade.id;
       }),
+    }));
+  },
+  setUnusedUpgrades: (newUnusedUpgrades) => {
+    set(() => ({
+      unusedUpgrades: newUnusedUpgrades,
     }));
   },
 });
