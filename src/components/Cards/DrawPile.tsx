@@ -27,7 +27,7 @@ export default function DrawPile() {
     let workingPile: any = [];
     // utils
     function workingToFinished() {
-      shuffleArray(workingPile);
+      workingPile = shuffleArray(workingPile);
       finishedDrawPile = finishedDrawPile.concat(workingPile);
       workingPile = [];
     }
@@ -42,12 +42,12 @@ export default function DrawPile() {
     let regularAdventureCards = adventureCards.filter((card) => {
       return card.id < 1000;
     });
-    shuffleArray(regularAdventureCards);
+    regularAdventureCards = shuffleArray(regularAdventureCards);
     // finale cards
     let finales = adventureCards.filter((card) => {
       return card.id > 9000 ? true : false;
     });
-    shuffleArray(finales);
+    finales = shuffleArray(finales);
 
     // setup deck
     // finale: random finale + 4
