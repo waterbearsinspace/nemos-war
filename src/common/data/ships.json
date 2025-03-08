@@ -689,5 +689,329 @@
     "flipVp": {
       "warships": 1
     }
+  },
+  {
+    "id": 30,
+    "name": "Abraham Lincoln",
+    "attackStrength": 6,
+    "defenseStrength": 9,
+    "notoriety": 0,
+    "groupId": "B",
+    "nationality": "American",
+    "shipClass": "Frigate Warship",
+    "vp": {
+      "warships": 0
+    },
+    "flipName": "Abraham Lincoln",
+    "flipAttackStrength": 7,
+    "flipDefenseStrength": 9,
+    "flipNotoriety": 0,
+    "flipGroupId": "I",
+    "flipNationality": "American",
+    "flipShipClass": "Frigate Warship",
+    "flipVp": {
+      "warships": 0
+    }
+  },
+  {
+    "id": 31,
+    "name": "Arapiles",
+    "attackStrength": 6,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "Spanish",
+    "shipClass": "Armored Frigate Warship",
+    "vp": {
+      "warships": 1
+    },
+    "flipName": "Arapiles",
+    "flipAttackStrength": 7,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "Spanish",
+    "flipShipClass": "Armored Frigate Warship",
+    "flipVp": {
+      "warships": 1
+    }
+  },
+  {
+    "id": 32,
+    "name": "Belliqueuse",
+    "attackStrength": 7,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "French",
+    "shipClass": "Ironclad Warship",
+    "vp": {
+      "warships": 2
+    },
+    "flipName": "Belliqueuse",
+    "flipAttackStrength": 8,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "French",
+    "flipShipClass": "Ironclad Warship",
+    "flipVp": {
+      "warships": 2
+    }
+  },
+  {
+    "id": 33,
+    "name": "Ferdinand Max",
+    "attackStrength": 7,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "Austrian",
+    "shipClass": "Ironclad Warship",
+    "vp": {
+      "warships": 2
+    },
+    "flipName": "Ferdinand Max",
+    "flipAttackStrength": 10,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "Austrian",
+    "flipShipClass": "Ironclad Warship",
+    "flipVp": {
+      "warships": 3
+    }
+  },
+  {
+    "id": 34,
+    "name": "Fujiyama",
+    "attackStrength": 6,
+    "defenseStrength": 9,
+    "notoriety": 0,
+    "groupId": "B",
+    "nationality": "Japanese",
+    "shipClass": "Frigate Warship",
+    "vp": {
+      "warships": 0
+    },
+    "flipName": "Fujiyama",
+    "flipAttackStrength": 7,
+    "flipDefenseStrength": 9,
+    "flipNotoriety": 0,
+    "flipGroupId": "I",
+    "flipNationality": "Japanese",
+    "flipShipClass": "Frigate Warship",
+    "flipVp": {
+      "warships": 0
+    }
+  },
+  {
+    "id": 35,
+    "name": "Giuseppe Garibaldi",
+    "attackStrength": 6,
+    "defenseStrength": 9,
+    "notoriety": 0,
+    "groupId": "B",
+    "nationality": "Italian",
+    "shipClass": "Frigate Warship",
+    "vp": {
+      "warships": 0
+    },
+    "flipName": "Giuseppe Garibaldi",
+    "flipAttackStrength": 7,
+    "flipDefenseStrength": 9,
+    "flipNotoriety": 0,
+    "flipGroupId": "I",
+    "flipNationality": "Italian",
+    "flipShipClass": "Frigate Warship",
+    "flipVp": {
+      "warships": 0
+    }
+  },
+  {
+    "id": 36,
+    "name": "Huascar",
+    "attackStrength": 7,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "Peruvian",
+    "shipClass": "Ironclad Warship",
+    "vp": {
+      "warships": 2
+    },
+    "flipName": "Huascar",
+    "flipAttackStrength": 6,
+    "flipDefenseStrength": 8,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "",
+    "flipShipClass": "Pirate Warship",
+    "flipVp": {
+      "warships": 0
+    }
+  },
+  {
+    "id": 37,
+    "name": "Jylland",
+    "attackStrength": 6,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "Danish",
+    "shipClass": "Armored Frigate Warship",
+    "vp": {
+      "warships": 1
+    },
+    "flipName": "Jylland",
+    "flipAttackStrength": 7,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "Danish",
+    "flipShipClass": "Armored Frigate Warship",
+    "flipVp": {
+      "warships": 1
+    }
+  },
+  {
+    "id": 38,
+    "name": "Lord Clyde",
+    "attackStrength": 7,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "British",
+    "shipClass": "Ironclad Warship",
+    "vp": {
+      "warships": 2
+    },
+    "flipName": "Lord Clyde",
+    "flipAttackStrength": 8,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "British",
+    "flipShipClass": "Ironclad Warship",
+    "flipVp": {
+      "warships": 2
+    }
+  },
+  {
+    "id": 39,
+    "name": "Royal Sovereign",
+    "attackStrength": 8,
+    "defenseStrength": 10,
+    "notoriety": 2,
+    "groupId": "B",
+    "nationality": "British",
+    "shipClass": "Ironside Warship",
+    "vp": {
+      "warships": 3
+    },
+    "flipName": "Royal Sovereign",
+    "flipAttackStrength": 9,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 2,
+    "flipGroupId": "I",
+    "flipNationality": "British",
+    "flipShipClass": "Ironside Warship",
+    "flipVp": {
+      "warships": 3
+    }
+  },
+  {
+    "id": 40,
+    "name": "Ryujo",
+    "attackStrength": 7,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "Japanese",
+    "shipClass": "Ironclad Warship",
+    "vp": {
+      "warships": 2
+    },
+    "flipName": "Ryujo",
+    "flipAttackStrength": 8,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "Japanese",
+    "flipShipClass": "Ironclad Warship",
+    "flipVp": {
+      "warships": 2
+    }
+  },
+  {
+    "id": 41,
+    "name": "Sea Serpent",
+    "attackStrength": 10,
+    "defenseStrength": 11,
+    "notoriety": 0,
+    "groupId": "B",
+    "nationality": "",
+    "shipClass": "Monster",
+    "vp": {
+      "warships": 5,
+      "scienceDiscovered": 1
+    },
+    "flipName": "Sea Serpent & Baby",
+    "flipAttackStrength": 12,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 0,
+    "flipGroupId": "I",
+    "flipNationality": "",
+    "flipShipClass": "Monster",
+    "flipVp": {
+      "warships": 7,
+      "scienceDiscovered": 1
+    }
+  },
+  {
+    "id": 42,
+    "name": "Shenandoah",
+    "attackStrength": 8,
+    "defenseStrength": 9,
+    "notoriety": 2,
+    "groupId": "B",
+    "nationality": "Confederate States",
+    "shipClass": "Raider Warship",
+    "vp": {
+      "warships": 1
+    },
+    "flipName": "Shenandoah",
+    "flipAttackStrength": 6,
+    "flipDefenseStrength": 8,
+    "flipNotoriety": 0,
+    "flipGroupId": "I",
+    "flipNationality": "",
+    "flipShipClass": "Pirate Warship",
+    "flipVp": {
+      "warships": 0
+    }
+  },
+  {
+    "id": 43,
+    "name": "Thémis",
+    "attackStrength": 6,
+    "defenseStrength": 10,
+    "notoriety": 1,
+    "groupId": "B",
+    "nationality": "French",
+    "shipClass": "Armored Frigate Warship",
+    "vp": {
+      "warships": 1
+    },
+    "flipName": "Thémis",
+    "flipAttackStrength": 7,
+    "flipDefenseStrength": 10,
+    "flipNotoriety": 1,
+    "flipGroupId": "I",
+    "flipNationality": "French",
+    "flipShipClass": "Armored Frigate Warship",
+    "flipVp": {
+      "warships": 1
+    }
   }
 ]
