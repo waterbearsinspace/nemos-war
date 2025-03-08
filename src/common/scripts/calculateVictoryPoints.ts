@@ -28,3 +28,13 @@
 // surviving characters - characterResources, shipResourcesSlice, passAndFailPilesSlice
 // scouring the seas - sunkenShipsSlice
 // ship resources - shipResourcesSlice
+
+export type vp = {
+  warships?: number;
+  nonWarships?: number;
+  adventureCards?: number;
+  treasures?: number;
+  liberation?: number;
+  scienceDiscovered?: number;
+  wondersSeen?: number;
+};
