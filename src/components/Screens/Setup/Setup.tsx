@@ -10,7 +10,7 @@ import ShipPools from "./ShipPools";
 import Done from "./Done";
 
 // css
-import "./setup.css";
+import "./Setup.css";
 
 export default function Setup() {
   const currentSubPhaseNumber = nemosStore((state) => state.subPhase);
