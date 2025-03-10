@@ -4,7 +4,7 @@ import {
   setupSubphases,
 } from "../../common/stores/slices/gamePhaseSlice";
 
-import "./debugHeader.css";
+import "./DebugHeader.css";
 
 function Phase() {
   const currentPhaseNumber = nemosStore((state) => state.phase);
