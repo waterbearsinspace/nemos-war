@@ -1,0 +1,41 @@
+import { nemosStore } from "../../common/stores/nemosStore";
+import {
+  gamePhases,
+  setupSubphases,
+} from "../../common/stores/slices/gamePhaseSlice";
+
+import "./debugHeader.css";
+
+function Phase() {
+  const currentPhaseNumber = nemosStore((state) => state.phase);
+  const currentSubPhaseNumber = nemosStore((state) => state.subPhase);
+
+  const currentPhaseName =
+    gamePhases[currentPhaseNumber as keyof typeof gamePhases];
+  let currentSubPhaseName;
+  const currentSubPhaseNameSetup =
+    setupSubphases[currentSubPhaseNumber as keyof typeof setupSubphases];
+
+  switch (currentPhaseName) {
+    case "MENU":
+      currentSubPhaseName = "NONE";
+      break;
+    case "SETUP":
+      currentSubPhaseName = currentSubPhaseNameSetup;
+      break;
+  }
+
+  return (
+    <>
+      <div className="phase-info">
+        <p></p>
+        <p>Current Phase: {currentPhaseName}</p>
+        <p>Current Sub Phase: {currentSubPhaseName}</p>
+      </div>
+    </>
+  );
+}
+
+export default function DebugHeader() {
+  return <Phase />;
+}

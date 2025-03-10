@@ -1,5 +1,6 @@
 :root {
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,8 +25,11 @@ a:hover {
 
 body {
   margin: 0;
-  min-width: 320px;
+  padding: 0;
+  min-width: 100vw;
   min-height: 100vh;
+  display: flex;
+  background-color: #747bff;
 }
 
 h1 {

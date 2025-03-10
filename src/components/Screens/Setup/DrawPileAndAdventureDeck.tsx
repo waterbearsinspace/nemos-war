@@ -1,26 +1,32 @@
 // modules
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // game store
-import { nemosStore } from "../../common/stores/nemosStore";
+import { nemosStore } from "../../../common/stores/nemosStore";
 
 // data and constants
-import adventureCards from "../../common/data/adventureCards.json";
+import adventureCards from "../../../common/data/adventureCards.json";
 
 // components
-import motives from "../../common/data/motives.json";
-import AdventureCard from "./AdventureCard.tsx/AdventureCard";
+import motives from "../../../common/data/motives.json";
 
 // utils
-import { shuffleArray } from "../../common/utils/utils";
+import { shuffleArray } from "../../../common/utils/utils";
 
-export default function DrawPile() {
-  const [drawPileIndex, setDrawPileIndex] = useState(0);
-  const drawPile = nemosStore((state) => state.drawPile);
+export default function DrawPileAndAdventureDeck() {
+  let loadingSeconds = nemosStore((state) =>
+    state.debugUseLoading ? state.debugLoading : 1.5
+  );
 
   let motive = nemosStore((state) => state.currentMotive);
   let setDrawPile = nemosStore((state) => state.setDrawPile);
   let setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
+  let setSubPhase = nemosStore((state) => state.setSubPhase);
+
+  let [displayText, setDisplayText] = useState(
+    "Constructing Draw Pile and Adventure Deck"
+  );
+  let [loading, setLoading] = useState(true);
 
   let setupDrawPile = () => {
     let finishedDrawPile: any = [];
@@ -80,54 +86,33 @@ export default function DrawPile() {
     // flip deck over
     finishedDrawPile.reverse();
 
+    // set draw pile
     setDrawPile(finishedDrawPile);
+
+    // set adventure deck from remaining cards
     setAdventureDeck(regularAdventureCards);
 
-    setDrawPileIndex(0);
+    setTimeout(() => {
+      setDisplayText("Done!");
+      setLoading(false);
+    }, loadingSeconds * 1000);
   };
 
-  const handleClick = (inc: number) => {
-    if (drawPileIndex + inc > drawPile.length - 1) {
-      setDrawPileIndex(0);
-    } else if (drawPileIndex + inc < 0) {
-      setDrawPileIndex(drawPile.length - 1);
-    } else setDrawPileIndex(drawPileIndex + inc);
+  useEffect(() => {
+    setupDrawPile();
+  });
+
+  const handleContinue = () => {
+    setSubPhase(2);
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "1em",
-      }}
-    >
-      <h2>Draw Pile</h2>
-      <AdventureCard
-        card={nemosStore((state) => state.drawPile[drawPileIndex])}
-      />
-      <div className="button-wrapper">
-        <button
-          onClick={() => {
-            handleClick(-1);
-          }}
-        >
-          ←
-        </button>
-        <button onClick={setupDrawPile}>
-          {drawPile.length == 0
-            ? ""
-            : drawPileIndex + 1 + "/" + drawPile.length}
-        </button>
-        <button
-          onClick={() => {
-            handleClick(1);
-          }}
-        >
-          →
-        </button>
-      </div>
+    <div>
+      <h1 className="loading-text">
+        <span>{displayText}</span>
+        <div className={loading ? "loader" : ""}></div>
+      </h1>
+      {!loading && <button onClick={handleContinue}>Continue</button>}
     </div>
   );
 }

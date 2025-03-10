@@ -1,53 +1,34 @@
-// // modules
-// import { createClient } from "@supabase/supabase-js";
-
-// // interfaces
-// import { Database } from "./common/utils/supabase";
-
 // components
-import DiceTray from "./components/Dice/DiceTray";
-import MotiveSelector from "./components/Temp/MotiveSelector";
-import DrawPile from "./components/Cards/DrawPile";
+import DebugHeader from "./components/Debug/DebugHeader";
+import Menu from "./components/Screens/Menu/Menu";
+import Setup from "./components/Screens/Setup/Setup";
+
+// data and enumerations
+import { gamePhases } from "./common/stores/slices/gamePhaseSlice";
+
+// game store
+import { nemosStore } from "./common/stores/nemosStore";
 
 // css
 import "./Game.css";
 
-// data and constants
-import AdventureDeck from "./components/Cards/AdventureDeck";
-
 export default function Game() {
+  const currentPhase = nemosStore((state) => state.phase);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h1>Nemo's War</h1>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          gap: "2rem",
-        }}
-      >
-        <DiceTray />
-        <MotiveSelector />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          gap: "2rem",
-        }}
-      >
-        <h2></h2>
-        <DrawPile />
-        <AdventureDeck />
-      </div>
-    </div>
+    <>
+      {/* Debug Header */}
+      <DebugHeader />
+
+      {/* Menu Screen */}
+      {gamePhases[currentPhase as keyof typeof gamePhases] == "MENU" && (
+        <Menu />
+      )}
+
+      {/* Setup Screen */}
+      {gamePhases[currentPhase as keyof typeof gamePhases] == "SETUP" && (
+        <Setup />
+      )}
+    </>
   );
 }

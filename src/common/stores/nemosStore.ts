@@ -16,10 +16,18 @@ import {
 } from "./slices/characterResourcesSlice";
 import { drawPileSlice, DrawPileSliceInterface } from "./slices/drawPileSlice";
 import {
+  gamePhaseSlice,
+  GamePhaseSliceInterface,
+} from "./slices/gamePhaseSlice";
+import {
   keptCardsSlice,
   KeptCardsSliceInterface,
 } from "./slices/keptCardsSlice";
 import { motiveSlice, MotiveSliceInterface } from "./slices/motiveSlice";
+import {
+  shipPoolsSlice,
+  ShipPoolsSliceInterface,
+} from "./slices/shipPoolsSlice";
 import {
   shipResourceSlice,
   ShipResourcesSliceInterface,
@@ -30,25 +38,33 @@ import {
 } from "./slices/sunkenShipsSlice";
 import { upgradesSlice, UpgradesSliceInterface } from "./slices/upgradesSlice";
 
+import { debugSlice, DebugSliceInterface } from "./slices/debugSlice";
+
 // store
 export const nemosStore = create<
   ActionPointsSliceInterface &
     AdventureDeckSliceInterface &
     CharacterResourcesSliceInterface &
     DrawPileSliceInterface &
+    GamePhaseSliceInterface &
     KeptCardsSliceInterface &
     MotiveSliceInterface &
+    ShipPoolsSliceInterface &
     ShipResourcesSliceInterface &
     SunkenShipsSliceInterface &
-    UpgradesSliceInterface
+    UpgradesSliceInterface &
+    DebugSliceInterface
 >()((...a) => ({
   ...actionPointsSlice(...a),
   ...adventureDeckSlice(...a),
   ...characterResourceSlice(...a),
   ...drawPileSlice(...a),
+  ...gamePhaseSlice(...a),
   ...keptCardsSlice(...a),
   ...motiveSlice(...a),
+  ...shipPoolsSlice(...a),
   ...shipResourceSlice(...a),
   ...sunkenShipsSlice(...a),
   ...upgradesSlice(...a),
+  ...debugSlice(...a),
 }));

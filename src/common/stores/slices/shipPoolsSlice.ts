@@ -18,6 +18,8 @@
 //   J: "gray,",
 // });
 
+import { StateCreator } from "zustand";
+
 // types and interfaces
 import { vp } from "../../scripts/calculateVictoryPoints";
 type ship = {
@@ -39,3 +41,17 @@ type ship = {
   flipShipClass?: string;
   flipVp?: vp;
 };
+
+export interface ShipPoolsSliceInterface {
+  currentShipPool: ship[];
+  setCurrentShipPool: (newShipPool: ship[]) => void;
+}
+
+// slice
+export const shipPoolsSlice: StateCreator<ShipPoolsSliceInterface, []> = (
+  set
+) => ({
+  currentShipPool: [],
+  setCurrentShipPool: (newShipPool) =>
+    set(() => ({ currentShipPool: newShipPool })),
+});

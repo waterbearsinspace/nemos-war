@@ -4,7 +4,7 @@ import { StateCreator } from "zustand";
 // types and interfaces
 export interface MotiveSliceInterface {
   currentMotive: number;
-  name: string;
+  motiveName: string;
   warships: number;
   nonWarships: number;
   adventureCards: number;
@@ -20,25 +20,30 @@ export interface MotiveSliceInterface {
 // data and constants
 import motiveData from "../../data/motives.json";
 
+// default motive
+const defaultMotive = motiveData.find((motive) => {
+  return motive.name == "Explore";
+});
+
 // slice
 export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
-  currentMotive: 0,
-  name: "War!",
-  warships: 2,
-  nonWarships: 0,
-  adventureCards: -1,
-  treasure: 0,
-  liberation: 4,
-  scienceDiscovered: 3,
-  wondersSeen: 2,
-  actTwoCards: 3,
-  actThreeCards: 13,
+  currentMotive: defaultMotive!.id,
+  motiveName: defaultMotive!.name,
+  warships: defaultMotive!.warships,
+  nonWarships: defaultMotive!.nonWarships,
+  adventureCards: defaultMotive!.adventureCards,
+  treasure: defaultMotive!.treasure,
+  liberation: defaultMotive!.liberation,
+  scienceDiscovered: defaultMotive!.scienceDiscovered,
+  wondersSeen: defaultMotive!.wondersSeen,
+  actTwoCards: defaultMotive!.actTwoCards,
+  actThreeCards: defaultMotive!.actThreeCards,
 
   setCurrentMotive: (newMotive: number) => {
     let motiveProps = motiveData[newMotive];
     set(() => ({
       currentMotive: newMotive,
-      name: motiveProps.name,
+      motiveName: motiveProps.name,
       warships: motiveProps.warships,
       nonWarships: motiveProps.nonWarships,
       adventureCards: motiveProps.adventureCards,

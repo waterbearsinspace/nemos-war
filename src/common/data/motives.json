@@ -1,32 +1,19 @@
 [
   {
     "id": 0,
-    "name": "War!",
-    "warships": 2,
-    "nonWarships": 0,
-    "adventureCards": -1,
-    "treasure": 0,
-    "liberation": 4,
-    "scienceDiscovered": 3,
-    "wondersSeen": 2,
-    "actTwoCards": 3,
-    "actThreeCards": 13
+    "name": "Anti-Imperialism",
+    "warships": 0,
+    "nonWarships": 2,
+    "adventureCards": 0,
+    "treasure": -1,
+    "liberation": 6,
+    "scienceDiscovered": 2,
+    "wondersSeen": 3,
+    "actTwoCards": 5,
+    "actThreeCards": 11
   },
   {
     "id": 1,
-    "name": "Science",
-    "warships": 0,
-    "nonWarships": -1,
-    "adventureCards": 1,
-    "treasure": 0,
-    "liberation": 3,
-    "scienceDiscovered": 6,
-    "wondersSeen": 4,
-    "actTwoCards": 10,
-    "actThreeCards": 6
-  },
-  {
-    "id": 2,
     "name": "Explore",
     "warships": -1,
     "nonWarships": 0,
@@ -39,16 +26,29 @@
     "actThreeCards": 8
   },
   {
-    "id": 3,
-    "name": "Anti-Imperialism",
+    "id": 2,
+    "name": "Science",
     "warships": 0,
-    "nonWarships": 2,
-    "adventureCards": 0,
-    "treasure": -1,
-    "liberation": 6,
-    "scienceDiscovered": 2,
-    "wondersSeen": 3,
-    "actTwoCards": 5,
-    "actThreeCards": 11
+    "nonWarships": -1,
+    "adventureCards": 1,
+    "treasure": 0,
+    "liberation": 3,
+    "scienceDiscovered": 6,
+    "wondersSeen": 4,
+    "actTwoCards": 10,
+    "actThreeCards": 6
+  },
+  {
+    "id": 3,
+    "name": "War!",
+    "warships": 2,
+    "nonWarships": 0,
+    "adventureCards": -1,
+    "treasure": 0,
+    "liberation": 4,
+    "scienceDiscovered": 3,
+    "wondersSeen": 2,
+    "actTwoCards": 3,
+    "actThreeCards": 13
   }
 ]
