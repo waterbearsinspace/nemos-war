@@ -9,9 +9,10 @@ export interface KeptCardsSliceInterface {
 }
 
 // slice
-export const keptCardsSlice: StateCreator<KeptCardsSliceInterface, []> = (
-  set
-) => ({
+export const keptCardsSlice: StateCreator<
+  KeptCardsSliceInterface,
+  []
+> = () => ({
   keptCards: [],
   // setKeptCards(operation, id)
   // if operation == add
