@@ -12,11 +12,9 @@ export interface GamePhaseSliceInterface {
 export const gamePhases = Object.freeze({
   0: "MENU",
   1: "SETUP",
-  2: "EVENT",
-  3: "PLACEMENT",
-  4: "ACTION",
+  2: "PLAYING",
 });
-export const setupSubphases = Object.freeze({
+export const gameSubPhases = Object.freeze({
   0: "MOTIVE",
   1: "DRAWPILEANDADVENTUREDECK",
   2: "UPGRADE",

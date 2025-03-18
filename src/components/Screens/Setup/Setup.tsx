@@ -1,6 +1,6 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
-import { setupSubphases } from "../../../common/stores/slices/gamePhaseSlice";
+import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
 
 // components
 import MotiveSelector from "./MotiveSelector";
@@ -15,7 +15,7 @@ import "./Setup.css";
 export default function Setup() {
   const currentSubPhaseNumber = nemosStore((state) => state.subPhase);
   const currentSubPhaseName =
-    setupSubphases[currentSubPhaseNumber as keyof typeof setupSubphases];
+    gameSubPhases[currentSubPhaseNumber as keyof typeof gameSubPhases];
 
   switch (currentSubPhaseName) {
     case "MOTIVE": // 0

@@ -11,7 +11,7 @@ export interface DebugSliceInterface {
 // slice
 export const debugSlice: StateCreator<DebugSliceInterface, []> = () => ({
   debugLoading: 0,
-  debugUseLoading: false,
+  debugUseLoading: true,
   debugSubPhase: 3,
   debugUseSubPhase: false,
 });

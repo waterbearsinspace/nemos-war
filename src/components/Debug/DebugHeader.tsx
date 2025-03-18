@@ -1,7 +1,7 @@
 import { nemosStore } from "../../common/stores/nemosStore";
 import {
   gamePhases,
-  setupSubphases,
+  gameSubPhases,
 } from "../../common/stores/slices/gamePhaseSlice";
 
 import "./DebugHeader.css";
@@ -14,7 +14,7 @@ function Phase() {
     gamePhases[currentPhaseNumber as keyof typeof gamePhases];
   let currentSubPhaseName;
   const currentSubPhaseNameSetup =
-    setupSubphases[currentSubPhaseNumber as keyof typeof setupSubphases];
+    gameSubPhases[currentSubPhaseNumber as keyof typeof gameSubPhases];
 
   switch (currentPhaseName) {
     case "MENU":

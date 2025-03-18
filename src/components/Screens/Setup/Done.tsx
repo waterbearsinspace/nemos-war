@@ -3,9 +3,10 @@
 
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+// import { gamePhases } from "../../../common/stores/slices/gamePhaseSlice";
 
 // utils
-// import { shuffleArray } from "../../../common/utils/utils";
+import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
 
 function DrawPileList() {
   const drawPile = nemosStore((state) => state.drawPile);
@@ -68,9 +69,12 @@ export default function Done() {
   let nemo = nemosStore((state) => state.nemo);
   let crew = nemosStore((state) => state.crew);
   let hull = nemosStore((state) => state.hull);
+  let setPhase = nemosStore((state) => state.setPhase);
+  let setSubPhase = nemosStore((state) => state.setSubPhase);
 
   const handleContinue = () => {
-    window.alert("End of Demo");
+    setPhase(getPhaseNumber("PLAYING"));
+    setSubPhase(getSubPhaseNumber("DONE"));
   };
 
   return (

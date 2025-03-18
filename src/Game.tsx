@@ -3,14 +3,13 @@ import DebugHeader from "./components/Debug/DebugHeader";
 import Menu from "./components/Screens/Menu/Menu";
 import Setup from "./components/Screens/Setup/Setup";
 
-// data and enumerations
-import { gamePhases } from "./common/stores/slices/gamePhaseSlice";
-
 // game store
 import { nemosStore } from "./common/stores/nemosStore";
 
 // css
 import "./Game.css";
+import Playing from "./components/Screens/Playing/Playing";
+import { getPhaseNumber } from "./common/utils/utils";
 
 export default function Game() {
   const currentPhase = nemosStore((state) => state.phase);
@@ -21,14 +20,13 @@ export default function Game() {
       <DebugHeader />
 
       {/* Menu Screen */}
-      {gamePhases[currentPhase as keyof typeof gamePhases] == "MENU" && (
-        <Menu />
-      )}
+      {currentPhase == getPhaseNumber("MENU") && <Menu />}
 
       {/* Setup Screen */}
-      {gamePhases[currentPhase as keyof typeof gamePhases] == "SETUP" && (
-        <Setup />
-      )}
+      {currentPhase == getPhaseNumber("SETUP") && <Setup />}
+
+      {/* Playing Screen */}
+      {currentPhase == getPhaseNumber("PLAYING") && <Playing />}
     </>
   );
 }
