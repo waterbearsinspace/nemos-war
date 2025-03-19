@@ -1,5 +1,6 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
 
 import "./Menu.css";
 
@@ -8,8 +9,8 @@ export default function Menu() {
   const setSubPhase = nemosStore((state) => state.setSubPhase);
 
   const handleClick = () => {
-    setPhase(1);
-    setSubPhase(0);
+    setPhase(getPhaseNumber("SETUP"));
+    setSubPhase(getSubPhaseNumber("MOTIVE"));
   };
 
   return (

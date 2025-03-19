@@ -12,7 +12,7 @@ export interface GamePhaseSliceInterface {
 export const gamePhases = Object.freeze({
   0: "MENU",
   1: "SETUP",
-  2: "PLAYING",
+  3: "PLAYING",
 });
 export const gameSubPhases = Object.freeze({
   0: "MOTIVE",
@@ -20,6 +20,19 @@ export const gameSubPhases = Object.freeze({
   2: "UPGRADE",
   3: "SHIPS",
   4: "DONE",
+  5: "DRAW",
+  6: "RESOLVE",
+  7: "CURRENTACTROLL",
+  8: "STANDARDPLACEMENT",
+  9: "LULLPLACEMENT",
+  10: "ADVENTURE",
+  11: "ATTACK",
+  12: "INCITE",
+  13: "MOVE",
+  14: "REST",
+  15: "REPAIR",
+  16: "REFIT",
+  17: "SEARCH",
 });
 
 // slice
