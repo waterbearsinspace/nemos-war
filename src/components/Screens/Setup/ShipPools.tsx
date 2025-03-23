@@ -8,7 +8,7 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import ships from "../../../common/data/ships.json";
 
 // utils
-import { shuffleArray } from "../../../common/utils/utils";
+import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
 
 export default function ShipPools() {
   let loadingSeconds = nemosStore((state) =>
@@ -21,7 +21,7 @@ export default function ShipPools() {
   let [loading, setLoading] = useState(true);
 
   const handleContinue = () => {
-    setSubPhase(4);
+    setSubPhase(getSubPhaseNumber("CONFIRM SETUP"));
   };
 
   let setupShipPool = () => {

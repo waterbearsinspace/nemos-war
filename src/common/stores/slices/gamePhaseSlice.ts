@@ -12,20 +12,22 @@ export interface GamePhaseSliceInterface {
 export const gamePhases = Object.freeze({
   0: "MENU",
   1: "SETUP",
-  3: "PLAYING",
+  2: "EVENT",
+  3: "PLACEMENT",
+  4: "ACTION",
 });
 export const gameSubPhases = Object.freeze({
-  0: "MOTIVE",
-  1: "DRAWPILEANDADVENTUREDECK",
-  2: "UPGRADE",
-  3: "SHIPS",
-  4: "DONE",
-  5: "DRAW",
-  6: "RESOLVE",
-  7: "CURRENTACTROLL",
-  8: "STANDARDPLACEMENT",
-  9: "LULLPLACEMENT",
-  10: "ADVENTURE",
+  0: "MENU",
+  1: "SELECT MOTIVE",
+  2: "PREP DRAW PILE AND ADVENTURE DECK",
+  3: "SELECT UPGRADE",
+  4: "PREP SHIPS",
+  5: "CONFIRM SETUP",
+  6: "DRAW AND RESOLVE CARD",
+  7: "PLACEMENT DICE ROLL",
+  8: "STANDARD PLACEMENT",
+  9: "LULL PLACEMENT",
+  10: "SELECT ACTION",
   11: "ATTACK",
   12: "INCITE",
   13: "MOVE",
@@ -40,7 +42,7 @@ export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   set
 ) => ({
   phase: 0,
-  subPhase: null,
+  subPhase: 0,
 
   setPhase: (newPhase) => set(() => ({ phase: newPhase })),
   setSubPhase: (newSubPhase) => set(() => ({ subPhase: newSubPhase })),

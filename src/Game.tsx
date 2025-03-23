@@ -17,7 +17,7 @@ export default function Game() {
   return (
     <>
       {/* Debug Header */}
-      <DebugHeader />
+      {currentPhase != getPhaseNumber("MENU") && <DebugHeader />}
 
       {/* Menu Screen */}
       {currentPhase == getPhaseNumber("MENU") && <Menu />}
@@ -26,7 +26,10 @@ export default function Game() {
       {currentPhase == getPhaseNumber("SETUP") && <Setup />}
 
       {/* Playing Screen */}
-      {currentPhase == getPhaseNumber("PLAYING") && <Playing />}
+      {(currentPhase == getPhaseNumber("EVENT") ||
+      currentPhase == getPhaseNumber("PLACEMENT") ||
+      currentPhase == getPhaseNumber("ACTION")) &&
+      <Playing />}
     </>
   );
 }

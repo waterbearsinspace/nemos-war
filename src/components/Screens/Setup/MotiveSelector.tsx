@@ -16,6 +16,9 @@ const motiveAdvice = [
   "This motive seeks out violence, gaining more points for sinking warships and inciting uprisings. It sees less value in adventuring.",
 ];
 
+// utils
+import { getSubPhaseNumber } from "../../../common/utils/utils";
+
 export default function MotiveSelector() {
   const motive = nemosStore((state) => state.currentMotive);
   const motiveInfo = motiveData.find((motiveEntry) => {
@@ -33,7 +36,7 @@ export default function MotiveSelector() {
   };
 
   const handleConfirm = () => {
-    setSubPhase(1);
+    setSubPhase(getSubPhaseNumber("PREP DRAW PILE AND ADVENTURE DECK"));
   };
 
   return (

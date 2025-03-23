@@ -12,18 +12,8 @@ function Phase() {
 
   const currentPhaseName =
     gamePhases[currentPhaseNumber as keyof typeof gamePhases];
-  let currentSubPhaseName;
-  const currentSubPhaseNameSetup =
+  const currentSubPhaseName =
     gameSubPhases[currentSubPhaseNumber as keyof typeof gameSubPhases];
-
-  switch (currentPhaseName) {
-    case "MENU":
-      currentSubPhaseName = "NONE";
-      break;
-    case "SETUP":
-      currentSubPhaseName = currentSubPhaseNameSetup;
-      break;
-  }
 
   return (
     <>

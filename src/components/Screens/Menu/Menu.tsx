@@ -10,7 +10,7 @@ export default function Menu() {
 
   const handleClick = () => {
     setPhase(getPhaseNumber("SETUP"));
-    setSubPhase(getSubPhaseNumber("MOTIVE"));
+    setSubPhase(getSubPhaseNumber("SELECT MOTIVE"));
   };
 
   return (

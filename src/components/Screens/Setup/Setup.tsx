@@ -16,15 +16,15 @@ export default function Setup() {
   const currentSubPhaseNumber = nemosStore((state) => state.subPhase);
 
   switch (currentSubPhaseNumber) {
-    case getSubPhaseNumber("MOTIVE"): // 0
+    case getSubPhaseNumber("SELECT MOTIVE"):
       return <MotiveSelector />;
-    case getSubPhaseNumber("DRAWPILEANDADVENTUREDECK"): // 1
+    case getSubPhaseNumber("PREP DRAW PILE AND ADVENTURE DECK"): // 1
       return <DrawPileAndAdventureDeck />;
-    case getSubPhaseNumber("UPGRADE"): // 2
+    case getSubPhaseNumber("SELECT UPGRADE"): // 2
       return <StartingUpgrade />;
-    case getSubPhaseNumber("SHIPS"): // 3
+    case getSubPhaseNumber("PREPSHIPS"): // 3
       return <ShipPools />;
-    case getSubPhaseNumber("DONE"): // 4
+    case getSubPhaseNumber("CONFIRM SETUP"): // 4
       return <Done />;
     default:
       return <p>Something went wrong!</p>;

@@ -11,7 +11,7 @@ import adventureCards from "../../../common/data/adventureCards.json";
 import motives from "../../../common/data/motives.json";
 
 // utils
-import { shuffleArray } from "../../../common/utils/utils";
+import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
 
 export default function DrawPileAndAdventureDeck() {
   let loadingSeconds = nemosStore((state) =>
@@ -103,7 +103,7 @@ export default function DrawPileAndAdventureDeck() {
   });
 
   const handleContinue = () => {
-    setSubPhase(2);
+    setSubPhase(getSubPhaseNumber("SELECT UPGRADE"));
   };
 
   return (

@@ -1,9 +1,5 @@
-// modules
-// import { useEffect, useState } from "react";
-
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
-// import { gamePhases } from "../../../common/stores/slices/gamePhaseSlice";
 
 // utils
 import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
@@ -18,7 +14,7 @@ function DrawPileList() {
         <ul className="card-list">
           {drawPile.map((card) => {
             return (
-              <li className={card.id > 1000 ? "bold" : ""}>{card.title}</li>
+              <li className={card.id > 1000 ? "bold" : ""} key={card.id}>{card.title}</li>
             );
           })}
         </ul>
@@ -35,7 +31,7 @@ function AdventureDeck() {
       <div className="list-wrapper">
         <ul className="card-list">
           {adventureDeck.map((card) => {
-            return <li>{card.title}</li>;
+            return <li key={card.id}>{card.title}</li>;
           })}
         </ul>
       </div>
@@ -52,7 +48,7 @@ function ShipPool() {
         <ul className="card-list">
           {shipPool.map((ship) => {
             return (
-              <li>
+              <li key={ship.id}>
                 {ship.name}: {ship.nationality} {ship.shipClass}
               </li>
             );
@@ -73,8 +69,8 @@ export default function Done() {
   let setSubPhase = nemosStore((state) => state.setSubPhase);
 
   const handleContinue = () => {
-    setPhase(getPhaseNumber("PLAYING"));
-    setSubPhase(getSubPhaseNumber("DONE"));
+    setPhase(getPhaseNumber("EVENT"));
+    setSubPhase(getSubPhaseNumber("DRAW AND RESOLVE CARD"));
   };
 
   return (
