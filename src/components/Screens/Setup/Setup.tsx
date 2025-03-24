@@ -22,7 +22,7 @@ export default function Setup() {
       return <DrawPileAndAdventureDeck />;
     case getSubPhaseNumber("SELECT UPGRADE"): // 2
       return <StartingUpgrade />;
-    case getSubPhaseNumber("PREPSHIPS"): // 3
+    case getSubPhaseNumber("PREP SHIPS"): // 3
       return <ShipPools />;
     case getSubPhaseNumber("CONFIRM SETUP"): // 4
       return <Done />;

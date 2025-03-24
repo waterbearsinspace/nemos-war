@@ -27,9 +27,8 @@ export default function Game() {
 
       {/* Playing Screen */}
       {(currentPhase == getPhaseNumber("EVENT") ||
-      currentPhase == getPhaseNumber("PLACEMENT") ||
-      currentPhase == getPhaseNumber("ACTION")) &&
-      <Playing />}
+        currentPhase == getPhaseNumber("PLACEMENT") ||
+        currentPhase == getPhaseNumber("ACTION")) && <Playing />}
     </>
   );
 }

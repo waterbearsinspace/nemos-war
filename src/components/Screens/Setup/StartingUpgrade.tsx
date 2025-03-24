@@ -15,7 +15,7 @@ export default function StartingUpgrade() {
   let setSubPhase = nemosStore((state) => state.setSubPhase);
 
   const handleContinue = () => {
-    setSubPhase(getSubPhaseNumber("PREPSHIPS"));
+    setSubPhase(getSubPhaseNumber("PREP SHIPS"));
   };
 
   return (
