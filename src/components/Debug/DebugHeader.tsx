@@ -7,8 +7,8 @@ import {
 import "./DebugHeader.css";
 
 function Phase() {
-  const currentPhaseNumber = nemosStore((state) => state.phase);
-  const currentSubPhaseNumber = nemosStore((state) => state.subPhase);
+  const currentPhaseNumber = nemosStore((state) => state.currentPhase);
+  const currentSubPhaseNumber = nemosStore((state) => state.currentSubPhase);
 
   const currentPhaseName =
     gamePhases[currentPhaseNumber as keyof typeof gamePhases];

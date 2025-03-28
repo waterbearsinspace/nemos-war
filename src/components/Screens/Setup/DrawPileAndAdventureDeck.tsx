@@ -21,7 +21,7 @@ export default function DrawPileAndAdventureDeck() {
   let motive = nemosStore((state) => state.currentMotive);
   let setDrawPile = nemosStore((state) => state.setDrawPile);
   let setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
-  let setSubPhase = nemosStore((state) => state.setSubPhase);
+  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   let [displayText, setDisplayText] = useState(
     "Constructing Draw Pile and Adventure Deck"

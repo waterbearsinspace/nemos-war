@@ -5,8 +5,8 @@ import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
 import "./Menu.css";
 
 export default function Menu() {
-  const setPhase = nemosStore((state) => state.setPhase);
-  const setSubPhase = nemosStore((state) => state.setSubPhase);
+  const setPhase = nemosStore((state) => state.setCurrentPhase);
+  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   const handleClick = () => {
     setPhase(getPhaseNumber("SETUP"));

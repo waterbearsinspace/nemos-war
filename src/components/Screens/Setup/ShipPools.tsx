@@ -14,7 +14,7 @@ export default function ShipPools() {
   let loadingSeconds = nemosStore((state) =>
     state.debugUseLoading ? state.debugLoading : 1.5
   );
-  let setSubPhase = nemosStore((state) => state.setSubPhase);
+  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
 
   let [displayText, setDisplayText] = useState("Setting up Ship Pools");

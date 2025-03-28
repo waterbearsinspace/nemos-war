@@ -14,7 +14,9 @@ function DrawPileList() {
         <ul className="card-list">
           {drawPile.map((card) => {
             return (
-              <li className={card.id > 1000 ? "bold" : ""} key={card.id}>{card.title}</li>
+              <li className={card.id > 1000 ? "bold" : ""} key={card.id}>
+                {card.title}
+              </li>
             );
           })}
         </ul>
@@ -65,12 +67,12 @@ export default function Done() {
   let nemo = nemosStore((state) => state.nemo);
   let crew = nemosStore((state) => state.crew);
   let hull = nemosStore((state) => state.hull);
-  let setPhase = nemosStore((state) => state.setPhase);
-  let setSubPhase = nemosStore((state) => state.setSubPhase);
+  let setPhase = nemosStore((state) => state.setCurrentPhase);
+  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   const handleContinue = () => {
     setPhase(getPhaseNumber("EVENT"));
-    setSubPhase(getSubPhaseNumber("DRAW AND RESOLVE CARD"));
+    setSubPhase(getSubPhaseNumber("DRAW EVENT CARD"));
   };
 
   return (

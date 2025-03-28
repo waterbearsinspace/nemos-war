@@ -2,10 +2,10 @@ import { StateCreator } from "zustand";
 
 // types and interfaces
 export interface GamePhaseSliceInterface {
-  phase: number;
-  subPhase: number | null;
-  setPhase: (newPhase: number) => void;
-  setSubPhase: (newSubPhase: number) => void;
+  currentPhase: number;
+  currentSubPhase: number | null;
+  setCurrentPhase: (newPhase: number) => void;
+  setCurrentSubPhase: (newSubPhase: number) => void;
 }
 
 // data and constants
@@ -23,27 +23,29 @@ export const gameSubPhases = Object.freeze({
   3: "SELECT UPGRADE",
   4: "PREP SHIPS",
   5: "CONFIRM SETUP",
-  6: "DRAW AND RESOLVE CARD",
-  7: "PLACEMENT DICE ROLL",
-  8: "STANDARD PLACEMENT",
-  9: "LULL PLACEMENT",
-  10: "SELECT ACTION",
-  11: "ATTACK",
-  12: "INCITE",
-  13: "MOVE",
-  14: "REST",
-  15: "REPAIR",
-  16: "REFIT",
-  17: "SEARCH",
+  6: "DRAW EVENT CARD",
+  7: "RESOLVE EVENT CARD",
+  8: "PLACEMENT DICE ROLL",
+  9: "STANDARD PLACEMENT",
+  10: "LULL PLACEMENT",
+  11: "SELECT ACTION",
+  12: "ATTACK",
+  13: "INCITE",
+  14: "MOVE",
+  15: "REST",
+  16: "REPAIR",
+  17: "REFIT",
+  18: "SEARCH",
 });
 
 // slice
 export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   set
 ) => ({
-  phase: 0,
-  subPhase: 0,
+  currentPhase: 0,
+  currentSubPhase: 0,
 
-  setPhase: (newPhase) => set(() => ({ phase: newPhase })),
-  setSubPhase: (newSubPhase) => set(() => ({ subPhase: newSubPhase })),
+  setCurrentPhase: (newPhase) => set(() => ({ currentPhase: newPhase })),
+  setCurrentSubPhase: (newSubPhase) =>
+    set(() => ({ currentSubPhase: newSubPhase })),
 });

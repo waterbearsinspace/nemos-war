@@ -12,7 +12,7 @@ import Playing from "./components/Screens/Playing/Playing";
 import { getPhaseNumber } from "./common/utils/utils";
 
 export default function Game() {
-  const currentPhase = nemosStore((state) => state.phase);
+  const currentPhase = nemosStore((state) => state.currentPhase);
 
   return (
     <>

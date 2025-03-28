@@ -25,7 +25,7 @@ export default function MotiveSelector() {
     return motiveEntry.id == motive;
   });
   const setCurrentMotive = nemosStore((state) => state.setCurrentMotive);
-  const setSubPhase = nemosStore((state) => state.setSubPhase);
+  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   const handleCycle = (inc: number) => {
     if (motive + inc > motiveData.length - 1) {

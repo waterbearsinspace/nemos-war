@@ -13,7 +13,7 @@ import "./Setup.css";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
 
 export default function Setup() {
-  const currentSubPhaseNumber = nemosStore((state) => state.subPhase);
+  const currentSubPhaseNumber = nemosStore((state) => state.currentSubPhase);
 
   switch (currentSubPhaseNumber) {
     case getSubPhaseNumber("SELECT MOTIVE"):

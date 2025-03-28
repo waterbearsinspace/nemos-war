@@ -4,7 +4,7 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 // data and constants
 import upgradeData from "../../../common/data/upgrades.json";
 const upgradeDescriptionText =
-"Would you like to purchase your motive's starting upgrade by spending any 3 Ship Resources? If not, it will be available for purchase later and you will keep your Ship Resources.";
+  "Would you like to purchase your motive's starting upgrade by spending any 3 Ship Resources? If not, it will be available for purchase later and you will keep your Ship Resources.";
 
 // utils
 import { getSubPhaseNumber } from "../../../common/utils/utils";
@@ -12,7 +12,7 @@ import { getSubPhaseNumber } from "../../../common/utils/utils";
 export default function StartingUpgrade() {
   const motive = nemosStore((state) => state.motiveName);
   let motiveUpgrade = upgradeData.find((upgrade) => upgrade.motive == motive);
-  let setSubPhase = nemosStore((state) => state.setSubPhase);
+  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   const handleContinue = () => {
     setSubPhase(getSubPhaseNumber("PREP SHIPS"));

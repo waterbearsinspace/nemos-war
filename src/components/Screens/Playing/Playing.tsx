@@ -1,7 +1,21 @@
 //  game store
+import { useEffect, useState } from "react";
 import { nemosStore } from "../../../common/stores/nemosStore";
+import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
+import AdventureCard from "../../Cards/AdventureCard.tsx/AdventureCard";
 
 export default function Playing() {
+  const currentPhase = nemosStore((state) => state.currentPhase);
+  const currentSubPhase = nemosStore((state) => state.currentSubPhase);
+  const setPhase = nemosStore((state) => state.setCurrentPhase);
+  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+  const drawPile = nemosStore((state) => state.drawPile);
+  const setDrawPile = nemosStore((state) => state.setDrawPile);
+
+  //  handlePhase()
+  //  do currentPhase
+  //  if not gameend, call self
+
   //  # event phase
   //  draw card
   //  resolveCard
@@ -33,6 +47,44 @@ export default function Playing() {
   //  every ocean is full
   //  reach finale card
   //
+  function render() {
+    switch (currentSubPhase) {
+      case getSubPhaseNumber("DRAW EVENT CARD"):
+        let drawPileCopy = drawPile;
+        return (
+          <>
+            {AdventureCard({ card: drawPileCopy[0]! })}
+            <dialog open={true}>{drawPile.length}</dialog>
+            <button
+              onClick={() => {
+                drawPileCopy.shift();
+                setDrawPile(drawPileCopy);
+                setSubPhase(getSubPhaseNumber("RESOLVE EVENT CARD"));
+              }}
+            ></button>
+          </>
+        );
+        break;
+      case getSubPhaseNumber("RESOLVE EVENT CARD"):
+        console.log("resolve");
+        return (
+          <button
+            onClick={() => setSubPhase(getSubPhaseNumber("DRAW EVENT CARD"))}
+          ></button>
+        );
 
-  return <></>;
+      default:
+        return (
+          <>
+            <p>ah</p>
+          </>
+        );
+    }
+  }
+
+  return (
+    <>
+      {render()} <p>yes</p>
+    </>
+  );
 }
