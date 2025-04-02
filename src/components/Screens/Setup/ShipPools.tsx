@@ -11,18 +11,10 @@ import ships from "../../../common/data/ships.json";
 import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
 
 export default function ShipPools() {
-  let loadingSeconds = nemosStore((state) =>
-    state.debugUseLoading ? state.debugLoading : 1.5
-  );
   let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
 
   let [displayText, setDisplayText] = useState("Setting up Ship Pools");
-  let [loading, setLoading] = useState(true);
-
-  const handleContinue = () => {
-    setSubPhase(getSubPhaseNumber("CONFIRM SETUP"));
-  };
 
   let setupShipPool = () => {
     let starterShipPool = ships.filter(
@@ -30,24 +22,19 @@ export default function ShipPools() {
     );
     let shuffledShips = shuffleArray(starterShipPool);
     setCurrentShipPool(shuffledShips);
-
-    setTimeout(() => {
-      setDisplayText("Done!");
-      setLoading(false);
-    }, loadingSeconds * 1000);
   };
 
   useEffect(() => {
     setupShipPool();
+    setSubPhase(getSubPhaseNumber("CONFIRM SETUP"));
   });
 
   return (
     <div>
       <h1 className="loading-text">
         <span>{displayText}</span>
-        <div className={loading ? "loader" : ""}></div>
+        <div className="loader"></div>
       </h1>
-      {!loading && <button onClick={handleContinue}>Continue</button>}
     </div>
   );
 }

@@ -14,9 +14,9 @@ export interface ShipResourcesSliceInterface {
   nemo: ShipResource;
   hull: ShipResource;
   crew: ShipResource;
-  adjustNemoValue: (by: number) => void;
-  adjustCrewValue: (by: number) => void;
-  adjustHullValue: (by: number) => void;
+  setNemoValue: (to: number) => void;
+  setCrewValue: (to: number) => void;
+  setHullValue: (to: number) => void;
 }
 
 // data and constants
@@ -37,28 +37,25 @@ export const shipResourceSlice: StateCreator<
   crew: { ...crewData, value: crewMax },
   hull: { ...hullData, value: hullMax },
 
-  adjustNemoValue: (by) =>
+  setNemoValue: (to) =>
     set((state) => ({
       nemo: {
         ...state.nemo,
-        value:
-          state.nemo.value + by > nemoMax ? nemoMax : state.nemo.value + by,
+        value: to,
       },
     })),
-  adjustCrewValue: (by) =>
+  setCrewValue: (to) =>
     set((state) => ({
       crew: {
         ...state.crew,
-        value:
-          state.crew.value + by > crewMax ? crewMax : state.crew.value + by,
+        value: to,
       },
     })),
-  adjustHullValue: (by) =>
+  setHullValue: (to) =>
     set((state) => ({
       hull: {
         ...state.hull,
-        value:
-          state.hull.value + by > hullMax ? hullMax : state.hull.value + by,
+        value: to,
       },
     })),
 });

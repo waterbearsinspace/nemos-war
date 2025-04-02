@@ -9,6 +9,7 @@ export type Dice = {
 };
 interface DiceStore {
   dice: Array<Dice>;
+  setActiveDice: (newDice: Array<Dice>) => void;
   rollDie: (dieId: string) => void;
   rollAllActive: () => void;
 }
@@ -55,6 +56,10 @@ export const diceStore = create<DiceStore>()((set) => ({
       active: false,
     },
   ],
+
+  setActiveDice: (newDice) => {
+    set(() => ({ dice: newDice }));
+  },
 
   // Roll an individual dice with a given id
   rollDie: (dieId) =>

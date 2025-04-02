@@ -10,7 +10,7 @@ const motiveMultiplierText =
   "Note: These will never cause an individual item's VP to go below 0. As such, applying -1 to something with a VP value of 0 will still only give 0 VP and will not result in negative VP.";
 
 const motiveAdvice = [
-  "This motive focuses on inciting uprisings, and sinking non-warships. However, it gets less points from treasures.",
+  "This motive focuses on inciting uprisings and sinking non-warships. However, it gets less points from treasures.",
   "This motive primarily wants to search out the rarest wonders through treasure and adventures, caring little for warfare.",
   "This motive seeks out scientific progress from adventures, upgrades, and keeping the Nautilus in good condition. It scores less from sinking non-warships.",
   "This motive seeks out violence, gaining more points for sinking warships and inciting uprisings. It sees less value in adventuring.",

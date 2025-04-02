@@ -1,6 +1,9 @@
 #root {
   /* variables */
   --soft-black: rgb(58, 58, 58);
+  --overlay-bar-top-height: 8%;
+  --overlay-bar-bottom-height: 36%;
+  --overlay-bar-color: #505050;
 
   align-items: center;
   background-color: #dddbd7;
@@ -8,8 +11,6 @@
   display: flex;
   flex-basis: 100%;
   justify-content: center;
-  padding: 2rem;
-  text-align: center;
   text-wrap: pretty;
 }
 
@@ -36,7 +37,7 @@ button {
   transition: transform 0.15s;
 }
 button:active {
-  transform: translateY(0.1em);
+  transform: translateY(0.1rem);
 }
 
 /* utility classes */

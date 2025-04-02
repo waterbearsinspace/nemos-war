@@ -1,5 +1,5 @@
 // modules
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
@@ -14,19 +14,10 @@ import motives from "../../../common/data/motives.json";
 import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
 
 export default function DrawPileAndAdventureDeck() {
-  let loadingSeconds = nemosStore((state) =>
-    state.debugUseLoading ? state.debugLoading : 1.5
-  );
-
   let motive = nemosStore((state) => state.currentMotive);
   let setDrawPile = nemosStore((state) => state.setDrawPile);
   let setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
   let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-
-  let [displayText, setDisplayText] = useState(
-    "Constructing Draw Pile and Adventure Deck"
-  );
-  let [loading, setLoading] = useState(true);
 
   let setupDrawPile = () => {
     let finishedDrawPile: any = [];
@@ -91,28 +82,12 @@ export default function DrawPileAndAdventureDeck() {
 
     // set adventure deck from remaining cards
     setAdventureDeck(regularAdventureCards);
-
-    setTimeout(() => {
-      setDisplayText("Done!");
-      setLoading(false);
-    }, loadingSeconds * 1000);
   };
 
   useEffect(() => {
     setupDrawPile();
+    setSubPhase(getSubPhaseNumber("SELECT UPGRADE"));
   });
 
-  const handleContinue = () => {
-    setSubPhase(getSubPhaseNumber("SELECT UPGRADE"));
-  };
-
-  return (
-    <div>
-      <h1 className="loading-text">
-        <span>{displayText}</span>
-        <div className={loading ? "loader" : ""}></div>
-      </h1>
-      {!loading && <button onClick={handleContinue}>Continue</button>}
-    </div>
-  );
+  return <div></div>;
 }

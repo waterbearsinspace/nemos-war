@@ -1,13 +1,15 @@
 //  game store
-import { useEffect, useState } from "react";
+import ResolveAdventureCard from "../../Cards/AdventureCard/ResolveAdventureCards";
 import { nemosStore } from "../../../common/stores/nemosStore";
-import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
-import AdventureCard from "../../Cards/AdventureCard.tsx/AdventureCard";
+import { getSubPhaseNumber } from "../../../common/utils/utils";
+import AdventureCard from "../../Cards/AdventureCard/AdventureCard";
+
+import cards from "../../../common/data/adventureCards.json";
+
+import "./Playing.css";
 
 export default function Playing() {
-  const currentPhase = nemosStore((state) => state.currentPhase);
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
-  const setPhase = nemosStore((state) => state.setCurrentPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const drawPile = nemosStore((state) => state.drawPile);
   const setDrawPile = nemosStore((state) => state.setDrawPile);
@@ -47,44 +49,82 @@ export default function Playing() {
   //  every ocean is full
   //  reach finale card
   //
+
+  function nextSubPhaseButton(nextSubPhase: string, buttonText: string) {
+    return (
+      <div className="next-phase-wrapper">
+        <button
+          className="next-phase-button"
+          onClick={() => {
+            setSubPhase(getSubPhaseNumber(nextSubPhase));
+          }}
+        >
+          {buttonText}
+        </button>
+      </div>
+    );
+  }
+
   function render() {
     switch (currentSubPhase) {
       case getSubPhaseNumber("DRAW EVENT CARD"):
-        let drawPileCopy = drawPile;
         return (
           <>
-            {AdventureCard({ card: drawPileCopy[0]! })}
-            <dialog open={true}>{drawPile.length}</dialog>
-            <button
-              onClick={() => {
-                drawPileCopy.shift();
-                setDrawPile(drawPileCopy);
-                setSubPhase(getSubPhaseNumber("RESOLVE EVENT CARD"));
-              }}
-            ></button>
+            {AdventureCard({ card: drawPile[0]! })}
+            {/* {AdventureCard({ card: cards[0] })} */}
+            {nextSubPhaseButton("RESOLVE EVENT CARD", "Resolve Card")}
           </>
         );
-        break;
       case getSubPhaseNumber("RESOLVE EVENT CARD"):
-        console.log("resolve");
         return (
-          <button
-            onClick={() => setSubPhase(getSubPhaseNumber("DRAW EVENT CARD"))}
-          ></button>
+          <>
+            <ResolveAdventureCard id={drawPile[0].id} />
+          </>
+        );
+      case getSubPhaseNumber("PLACEMENT DICE ROLL"):
+        return (
+          <>
+            <p>Rolling for Placement</p>
+            {nextSubPhaseButton("STANDARD PLACEMENT", "Standard Placement")}
+          </>
+        );
+      case getSubPhaseNumber("STANDARD PLACEMENT"):
+        return (
+          <>
+            <p>Standard Placement</p>
+            {nextSubPhaseButton("SELECT ACTION", "Select Action")}
+          </>
+        );
+      case getSubPhaseNumber("SELECT ACTION"):
+        return (
+          <>
+            <p>Select Action</p>
+            {nextSubPhaseButton("DRAW EVENT CARD", "Draw Event Card")}
+          </>
         );
 
       default:
         return (
           <>
-            <p>ah</p>
+            <p>Invalid Subphase: {currentSubPhase}</p>
           </>
         );
     }
   }
 
   return (
-    <>
-      {render()} <p>yes</p>
-    </>
+    <section className="game-screen-wrapper">
+      <section className="overlay-bar overlay-bar-top">
+        <section className="overlay-bar-content-wrapper">
+          <p>Top Bar</p>
+        </section>
+      </section>
+      <div className="playarea">{render()}</div>
+      <section className="overlay-bar overlay-bar-bottom">
+        <section className="overlay-bar-content-wrapper">
+          <p>Bottom Bar</p>
+        </section>
+      </section>
+    </section>
   );
 }

@@ -2,7 +2,7 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-import { AdventureCardType } from "../../../components/Cards/AdventureCard.tsx/AdventureCard";
+import { AdventureCardType } from "../../../components/Cards/AdventureCard/AdventureCard";
 export interface AdventureDeckSliceInterface {
   adventureDeck: AdventureCardType[];
   adventureDeckTreasuresAvailable: number;

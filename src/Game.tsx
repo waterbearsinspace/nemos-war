@@ -1,5 +1,4 @@
 // components
-import DebugHeader from "./components/Debug/DebugHeader";
 import Menu from "./components/Screens/Menu/Menu";
 import Setup from "./components/Screens/Setup/Setup";
 
@@ -17,7 +16,7 @@ export default function Game() {
   return (
     <>
       {/* Debug Header */}
-      {currentPhase != getPhaseNumber("MENU") && <DebugHeader />}
+      {/* {currentPhase != getPhaseNumber("MENU") && <DebugHeader />} */}
 
       {/* Menu Screen */}
       {currentPhase == getPhaseNumber("MENU") && <Menu />}
