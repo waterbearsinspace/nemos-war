@@ -43,7 +43,7 @@ export const diceStore = create<DiceStore>()((set) => ({
     {
       id: "w3",
       value: 1,
-      active: true,
+      active: false,
     },
     {
       id: "b1",

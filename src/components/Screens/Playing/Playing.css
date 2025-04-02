@@ -53,6 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0.5rem 0 0 0.5rem;
 
     .next-phase-button {
       width: 100%;

@@ -1,6 +1,7 @@
 import { diceStore } from "../../../common/stores/diceStore";
 import { nemosStore } from "../../../common/stores/nemosStore";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
+import DiceTray from "../../Dice/DiceTray";
 import AdventureCard from "./AdventureCard";
 
 type ResolveAdventureCardProps = {
@@ -15,7 +16,13 @@ export default function ResolveAdventureCard({
   const drawPile = nemosStore((state) => state.drawPile);
   const setDrawPile = nemosStore((state) => state.setDrawPile);
 
-  let resolveDisplay;
+  function Test() {
+    return (
+      <div>
+        <DiceTray />
+      </div>
+    );
+  }
 
   function resolveAdventureCardsEffects() {
     switch (id) {
@@ -35,7 +42,7 @@ export default function ResolveAdventureCard({
           {
             id: "w3",
             value: 1,
-            active: true,
+            active: false,
           },
           {
             id: "b1",
@@ -55,20 +62,24 @@ export default function ResolveAdventureCard({
     }
   }
 
-  switch (id) {
-    case 1001:
-      resolveDisplay = <p>Resolving Prologue</p>;
-      break;
+  function ResolveDisplay() {
+    switch (id) {
+      case 1001:
+        return (
+          <div>
+            <Test />
+          </div>
+        );
 
-    default:
-      resolveDisplay = <p>Resolving Event #{id}</p>;
-      break;
+      default:
+        return <p>Resolving Event #{id}</p>;
+    }
   }
 
   return (
     <>
       {AdventureCard({ card: drawPile[0]! })}
-      {resolveDisplay}
+      <ResolveDisplay />
       <div className="next-phase-wrapper">
         <button
           className="next-phase-button"

@@ -1,23 +1,34 @@
 import { diceStore } from "../../common/stores/diceStore";
 import "./Dice.css";
 import { Dice } from "../../common/stores/diceStore";
+import DiceFace1 from "../../common/assets/dice/DiceFace1";
+import DiceFace2 from "../../common/assets/dice/DiceFace2";
+import DiceFace3 from "../../common/assets/dice/DiceFace3";
+import DiceFace4 from "../../common/assets/dice/DiceFace4";
+import DiceFace5 from "../../common/assets/dice/DiceFace5";
+import DiceFace6 from "../../common/assets/dice/DiceFace6";
 
 function Die({ die }: { die: Dice }) {
-  const rollDie = diceStore((state) => state.rollDie);
-
+  let faces = [
+    <DiceFace1 />,
+    <DiceFace2 />,
+    <DiceFace3 />,
+    <DiceFace4 />,
+    <DiceFace5 />,
+    <DiceFace6 />,
+  ];
   return (
-    <button
-      className={die.id.includes("w") ? "die white" : "die black"}
-      onClick={() => {
-        if (die.active) rollDie(die.id);
-      }}
-    >
-      {die.value}
-    </button>
+    <div className={`die ${die.id[0] == "w" ? "white" : "black"}`}>
+      {faces[die.value - 1]}
+    </div>
   );
 }
 
-export default function DiceTray() {
+type DiceTrayProps = {
+  testValue?: number;
+};
+
+export default function DiceTray({ testValue }: DiceTrayProps) {
   const dummyDie = {
     id: "dummy",
     value: 0,
@@ -35,27 +46,25 @@ export default function DiceTray() {
   const blackDie2 =
     diceStore((state) => state.dice.find((die) => die.id == "b2")) ?? dummyDie;
 
-  const allDice = diceStore((state) => state.dice);
-  const total = allDice
-    .filter((die) => die.active)
-    .reduce((total, die) => total + die.value, 0);
+  const diceList = [whiteDie1, whiteDie2, whiteDie3, blackDie1, blackDie2];
 
   const rollAll = diceStore((state) => state.rollAllActive);
 
   return (
     <div>
-      <h2>Dice Tray</h2>
-      <div className="dice-tray" style={{ marginBottom: "3rem" }}>
-        <div>Total: {total}</div>
+      <div className="dice-tray">
+        <div>{testValue ? "Test: " + testValue : ""}</div>
         <div className="dice-space">
-          <Die die={whiteDie1} />
-          <Die die={whiteDie2} />
-          <Die die={whiteDie3} />
-          <Die die={blackDie1} />
-          <Die die={blackDie2} />
+          {diceList
+            .filter((die) => {
+              return die.active == true;
+            })
+            .map((die) => {
+              return <Die die={die} />;
+            })}
         </div>
         <button className="roll-all" onClick={rollAll}>
-          Roll All
+          Roll Dice
         </button>
       </div>
     </div>
