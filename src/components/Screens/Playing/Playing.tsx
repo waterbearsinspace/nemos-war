@@ -70,8 +70,8 @@ export default function Playing() {
       case getSubPhaseNumber("DRAW EVENT CARD"):
         return (
           <>
-            {AdventureCard({ card: drawPile[0]! })}
-            {/* {AdventureCard({ card: cards[0] })} */}
+            {/* {AdventureCard({ card: drawPile[0]! })} */}
+            {AdventureCard({ card: cards[52] })}
             {nextSubPhaseButton("RESOLVE EVENT CARD", "Resolve Card")}
           </>
         );

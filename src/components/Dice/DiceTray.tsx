@@ -1,12 +1,13 @@
-import { diceStore } from "../../common/stores/diceStore";
-import "./Dice.css";
-import { Dice } from "../../common/stores/diceStore";
+import { diceStore, Dice } from "../../common/stores/diceStore";
 import DiceFace1 from "../../common/assets/dice/DiceFace1";
 import DiceFace2 from "../../common/assets/dice/DiceFace2";
 import DiceFace3 from "../../common/assets/dice/DiceFace3";
 import DiceFace4 from "../../common/assets/dice/DiceFace4";
 import DiceFace5 from "../../common/assets/dice/DiceFace5";
 import DiceFace6 from "../../common/assets/dice/DiceFace6";
+
+import "./Dice.css";
+import { useState } from "react";
 
 function Die({ die }: { die: Dice }) {
   let faces = [
@@ -17,6 +18,7 @@ function Die({ die }: { die: Dice }) {
     <DiceFace5 />,
     <DiceFace6 />,
   ];
+
   return (
     <div className={`die ${die.id[0] == "w" ? "white" : "black"}`}>
       {faces[die.value - 1]}
@@ -29,41 +31,78 @@ type DiceTrayProps = {
 };
 
 export default function DiceTray({ testValue }: DiceTrayProps) {
-  const dummyDie = {
-    id: "dummy",
-    value: 0,
-    active: false,
-  };
+  const dice = diceStore((state) => state.dice);
+  const setDice = diceStore((state) => state.setDice);
 
-  const whiteDie1 =
-    diceStore((state) => state.dice.find((die) => die.id == "w1")) ?? dummyDie;
-  const whiteDie2 =
-    diceStore((state) => state.dice.find((die) => die.id == "w2")) ?? dummyDie;
-  const whiteDie3 =
-    diceStore((state) => state.dice.find((die) => die.id == "w3")) ?? dummyDie;
-  const blackDie1 =
-    diceStore((state) => state.dice.find((die) => die.id == "b1")) ?? dummyDie;
-  const blackDie2 =
-    diceStore((state) => state.dice.find((die) => die.id == "b2")) ?? dummyDie;
+  const [clickable, setClickable] = useState(true);
 
-  const diceList = [whiteDie1, whiteDie2, whiteDie3, blackDie1, blackDie2];
+  // constants and functions
+  // min (inclusive) and max (exclusive) of die roll
+  const dieMinInclusive = 1;
+  const dieMaxExclusive = 7;
 
-  const rollAll = diceStore((state) => state.rollAllActive);
+  // Roll a die with possible from dieMinInclusive to dieMaxExclusive - 1
+  function randomDieRoll() {
+    return Math.floor(
+      Math.random() * (dieMinInclusive - dieMaxExclusive) + dieMaxExclusive
+    );
+  }
+
+  function rollAll() {
+    function getRolledDie() {
+      return dice.map((die) => {
+        return {
+          id: die.id,
+          value: die.active ? randomDieRoll() : die.value,
+          active: die.active,
+        };
+      });
+    }
+
+    setDice(getRolledDie());
+    setTimeout(() => {
+      setDice(getRolledDie());
+    }, 100);
+    setTimeout(() => {
+      setDice(getRolledDie());
+    }, 200);
+    setTimeout(() => {
+      setDice(getRolledDie());
+    }, 300);
+    setTimeout(() => {
+      setDice(getRolledDie());
+    }, 500);
+    setTimeout(() => {
+      setDice(getRolledDie());
+    }, 700);
+    setTimeout(() => {
+      setDice(getRolledDie());
+    }, 1000);
+
+    setClickable(false);
+
+    setTimeout(() => {
+      setClickable(true);
+    }, 5000);
+  }
 
   return (
     <div>
       <div className="dice-tray">
         <div>{testValue ? "Test: " + testValue : ""}</div>
         <div className="dice-space">
-          {diceList
+          {dice
             .filter((die) => {
               return die.active == true;
             })
             .map((die) => {
-              return <Die die={die} />;
+              return <Die die={die} key={die.id} />;
             })}
         </div>
-        <button className="roll-all" onClick={rollAll}>
+        <button
+          className={`roll-all ${clickable ? "" : "disabled"}`}
+          onClick={clickable ? rollAll : () => {}}
+        >
           Roll Dice
         </button>
       </div>

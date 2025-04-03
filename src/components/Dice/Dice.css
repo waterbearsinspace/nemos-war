@@ -26,7 +26,7 @@
   width: 10rem;
 }
 
-.roll-all:hover {
+.roll-all:hover :not(disabled) {
   transform: scale(1.025);
 }
 
@@ -56,13 +56,12 @@
 .dice-tray > * > * {
   margin: 0px 20px;
 }
-
-.dice-tray .roll-all:active {
-  transform: translateY(0.1rem);
+.dice-tray:has(.roll-all:hover:not(.disabled)) .die {
+  transform: rotate(4deg);
 }
 
-.dice-tray:has(.roll-all:active) .die {
-  transform: rotate(4deg);
+.roll-all:hover:not(.disabled) {
+  transform: scale(1.0125);
 }
 
 .die-spot {
@@ -71,4 +70,15 @@
   background-color: #1b1b1b;
   border-radius: 50%;
   display: inline-block;
+}
+
+.disabled {
+  background-color: #aaaaaa;
+  color: #666666;
+  cursor: default;
+  border-color: #aaaaaa;
+
+  &:not(disabled) {
+    transform: translateY(0rem);
+  }
 }
