@@ -1,5 +1,5 @@
 // modules
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // game store
 import { nemosStore } from "../../../../common/stores/nemosStore";
