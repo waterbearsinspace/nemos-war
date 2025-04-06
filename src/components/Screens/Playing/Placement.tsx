@@ -1,3 +1,4 @@
+import { act } from "react";
 import { diceStore } from "../../../common/stores/diceStore";
 import { nemosStore } from "../../../common/stores/nemosStore";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
@@ -12,24 +13,33 @@ export default function Placement() {
   const dice = diceStore((state) => state.dice);
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-
-  const handleRollClick = () => {
-    setDoneRolling(false);
-    setSubPhase(getSubPhaseNumber("STANDARD PLACEMENT"));
-  };
-
-  const handlePlacementClick = () => {
-    setSubPhase(getSubPhaseNumber("SELECT ACTION"));
-  };
+  const actionPoints = nemosStore((state) => state.currentActionPoints);
+  const setActionPoints = nemosStore((state) => state.setActionPoints);
 
   const differential = Math.abs(
     dice.find((die) => die.id == "w1")!.value -
       dice.find((die) => die.id == "w2")!.value
   );
 
+  const handleRollClick = () => {
+    setDoneRolling(false);
+    setSubPhase(
+      getSubPhaseNumber(
+        differential == 0 ? "LULL PLACEMENT" : "STANDARD PLACEMENT"
+      )
+    );
+  };
+
+  const handlePlacementClick = () => {
+    setActionPoints(actionPoints > 0 ? differential + 1 : differential);
+    differential > 0
+      ? setSubPhase(getSubPhaseNumber("STANDARD ACTION"))
+      : setSubPhase(getSubPhaseNumber("LULL ACTION"));
+  };
+
   function PlacementRoll() {
     return (
-      <div className="placement-wrapper">
+      <div>
         <p>Roll for Placement:</p>
         <p>{doneRolling ? "Differential: " + differential : ""}</p>
         <DiceTray numDice={2} />
@@ -58,12 +68,25 @@ export default function Placement() {
   }
 
   return (
-    <div>
+    <div className="placement-wrapper">
       {currentSubPhase == getSubPhaseNumber("PLACEMENT DICE ROLL") && (
         <PlacementRoll />
       )}
       {currentSubPhase == getSubPhaseNumber("STANDARD PLACEMENT") && (
-        <ShipPlacement />
+        <>
+          <ShipPlacement />
+          <div className="placement-side-pane">
+            <p>Standard Placement</p>
+          </div>
+        </>
+      )}
+      {currentSubPhase == getSubPhaseNumber("LULL PLACEMENT") && (
+        <>
+          <ShipPlacement />
+          <div className="placement-side-pane">
+            <p>Lull Placement</p>
+          </div>
+        </>
       )}
     </div>
   );

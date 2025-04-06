@@ -30,14 +30,15 @@ export const gameSubPhases = Object.freeze({
   8: "PLACEMENT DICE ROLL",
   9: "STANDARD PLACEMENT",
   10: "LULL PLACEMENT",
-  11: "SELECT ACTION",
-  12: "ATTACK",
-  13: "INCITE",
-  14: "MOVE",
-  15: "REST",
-  16: "REPAIR",
-  17: "REFIT",
-  18: "SEARCH",
+  11: "STANDARD ACTION",
+  12: "LULL ACTION",
+  13: "ATTACK",
+  14: "INCITE",
+  15: "MOVE",
+  16: "REST",
+  17: "REPAIR",
+  18: "REFIT",
+  19: "SEARCH",
 });
 
 // slice

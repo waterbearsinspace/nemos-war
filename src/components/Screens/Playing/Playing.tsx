@@ -67,12 +67,14 @@ export default function Playing() {
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):
       case getSubPhaseNumber("STANDARD PLACEMENT"):
+      case getSubPhaseNumber("LULL PLACEMENT"):
         return (
           <>
             <Placement />
           </>
         );
-      case getSubPhaseNumber("SELECT ACTION"):
+      case getSubPhaseNumber("STANDARD ACTION"):
+      case getSubPhaseNumber("LULL ACTION"):
         return <Actions />;
 
       default:

@@ -20,7 +20,6 @@ function Die({ die }: { die: dice }) {
 
   return (
     <div className={`die ${die.id[0] == "w" ? "white" : "black"}`}>
-      <p>{die.id}</p>
       {faces[die.value - 1]}
     </div>
   );

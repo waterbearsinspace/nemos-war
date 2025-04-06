@@ -2,5 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  gap: 4rem;
+
+  .placement-side-pane {
+    width: 24rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
