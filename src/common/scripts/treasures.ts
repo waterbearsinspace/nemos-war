@@ -13,10 +13,10 @@ export type treasure = {
 };
 
 export const useTreasure = (id: number) => {
-  const adjustNemoValue = nemosStore((state) => state.adjustNemoValue);
-  const adjustCrewValue = nemosStore((state) => state.adjustCrewValue);
-  const adjustHullValue = nemosStore((state) => state.adjustHullValue);
-  const adjustActionPoints = nemosStore((state) => state.adjustActionPoints);
+  const setNemoValue = nemosStore((state) => state.setNemoValue);
+  const setCrewValue = nemosStore((state) => state.setCrewValue);
+  const setHullValue = nemosStore((state) => state.setHullValue);
+  const adjustActionPoints = nemosStore((state) => state.setActionPoints);
   const addToPossibleUpgrades = nemosStore(
     (state) => state.addToPossibleUpgrades
   );
@@ -28,15 +28,15 @@ export const useTreasure = (id: number) => {
 
     // 11-16: retain
     case 11: {
-      adjustNemoValue(1);
+      setNemoValue(1);
       break;
     }
     case 12: {
-      adjustCrewValue(1);
+      setCrewValue(1);
       break;
     }
     case 13: {
-      adjustHullValue(1);
+      setHullValue(1);
       break;
     }
     case 14: {

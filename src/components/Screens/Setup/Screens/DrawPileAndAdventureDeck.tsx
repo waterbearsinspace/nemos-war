@@ -2,16 +2,19 @@
 import { useEffect } from "react";
 
 // game store
-import { nemosStore } from "../../../common/stores/nemosStore";
+import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // data and constants
-import adventureCards from "../../../common/data/adventureCards.json";
+import adventureCards from "../../../../common/data/adventureCards.json";
 
 // components
-import motives from "../../../common/data/motives.json";
+import motives from "../../../../common/data/motives.json";
 
 // utils
-import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
+import {
+  getSubPhaseNumber,
+  shuffleArray,
+} from "../../../../common/utils/utils";
 
 export default function DrawPileAndAdventureDeck() {
   let motive = nemosStore((state) => state.currentMotive);

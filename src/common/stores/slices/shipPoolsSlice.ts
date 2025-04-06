@@ -22,7 +22,8 @@ import { StateCreator } from "zustand";
 
 // types and interfaces
 import { vp } from "../../scripts/calculateVictoryPoints";
-type ship = {
+
+export type ship = {
   id: number;
   name: string;
   attackStrength: number | null;
@@ -43,7 +44,7 @@ type ship = {
 };
 
 export interface ShipPoolsSliceInterface {
-  currentShipPool: ship[];
+  currentShipPool: (ship | string)[];
   setCurrentShipPool: (newShipPool: ship[]) => void;
 }
 

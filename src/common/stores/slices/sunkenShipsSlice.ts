@@ -6,7 +6,7 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-type Tonnage = {
+type tonnage = {
   westernPacific: number;
   easternPacific: number;
   northAtlantic: number;
@@ -15,7 +15,7 @@ type Tonnage = {
   indianOcean: number;
 };
 export interface SunkenShipsSliceInterface {
-  tonnage: Tonnage;
+  tonnage: tonnage;
   adjustTonnage: (ocean: string, by: number) => void;
   salvage: number;
 }

@@ -1,8 +1,11 @@
 // game store
-import { nemosStore } from "../../../common/stores/nemosStore";
+import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // utils
-import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
+import {
+  getPhaseNumber,
+  getSubPhaseNumber,
+} from "../../../../common/utils/utils";
 
 function DrawPileList() {
   const drawPile = nemosStore((state) => state.drawPile);

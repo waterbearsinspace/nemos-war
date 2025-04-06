@@ -2,18 +2,18 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-type Character = {
+type character = {
   id: number;
   name: string;
   survivingCharacter: number;
 };
 export interface CharacterResourcesSliceInterface {
-  chiefEngineer: Character;
-  firstOfficer: Character;
-  secondOfficer: Character;
-  conseil: Character;
-  nedLand: Character;
-  professorAronnax: Character;
+  chiefEngineer: character;
+  firstOfficer: character;
+  secondOfficer: character;
+  conseil: character;
+  nedLand: character;
+  professorAronnax: character;
   sacrificed: boolean[];
   sacrificeCharacter: (id: number) => void;
 }

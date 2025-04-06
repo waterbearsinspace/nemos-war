@@ -1,0 +1,320 @@
+[
+  {
+    "id": 1,
+    "name": "Western Pacific",
+    "adjacentMovementOceans": [
+      {
+        "name": "Indian Ocean"
+      },
+      {
+        "name": "Arctic Ocean"
+      },
+      {
+        "name": "Central Pacific"
+      },
+      {
+        "name": "South Pacific"
+      },
+      {
+        "name": "Pacific Coast",
+        "placementOnly": true
+      }
+    ],
+    "dieValue": 1,
+    "treasureAvailable": true,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Tientsin Massacre",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Shogun Rebellion",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Chinese Migrants",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 4
+  },
+  {
+    "id": 2,
+    "name": "Eastern Pacific",
+    "adjacentMovementOceans": [
+      {
+        "name": "Central Pacific"
+      },
+      {
+        "name": "South Pacific"
+      },
+      {
+        "name": "Cape Horn"
+      }
+    ],
+    "dieValue": 2,
+    "treasureAvailable": true,
+    "ships": [],
+    "adjacentLands": [],
+    "maxShips": 4
+  },
+  {
+    "id": 3,
+    "name": "North Atlantic",
+    "adjacentMovementOceans": [
+      {
+        "name": "Arctic Ocean"
+      },
+      {
+        "name": "Pacific Coast",
+        "placementOnly": true
+      },
+      {
+        "name": "South Atlantic"
+      },
+      {
+        "name": "European Seas"
+      }
+    ],
+    "dieValue": 3,
+    "treasureAvailable": true,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Mexican Independence",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Cuba & Puerto Rico Revolt",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 4
+  },
+  {
+    "id": 4,
+    "name": "South Atlantic",
+    "adjacentMovementOceans": [
+      {
+        "name": "North Atlantic"
+      },
+      {
+        "name": "Cape Horn"
+      },
+      {
+        "name": "Cape of Good Hope"
+      }
+    ],
+    "dieValue": 4,
+    "treasureAvailable": true,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Paraguayan War",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Ashanti Wars",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Livingstone's Expedition",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 3
+  },
+  {
+    "id": 5,
+    "name": "European Seas",
+    "adjacentMovementOceans": [
+      {
+        "name": "North Atlantic"
+      },
+      {
+        "name": "Indian Ocean",
+        "placementOnly": true
+      }
+    ],
+    "dieValue": 5,
+    "treasureAvailable": true,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Fenian Troubles",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Spanish Revolution",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 4
+  },
+  {
+    "id": 6,
+    "name": "Indian Ocean",
+    "adjacentMovementOceans": [
+      {
+        "name": "European Seas",
+        "placementOnly": true
+      },
+      {
+        "name": "Cape of Good Hope"
+      },
+      {
+        "name": "Western Pacific"
+      }
+    ],
+    "dieValue": 6,
+    "treasureAvailable": true,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Abyssinia at War",
+        "hasUprisingCube": false
+      },
+      {
+        "name": "Selangor Civil War",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 3
+  },
+  {
+    "id": 7,
+    "name": "South Pacific",
+    "adjacentMovementOceans": [
+      {
+        "name": "Western Pacific",
+        "placementOnly": true
+      },
+      {
+        "name": "Central Pacific"
+      },
+      {
+        "name": "Eastern Pacific"
+      }
+    ],
+    "treasureAvailable": false,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Maori Resistance",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 1
+  },
+  {
+    "id": 8,
+    "name": "Central Pacific",
+    "adjacentMovementOceans": [
+      {
+        "name": "Western Pacific"
+      },
+      {
+        "name": "Pacific Coast"
+      },
+      {
+        "name": "Eastern Pacific"
+      },
+      {
+        "name": "South Pacific"
+      }
+    ],
+    "treasureAvailable": false,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Kamehameha's Hawaii",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 2
+  },
+  {
+    "id": 9,
+    "name": "Pacific Coast",
+    "adjacentMovementOceans": [
+      {
+        "name": "Arctic Ocean"
+      },
+      {
+        "name": "Central Pacific"
+      },
+      {
+        "name": "Western Pacific",
+        "placementOnly": true
+      },
+      {
+        "name": "North Atlantic",
+        "placementOnly": true
+      }
+    ],
+    "treasureAvailable": false,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Kamehameha's Hawaii",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 1
+  },
+  {
+    "id": 10,
+    "name": "Arctic Ocean",
+    "adjacentMovementOceans": [
+      {
+        "name": "Western Pacific"
+      },
+      {
+        "name": "Pacific Coast"
+      },
+      {
+        "name": "North Atlantic"
+      }
+    ],
+    "treasureAvailable": false,
+    "ships": [],
+    "maxShips": 1
+  },
+  {
+    "id": 11,
+    "name": "Cape Horn",
+    "adjacentMovementOceans": [
+      {
+        "name": "Eastern Pacific"
+      },
+      {
+        "name": "South Atlantic"
+      }
+    ],
+    "treasureAvailable": false,
+    "ships": [],
+    "maxShips": 1
+  },
+  {
+    "id": 12,
+    "name": "Cape of Good Hope",
+    "adjacentMovementOceans": [
+      {
+        "name": "South Atlantic"
+      },
+      {
+        "name": "Indian Ocean"
+      }
+    ],
+    "treasureAvailable": false,
+    "ships": [],
+    "adjacentLands": [
+      {
+        "name": "Diamond Mines",
+        "hasUprisingCube": false
+      }
+    ],
+    "maxShips": 1
+  }
+]

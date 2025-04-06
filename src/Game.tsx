@@ -25,9 +25,11 @@ export default function Game() {
       {currentPhase == getPhaseNumber("SETUP") && <Setup />}
 
       {/* Playing Screen */}
-      {(currentPhase == getPhaseNumber("EVENT") ||
-        currentPhase == getPhaseNumber("PLACEMENT") ||
-        currentPhase == getPhaseNumber("ACTION")) && <Playing />}
+      {[
+        getPhaseNumber("EVENT"),
+        getPhaseNumber("PLACEMENT"),
+        getPhaseNumber("ACTION"),
+      ].includes(currentPhase) && <Playing />}
     </>
   );
 }

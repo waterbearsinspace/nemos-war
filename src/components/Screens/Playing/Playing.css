@@ -13,12 +13,20 @@
 
     &.overlay-bar-top {
       height: var(--overlay-bar-top-height);
-      align-items: center;
+
+      .overlay-bar-content-wrapper {
+        justify-content: center;
+        align-items: center;
+      }
     }
 
     &.overlay-bar-bottom {
       bottom: 0%;
       height: var(--overlay-bar-bottom-height);
+
+      .overlay-bar-content-wrapper {
+        justify-content: space-evenly;
+      }
     }
 
     /* content wrappers */
@@ -27,14 +35,13 @@
       padding: 1rem;
       flex: 1 1 auto;
       color: white;
+      flex-direction: column;
     }
   }
 }
 
 .playarea {
-  height: calc(
-    100% - var(--overlay-bar-top-height) - var(--overlay-bar-bottom-height)
-  );
+  height: calc(100% - var(--overlay-bar-bottom-height));
   z-index: 1;
   overflow: hidden;
   display: flex;
@@ -44,7 +51,7 @@
 
   .next-phase-wrapper {
     position: absolute;
-    bottom: calc(var(--overlay-bar-bottom-height) + 2rem);
+    bottom: calc(var(--overlay-bar-bottom-height) + 1rem);
     right: 0%;
     background-color: var(--overlay-bar-color);
     padding-block: 1rem;

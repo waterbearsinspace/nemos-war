@@ -4,12 +4,11 @@ import { StateCreator } from "zustand";
 // types and interfaces
 export interface ActionPointsSliceInterface {
   currentActionPoints: number;
-  adjustActionPoints: (by: number) => void;
+  setActionPoints: (to: number) => void;
   cleanUpActionPoints: () => void;
 }
 
 // data and constants
-const maxActionPoints = 5;
 const maxSavedActionPoints = 1;
 
 // slice
@@ -18,12 +17,9 @@ export const actionPointsSlice: StateCreator<ActionPointsSliceInterface, []> = (
 ) => ({
   currentActionPoints: 0,
 
-  adjustActionPoints: (by) =>
-    set((state) => ({
-      currentActionPoints:
-        state.currentActionPoints + by > maxActionPoints
-          ? maxActionPoints
-          : state.currentActionPoints + by,
+  setActionPoints: (to) =>
+    set(() => ({
+      currentActionPoints: to,
     })),
 
   cleanUpActionPoints: () =>

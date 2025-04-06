@@ -2,10 +2,10 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-import { AdventureCardType } from "../../../components/Cards/AdventureCard/AdventureCard";
+import { adventureCard } from "../../../components/Cards/AdventureCard/AdventureCard";
 export interface DrawPileSliceInterface {
-  drawPile: AdventureCardType[];
-  setDrawPile: (newDrawPile: AdventureCardType[]) => void;
+  drawPile: adventureCard[];
+  setDrawPile: (newDrawPile: adventureCard[]) => void;
 }
 
 // slice

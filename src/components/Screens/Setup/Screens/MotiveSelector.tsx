@@ -1,8 +1,8 @@
 // game store
-import { nemosStore } from "../../../common/stores/nemosStore";
+import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // data and constants
-import motiveData from "../../../common/data/motives.json";
+import motiveData from "../../../../common/data/motives.json";
 const motiveDescriptionText =
   "This represents the driving motivation behind Nemo's quest and determines the scoring multipliers at the end of the game.";
 
@@ -17,7 +17,7 @@ const motiveAdvice = [
 ];
 
 // utils
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/utils/utils";
 
 export default function MotiveSelector() {
   const motive = nemosStore((state) => state.currentMotive);
@@ -70,6 +70,11 @@ export default function MotiveSelector() {
             <p>Science Discovered: x{motiveInfo!.scienceDiscovered}</p>
             <p>Wonders Seen: x{motiveInfo!.wondersSeen}</p>
           </section>
+        </section>
+        <section>
+          <p>Act One Cards: 6</p>
+          <p>Act Two Cards: {motiveInfo!.actTwoCards}</p>
+          <p>Act Three Cards: {motiveInfo!.actThreeCards + 1}</p>
         </section>
         <div className="motive-advice">
           <p>{motiveAdvice[motive]} </p>

@@ -26,7 +26,7 @@
   width: 10rem;
 }
 
-.roll-all:hover :not(disabled) {
+.roll-all:hover .roll-all > *:hover :not(disabled) {
   transform: scale(1.025);
 }
 
@@ -58,10 +58,6 @@
 }
 .dice-tray:has(.roll-all:hover:not(.disabled)) .die {
   transform: rotate(4deg);
-}
-
-.roll-all:hover:not(.disabled) {
-  transform: scale(1.0125);
 }
 
 .die-spot {

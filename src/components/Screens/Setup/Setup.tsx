@@ -2,12 +2,11 @@
 import { nemosStore } from "../../../common/stores/nemosStore";
 
 // components
-import MotiveSelector from "./MotiveSelector";
-import DrawPileAndAdventureDeck from "./DrawPileAndAdventureDeck";
-import StartingUpgrade from "./StartingUpgrade";
-import ShipPools from "./ShipPools";
-import Done from "./Done";
-
+import MotiveSelector from "./Screens/MotiveSelector";
+import DrawPileAndAdventureDeck from "./Screens/DrawPileAndAdventureDeck";
+import StartingUpgrade from "./Screens/StartingUpgrade";
+import ShipPools from "./Screens/ShipPools";
+import Done from "./Screens/Done";
 // css
 import "./Setup.css";
 import { getSubPhaseNumber } from "../../../common/utils/utils";

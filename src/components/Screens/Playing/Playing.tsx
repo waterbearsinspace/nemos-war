@@ -1,18 +1,26 @@
 //  game store
-import ResolveAdventureCard from "../../Cards/AdventureCard/ResolveAdventureCards";
+import AdventurCardResolution from "../../Cards/AdventureCard/AdventureCardResolution";
 import { nemosStore } from "../../../common/stores/nemosStore";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
-import AdventureCard from "../../Cards/AdventureCard/AdventureCard";
-
-import cards from "../../../common/data/adventureCards.json";
 
 import "./Playing.css";
+import { diceStore } from "../../../common/stores/diceStore";
+import Placement from "./Placement";
+import AdventureCardDraw from "../../Cards/AdventureCard/AdventureCardDraw";
+import Actions from "./Actions";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+  const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
+  const setShowNextPhaseButton = nemosStore(
+    (state) => state.setShowNextPhaseButton
+  );
+  const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const drawPile = nemosStore((state) => state.drawPile);
-  const setDrawPile = nemosStore((state) => state.setDrawPile);
+  const nemoValue = nemosStore((state) => state.nemo.value);
+  const crewValue = nemosStore((state) => state.crew.value);
+  const hullValue = nemosStore((state) => state.hull.value);
 
   //  handlePhase()
   //  do currentPhase
@@ -50,58 +58,29 @@ export default function Playing() {
   //  reach finale card
   //
 
-  function nextSubPhaseButton(nextSubPhase: string, buttonText: string) {
-    return (
-      <div className="next-phase-wrapper">
-        <button
-          className="next-phase-button"
-          onClick={() => {
-            setSubPhase(getSubPhaseNumber(nextSubPhase));
-          }}
-        >
-          {buttonText}
-        </button>
-      </div>
-    );
-  }
-
-  function render() {
+  function Render() {
     switch (currentSubPhase) {
       case getSubPhaseNumber("DRAW EVENT CARD"):
         return (
           <>
-            {/* {AdventureCard({ card: drawPile[0]! })} */}
-            {AdventureCard({ card: cards[52] })}
-            {nextSubPhaseButton("RESOLVE EVENT CARD", "Resolve Card")}
+            <AdventureCardDraw />
           </>
         );
       case getSubPhaseNumber("RESOLVE EVENT CARD"):
         return (
           <>
-            <ResolveAdventureCard id={drawPile[0].id} />
+            <AdventurCardResolution id={drawPile[0].id} />
           </>
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):
-        return (
-          <>
-            <p>Rolling for Placement</p>
-            {nextSubPhaseButton("STANDARD PLACEMENT", "Standard Placement")}
-          </>
-        );
       case getSubPhaseNumber("STANDARD PLACEMENT"):
         return (
           <>
-            <p>Standard Placement</p>
-            {nextSubPhaseButton("SELECT ACTION", "Select Action")}
+            <Placement />
           </>
         );
       case getSubPhaseNumber("SELECT ACTION"):
-        return (
-          <>
-            <p>Select Action</p>
-            {nextSubPhaseButton("DRAW EVENT CARD", "Draw Event Card")}
-          </>
-        );
+        return <Actions />;
 
       default:
         return (
@@ -114,15 +93,20 @@ export default function Playing() {
 
   return (
     <section className="game-screen-wrapper">
-      <section className="overlay-bar overlay-bar-top">
+      {/* <section className="overlay-bar overlay-bar-top">
         <section className="overlay-bar-content-wrapper">
-          <p>Top Bar</p>
+          <p>{gameSubPhases[currentSubPhase as keyof typeof gameSubPhases]}</p>
         </section>
-      </section>
-      <div className="playarea">{render()}</div>
+      </section> */}
+      <div className="playarea">
+        <Render />
+      </div>
       <section className="overlay-bar overlay-bar-bottom">
         <section className="overlay-bar-content-wrapper">
-          <p>Bottom Bar</p>
+          <p>NOTORIETY: 0</p>
+          <p>NEMO: {nemoValue}</p>
+          <p>CREW: {crewValue}</p>
+          <p>HULL: {hullValue}</p>
         </section>
       </section>
     </section>

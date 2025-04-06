@@ -1,12 +1,15 @@
 #root {
   /* variables */
-  --soft-black: rgb(58, 58, 58);
-  --overlay-bar-top-height: 8%;
-  --overlay-bar-bottom-height: 36%;
-  --overlay-bar-color: #505050;
+  --soft-black: rgb(65, 65, 65);
+  --overlay-bar-top-height: 6%;
+  --overlay-bar-bottom-height: 24%;
+  --overlay-bar-color: var(--soft-black);
+  --playarea-color: #dddbd7;
+  --card-height: 25rem;
+  --card-width: 36rem;
 
   align-items: center;
-  background-color: #dddbd7;
+  background-color: var(--playarea-color);
   color: var(--soft-black);
   display: flex;
   flex-basis: 100%;

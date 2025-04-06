@@ -2,9 +2,9 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-import { AdventureCardType } from "../../../components/Cards/AdventureCard/AdventureCard";
+import { adventureCard } from "../../../components/Cards/AdventureCard/AdventureCard";
 export interface KeptCardsSliceInterface {
-  keptCards: AdventureCardType[];
+  keptCards: adventureCard[];
   // setKeptCards: void (operation, id) => number;
 }
 

@@ -2,7 +2,7 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-type ShipResource = {
+type shipResource = {
   id: number;
   name: string;
   value: number;
@@ -11,9 +11,9 @@ type ShipResource = {
   vp: Object[];
 };
 export interface ShipResourcesSliceInterface {
-  nemo: ShipResource;
-  hull: ShipResource;
-  crew: ShipResource;
+  nemo: shipResource;
+  hull: shipResource;
+  crew: shipResource;
   setNemoValue: (to: number) => void;
   setCrewValue: (to: number) => void;
   setHullValue: (to: number) => void;

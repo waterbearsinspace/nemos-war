@@ -2,14 +2,18 @@
 import { create } from "zustand";
 
 // types and interfaces
-export type Dice = {
+export type dice = {
   id: string;
   value: number;
-  active: boolean;
+  placement: boolean;
 };
 interface DiceStore {
-  dice: Array<Dice>;
-  setDice: (newDice: Array<Dice>) => void;
+  dice: Array<dice>;
+  setDice: (newDice: Array<dice>) => void;
+  doneRolling: boolean;
+  setDoneRolling: (to: boolean) => void;
+  testResultText: string;
+  setTestResultText: (to: string) => void;
 }
 
 // slice
@@ -19,31 +23,40 @@ export const diceStore = create<DiceStore>()((set) => ({
     {
       id: "w1",
       value: 1,
-      active: true,
+      placement: true,
     },
     {
       id: "w2",
       value: 1,
-      active: true,
+      placement: true,
     },
     {
       id: "w3",
       value: 1,
-      active: false,
+      placement: false,
     },
     {
       id: "b1",
       value: 1,
-      active: false,
+      placement: false,
     },
     {
       id: "b2",
       value: 1,
-      active: false,
+      placement: false,
     },
   ],
-
   setDice: (newDice) => {
     set(() => ({ dice: newDice }));
+  },
+
+  doneRolling: false,
+  setDoneRolling: (to) => {
+    set(() => ({ doneRolling: to }));
+  },
+
+  testResultText: "",
+  setTestResultText: (to) => {
+    set(() => ({ testResultText: to }));
   },
 }));

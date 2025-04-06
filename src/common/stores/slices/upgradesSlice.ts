@@ -2,7 +2,7 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-type Upgrade = {
+type upgrade = {
   id: number;
   name: string;
   flavorText: string;
@@ -11,12 +11,12 @@ type Upgrade = {
   motive?: string;
 };
 export interface UpgradesSliceInterface {
-  currentUpgrades: Upgrade[];
-  possibleUpgrades: Upgrade[];
-  unusedUpgrades: Upgrade[];
-  addToCurrentUpgrades: (newUpgrade: Upgrade) => void;
-  addToPossibleUpgrades: (newUpgrade: Upgrade) => void;
-  setUnusedUpgrades: (newUnusedUpgrades: Upgrade[]) => void;
+  currentUpgrades: upgrade[];
+  possibleUpgrades: upgrade[];
+  unusedUpgrades: upgrade[];
+  addToCurrentUpgrades: (newUpgrade: upgrade) => void;
+  addToPossibleUpgrades: (newUpgrade: upgrade) => void;
+  setUnusedUpgrades: (newUnusedUpgrades: upgrade[]) => void;
 }
 
 // slice
