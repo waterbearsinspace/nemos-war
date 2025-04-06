@@ -4,19 +4,12 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
 
 import "./Playing.css";
-import { diceStore } from "../../../common/stores/diceStore";
 import Placement from "./Placement";
 import AdventureCardDraw from "../../Cards/AdventureCard/AdventureCardDraw";
 import Actions from "./Actions";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
-  const setShowNextPhaseButton = nemosStore(
-    (state) => state.setShowNextPhaseButton
-  );
-  const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const drawPile = nemosStore((state) => state.drawPile);
   const nemoValue = nemosStore((state) => state.nemo.value);
   const crewValue = nemosStore((state) => state.crew.value);

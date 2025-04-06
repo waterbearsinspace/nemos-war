@@ -12,16 +12,12 @@ import {
   getSubPhaseNumber,
   shuffleArray,
 } from "../../../../common/utils/utils";
-import { ship } from "../../../../common/stores/slices/shipPoolsSlice";
 
 export default function ShipPools() {
   let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  let currentShipPool = nemosStore((state) => state.currentShipPool);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
   let oceans = nemosStore((state) => state.oceans);
   let setOceans = nemosStore((state) => state.setOceans);
-
-  let [displayText, setDisplayText] = useState("Setting up Ship Pools");
 
   function setupShipPool() {
     let starterShipPool = ships.filter(
@@ -83,7 +79,7 @@ export default function ShipPools() {
   return (
     <div>
       <h1 className="loading-text">
-        <span>{displayText}</span>
+        <span>Setting up Ship Pools</span>
         <div className="loader"></div>
       </h1>
     </div>

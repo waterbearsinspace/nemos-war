@@ -2,7 +2,7 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
 
 export default function Actions() {
-  const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
+  // const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
   const setShowNextPhaseButton = nemosStore(
     (state) => state.setShowNextPhaseButton
   );

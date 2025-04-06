@@ -7,7 +7,6 @@ import DiceFace5 from "../../common/assets/dice/DiceFace5";
 import DiceFace6 from "../../common/assets/dice/DiceFace6";
 
 import "./Dice.css";
-import { nemosStore } from "../../common/stores/nemosStore";
 
 function Die({ die }: { die: dice }) {
   let faces = [

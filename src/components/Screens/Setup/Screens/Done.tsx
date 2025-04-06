@@ -53,8 +53,10 @@ function ShipPool() {
         <ul className="card-list">
           {shipPool.map((ship) => {
             return (
-              <li key={ship.id}>
-                {ship.name}: {ship.nationality} {ship.shipClass}
+              <li key={typeof ship != "string" ? ship.id : 1}>
+                {typeof ship != "string"
+                  ? ship.name + ": " + ship.nationality + ship.shipClass
+                  : "Hidden Ship"}
               </li>
             );
           })}
