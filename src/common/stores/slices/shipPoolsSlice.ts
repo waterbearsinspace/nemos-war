@@ -44,7 +44,7 @@ export type ship = {
 };
 
 export interface ShipPoolsSliceInterface {
-  currentShipPool: (ship | string)[];
+  currentShipPool: ship[];
   setCurrentShipPool: (newShipPool: ship[]) => void;
 }
 

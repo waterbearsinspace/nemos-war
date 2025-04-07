@@ -55,7 +55,7 @@ function ShipPool() {
             return (
               <li key={typeof ship != "string" ? ship.id : 1}>
                 {typeof ship != "string"
-                  ? ship.name + ": " + ship.nationality + ship.shipClass
+                  ? ship.name + ": " + ship.nationality + " " + ship.shipClass
                   : "Hidden Ship"}
               </li>
             );

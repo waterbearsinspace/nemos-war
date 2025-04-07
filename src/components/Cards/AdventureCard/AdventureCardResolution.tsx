@@ -24,14 +24,12 @@ export default function AdventurCardResolution({
   );
   const oceans = nemosStore((state) => state.oceans);
   const doneRolling = diceStore((state) => state.doneRolling);
-  const testResultText = diceStore((state) => state.testResultText);
 
   function Test(arg: any) {
     return (
       <div className="test">
-        <p className="test-result">{doneRolling ? testResultText : ""}</p>
         <DiceTray
-          numDice={1}
+          numDice={arg.numDice}
           buttonText="Roll for Starting Ocean"
           testId={arg.testId}
         />
@@ -51,7 +49,7 @@ export default function AdventurCardResolution({
         };
         return (
           <div>
-            <Test testId={id} />
+            <Test testId={id} numDice={1} />
             {doneRolling && (
               <div className="next-phase-wrapper">
                 <button className="next-phase-button" onClick={handle1001Click}>

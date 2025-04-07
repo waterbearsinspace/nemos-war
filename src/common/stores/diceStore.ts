@@ -12,8 +12,6 @@ interface DiceStore {
   setDice: (newDice: Array<dice>) => void;
   doneRolling: boolean;
   setDoneRolling: (to: boolean) => void;
-  testResultText: string;
-  setTestResultText: (to: string) => void;
 }
 
 // slice
@@ -53,10 +51,5 @@ export const diceStore = create<DiceStore>()((set) => ({
   doneRolling: false,
   setDoneRolling: (to) => {
     set(() => ({ doneRolling: to }));
-  },
-
-  testResultText: "",
-  setTestResultText: (to) => {
-    set(() => ({ testResultText: to }));
   },
 }));

@@ -6,6 +6,25 @@
   width: 100%;
   gap: 4rem;
 
+  .placement-roll {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
+    .placement-roll-title {
+    }
+
+    .placement-roll-differential {
+      height: 1;
+      text-align: center;
+      width: 6.25rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
   .placement-side-pane {
     width: 24rem;
     height: 100%;
@@ -13,5 +32,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .dice-to-place-dice-wrapper {
+      display: flex;
+      gap: 2rem;
+
+      .dice-to-place-die {
+        cursor: pointer;
+
+        &:active {
+          transform: scale(1.125);
+        }
+      }
+    }
   }
 }

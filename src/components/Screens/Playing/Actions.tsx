@@ -37,9 +37,9 @@ export default function Actions() {
       <Oceans />
       <div className="actions-select-side-pane">
         {currentSubPhase == getSubPhaseNumber("LULL ACTION") ? (
-          <p>Lull Turn</p>
+          <h2>Lull Turn</h2>
         ) : (
-          <p>Standard Turn</p>
+          <h2>Standard Turn</h2>
         )}
         <p>
           Action Points: <strong>{actionPoints}</strong>

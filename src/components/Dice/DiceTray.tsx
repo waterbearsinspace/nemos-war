@@ -8,7 +8,7 @@ import DiceFace6 from "../../common/assets/dice/DiceFace6";
 
 import "./Dice.css";
 
-function Die({ die }: { die: dice }) {
+export function Die({ die }: { die: dice }) {
   let faces = [
     <DiceFace1 />,
     <DiceFace2 />,

@@ -67,7 +67,6 @@ export default function Playing() {
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):
       case getSubPhaseNumber("STANDARD PLACEMENT"):
-      case getSubPhaseNumber("LULL PLACEMENT"):
         return (
           <>
             <Placement />
