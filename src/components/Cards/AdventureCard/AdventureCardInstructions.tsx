@@ -68,6 +68,6 @@ export default function AdventureCardInstructions(id: number) {
       return <></>;
 
     default:
-      return <p>Invalid Card ID {id}</p>;
+      return <p>Unimplemented Card ID {id}</p>;
   }
 }

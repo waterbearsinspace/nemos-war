@@ -49,6 +49,14 @@
         background-color: rgb(195, 221, 221);
       }
 
+      &[data-selected="this-hoverable"] {
+        background-color: rgb(195, 221, 221);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
       &[data-selected="adjacent"] {
         background-color: rgb(211, 221, 195);
 
