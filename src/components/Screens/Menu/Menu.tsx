@@ -1,7 +1,10 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+
+//utils
 import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
 
+// css
 import "./Menu.css";
 
 export default function Menu() {

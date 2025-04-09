@@ -1,6 +1,5 @@
 // game store
 import { nemosStore } from "../../common/stores/nemosStore";
-import { shuffleArray } from "../utils/utils";
 
 // types and interfaces
 import type { vp } from "./calculateVictoryPoints";
@@ -11,6 +10,9 @@ export type treasure = {
   vp?: vp;
   amount?: number;
 };
+
+// utils
+import { shuffleArray } from "../utils/utils";
 
 export const useTreasure = (id: number) => {
   const setNemoValue = nemosStore((state) => state.setNemoValue);

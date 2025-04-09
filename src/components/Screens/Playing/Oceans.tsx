@@ -1,4 +1,7 @@
+// game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+
+// css
 import "./Oceans.css";
 
 interface OceansInterface {

@@ -1,10 +1,18 @@
+// modules
 import { useState } from "react";
-import { dice, diceStore } from "../../../common/stores/diceStore";
+
+// game store
 import { nemosStore } from "../../../common/stores/nemosStore";
-import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
+import { dice, diceStore } from "../../../common/stores/diceStore";
+
+// components
 import DiceTray, { Die } from "../../Dice/DiceTray";
 import Oceans from "./Oceans";
 
+// utils
+import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
+
+// css
 import "./Placement.css";
 
 export default function Placement() {

@@ -1,7 +1,13 @@
+// game store
 import { nemosStore } from "../../../common/stores/nemosStore";
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+
+// components
 import Oceans from "./Oceans";
 
+// utils
+import { getSubPhaseNumber } from "../../../common/utils/utils";
+
+// css
 import "./Actions.css";
 
 export default function Actions() {
@@ -14,19 +20,37 @@ export default function Actions() {
   const actionPoints = nemosStore((state) => state.currentActionPoints);
 
   function Actions() {
+    const actions = [
+      "Adventure",
+      "Attack",
+      "Incite",
+      "Move",
+      "Rest",
+      "Repair",
+      "Refit",
+      "Search",
+    ];
+
+    const handleClick = (action: string) => {
+      window.alert(action);
+    };
+
     return (
       <div className="actions-select-option-list">
-        <section className="action-select-option-list-column">
-          <button name="action-select-option">Adventure</button>
-          <button name="action-select-option">Attack</button>
-          <button name="action-select-option">Incite</button>
-          <button name="action-select-option">Move</button>
-        </section>
-        <section className="action-select-option-list-column">
-          <button name="action-select-option">Rest</button>
-          <button name="action-select-option">Repair</button>
-          <button name="action-select-option">Refit</button>
-          <button name="action-select-option">Search</button>
+        <section className="action-select-option-list-grid">
+          {actions.map((action) => {
+            return (
+              <button
+                className="action-select-option"
+                key={action}
+                onClick={() => {
+                  handleClick(action);
+                }}
+              >
+                {action}
+              </button>
+            );
+          })}
         </section>
       </div>
     );
@@ -36,11 +60,7 @@ export default function Actions() {
     <div className="actions-select">
       <Oceans />
       <div className="actions-select-side-pane">
-        {currentSubPhase == getSubPhaseNumber("LULL ACTION") ? (
-          <h2>Lull Turn</h2>
-        ) : (
-          <h2>Standard Turn</h2>
-        )}
+        <h2>Select Action</h2>
         <p>
           Action Points: <strong>{actionPoints}</strong>
         </p>

@@ -21,14 +21,11 @@
       gap: 1rem;
       padding: 1rem;
 
-      .action-select-option-list-column {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: stretch;
+      .action-select-option-list-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 1rem;
-        padding: 1rem;
-        width: 8rem;
+        width: 16rem;
       }
     }
   }

@@ -4,11 +4,11 @@ import { useEffect } from "react";
 // game store
 import { nemosStore } from "../../../../common/stores/nemosStore";
 
-// data and constants
-import adventureCards from "../../../../common/data/adventureCards.json";
-
 // components
 import motives from "../../../../common/data/motives.json";
+
+// data and constants
+import adventureCards from "../../../../common/data/adventureCards.json";
 
 // utils
 import {

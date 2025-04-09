@@ -1,9 +1,13 @@
+// game store
 import { nemosStore } from "../../common/stores/nemosStore";
+
+// data and constants
 import {
   gamePhases,
   gameSubPhases,
 } from "../../common/stores/slices/gamePhaseSlice";
 
+// css
 import "./DebugHeader.css";
 
 function Phase() {

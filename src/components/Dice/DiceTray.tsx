@@ -1,4 +1,7 @@
+// game store
 import { diceStore, dice } from "../../common/stores/diceStore";
+
+// components
 import DiceFace1 from "../../common/assets/dice/DiceFace1";
 import DiceFace2 from "../../common/assets/dice/DiceFace2";
 import DiceFace3 from "../../common/assets/dice/DiceFace3";
@@ -6,6 +9,7 @@ import DiceFace4 from "../../common/assets/dice/DiceFace4";
 import DiceFace5 from "../../common/assets/dice/DiceFace5";
 import DiceFace6 from "../../common/assets/dice/DiceFace6";
 
+// css
 import "./Dice.css";
 
 export function Die({ die }: { die: dice }) {

@@ -7,13 +7,18 @@ import DrawPileAndAdventureDeck from "./Screens/DrawPileAndAdventureDeck";
 import StartingUpgrade from "./Screens/StartingUpgrade";
 import ShipPools from "./Screens/ShipPools";
 import Done from "./Screens/Done";
-// css
-import "./Setup.css";
+
+// utils
 import { getSubPhaseNumber } from "../../../common/utils/utils";
 
+// css
+import "./Setup.css";
+
 export default function Setup() {
+  // store selectors
   const currentSubPhaseNumber = nemosStore((state) => state.currentSubPhase);
 
+  // setup screens
   switch (currentSubPhaseNumber) {
     case getSubPhaseNumber("SELECT MOTIVE"):
       return <MotiveSelector />;

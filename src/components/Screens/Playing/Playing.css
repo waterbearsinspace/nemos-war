@@ -41,7 +41,9 @@
 }
 
 .playarea {
-  height: calc(100% - var(--overlay-bar-bottom-height));
+  height: calc(
+    100% - (var(--overlay-bar-bottom-height) + var(--overlay-bar-top-height))
+  );
   z-index: 1;
   overflow: hidden;
   display: flex;

@@ -10,9 +10,10 @@ const upgradeDescriptionText =
 import { getSubPhaseNumber } from "../../../../common/utils/utils";
 
 export default function StartingUpgrade() {
+  // store selectors
   const motive = nemosStore((state) => state.motiveName);
-  let motiveUpgrade = upgradeData.find((upgrade) => upgrade.motive == motive);
-  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+  const motiveUpgrade = upgradeData.find((upgrade) => upgrade.motive == motive);
+  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   const handleContinue = () => {
     setSubPhase(getSubPhaseNumber("PREP SHIPS"));

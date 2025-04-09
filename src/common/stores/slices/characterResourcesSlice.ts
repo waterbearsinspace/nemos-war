@@ -20,12 +20,12 @@ export interface CharacterResourcesSliceInterface {
 
 // data and constants
 import characterResourceData from "../../data/characterResources.json";
-let chiefEngineerData = characterResourceData[0];
-let firstOfficerData = characterResourceData[1];
-let secondOfficerData = characterResourceData[2];
-let conseilData = characterResourceData[3];
-let nedLandData = characterResourceData[4];
-let professorAronnaxData = characterResourceData[5];
+const chiefEngineerData = characterResourceData[0];
+const firstOfficerData = characterResourceData[1];
+const secondOfficerData = characterResourceData[2];
+const conseilData = characterResourceData[3];
+const nedLandData = characterResourceData[4];
+const professorAronnaxData = characterResourceData[5];
 
 // slice
 export const characterResourceSlice: StateCreator<

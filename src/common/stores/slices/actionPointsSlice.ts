@@ -10,12 +10,13 @@ export interface ActionPointsSliceInterface {
 
 // data and constants
 const maxSavedActionPoints = 1;
+const startingActionPoints = 1;
 
 // slice
 export const actionPointsSlice: StateCreator<ActionPointsSliceInterface, []> = (
   set
 ) => ({
-  currentActionPoints: 0,
+  currentActionPoints: startingActionPoints,
 
   setActionPoints: (to) =>
     set(() => ({

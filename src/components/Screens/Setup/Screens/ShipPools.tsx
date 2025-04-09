@@ -14,6 +14,7 @@ import {
 } from "../../../../common/utils/utils";
 
 export default function ShipPools() {
+  // store selectors
   let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
   let oceans = nemosStore((state) => state.oceans);

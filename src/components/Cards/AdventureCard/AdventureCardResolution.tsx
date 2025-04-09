@@ -1,9 +1,15 @@
-import { diceStore } from "../../../common/stores/diceStore";
+// game store
 import { nemosStore } from "../../../common/stores/nemosStore";
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+import { diceStore } from "../../../common/stores/diceStore";
+
+// components
 import DiceTray from "../../Dice/DiceTray";
 import AdventureCard from "./AdventureCard";
 
+// utils
+import { getSubPhaseNumber } from "../../../common/utils/utils";
+
+// css
 import "./AdventureCardResolution.css";
 
 interface AdventureCardResolutionInterface {

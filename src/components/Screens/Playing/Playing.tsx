@@ -1,12 +1,20 @@
 //  game store
-import AdventurCardResolution from "../../Cards/AdventureCard/AdventureCardResolution";
 import { nemosStore } from "../../../common/stores/nemosStore";
+
+// components
+import AdventureCardDraw from "../../Cards/AdventureCard/AdventureCardDraw";
+import AdventurCardResolution from "../../Cards/AdventureCard/AdventureCardResolution";
+import Placement from "./Placement";
+import Actions from "./Actions";
+
+// utils
 import { getSubPhaseNumber } from "../../../common/utils/utils";
 
+// data and constants
+import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
+
+// css
 import "./Playing.css";
-import Placement from "./Placement";
-import AdventureCardDraw from "../../Cards/AdventureCard/AdventureCardDraw";
-import Actions from "./Actions";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
@@ -87,11 +95,11 @@ export default function Playing() {
 
   return (
     <section className="game-screen-wrapper">
-      {/* <section className="overlay-bar overlay-bar-top">
+      <section className="overlay-bar overlay-bar-top">
         <section className="overlay-bar-content-wrapper">
           <p>{gameSubPhases[currentSubPhase as keyof typeof gameSubPhases]}</p>
         </section>
-      </section> */}
+      </section>
       <div className="playarea">
         <Render />
       </div>

@@ -1,21 +1,23 @@
-// components
-import Menu from "./components/Screens/Menu/Menu";
-import Setup from "./components/Screens/Setup/Setup";
-
 // game store
 import { nemosStore } from "./common/stores/nemosStore";
 
-// css
-import "./Game.css";
+// components
+import Menu from "./components/Screens/Menu/Menu";
+import Setup from "./components/Screens/Setup/Setup";
 import Playing from "./components/Screens/Playing/Playing";
+
+// utils
 import { getPhaseNumber } from "./common/utils/utils";
 
+// css
+import "./Game.css";
+
 export default function Game() {
+  // store selectors
   const currentPhase = nemosStore((state) => state.currentPhase);
 
   return (
     <>
-      {/* Debug Header */}
       {/* {currentPhase != getPhaseNumber("MENU") && <DebugHeader />} */}
 
       {/* Menu Screen */}
