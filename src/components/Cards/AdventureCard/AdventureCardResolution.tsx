@@ -4,7 +4,7 @@ import { diceStore } from "../../../common/stores/diceStore";
 
 // components
 import DiceTray from "../../Dice/DiceTray";
-import AdventureCard from "./AdventureCard";
+import AdventureCard, { adventureCard } from "./AdventureCard";
 
 // utils
 import { getSubPhaseNumber } from "../../../common/utils/utils";
@@ -13,18 +13,21 @@ import { getSubPhaseNumber } from "../../../common/utils/utils";
 import "./AdventureCardResolution.css";
 
 interface AdventureCardResolutionInterface {
-  id: number;
+  card: adventureCard;
 }
 
 export default function AdventurCardResolution({
-  id,
+  card,
 }: AdventureCardResolutionInterface) {
+  const subPhase = nemosStore((state) => state.currentSubPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
   const dice = diceStore((state) => state.dice);
   const setDice = diceStore((state) => state.setDice);
   const drawPile = nemosStore((state) => state.drawPile);
   const setDrawPile = nemosStore((state) => state.setDrawPile);
+  const adventureDeck = nemosStore((state) => state.adventureDeck);
+  const setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
   const setCurrentNautilusOcean = nemosStore(
     (state) => state.setCurrentNautilusOcean
   );
@@ -44,7 +47,7 @@ export default function AdventurCardResolution({
   }
 
   function ResolveDisplay() {
-    switch (id) {
+    switch (card.id) {
       case 1001: {
         const handle1001Click = () => {
           resolveAdventureCardsEffects();
@@ -55,7 +58,7 @@ export default function AdventurCardResolution({
         };
         return (
           <div>
-            <Test testId={id} numDice={1} />
+            <Test testId={card.id} numDice={1} />
             {doneRolling && (
               <div className="next-phase-wrapper">
                 <button className="next-phase-button" onClick={handle1001Click}>
@@ -69,11 +72,14 @@ export default function AdventurCardResolution({
 
       default:
         return (
+          // displays when there is no card resolution for the current card
           <div>
-            <p>Resolving Event #{id}</p>
+            <p>Resolving Event #{card.id}</p>
             <div className="next-phase-wrapper">
               <button className="next-phase-button" onClick={handleClick}>
-                Placement Roll
+                {subPhase == getSubPhaseNumber("RESOLVE EVENT CARD")
+                  ? "Placement Roll"
+                  : "Continue"}
               </button>
             </div>
           </div>
@@ -82,7 +88,7 @@ export default function AdventurCardResolution({
   }
 
   function resolveAdventureCardsEffects() {
-    switch (id) {
+    switch (card.id) {
       case 1001: {
         setDice([
           {
@@ -157,20 +163,29 @@ export default function AdventurCardResolution({
 
   const handleClick = () => {
     resolveAdventureCardsEffects();
-    let drawPileCopy = drawPile;
-    drawPileCopy.shift();
-    setDrawPile(drawPileCopy);
-    setSubPhase(getSubPhaseNumber("PLACEMENT DICE ROLL"));
+    if (subPhase == getSubPhaseNumber("RESOLVE EVENT CARD")) {
+      let drawPileCopy = drawPile;
+      drawPileCopy.shift();
+      setDrawPile(drawPileCopy);
+      setSubPhase(getSubPhaseNumber("PLACEMENT DICE ROLL"));
+    } else {
+      let adventureDeckCopy = adventureDeck;
+      adventureDeckCopy.shift();
+      setAdventureDeck(adventureDeckCopy);
+      setSubPhase(getSubPhaseNumber("ACTION SELECT"));
+    }
   };
 
   return (
     <>
-      {AdventureCard({ card: drawPile[0]! })}
+      {AdventureCard({ card: card })}
       <ResolveDisplay />
-      {showNextPhaseButton && (
+      {showNextPhaseButton && ( // display when there is a card resolution added for the current card
         <div className="next-phase-wrapper">
           <button className="next-phase-button" onClick={handleClick}>
-            Placement Roll
+            {subPhase == getSubPhaseNumber("RESOLVE EVENT CARD")
+              ? "Placement Roll"
+              : "Continue"}
           </button>
         </div>
       )}

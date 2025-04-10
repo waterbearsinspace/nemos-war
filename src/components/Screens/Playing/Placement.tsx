@@ -22,7 +22,7 @@ export default function Placement() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const actionPoints = nemosStore((state) => state.currentActionPoints);
-  const setActionPoints = nemosStore((state) => state.setActionPoints);
+  const setActionPoints = nemosStore((state) => state.setCurrentActionPoints);
   const oceans = nemosStore((state) => state.oceans);
   const setOceans = nemosStore((state) => state.setOceans);
   const currentPlacementOcean = nemosStore(
@@ -50,9 +50,7 @@ export default function Placement() {
 
   const handlePlacementClick = () => {
     setActionPoints(actionPoints > 0 ? differential + 1 : differential);
-    differential > 0
-      ? setSubPhase(getSubPhaseNumber("STANDARD ACTION"))
-      : setSubPhase(getSubPhaseNumber("LULL ACTION"));
+    setSubPhase(getSubPhaseNumber("ACTION SELECT"));
   };
 
   function PlacementRoll() {

@@ -2,7 +2,7 @@
   /* variables */
   --soft-black: rgb(65, 65, 65);
   --overlay-bar-top-height: 4%;
-  --overlay-bar-bottom-height: 24%;
+  --overlay-bar-bottom-height: 20%;
   --overlay-bar-color: var(--soft-black);
   --playarea-color: #dddbd7;
   --card-height: 25rem;

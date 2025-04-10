@@ -11,13 +11,12 @@ import { getSubPhaseNumber } from "../../../common/utils/utils";
 import "./Actions.css";
 
 export default function Actions() {
-  // const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
   const setShowNextPhaseButton = nemosStore(
     (state) => state.setShowNextPhaseButton
   );
-  const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const actionPoints = nemosStore((state) => state.currentActionPoints);
+  const setActionPoints = nemosStore((state) => state.setCurrentActionPoints);
 
   function Actions() {
     const actions = [
@@ -32,7 +31,16 @@ export default function Actions() {
     ];
 
     const handleClick = (action: string) => {
-      window.alert(action);
+      switch (action) {
+        case "Adventure":
+          if (actionPoints >= 2) {
+            setActionPoints(actionPoints - 2);
+            setSubPhase(getSubPhaseNumber("DRAW ADVENTURE CARD"));
+          } else window.alert("Not enough action points!");
+          break;
+        default:
+          break;
+      }
     };
 
     return (

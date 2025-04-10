@@ -18,7 +18,9 @@ export const useTreasure = (id: number) => {
   const setNemoValue = nemosStore((state) => state.setNemoValue);
   const setCrewValue = nemosStore((state) => state.setCrewValue);
   const setHullValue = nemosStore((state) => state.setHullValue);
-  const adjustActionPoints = nemosStore((state) => state.setActionPoints);
+  const adjustActionPoints = nemosStore(
+    (state) => state.setCurrentActionPoints
+  );
   const addToPossibleUpgrades = nemosStore(
     (state) => state.addToPossibleUpgrades
   );

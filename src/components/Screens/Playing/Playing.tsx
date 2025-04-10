@@ -19,6 +19,7 @@ import "./Playing.css";
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const drawPile = nemosStore((state) => state.drawPile);
+  const adventureDeck = nemosStore((state) => state.adventureDeck);
   const nemoValue = nemosStore((state) => state.nemo.value);
   const crewValue = nemosStore((state) => state.crew.value);
   const hullValue = nemosStore((state) => state.hull.value);
@@ -70,7 +71,7 @@ export default function Playing() {
       case getSubPhaseNumber("RESOLVE EVENT CARD"):
         return (
           <>
-            <AdventurCardResolution id={drawPile[0].id} />
+            <AdventurCardResolution card={drawPile[0]} />
           </>
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):
@@ -80,9 +81,22 @@ export default function Playing() {
             <Placement />
           </>
         );
-      case getSubPhaseNumber("STANDARD ACTION"):
-      case getSubPhaseNumber("LULL ACTION"):
+      case getSubPhaseNumber("ACTION SELECT"):
         return <Actions />;
+
+      case getSubPhaseNumber("DRAW ADVENTURE CARD"):
+        return (
+          <>
+            <AdventureCardDraw />
+          </>
+        );
+
+      case getSubPhaseNumber("RESOLVE ADVENTURE CARD"):
+        return (
+          <>
+            <AdventurCardResolution card={adventureDeck[0]} />
+          </>
+        );
 
       default:
         return (
