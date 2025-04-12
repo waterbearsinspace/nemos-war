@@ -5,7 +5,7 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import MotiveSelector from "./Screens/MotiveSelector";
 import DrawPileAndAdventureDeck from "./Screens/DrawPileAndAdventureDeck";
 import StartingUpgrade from "./Screens/StartingUpgrade";
-import ShipPools from "./Screens/ShipPools";
+import ShipPools from "./Screens/ShipPoolsAndTreasures";
 import Done from "./Screens/Done";
 
 // utils

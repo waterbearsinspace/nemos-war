@@ -6,6 +6,10 @@ import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // data and constants
 import ships from "../../../../common/data/ships.json";
+import treasures from "../../../../common/data/treasures.json";
+
+// types and interfaces
+import { treasure } from "../../../../common/stores/slices/treasuresSlice";
 
 // utils
 import {
@@ -17,6 +21,7 @@ export default function ShipPools() {
   // store selectors
   let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
+  let setTreasureDrawlPool = nemosStore((state) => state.setTreasureDrawPool);
   let oceans = nemosStore((state) => state.oceans);
   let setOceans = nemosStore((state) => state.setOceans);
 
@@ -71,9 +76,29 @@ export default function ShipPools() {
     });
   };
 
+  function getStartingTreasureDrawPool() {
+    let startingTreasureDrawPool: treasure[] = [];
+
+    treasures.map((treasure: any) => {
+      for (let i = 0; i < (treasure.amount ? treasure.amount : 1); i++) {
+        startingTreasureDrawPool.push({
+          id: treasure.id,
+          type: treasure.type,
+          name: treasure?.name,
+          vp: treasure?.vp,
+        });
+      }
+    });
+
+    let shuffledTreasure = shuffleArray(startingTreasureDrawPool);
+
+    setTreasureDrawlPool(shuffledTreasure);
+  }
+
   useEffect(() => {
     setupShipPool();
     setupOceans();
+    getStartingTreasureDrawPool();
     setSubPhase(getSubPhaseNumber("CONFIRM SETUP"));
   });
 

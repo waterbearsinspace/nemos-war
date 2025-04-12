@@ -3,13 +3,6 @@ import { nemosStore } from "../../common/stores/nemosStore";
 
 // types and interfaces
 import type { vp } from "./calculateVictoryPoints";
-export type treasure = {
-  id: number;
-  type: string;
-  name?: string;
-  vp?: vp;
-  amount?: number;
-};
 
 // utils
 import { shuffleArray } from "../utils/utils";
