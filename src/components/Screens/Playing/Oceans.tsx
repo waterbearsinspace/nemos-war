@@ -1,5 +1,6 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+import { getSubPhaseNumber } from "../../../common/utils/utils";
 
 // css
 import "./Oceans.css";
@@ -9,6 +10,7 @@ interface OceansInterface {
 }
 
 export default function Oceans({ placementFunction }: OceansInterface) {
+  const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const oceans = nemosStore((state) => state.oceans);
   const currentNautilusOcean = nemosStore(
     (state) => state.currentNautilusOcean
@@ -20,7 +22,46 @@ export default function Oceans({ placementFunction }: OceansInterface) {
     (state) => state.setCurrentPlacementOcean
   );
 
-  function OceanSpaces() {
+  function DisplayOceanSpaces() {
+    return (
+      <div className="ocean-space-container">
+        {oceans.map((thisOcean) => {
+          function shipSpaces() {
+            let shipSpaces = [];
+            for (let i = 0; i < thisOcean.maxShips; i++) {
+              const thisShip = thisOcean.ships[i];
+              shipSpaces.push(
+                <div className="ship-space" key={i}>
+                  <p>
+                    {typeof thisShip != "string"
+                      ? thisShip?.name
+                      : "Hidden Ship"}
+                  </p>
+                </div>
+              );
+            }
+            return shipSpaces;
+          }
+
+          return (
+            <div
+              className="ocean-space"
+              key={thisOcean.name}
+              onClick={() => {}}
+            >
+              {thisOcean.name}
+              <p className="ocean-nautilus">
+                {currentNautilusOcean == thisOcean.name ? "You Are Here" : ""}
+              </p>
+              {shipSpaces()}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  function PlacementOceanSpaces() {
     return (
       <div className="ocean-space-container">
         {oceans.map((thisOcean) => {
@@ -144,7 +185,12 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   return (
     <>
       <div className="ocean-board">
-        <OceanSpaces />
+        {currentSubPhase == getSubPhaseNumber("ACTION SELECT") && (
+          <DisplayOceanSpaces />
+        )}
+        {currentSubPhase == getSubPhaseNumber("STANDARD PLACEMENT") && (
+          <PlacementOceanSpaces />
+        )}
       </div>
     </>
   );

@@ -89,7 +89,10 @@ export default function Done() {
         <ShipPool />
       </section>
       <h2>Motive: {motive}</h2>
-      <h2>Upgrade {upgrades.length > 0 ? "" : "Not"} Purchased</h2>
+      <p className="done-screen-upgrade-text">
+        Upgrade {upgrades.length > 0 ? <span>{upgrades[0].name}</span> : "Not"}{" "}
+        Purchased
+      </p>
       <section>
         <h2>Ship Resources</h2>
         <section className="resources">

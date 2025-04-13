@@ -102,6 +102,30 @@
   gap: 2rem;
 }
 
+/* upgrade screen */
+.upgrade-screen-resources {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  * {
+    display: flex;
+    flex-direction: column;
+
+    .resource-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+  }
+
+  button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.25rem;
+  }
+}
+
 /* done screen */
 .done-screen-wrapper {
   align-items: center;
@@ -111,6 +135,11 @@
   gap: 1rem;
   justify-content: center;
   text-align: center;
+
+  .done-screen-upgrade-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 }
 
 .decks {

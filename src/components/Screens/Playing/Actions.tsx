@@ -20,14 +20,14 @@ export default function Actions() {
 
   function Actions() {
     const actions = [
-      "Adventure",
-      "Attack",
-      "Incite",
-      "Move",
-      "Rest",
-      "Repair",
-      "Refit",
-      "Search",
+      `Adventure (2AP)`,
+      `Attack (1AP)`,
+      `Incite (1AP)`,
+      `Move (1AP)`,
+      `Rest (2AP)`,
+      `Repair (2AP)`,
+      `Refit (2AP)`,
+      `Search (1AP)`,
     ];
 
     const handleClick = (action: string) => {

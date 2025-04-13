@@ -67,14 +67,3 @@
   border-radius: 50%;
   display: inline-block;
 }
-
-.disabled {
-  background-color: #aaaaaa;
-  color: #666666;
-  cursor: default;
-  border-color: #aaaaaa;
-
-  &:not(disabled) {
-    transform: translateY(0rem);
-  }
-}

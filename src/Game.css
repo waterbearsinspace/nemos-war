@@ -38,9 +38,21 @@ button {
   min-width: fit-content;
   padding: 1rem 1rem;
   transition: transform 0.15s;
-}
-button:active {
-  transform: translateY(0.1rem);
+
+  &:active {
+    transform: translateY(0.1rem);
+  }
+
+  &.disabled {
+    background-color: #aaaaaa;
+    color: #666666;
+    cursor: default;
+    border-color: #aaaaaa;
+
+    &:not(disabled) {
+      transform: translateY(0rem);
+    }
+  }
 }
 
 /* utility classes */
