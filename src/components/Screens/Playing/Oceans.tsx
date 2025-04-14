@@ -1,5 +1,6 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+import { ocean } from "../../../common/stores/slices/oceanSlice";
 import { getSubPhaseNumber } from "../../../common/utils/utils";
 
 // css
@@ -10,9 +11,10 @@ interface OceansInterface {
 }
 
 export default function Oceans({ placementFunction }: OceansInterface) {
+  // game store selectors and utils
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const oceans = nemosStore((state) => state.oceans);
-  const currentNautilusOcean = nemosStore(
+  const currentNautilusOceanName = nemosStore(
     (state) => state.currentNautilusOcean
   );
   const currentPlacementOcean = nemosStore(
@@ -21,47 +23,138 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   const setCurrentPlacementOcean = nemosStore(
     (state) => state.setCurrentPlacementOcean
   );
+  const currentPlacementOceanObject = oceans.find(
+    (ocean) => ocean.name == currentPlacementOcean
+  );
+  const placementAdjacentOceanNames =
+    currentPlacementOceanObject?.adjacentMovementOceans.map((ocean) => {
+      return ocean.name;
+    });
+  const placementAdjacentOceanObjects = oceans.filter((ocean) =>
+    placementAdjacentOceanNames?.includes(ocean.name)
+  );
 
-  function DisplayOceanSpaces() {
-    return (
-      <div className="ocean-space-container">
-        {oceans.map((thisOcean) => {
-          function shipSpaces() {
-            let shipSpaces = [];
-            for (let i = 0; i < thisOcean.maxShips; i++) {
-              const thisShip = thisOcean.ships[i];
-              shipSpaces.push(
-                <div className="ship-space" key={i}>
-                  <p>
-                    {typeof thisShip != "string"
-                      ? thisShip?.name
-                      : "Hidden Ship"}
-                  </p>
-                </div>
-              );
-            }
-            return shipSpaces;
-          }
-
-          return (
-            <div
-              className="ocean-space"
-              key={thisOcean.name}
-              onClick={() => {}}
-            >
-              {thisOcean.name}
-              <p className="ocean-nautilus">
-                {currentNautilusOcean == thisOcean.name ? "You Are Here" : ""}
-              </p>
-              {shipSpaces()}
-            </div>
-          );
-        })}
-      </div>
+  function isCurrentPlacementOcean(ocean: ocean) {
+    if (currentPlacementOcean == ocean.name) {
+      return true;
+    } else return false;
+  }
+  function getAdjacentOceans(ocean: ocean) {
+    const adjacentOceanNames = ocean.adjacentMovementOceans.map((ocean) => {
+      return ocean.name;
+    });
+    const adjacentOceans = oceans.filter((adjacentOcean) =>
+      adjacentOceanNames.includes(adjacentOcean.name)
     );
+    return adjacentOceans;
+  }
+  function oceanIsFull(ocean: ocean) {
+    return ocean.ships.length >= ocean.maxShips;
+  }
+  function adjacentOceansAreFull(ocean: ocean) {
+    const adjacentOceans = getAdjacentOceans(ocean);
+    for (let i = 0; i < adjacentOceans.length; i++) {
+      if (!oceanIsFull(adjacentOceans[i])) {
+        return false;
+      }
+    }
+    return true;
   }
 
-  function PlacementOceanSpaces() {
+  // placement
+  function hasHiddenShips(ocean: ocean) {
+    for (let i = 0; i < ocean.ships.length; i++) {
+      if (ocean.ships.includes("Hidden Ship")) return true;
+    }
+    return false;
+  }
+  // function hiddenShipPresentInAdjacent(ocean: ocean) {
+  //   const adjacentOceans = getAdjacentOceans(ocean);
+  //   for (let i = 0; i < adjacentOceans.length; i++) {
+  //     if (hasHiddenShips(adjacentOceans[i])) return true;
+  //   }
+  //   return false;
+  // }
+  function isValidPlacement(ocean: ocean) {
+    // is current placement ocean
+    if (isCurrentPlacementOcean(ocean)) {
+      // if ocean is not full
+      if (!oceanIsFull(ocean)) return true;
+      // else if ocean and adjacent oceans are full
+      else if (oceanIsFull(ocean) && adjacentOceansAreFull(ocean)) {
+        // if ocean has hidden ships
+        if (hasHiddenShips(ocean)) return true;
+      }
+    }
+    // is not current placement ocean but is adjacent
+    else if (
+      !isCurrentPlacementOcean(ocean) &&
+      placementAdjacentOceanObjects.includes(ocean)
+    ) {
+      // if placement ocean exists and is full
+      if (
+        currentPlacementOceanObject &&
+        oceanIsFull(currentPlacementOceanObject)
+      ) {
+        // if ocean is not full
+        if (!oceanIsFull(ocean)) return true;
+        // else if placement ocean and its adjacent oceans are full
+        else if (
+          oceanIsFull(currentPlacementOceanObject) &&
+          adjacentOceansAreFull(currentPlacementOceanObject)
+        ) {
+          // if ocean has hidden ships
+          if (hasHiddenShips(ocean)) return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  // handle placement click
+  const handlePlacementClick = (ocean: ocean) => {
+    if (isValidPlacement(ocean)) {
+      setCurrentPlacementOcean("");
+      if (placementFunction) placementFunction(ocean.name);
+    }
+  };
+
+  let highlightCurrentOceanValue: string;
+  let highlightedAdjacentOceans: typeof oceans = [];
+
+  let clickFunction: (clickedOcean: ocean) => void = () => {};
+
+  switch (currentSubPhase) {
+    case getSubPhaseNumber("STANDARD PLACEMENT"):
+      // case getSubPhaseNumber("LULL PLACEMENT"):
+      // set highlight parameters
+      if (!currentPlacementOceanObject) {
+        highlightCurrentOceanValue = "";
+      } else {
+        if (!oceanIsFull(currentPlacementOceanObject)) {
+          highlightCurrentOceanValue = "this";
+        } else if (oceanIsFull(currentPlacementOceanObject)) {
+          if (!adjacentOceansAreFull(currentPlacementOceanObject)) {
+            highlightCurrentOceanValue = "this";
+          } else if (hasHiddenShips(currentPlacementOceanObject)) {
+            highlightCurrentOceanValue = "this-hoverable";
+          }
+        } else highlightCurrentOceanValue = "this";
+      }
+      // highlight valid adjacent oceans
+      highlightedAdjacentOceans = oceans.filter((ocean) => {
+        return isValidPlacement(ocean);
+      });
+
+      // assign clickfunction
+      clickFunction = handlePlacementClick;
+      break;
+
+    default:
+      break;
+  }
+
+  function OceanSpaces() {
     return (
       <div className="ocean-space-container">
         {oceans.map((thisOcean) => {
@@ -82,97 +175,28 @@ export default function Oceans({ placementFunction }: OceansInterface) {
             return shipSpaces;
           }
 
-          const currentPlacementOceanObject = oceans.find(
-            (ocean) => ocean.name == currentPlacementOcean
-          );
-          const thisOceansAdjacentOceans = thisOcean.adjacentMovementOceans.map(
-            (ocean) => {
-              return ocean.name;
-            }
-          );
-          const oceansAdjacentToCurrentPlacementNames =
-            currentPlacementOceanObject?.adjacentMovementOceans.map(
-              (ocean) => ocean.name
-            );
-          const oceansAdjacentToCurrentPlacement = oceans.filter((ocean) => {
-            return oceansAdjacentToCurrentPlacementNames?.includes(ocean.name);
-          });
-
-          // if this ocean is current placement ocean, is adjacent
-          const isCurrentPlacementOcean =
-            currentPlacementOcean == thisOcean.name;
-          const isAdjacent = thisOceansAdjacentOceans.includes(
-            currentPlacementOcean
-          );
-
-          const thisOceanIsNotFull =
-            thisOcean.ships.length < thisOcean.maxShips;
-          const allAdjacentOceansFull = () => {
-            for (let i = 0; i < oceansAdjacentToCurrentPlacement.length; i++) {
-              if (
-                oceansAdjacentToCurrentPlacement[i].ships.length !=
-                oceansAdjacentToCurrentPlacement[i].maxShips
-              ) {
-                return false;
-              }
-            }
-            return true;
-          };
-          const hiddenShipsPresentInAdjacent = () => {
-            for (let i = 0; i < oceansAdjacentToCurrentPlacement.length; i++) {
-              if (
-                oceansAdjacentToCurrentPlacement[i].ships.includes(
-                  "Hidden Ship"
-                ) ||
-                currentPlacementOceanObject?.ships.includes("Hidden Ship")
-              ) {
-                return true;
-              }
-            }
-            return false;
-          };
-          const thisOceanHasRevealable =
-            thisOcean.ships.includes("Hidden Ship");
-
-          // if this ocean is adjacent to current placement ocean and is valid
-          const isValidPlacement = () => {
-            if (isCurrentPlacementOcean || isAdjacent) {
-              // if hidden ship is placeable
-              if (thisOceanIsNotFull) return true;
-              // if new hidden ships not placeable
-              else if (allAdjacentOceansFull()) {
-                // if hidden ships revealable in any adjacent
-                if (hiddenShipsPresentInAdjacent()) {
-                  // if this ocean has hidden ships
-                  if (thisOceanHasRevealable) return true;
-                }
-              }
-            }
-          };
-
-          const handleClick = () => {
-            setCurrentPlacementOcean("");
-            if (placementFunction) placementFunction(thisOcean.name);
-          };
-
           return (
             <div
               className="ocean-space"
               key={thisOcean.name}
-              data-selected={
-                isCurrentPlacementOcean
-                  ? thisOceanHasRevealable && allAdjacentOceansFull()
-                    ? "this-hoverable"
-                    : "this"
-                  : isValidPlacement()
-                  ? "adjacent"
+              data-highlight={
+                currentPlacementOceanObject
+                  ? currentPlacementOceanObject == thisOcean
+                    ? highlightCurrentOceanValue
+                    : highlightedAdjacentOceans.includes(thisOcean)
+                    ? "adjacent"
+                    : ""
                   : ""
               }
-              onClick={isValidPlacement() ? handleClick : () => {}}
+              onClick={() => {
+                clickFunction(thisOcean);
+              }}
             >
               {thisOcean.name}
               <p className="ocean-nautilus">
-                {currentNautilusOcean == thisOcean.name ? "You Are Here" : ""}
+                {currentNautilusOceanName == thisOcean.name
+                  ? "You Are Here"
+                  : ""}
               </p>
               {shipSpaces()}
             </div>
@@ -185,12 +209,7 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   return (
     <>
       <div className="ocean-board">
-        {currentSubPhase == getSubPhaseNumber("ACTION SELECT") && (
-          <DisplayOceanSpaces />
-        )}
-        {currentSubPhase == getSubPhaseNumber("STANDARD PLACEMENT") && (
-          <PlacementOceanSpaces />
-        )}
+        <OceanSpaces />
       </div>
     </>
   );

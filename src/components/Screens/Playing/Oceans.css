@@ -46,11 +46,11 @@
         align-items: center;
       }
 
-      &[data-selected="this"] {
+      &[data-highlight="this"] {
         background-color: rgb(195, 221, 221);
       }
 
-      &[data-selected="this-hoverable"] {
+      &[data-highlight="this-hoverable"] {
         background-color: rgb(195, 221, 221);
 
         &:hover {
@@ -58,7 +58,7 @@
         }
       }
 
-      &[data-selected="adjacent"] {
+      &[data-highlight="adjacent"] {
         background-color: rgb(211, 221, 195);
 
         &:hover {

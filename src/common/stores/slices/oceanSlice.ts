@@ -7,7 +7,7 @@ import { StateCreator } from "zustand";
 import { ship } from "./shipPoolsSlice";
 
 // types and interfaces
-type oceanMovement = {
+type adjacentOcean = {
   name: string;
   placementOnly?: boolean;
 };
@@ -16,10 +16,10 @@ type land = {
   hasUprisingCube: boolean;
 };
 
-type ocean = {
+export type ocean = {
   id: number;
   name: string;
-  adjacentMovementOceans: oceanMovement[];
+  adjacentMovementOceans: adjacentOcean[];
   dieValue?: number;
   treasureAvailable: boolean;
   ships: (ship | string)[];
