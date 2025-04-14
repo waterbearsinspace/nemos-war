@@ -26,6 +26,7 @@ export default function Actions() {
   const setActionPoints = nemosStore((state) => state.setCurrentActionPoints);
   const isLullTurn = nemosStore((state) => state.isLullTurn);
   const setNautilusMoved = nemosStore((state) => state.setNautilusMoved);
+  const setHydroMoved = nemosStore((state) => state.setHydroMoved);
 
   function Actions() {
     const actionNames = [
@@ -85,6 +86,7 @@ export default function Actions() {
           if (actionPoints >= actionCost) {
             setActionPoints(actionPoints - actionCost);
             setNautilusMoved(false);
+            setHydroMoved(false);
             setSubPhase(getSubPhaseNumber("MOVE"));
           }
           break;
@@ -124,7 +126,7 @@ export default function Actions() {
     <div className="actions-select">
       <Oceans />
       <div className="actions-select-side-pane">
-        <h2>Select Action</h2>
+        <h2>Select Action {isLullTurn ? "(Lull Turn)" : ""}</h2>
         <p>
           Action Points: <strong>{actionPoints}</strong>
         </p>

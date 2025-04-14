@@ -47,12 +47,12 @@ export default function Placement() {
   );
   const [selectedDie, setSelectedDie] = useState(dice[0]);
 
-  const handleRollClick = () => {
+  const handleFinishedPlacementRollClick = () => {
     setDoneRolling(false);
     setSubPhase(getSubPhaseNumber("STANDARD PLACEMENT"));
   };
 
-  const handlePlacementClick = () => {
+  const handleContinueClick = () => {
     setActionPoints(actionPoints > 0 ? differential + 1 : differential);
     if (actionPoints > maxSavedActionPoints)
       setActionPoints(maxSavedActionPoints);
@@ -73,7 +73,10 @@ export default function Placement() {
         <DiceTray numDice={2} />
         {doneRolling && (
           <div className="next-phase-wrapper">
-            <button className="next-phase-button" onClick={handleRollClick}>
+            <button
+              className="next-phase-button"
+              onClick={handleFinishedPlacementRollClick}
+            >
               Continue to Placement
             </button>
           </div>
@@ -203,10 +206,7 @@ export default function Placement() {
         </div>
         {noMoreShips && (
           <div className="next-phase-wrapper">
-            <button
-              className="next-phase-button"
-              onClick={handlePlacementClick}
-            >
+            <button className="next-phase-button" onClick={handleContinueClick}>
               Continue to Actions
             </button>
           </div>

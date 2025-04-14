@@ -33,7 +33,6 @@ interface DiceTrayInterface {
   testValue?: number;
   numDice?: number;
   buttonText?: string;
-  testId?: number;
 }
 
 export default function DiceTray({

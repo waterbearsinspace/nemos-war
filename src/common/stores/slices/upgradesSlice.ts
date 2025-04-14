@@ -17,6 +17,8 @@ export interface UpgradesSliceInterface {
   addToCurrentUpgrades: (newUpgrade: upgrade) => void;
   addToPossibleUpgrades: (newUpgrade: upgrade) => void;
   setUnusedUpgrades: (newUnusedUpgrades: upgrade[]) => void;
+  hydroMoved: boolean;
+  setHydroMoved: (to: boolean) => void;
 }
 
 // slice
@@ -47,5 +49,10 @@ export const upgradesSlice: StateCreator<UpgradesSliceInterface, []> = (
     set(() => ({
       unusedUpgrades: newUnusedUpgrades,
     }));
+  },
+
+  hydroMoved: false,
+  setHydroMoved: (to) => {
+    set(() => ({ hydroMoved: to }));
   },
 });

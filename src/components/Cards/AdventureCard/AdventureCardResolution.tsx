@@ -3,7 +3,7 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import { diceStore } from "../../../common/stores/diceStore";
 
 // components
-import DiceTray from "../../Dice/DiceTray";
+import { Test } from "../../Dice/Test";
 import AdventureCard, { adventureCard } from "./AdventureCard";
 
 // utils
@@ -34,18 +34,6 @@ export default function AdventurCardResolution({
   const oceans = nemosStore((state) => state.oceans);
   const doneRolling = diceStore((state) => state.doneRolling);
 
-  function Test(arg: any) {
-    return (
-      <div className="test">
-        <DiceTray
-          numDice={arg.numDice}
-          buttonText="Roll for Starting Ocean"
-          testId={arg.testId}
-        />
-      </div>
-    );
-  }
-
   function ResolveDisplay() {
     switch (card.id) {
       case 1001: {
@@ -58,7 +46,7 @@ export default function AdventurCardResolution({
         };
         return (
           <div>
-            <Test testId={card.id} numDice={1} />
+            <Test id={"Act One"} numDice={1} />
             {doneRolling && (
               <div className="next-phase-wrapper">
                 <button className="next-phase-button" onClick={handle1001Click}>

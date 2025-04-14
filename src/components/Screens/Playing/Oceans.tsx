@@ -48,6 +48,9 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   );
   const nautilusMoved = nemosStore((state) => state.nautilusMoved);
   const setNautilusMoved = nemosStore((state) => state.setNautilusMoved);
+  const hydroMoved = nemosStore((state) => state.hydroMoved);
+  const setHydroMoved = nemosStore((state) => state.setHydroMoved);
+  const currentUpgrades = nemosStore((state) => state.currentUpgrades);
 
   // calculated/utils
   function isCurrentPlacementOcean(ocean: ocean) {
@@ -76,6 +79,12 @@ export default function Oceans({ placementFunction }: OceansInterface) {
     }
     return true;
   }
+  const hasHydroMovement = currentUpgrades.find(
+    (upgrade) => upgrade.name == "Hydro Drive"
+  );
+  const doneMoving = hasHydroMovement
+    ? nautilusMoved && hydroMoved
+    : nautilusMoved;
 
   // placement
   function hasHiddenShips(ocean: ocean) {
@@ -135,6 +144,7 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   let getHighlightRules: (ocean: ocean) => string = () => "";
 
   switch (currentSubPhase) {
+    // PLACEMENT
     case getSubPhaseNumber("STANDARD PLACEMENT"):
       // case getSubPhaseNumber("LULL PLACEMENT"):
       // set highlight parameters
@@ -177,9 +187,10 @@ export default function Oceans({ placementFunction }: OceansInterface) {
       clickFunction = handlePlacementClick;
       break;
 
+    // MOVEMENT
     case getSubPhaseNumber("MOVE"):
       getHighlightRules = (thisOcean: ocean) => {
-        return !nautilusMoved
+        return !doneMoving
           ? thisOcean == currentNautilusOceanObject
             ? "this"
             : nautilusAdjacentOceanObjects.includes(thisOcean)
@@ -194,6 +205,11 @@ export default function Oceans({ placementFunction }: OceansInterface) {
         if (nautilusAdjacentOceanObjects.includes(ocean)) {
           setNautiliusOcean(ocean.name);
           setNautilusMoved(true);
+          if (hasHydroMovement) {
+            if (nautilusMoved) {
+              setHydroMoved(true);
+            }
+          }
         }
       };
       clickFunction = handleMovementClick;
