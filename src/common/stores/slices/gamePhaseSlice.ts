@@ -8,6 +8,8 @@ export interface GamePhaseSliceInterface {
   setCurrentSubPhase: (newSubPhase: number) => void;
   showNextPhaseButton: boolean;
   setShowNextPhaseButton: (to: boolean) => void;
+  isLullTurn: boolean;
+  setIsLullTurn: (to: boolean) => void;
 }
 
 // data and constants
@@ -48,9 +50,11 @@ export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   currentPhase: 0,
   currentSubPhase: 0,
   showNextPhaseButton: false,
+  isLullTurn: false,
 
   setCurrentPhase: (newPhase) => set(() => ({ currentPhase: newPhase })),
   setCurrentSubPhase: (newSubPhase) =>
     set(() => ({ currentSubPhase: newSubPhase })),
   setShowNextPhaseButton: (to) => set(() => ({ showNextPhaseButton: to })),
+  setIsLullTurn: (to) => set(() => ({ isLullTurn: to })),
 });

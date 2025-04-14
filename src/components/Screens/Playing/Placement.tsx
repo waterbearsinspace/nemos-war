@@ -9,6 +9,9 @@ import { dice, diceStore } from "../../../common/stores/diceStore";
 import DiceTray, { Die } from "../../Dice/DiceTray";
 import Oceans from "./Oceans";
 
+// data and constants
+import { maxSavedActionPoints } from "../../../common/stores/slices/actionPointsSlice";
+
 // utils
 import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
 
@@ -32,6 +35,7 @@ export default function Placement() {
     (state) => state.setCurrentPlacementOcean
   );
   const shipPool = nemosStore((state) => state.currentShipPool);
+  const setLullTurn = nemosStore((state) => state.setIsLullTurn);
 
   const differential = Math.abs(
     dice.find((die) => die.id == "w1")!.value -
@@ -50,6 +54,11 @@ export default function Placement() {
 
   const handlePlacementClick = () => {
     setActionPoints(actionPoints > 0 ? differential + 1 : differential);
+    if (actionPoints > maxSavedActionPoints)
+      setActionPoints(maxSavedActionPoints);
+    if (differential != 0) {
+      setLullTurn(false);
+    } else setLullTurn(true);
     setSubPhase(getSubPhaseNumber("ACTION SELECT"));
   };
 

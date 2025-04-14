@@ -5,7 +5,7 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import AdventureCardDraw from "../../Cards/AdventureCard/AdventureCardDraw";
 import AdventurCardResolution from "../../Cards/AdventureCard/AdventureCardResolution";
 import Placement from "./Placement";
-import Actions from "./Actions";
+import Actions from "./Actions/Actions";
 
 // utils
 import { getSubPhaseNumber } from "../../../common/utils/utils";
@@ -15,6 +15,7 @@ import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
 
 // css
 import "./Playing.css";
+import Move from "./Actions/Move";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
@@ -95,6 +96,13 @@ export default function Playing() {
         return (
           <>
             <AdventurCardResolution card={adventureDeck[0]} />
+          </>
+        );
+
+      case getSubPhaseNumber("MOVE"):
+        return (
+          <>
+            <Move />
           </>
         );
 

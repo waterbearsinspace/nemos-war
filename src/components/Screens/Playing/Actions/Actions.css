@@ -1,4 +1,5 @@
-.actions-select {
+.actions-select,
+.move-select {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +7,8 @@
   width: 100%;
   gap: 4rem;
 
-  .actions-select-side-pane {
+  .actions-select-side-pane,
+  .move-select-side-pane {
     width: 24rem;
     height: 100%;
     display: flex;

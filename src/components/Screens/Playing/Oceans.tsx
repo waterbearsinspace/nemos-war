@@ -11,11 +11,24 @@ interface OceansInterface {
 }
 
 export default function Oceans({ placementFunction }: OceansInterface) {
-  // game store selectors and utils
+  // game store selectors
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const oceans = nemosStore((state) => state.oceans);
   const currentNautilusOceanName = nemosStore(
-    (state) => state.currentNautilusOcean
+    (state) => state.currentNautilusOceanName
+  );
+  const currentNautilusOceanObject = oceans.find(
+    (ocean) => ocean.name == currentNautilusOceanName
+  );
+  const nautilusAdjacentOceanNames =
+    currentNautilusOceanObject?.adjacentMovementOceans.map((ocean) => {
+      if (!ocean.placementOnly) return ocean.name;
+    });
+  const setNautiliusOcean = nemosStore(
+    (state) => state.setCurrentNautilusOceanName
+  );
+  const nautilusAdjacentOceanObjects = oceans.filter((ocean) =>
+    nautilusAdjacentOceanNames?.includes(ocean.name)
   );
   const currentPlacementOcean = nemosStore(
     (state) => state.currentPlacementOcean
@@ -33,7 +46,10 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   const placementAdjacentOceanObjects = oceans.filter((ocean) =>
     placementAdjacentOceanNames?.includes(ocean.name)
   );
+  const nautilusMoved = nemosStore((state) => state.nautilusMoved);
+  const setNautilusMoved = nemosStore((state) => state.setNautilusMoved);
 
+  // calculated/utils
   function isCurrentPlacementOcean(ocean: ocean) {
     if (currentPlacementOcean == ocean.name) {
       return true;
@@ -111,18 +127,12 @@ export default function Oceans({ placementFunction }: OceansInterface) {
     return false;
   }
 
-  // handle placement click
-  const handlePlacementClick = (ocean: ocean) => {
-    if (isValidPlacement(ocean)) {
-      setCurrentPlacementOcean("");
-      if (placementFunction) placementFunction(ocean.name);
-    }
-  };
-
   let highlightCurrentOceanValue: string;
   let highlightedAdjacentOceans: typeof oceans = [];
 
   let clickFunction: (clickedOcean: ocean) => void = () => {};
+
+  let getHighlightRules: (ocean: ocean) => string = () => "";
 
   switch (currentSubPhase) {
     case getSubPhaseNumber("STANDARD PLACEMENT"):
@@ -146,8 +156,47 @@ export default function Oceans({ placementFunction }: OceansInterface) {
         return isValidPlacement(ocean);
       });
 
+      getHighlightRules = (thisOcean: ocean) => {
+        return currentPlacementOceanObject
+          ? currentPlacementOceanObject == thisOcean
+            ? highlightCurrentOceanValue
+            : highlightedAdjacentOceans.includes(thisOcean)
+            ? "adjacent"
+            : ""
+          : "";
+      };
+
       // assign clickfunction
+      // handle placement click
+      const handlePlacementClick = (ocean: ocean) => {
+        if (isValidPlacement(ocean)) {
+          setCurrentPlacementOcean("");
+          if (placementFunction) placementFunction(ocean.name);
+        }
+      };
       clickFunction = handlePlacementClick;
+      break;
+
+    case getSubPhaseNumber("MOVE"):
+      getHighlightRules = (thisOcean: ocean) => {
+        return !nautilusMoved
+          ? thisOcean == currentNautilusOceanObject
+            ? "this"
+            : nautilusAdjacentOceanObjects.includes(thisOcean)
+            ? "adjacent"
+            : ""
+          : "";
+      };
+
+      // assign clickfunction
+      // handle placement click
+      const handleMovementClick = (ocean: ocean) => {
+        if (nautilusAdjacentOceanObjects.includes(ocean)) {
+          setNautiliusOcean(ocean.name);
+          setNautilusMoved(true);
+        }
+      };
+      clickFunction = handleMovementClick;
       break;
 
     default:
@@ -179,15 +228,7 @@ export default function Oceans({ placementFunction }: OceansInterface) {
             <div
               className="ocean-space"
               key={thisOcean.name}
-              data-highlight={
-                currentPlacementOceanObject
-                  ? currentPlacementOceanObject == thisOcean
-                    ? highlightCurrentOceanValue
-                    : highlightedAdjacentOceans.includes(thisOcean)
-                    ? "adjacent"
-                    : ""
-                  : ""
-              }
+              data-highlight={getHighlightRules(thisOcean)}
               onClick={() => {
                 clickFunction(thisOcean);
               }}

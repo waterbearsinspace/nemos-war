@@ -28,8 +28,8 @@ export default function AdventurCardResolution({
   const setDrawPile = nemosStore((state) => state.setDrawPile);
   const adventureDeck = nemosStore((state) => state.adventureDeck);
   const setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
-  const setCurrentNautilusOcean = nemosStore(
-    (state) => state.setCurrentNautilusOcean
+  const setCurrentNautilusOceanName = nemosStore(
+    (state) => state.setCurrentNautilusOceanName
   );
   const oceans = nemosStore((state) => state.oceans);
   const doneRolling = diceStore((state) => state.doneRolling);
@@ -118,7 +118,7 @@ export default function AdventurCardResolution({
           },
         ]);
 
-        setCurrentNautilusOcean(
+        setCurrentNautilusOceanName(
           oceans.find((ocean) => ocean.id == dice[0].value)!.name
         );
 
