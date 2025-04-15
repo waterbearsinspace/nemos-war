@@ -5,8 +5,13 @@
   --overlay-bar-bottom-height: 20%;
   --overlay-bar-color: var(--soft-black);
   --playarea-color: #dddbd7;
+  --dark-red: #a52323;
+  --dark-green: #2b692b;
   --card-height: 25rem;
   --card-width: 36rem;
+  --nemo-purple: #5b1f61;
+  --crew-brown: #30291b;
+  --hull-blue: #2b5dc9;
 
   align-items: center;
   background-color: var(--playarea-color);
@@ -58,4 +63,27 @@ button {
 /* utility classes */
 .bold {
   font-weight: bold;
+}
+
+.text-red {
+  color: var(--dark-red);
+}
+
+.text-green {
+  color: var(--dark-green);
+}
+
+.nemo-text,
+.crew-text,
+.hull-text {
+  font-weight: bold;
+}
+.nemo-text {
+  color: var(--nemo-purple);
+}
+.crew-text {
+  color: var(--crew-brown);
+}
+.hull-text {
+  color: var(--hull-blue);
 }

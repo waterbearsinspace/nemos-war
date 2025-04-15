@@ -49,16 +49,19 @@ export default function Placement() {
 
   const handleFinishedPlacementRollClick = () => {
     setDoneRolling(false);
-    setSubPhase(getSubPhaseNumber("STANDARD PLACEMENT"));
+    if (differential != 0) {
+      setLullTurn(false);
+      setSubPhase(getSubPhaseNumber("STANDARD PLACEMENT"));
+    } else {
+      setLullTurn(true);
+      setSubPhase(getSubPhaseNumber("LULL PLACEMENT"));
+    }
   };
 
   const handleContinueClick = () => {
     setActionPoints(actionPoints > 0 ? differential + 1 : differential);
     if (actionPoints > maxSavedActionPoints)
       setActionPoints(maxSavedActionPoints);
-    if (differential != 0) {
-      setLullTurn(false);
-    } else setLullTurn(true);
     setSubPhase(getSubPhaseNumber("ACTION SELECT"));
   };
 
@@ -221,6 +224,11 @@ export default function Placement() {
         <PlacementRoll />
       )}
       {currentSubPhase == getSubPhaseNumber("STANDARD PLACEMENT") && (
+        <>
+          <ShipPlacement />
+        </>
+      )}
+      {currentSubPhase == getSubPhaseNumber("LULL PLACEMENT") && (
         <>
           <ShipPlacement />
         </>

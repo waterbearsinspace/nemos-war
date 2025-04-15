@@ -1,4 +1,5 @@
 // game store
+import { diceStore } from "../../../../common/stores/diceStore";
 import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // components
@@ -27,6 +28,7 @@ export default function Actions() {
   const isLullTurn = nemosStore((state) => state.isLullTurn);
   const setNautilusMoved = nemosStore((state) => state.setNautilusMoved);
   const setHydroMoved = nemosStore((state) => state.setHydroMoved);
+  const setDoneRolling = diceStore((state) => state.setDoneRolling);
 
   function Actions() {
     const actionNames = [
@@ -75,23 +77,26 @@ export default function Actions() {
     const handleClick = (action: action) => {
       const actionCost = !isLullTurn ? action.normalCost : action.lullCost;
 
-      switch (action.name) {
-        case "Adventure":
-          if (actionPoints >= actionCost) {
-            setActionPoints(actionPoints - actionCost);
+      if (actionPoints >= actionCost) {
+        setActionPoints(actionPoints - actionCost);
+
+        switch (action.name) {
+          case "Adventure":
             setSubPhase(getSubPhaseNumber("DRAW ADVENTURE CARD"));
-          }
-          break;
-        case "Move":
-          if (actionPoints >= actionCost) {
-            setActionPoints(actionPoints - actionCost);
+            break;
+          case "Move":
             setNautilusMoved(false);
             setHydroMoved(false);
             setSubPhase(getSubPhaseNumber("MOVE"));
-          }
-          break;
-        default:
-          break;
+            break;
+
+          case "Rest":
+            setDoneRolling(false);
+            setSubPhase(getSubPhaseNumber("REST"));
+            break;
+          default:
+            break;
+        }
       }
     };
 

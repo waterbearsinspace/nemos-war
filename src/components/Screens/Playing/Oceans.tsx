@@ -146,7 +146,7 @@ export default function Oceans({ placementFunction }: OceansInterface) {
   switch (currentSubPhase) {
     // PLACEMENT
     case getSubPhaseNumber("STANDARD PLACEMENT"):
-      // case getSubPhaseNumber("LULL PLACEMENT"):
+    case getSubPhaseNumber("LULL PLACEMENT"):
       // set highlight parameters
       if (!currentPlacementOceanObject) {
         highlightCurrentOceanValue = "";

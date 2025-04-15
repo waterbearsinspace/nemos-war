@@ -24,6 +24,10 @@ import {
   KeptCardsSliceInterface,
 } from "./slices/keptCardsSlice";
 import { motiveSlice, MotiveSliceInterface } from "./slices/motiveSlice";
+import {
+  notorietySlice,
+  NotorietySliceInterface,
+} from "./slices/notorietySlice";
 import { oceanSlice, OceanSliceInterface } from "./slices/oceanSlice";
 import {
   shipPoolsSlice,
@@ -54,6 +58,7 @@ export const nemosStore = create<
     GamePhaseSliceInterface &
     KeptCardsSliceInterface &
     MotiveSliceInterface &
+    NotorietySliceInterface &
     OceanSliceInterface &
     ShipPoolsSliceInterface &
     ShipResourcesSliceInterface &
@@ -69,6 +74,7 @@ export const nemosStore = create<
   ...gamePhaseSlice(...a),
   ...keptCardsSlice(...a),
   ...motiveSlice(...a),
+  ...notorietySlice(...a),
   ...oceanSlice(...a),
   ...shipPoolsSlice(...a),
   ...shipResourceSlice(...a),

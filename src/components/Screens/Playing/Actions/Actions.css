@@ -33,3 +33,66 @@
     }
   }
 }
+
+.test-table {
+  border-collapse: collapse;
+  background-color: rgb(235, 235, 235);
+
+  th {
+    height: 1rem;
+  }
+
+  td {
+    height: 2rem;
+    vertical-align: top;
+  }
+
+  th,
+  td {
+    border: 1px solid var(--soft-black);
+    padding-inline: 0.25rem;
+    padding-block: 0.5rem;
+    width: 14rem;
+
+    .result-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    .result-info {
+      text-align: left;
+      padding-inline: 0.5rem;
+    }
+
+    &.selected {
+      background-color: rgb(255, 255, 255);
+    }
+  }
+
+  .test-header {
+    padding-inline: 2rem;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+
+    .test {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    ul {
+      padding-inline: 1.25rem;
+    }
+
+    .test-roll-display {
+      font-size: 3rem;
+    }
+  }
+
+  .result-numbers {
+    th {
+      font-size: 1.5rem;
+    }
+  }
+}

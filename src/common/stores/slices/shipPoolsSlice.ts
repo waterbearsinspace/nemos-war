@@ -34,7 +34,7 @@ export type ship = {
   shipClass: string;
   vp: vp;
   flipName?: string;
-  flipAttackStrength?: number;
+  flipAttackStrength?: number | null;
   flipDefenseStrength?: number;
   flipNotoriety?: number;
   flipGroupId?: string;

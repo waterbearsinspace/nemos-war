@@ -11,6 +11,12 @@ export function Test(arg: any) {
           />
         </div>
       );
+    case "Rest":
+      return (
+        <div className="test">
+          <DiceTray numDice={2} buttonText="Roll for Rest Result" />
+        </div>
+      );
     default:
       return <></>;
   }
