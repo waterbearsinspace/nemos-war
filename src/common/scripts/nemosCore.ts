@@ -32,7 +32,6 @@ function checkEndGame() {
 // ============================
 // SHIP RESOURCES
 // ============================
-
 // adjust nemo value
 function adjustNemoBy(by: number) {
   const nemoValue = nemosStore((state) => state.nemo.value);
@@ -213,8 +212,3 @@ function checkNotoriety() {
 
   checkEndGame();
 }
-
-// ============================
-// SHIPS
-// ============================
-// flip ship
