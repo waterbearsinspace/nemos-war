@@ -29,6 +29,13 @@ export default function Actions() {
   const setNautilusMoved = nemosStore((state) => state.setNautilusMoved);
   const setHydroMoved = nemosStore((state) => state.setHydroMoved);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
+  const adventureDeck = nemosStore((state) => state.adventureDeck);
+  const currentOceanName = nemosStore(
+    (state) => state.currentNautilusOceanName
+  );
+  const currentOcean = nemosStore((state) =>
+    state.oceans.find((ocean) => ocean.name == currentOceanName)
+  );
 
   function Actions() {
     const actionNames = [
@@ -76,25 +83,25 @@ export default function Actions() {
 
     function isSelectable(action: action) {
       const actionCost = !isLullTurn ? action.normalCost : action.lullCost;
-      let disabled = false;
+
+      let selectable = true;
 
       // not enough AP
-      disabled = actionCost > actionPoints ? true : false;
+      selectable = actionCost <= actionPoints ? true : false;
 
-      if (!disabled) {
+      if (selectable) {
         switch (action.name) {
           case "Adventure":
             // adventure deck cannot be empty
-            const adventureDeck = nemosStore((state) => state.adventureDeck);
-            disabled = adventureDeck.length <= 0 ? true : disabled;
+            selectable = adventureDeck.length > 0 ? true : false;
             break;
           case "Attack":
             // not implemented
-            disabled = true;
+            selectable = false;
             break;
           case "Incite":
             // not implemented
-            disabled = true;
+            selectable = false;
             break;
           case "Move":
             // no special rules
@@ -107,47 +114,42 @@ export default function Actions() {
             break;
           case "Refit":
             // not implemented
-            disabled = true;
+            selectable = false;
             break;
           case "Search":
             // must be treasure available in current ocean
-            const currentOceanName = nemosStore(
-              (state) => state.currentNautilusOceanName
-            );
-            const currentOcean = nemosStore((state) =>
-              state.oceans.find((ocean) => ocean.name == currentOceanName)
-            );
-
-            disabled = !currentOcean?.treasureAvailable;
+            selectable == currentOcean?.treasureAvailable;
             break;
         }
       }
-      return disabled ? "disabled" : "";
+
+      return selectable;
     }
 
     const handleClick = (action: action) => {
       const actionCost = !isLullTurn ? action.normalCost : action.lullCost;
 
-      if (actionPoints >= actionCost) {
+      if (isSelectable(action)) {
         setActionPoints(actionPoints - actionCost);
+        setNautilusMoved(false);
+        setHydroMoved(false);
+        setDoneRolling(false);
 
         switch (action.name) {
           case "Adventure":
             setSubPhase(getSubPhaseNumber("DRAW ADVENTURE CARD"));
             break;
           case "Move":
-            setNautilusMoved(false);
-            setHydroMoved(false);
             setSubPhase(getSubPhaseNumber("MOVE"));
             break;
-
           case "Rest":
-            setDoneRolling(false);
             setSubPhase(getSubPhaseNumber("REST"));
             break;
           case "Repair":
-            setDoneRolling(false);
             setSubPhase(getSubPhaseNumber("REPAIR"));
+            break;
+          case "Search":
+            setSubPhase(getSubPhaseNumber("SEARCH"));
             break;
           default:
             break;
@@ -164,7 +166,9 @@ export default function Actions() {
               : action.lullCost;
             return (
               <button
-                className={`action-select-option ${isSelectable(action)}`}
+                className={`action-select-option ${
+                  isSelectable(action) ? "" : "disabled"
+                }`}
                 key={action.name}
                 onClick={() => {
                   handleClick(action);
