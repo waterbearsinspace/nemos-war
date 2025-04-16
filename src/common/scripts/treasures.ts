@@ -1,14 +1,11 @@
 // game store
 import { nemosStore } from "../../common/stores/nemosStore";
 
-// types and interfaces
-import type { vp } from "./calculateVictoryPoints";
-
 // utils
 import { shuffleArray } from "../utils/utils";
 
 export const useTreasure = (id: number) => {
-  const setNemoValue = nemosStore((state) => state.setNemoValue);
+  const setNemoValue = nemosStore((state) => state.setHullValue);
   const setCrewValue = nemosStore((state) => state.setCrewValue);
   const setHullValue = nemosStore((state) => state.setHullValue);
   const adjustActionPoints = nemosStore(

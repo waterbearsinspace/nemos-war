@@ -41,11 +41,15 @@ export type ship = {
   flipNationality?: string;
   flipShipClass?: string;
   flipVp?: vp;
+  flipped: boolean;
 };
 
 export interface ShipPoolsSliceInterface {
   currentShipPool: ship[];
+  unusedShipPool: ship[];
+
   setCurrentShipPool: (newShipPool: ship[]) => void;
+  setUnusedShipPool: (newShipPool: ship[]) => void;
 }
 
 // slice
@@ -53,6 +57,10 @@ export const shipPoolsSlice: StateCreator<ShipPoolsSliceInterface, []> = (
   set
 ) => ({
   currentShipPool: [],
+  unusedShipPool: [],
+
   setCurrentShipPool: (newShipPool) =>
     set(() => ({ currentShipPool: newShipPool })),
+  setUnusedShipPool: (newShipPool) =>
+    set(() => ({ unusedShipPool: newShipPool })),
 });

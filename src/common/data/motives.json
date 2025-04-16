@@ -10,7 +10,8 @@
     "scienceDiscovered": 2,
     "wondersSeen": 3,
     "actTwoCards": 5,
-    "actThreeCards": 11
+    "actThreeCards": 11,
+    "gameOver": 44
   },
   {
     "id": 1,
@@ -23,7 +24,8 @@
     "scienceDiscovered": 4,
     "wondersSeen": 7,
     "actTwoCards": 8,
-    "actThreeCards": 8
+    "actThreeCards": 8,
+    "gameOver": 36
   },
   {
     "id": 2,
@@ -36,7 +38,8 @@
     "scienceDiscovered": 6,
     "wondersSeen": 4,
     "actTwoCards": 10,
-    "actThreeCards": 6
+    "actThreeCards": 6,
+    "gameOver": 26
   },
   {
     "id": 3,
@@ -49,6 +52,7 @@
     "scienceDiscovered": 3,
     "wondersSeen": 2,
     "actTwoCards": 3,
-    "actThreeCards": 13
+    "actThreeCards": 13,
+    "gameOver": 51
   }
 ]

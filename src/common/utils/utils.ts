@@ -1,3 +1,9 @@
+// game store
+import { nemosStore } from "../stores/nemosStore";
+
+// types and interfaces
+import { ship } from "../stores/slices/shipPoolsSlice";
+
 // constants
 import { gamePhases, gameSubPhases } from "../stores/slices/gamePhaseSlice";
 
@@ -26,4 +32,39 @@ export function getSubPhaseNumber(phaseName: string) {
     return phasePair[1] == phaseName;
   });
   return Number(foundPhase![0]);
+}
+
+export function setSubPhase(subPhase: string) {
+  const setCurrentSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+
+  setCurrentSubPhase(getSubPhaseNumber(subPhase));
+}
+
+export function getFlippedShip(ship: ship) {
+  const flippedShip = {
+    id: ship.id,
+    name: ship.flipName ? ship.flipName : ship.name,
+    attackStrength: ship.flipAttackStrength
+      ? ship.flipAttackStrength
+      : ship.attackStrength,
+    defenseStrength: ship.flipDefenseStrength
+      ? ship.flipDefenseStrength
+      : ship.defenseStrength,
+    notoriety: ship.flipNotoriety ? ship.flipNotoriety : ship.notoriety,
+    groupId: ship.flipGroupId ? ship.flipGroupId : ship.groupId,
+    nationality: ship.flipNationality ? ship.flipNationality : ship.nationality,
+    shipClass: ship.flipShipClass ? ship.flipShipClass : ship.shipClass,
+    vp: ship.flipVp ? ship.flipVp : ship.vp,
+    flipName: ship.name,
+    flipAttackStrength: ship.attackStrength,
+    flipDefenseStrength: ship.defenseStrength,
+    flipNotoriety: ship.notoriety,
+    flipGroupId: ship.groupId,
+    flipNationality: ship.nationality,
+    flipShipClass: ship.shipClass,
+    flipVp: ship.vp,
+    flipped: true,
+  };
+
+  return flippedShip;
 }

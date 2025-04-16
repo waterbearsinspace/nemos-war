@@ -10,6 +10,8 @@ export interface GamePhaseSliceInterface {
   setShowNextPhaseButton: (to: boolean) => void;
   isLullTurn: boolean;
   setIsLullTurn: (to: boolean) => void;
+  gameLost: boolean;
+  setGameLost: (to: boolean) => void;
 }
 
 // data and constants
@@ -42,6 +44,7 @@ export const gameSubPhases = Object.freeze({
   18: "REPAIR",
   19: "REFIT",
   20: "SEARCH",
+  21: "GAME OVER",
 });
 
 // slice
@@ -52,10 +55,12 @@ export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   currentSubPhase: 0,
   showNextPhaseButton: false,
   isLullTurn: false,
+  gameLost: false,
 
   setCurrentPhase: (newPhase) => set(() => ({ currentPhase: newPhase })),
   setCurrentSubPhase: (newSubPhase) =>
     set(() => ({ currentSubPhase: newSubPhase })),
   setShowNextPhaseButton: (to) => set(() => ({ showNextPhaseButton: to })),
   setIsLullTurn: (to) => set(() => ({ isLullTurn: to })),
+  setGameLost: (to) => set(() => ({ gameLost: to })),
 });

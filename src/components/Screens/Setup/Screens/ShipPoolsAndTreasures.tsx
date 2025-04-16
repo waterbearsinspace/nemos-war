@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // data and constants
-import ships from "../../../../common/data/ships.json";
+import shipData from "../../../../common/data/ships.json";
 import treasures from "../../../../common/data/treasures.json";
 
 // types and interfaces
@@ -21,16 +21,21 @@ export default function ShipPools() {
   // store selectors
   let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
+  let setUnusedShipPool = nemosStore((state) => state.setUnusedShipPool);
   let setTreasureDrawlPool = nemosStore((state) => state.setTreasureDrawPool);
   let oceans = nemosStore((state) => state.oceans);
   let setOceans = nemosStore((state) => state.setOceans);
 
   function setupShipPool() {
-    let starterShipPool = ships.filter(
+    let starterShipPool = shipData.filter(
       (ship) => ship.groupId == "A" || ship.groupId == "B"
+    );
+    let unusedShipPool = shipData.filter(
+      (ship) => ship.groupId != "A" && ship.groupId != "B"
     );
     let shuffledShips = shuffleArray(starterShipPool);
     setCurrentShipPool(shuffledShips);
+    setUnusedShipPool(unusedShipPool);
   }
 
   let setupOceans = () => {
