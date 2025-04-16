@@ -17,11 +17,13 @@ import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
 
 // css
 import "./Playing.css";
+import Repair from "./Actions/Repair";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const drawPile = nemosStore((state) => state.drawPile);
   const adventureDeck = nemosStore((state) => state.adventureDeck);
+  const notoriety = nemosStore((state) => state.notoriety);
   const nemoValue = nemosStore((state) => state.nemo.value);
   const crewValue = nemosStore((state) => state.crew.value);
   const hullValue = nemosStore((state) => state.hull.value);
@@ -115,7 +117,7 @@ export default function Playing() {
         return <Rest />;
 
       case getSubPhaseNumber("REPAIR"):
-        return <></>;
+        return <Repair />;
 
       case getSubPhaseNumber("REFIT"):
         return <></>;
@@ -144,7 +146,7 @@ export default function Playing() {
       </div>
       <section className="overlay-bar overlay-bar-bottom">
         <section className="overlay-bar-content-wrapper">
-          <p>NOTORIETY: 0</p>
+          <p>NOTORIETY: {notoriety}</p>
           <p>NEMO: {nemoValue}</p>
           <p>CREW: {crewValue}</p>
           <p>HULL: {hullValue}</p>

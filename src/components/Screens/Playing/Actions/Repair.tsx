@@ -49,7 +49,7 @@ function SuccessTable() {
                   <strong>
                     <em>OR </em>
                   </strong>
-                  <span className="hull-text">Hull</span>
+                  <span className="crew-text">Crew</span>
                 </li>
                 <li>
                   <span className="text-green bold">+X</span> for any{" "}
@@ -80,24 +80,33 @@ function SuccessTable() {
         </tr>
         <tr>
           <td className={`${isSelected(-999, 2)}`}>
-            <p className="result-title text-red">DESERTION</p>
-            <p className="result-info">Lose 1 Crew</p>
+            <p className="result-title text-red">DAMAGE</p>
+            <p className="result-info">
+              Lose <span className="hull-text">1 Hull</span>
+            </p>
           </td>
           <td className={`${isSelected(3, 6)}`}>
-            <p className="result-title text-red">BATTLE DRILL</p>
+            <p className="result-title text-red">LACK OF PARTS</p>
             <p className="result-info">No Effect</p>
           </td>
           <td className={`${isSelected(7, 8)}`}>
-            <p className="result-title text-green">SUSPECTED</p>
-            <p className="result-info">Gain 1 Crew but +1 Notoriety</p>
+            <p className="result-title text-green">EXPENSIVE</p>
+            <p className="result-info">
+              Gain <span className="hull-text">1 Hull</span> but Lose{" "}
+              <strong>1 Treasure</strong>
+            </p>
           </td>
           <td className={`${isSelected(9, 11)}`}>
-            <p className="result-title text-green">RECREATION</p>
-            <p className="result-info">Gain 1 Crew</p>
+            <p className="result-title text-green">REGULAR MAINTENANCE</p>
+            <p className="result-info">
+              Gain <span className="hull-text">1 Hull</span>
+            </p>
           </td>
           <td className={`${isSelected(12, 999)}`}>
-            <p className="result-title text-green">RECRUIT SAILORS</p>
-            <p className="result-info">Gain 2 Crew</p>
+            <p className="result-title text-green">RECRUIT TEAMS</p>
+            <p className="result-info">
+              Gain <span className="hull-text">2 Hull</span>
+            </p>
           </td>
         </tr>
       </tbody>
@@ -105,14 +114,12 @@ function SuccessTable() {
   );
 }
 
-export default function Rest() {
+export default function Repair() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const crew = nemosStore((state) => state.crew);
-  const setCrew = nemosStore((state) => state.setCrewValue);
-  const notoriety = nemosStore((state) => state.notoriety);
-  const setNotoriety = nemosStore((state) => state.setNotoriety);
+  const hull = nemosStore((state) => state.hull);
+  const setHull = nemosStore((state) => state.setHullValue);
 
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
@@ -134,15 +141,15 @@ export default function Rest() {
   const handleClick = () => {
     // apply result
     if (finalValue <= 2) {
-      setCrew(crew.value - 1);
+      setHull(hull.value - 1);
     } else if (finalValue <= 6) {
     } else if (finalValue <= 8) {
-      setCrew(crew.value + 1);
-      setNotoriety(notoriety + 1);
+      setHull(hull.value + 1);
+      // lose 1 treasure
     } else if (finalValue <= 11) {
-      setCrew(crew.value + 1);
+      setHull(hull.value + 1);
     } else if (finalValue >= 12) {
-      setCrew(crew.value + 2);
+      setHull(hull.value + 2);
     }
     // adjust treasure
     setDoneRolling(false);
@@ -153,7 +160,7 @@ export default function Rest() {
     <>
       <div>
         <SuccessTable />
-        <Test id={"Rest"} />
+        <Test id={"Repair"} />
       </div>
 
       {doneRolling && ( // display when there is a card resolution added for the current card

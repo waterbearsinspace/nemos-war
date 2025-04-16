@@ -10,7 +10,7 @@
   --card-height: 25rem;
   --card-width: 36rem;
   --nemo-purple: #5b1f61;
-  --crew-brown: #30291b;
+  --crew-brown: #63480d;
   --hull-blue: #2b5dc9;
 
   align-items: center;
@@ -62,7 +62,7 @@ button {
 
 /* utility classes */
 .bold {
-  font-weight: bold;
+  font-weight: 900;
 }
 
 .text-red {
@@ -76,7 +76,7 @@ button {
 .nemo-text,
 .crew-text,
 .hull-text {
-  font-weight: bold;
+  font-weight: bolder;
 }
 .nemo-text {
   color: var(--nemo-purple);

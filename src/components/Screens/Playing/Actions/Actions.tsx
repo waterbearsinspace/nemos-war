@@ -74,6 +74,57 @@ export default function Actions() {
       },
     ];
 
+    function isSelectable(action: action) {
+      const actionCost = !isLullTurn ? action.normalCost : action.lullCost;
+      let disabled = false;
+
+      // not enough AP
+      disabled = actionCost > actionPoints ? true : false;
+
+      if (!disabled) {
+        switch (action.name) {
+          case "Adventure":
+            // adventure deck cannot be empty
+            const adventureDeck = nemosStore((state) => state.adventureDeck);
+            disabled = adventureDeck.length <= 0 ? true : disabled;
+            break;
+          case "Attack":
+            // not implemented
+            disabled = true;
+            break;
+          case "Incite":
+            // not implemented
+            disabled = true;
+            break;
+          case "Move":
+            // no special rules
+            break;
+          case "Rest":
+            // no special rules
+            break;
+          case "Repair":
+            // no special rules
+            break;
+          case "Refit":
+            // not implemented
+            disabled = true;
+            break;
+          case "Search":
+            // must be treasure available in current ocean
+            const currentOceanName = nemosStore(
+              (state) => state.currentNautilusOceanName
+            );
+            const currentOcean = nemosStore((state) =>
+              state.oceans.find((ocean) => ocean.name == currentOceanName)
+            );
+
+            disabled = !currentOcean?.treasureAvailable;
+            break;
+        }
+      }
+      return disabled ? "disabled" : "";
+    }
+
     const handleClick = (action: action) => {
       const actionCost = !isLullTurn ? action.normalCost : action.lullCost;
 
@@ -94,6 +145,10 @@ export default function Actions() {
             setDoneRolling(false);
             setSubPhase(getSubPhaseNumber("REST"));
             break;
+          case "Repair":
+            setDoneRolling(false);
+            setSubPhase(getSubPhaseNumber("REPAIR"));
+            break;
           default:
             break;
         }
@@ -109,9 +164,7 @@ export default function Actions() {
               : action.lullCost;
             return (
               <button
-                className={`action-select-option ${
-                  actionCost > actionPoints ? "disabled" : ""
-                }`}
+                className={`action-select-option ${isSelectable(action)}`}
                 key={action.name}
                 onClick={() => {
                   handleClick(action);

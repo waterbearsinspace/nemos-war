@@ -47,11 +47,13 @@ function adjustNemoBy(by: number) {
 }
 
 // adjust crew value
-function adjustCrewBy(by: number) {
+export function adjustCrewBy(by: number) {
   const crewValue = nemosStore((state) => state.crew.value);
   const setCrewValue = nemosStore((state) => state.setCrewValue);
   const newCrewValue = crewValue + by;
   const maxCrewValue = 10;
+
+  console.log("TEST");
 
   if (newCrewValue > maxCrewValue) {
     setCrewValue(maxCrewValue);
@@ -88,9 +90,11 @@ function adjustNotorietyBy(by: number) {
     setNotorietyValue(maxNotoriety);
   } else setNotorietyValue(newNotoriety);
 
+  checkNotoriety();
   checkEndGame();
 }
 
+// check notoriety
 function checkNotoriety() {
   const notorietyValue = nemosStore((state) => state.notoriety);
   const currentShipPool = nemosStore((state) => state.currentShipPool);
