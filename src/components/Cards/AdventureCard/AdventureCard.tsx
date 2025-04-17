@@ -1,4 +1,4 @@
-import AdventureCardInstructions from "./AdventureCardInstructions";
+import AdventureCardInstructions from "../../../common/utils/AdventureCardInstructions";
 
 import "./AdventureCard.css";
 

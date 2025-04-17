@@ -1,6 +1,3 @@
-// game store
-import { nemosStore } from "../stores/nemosStore";
-
 // types and interfaces
 import { ship } from "../stores/slices/shipPoolsSlice";
 
@@ -32,12 +29,6 @@ export function getSubPhaseNumber(phaseName: string) {
     return phasePair[1] == phaseName;
   });
   return Number(foundPhase![0]);
-}
-
-export function setSubPhase(subPhase: string) {
-  const setCurrentSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-
-  setCurrentSubPhase(getSubPhaseNumber(subPhase));
 }
 
 export function getFlippedShip(ship: ship) {

@@ -16,10 +16,9 @@ export default function Game() {
   // store selectors
   const currentPhase = nemosStore((state) => state.currentPhase);
 
+  // game screens
   return (
     <>
-      {/* {currentPhase != getPhaseNumber("MENU") && <DebugHeader />} */}
-
       {/* Menu Screen */}
       {currentPhase == getPhaseNumber("MENU") && <Menu />}
 

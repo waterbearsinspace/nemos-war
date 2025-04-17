@@ -8,6 +8,8 @@ const upgradeDescriptionText =
 
 // utils
 import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { useNemosCore } from "../../../../common/scripts/nemosCore";
+import UpgradeInstructions from "../../../../common/utils/UpgradeInstructions";
 
 export default function StartingUpgrade() {
   // store selectors
@@ -20,9 +22,6 @@ export default function StartingUpgrade() {
   const nemoValue = nemosStore((state) => state.nemo.value);
   const crewValue = nemosStore((state) => state.crew.value);
   const hullValue = nemosStore((state) => state.hull.value);
-  const setNemoValue = nemosStore((state) => state.setNemoValue);
-  const setCrewValue = nemosStore((state) => state.setCrewValue);
-  const setHullValue = nemosStore((state) => state.setHullValue);
 
   const totalLessUpgradeCost = 6 + 10 + 10 - 3;
   const resourcesToPay =
@@ -45,14 +44,18 @@ export default function StartingUpgrade() {
     setSubPhase(getSubPhaseNumber("PREP SHIPS"));
   };
 
+  const { adjustNemoBy, adjustCrewBy, adjustHullBy } = useNemosCore();
+
   return (
     <div className="upgrade-screen-wrapper">
       <h1 className="sub-phase">Pay for Upgrade</h1>
       <p className="phase-description">{upgradeDescriptionText}</p>
-      <section className="tile">
-        <p className="tile-name">{motiveUpgrade?.name}</p>
-        <p className="tile-info">{motiveUpgrade?.flavorText}</p>
-        <p>(Effect goes here.)</p>
+      <section className="tile tile-motive">
+        <h2 className="tile-name">{motiveUpgrade?.name}</h2>
+        {UpgradeInstructions(motiveUpgrade!.name)}
+        <p className="tile-info">
+          <em>{motiveUpgrade?.flavorText}</em>
+        </p>
       </section>
       <header>
         <p>
@@ -67,7 +70,7 @@ export default function StartingUpgrade() {
               className={nemoPayable ? "" : "disabled"}
               onClick={() => {
                 if (nemoPayable) {
-                  setNemoValue(nemoValue - 1);
+                  adjustNemoBy(-1);
                 }
               }}
             >
@@ -80,7 +83,7 @@ export default function StartingUpgrade() {
               className={nemoRefundable ? "" : "disabled"}
               onClick={() => {
                 if (nemoRefundable) {
-                  setNemoValue(nemoValue + 1);
+                  adjustNemoBy(1);
                 }
               }}
             >
@@ -95,7 +98,7 @@ export default function StartingUpgrade() {
               className={crewPayable ? "" : "disabled"}
               onClick={() => {
                 if (crewPayable) {
-                  setCrewValue(crewValue - 1);
+                  adjustCrewBy(-1);
                 }
               }}
             >
@@ -106,7 +109,7 @@ export default function StartingUpgrade() {
               className={crewRefundable ? "" : "disabled"}
               onClick={() => {
                 if (crewRefundable) {
-                  setCrewValue(crewValue + 1);
+                  adjustCrewBy(1);
                 }
               }}
             >
@@ -121,7 +124,7 @@ export default function StartingUpgrade() {
               className={hullPayable ? "" : "disabled"}
               onClick={() => {
                 if (hullPayable) {
-                  setHullValue(hullValue - 1);
+                  adjustHullBy(-1);
                 }
               }}
             >
@@ -132,7 +135,7 @@ export default function StartingUpgrade() {
               className={hullRefundable ? "" : "disabled"}
               onClick={() => {
                 if (hullRefundable) {
-                  setHullValue(hullValue + 1);
+                  adjustHullBy(1);
                 }
               }}
             >
