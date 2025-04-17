@@ -83,11 +83,11 @@ export default function Done() {
   return (
     <div className="done-screen-wrapper">
       <h1>Ready to Start!</h1>
-      <section className="decks">
+      {/* <section className="decks">
         <DrawPileList />
         <AdventureDeck />
         <ShipPool />
-      </section>
+      </section> */}
       <h2>Motive: {motive}</h2>
       <p className="done-screen-upgrade-text">
         Upgrade {upgrades.length > 0 ? <span>{upgrades[0].name}</span> : "Not"}{" "}
