@@ -9,7 +9,7 @@ import ShipPools from "./Screens/ShipPoolsAndTreasures";
 import Done from "./Screens/Done";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 
 // css
 import "./Setup.css";

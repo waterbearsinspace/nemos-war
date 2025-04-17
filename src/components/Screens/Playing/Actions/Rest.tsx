@@ -1,7 +1,8 @@
 import { diceStore } from "../../../../common/stores/diceStore";
 import { nemosStore } from "../../../../common/stores/nemosStore";
-import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 import { Test } from "../../../Dice/Test";
+import { useNemosCore } from "../../../../common/scripts/nemosCore";
 
 import "./Actions.css";
 
@@ -131,18 +132,20 @@ export default function Rest() {
 
   const finalValue = sumRolled + warshipsPresent;
 
+  const { adjustCrewBy, adjustNotorietyBy } = useNemosCore();
+
   const handleClick = () => {
     // apply result
     if (finalValue <= 2) {
-      setCrew(crew.value - 1);
+      adjustCrewBy(-1);
     } else if (finalValue <= 6) {
     } else if (finalValue <= 8) {
-      setCrew(crew.value + 1);
-      setNotoriety(notoriety + 1);
+      adjustCrewBy(1);
+      adjustNotorietyBy(1);
     } else if (finalValue <= 11) {
-      setCrew(crew.value + 1);
+      adjustCrewBy(1);
     } else if (finalValue >= 12) {
-      setCrew(crew.value + 2);
+      adjustCrewBy(2);
     }
     // adjust treasure
     setDoneRolling(false);

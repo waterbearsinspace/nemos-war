@@ -15,7 +15,7 @@ import { treasure } from "../../../../common/stores/slices/treasuresSlice";
 import {
   getSubPhaseNumber,
   shuffleArray,
-} from "../../../../common/utils/utils";
+} from "../../../../common/scripts/utils/utils";
 
 export default function ShipPools() {
   // store selectors

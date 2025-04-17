@@ -7,7 +7,7 @@ import { Test } from "../../Dice/Test";
 import AdventureCard, { adventureCard } from "./AdventureCard";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 
 // css
 import "./AdventureCardResolution.css";

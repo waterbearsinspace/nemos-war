@@ -2,7 +2,10 @@
 import { nemosStore } from "../../../common/stores/nemosStore";
 
 //utils
-import { getPhaseNumber, getSubPhaseNumber } from "../../../common/utils/utils";
+import {
+  getPhaseNumber,
+  getSubPhaseNumber,
+} from "../../../common/scripts/utils/utils";
 
 // css
 import "./Menu.css";

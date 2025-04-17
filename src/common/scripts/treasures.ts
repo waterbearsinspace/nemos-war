@@ -2,7 +2,7 @@
 import { nemosStore } from "../../common/stores/nemosStore";
 
 // utils
-import { shuffleArray } from "../utils/utils";
+import { shuffleArray } from "./utils/utils";
 
 export const useTreasure = (id: number) => {
   const setNemoValue = nemosStore((state) => state.setHullValue);

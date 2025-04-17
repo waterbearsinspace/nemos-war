@@ -7,7 +7,7 @@ import Setup from "./components/Screens/Setup/Setup";
 import Playing from "./components/Screens/Playing/Playing";
 
 // utils
-import { getPhaseNumber } from "./common/utils/utils";
+import { getPhaseNumber } from "./common/scripts/utils/utils";
 
 // css
 import "./Game.css";

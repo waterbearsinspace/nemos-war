@@ -1,6 +1,6 @@
 import { diceStore } from "../stores/diceStore";
 import { nemosStore } from "../stores/nemosStore";
-import { getFlippedShip, getSubPhaseNumber } from "../utils/utils";
+import { getFlippedShip, getSubPhaseNumber } from "./utils/utils";
 
 // ============================
 // UTILS

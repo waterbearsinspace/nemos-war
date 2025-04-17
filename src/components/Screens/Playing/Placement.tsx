@@ -13,7 +13,10 @@ import Oceans from "./Oceans";
 import { maxSavedActionPoints } from "../../../common/stores/slices/actionPointsSlice";
 
 // utils
-import { getSubPhaseNumber, shuffleArray } from "../../../common/utils/utils";
+import {
+  getSubPhaseNumber,
+  shuffleArray,
+} from "../../../common/scripts/utils/utils";
 
 // css
 import "./Placement.css";

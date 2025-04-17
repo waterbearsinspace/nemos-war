@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 18px;
   border: 1px solid var(--soft-black);
   display: flex;
   flex-direction: column;
@@ -36,8 +36,8 @@
   gap: 2rem;
 }
 .tile-motive {
-  height: 20rem;
-  width: 28rem;
+  height: var(--card-height);
+  width: var(--card-width);
 }
 
 /* motive screen */

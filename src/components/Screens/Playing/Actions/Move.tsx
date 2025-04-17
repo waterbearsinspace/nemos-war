@@ -5,7 +5,7 @@ import { nemosStore } from "../../../../common/stores/nemosStore";
 import Oceans from "../Oceans";
 
 // utils
-import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 
 // css
 import "./Actions.css";

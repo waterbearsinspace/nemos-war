@@ -7,9 +7,9 @@ const upgradeDescriptionText =
   "Would you like to purchase your motive's starting upgrade by spending any 3 Ship Resources? If not, it will be available for purchase later and you will keep your Ship Resources.";
 
 // utils
-import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 import { useNemosCore } from "../../../../common/scripts/nemosCore";
-import UpgradeInstructions from "../../../../common/utils/UpgradeInstructions";
+import UpgradeInstructions from "../../../../common/scripts/utils/UpgradeInstructions";
 
 export default function StartingUpgrade() {
   // store selectors

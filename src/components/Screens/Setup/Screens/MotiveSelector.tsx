@@ -18,7 +18,7 @@ const motiveAdvice = [
 ];
 
 // utils
-import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 
 export default function MotiveSelector() {
   const motive = nemosStore((state) => state.currentMotive);

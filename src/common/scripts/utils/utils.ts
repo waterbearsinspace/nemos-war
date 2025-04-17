@@ -1,8 +1,8 @@
 // types and interfaces
-import { ship } from "../stores/slices/shipPoolsSlice";
+import { ship } from "../../stores/slices/shipPoolsSlice";
 
 // constants
-import { gamePhases, gameSubPhases } from "../stores/slices/gamePhaseSlice";
+import { gamePhases, gameSubPhases } from "../../stores/slices/gamePhaseSlice";
 
 // shuffle array
 // credit to geeksforgeeks for fisher-yates algorithm implementation

@@ -1,4 +1,4 @@
-import AdventureCardInstructions from "../../../common/utils/AdventureCardInstructions";
+import AdventureCardInstructions from "../../../common/scripts/utils/AdventureCardInstructions";
 
 import "./AdventureCard.css";
 

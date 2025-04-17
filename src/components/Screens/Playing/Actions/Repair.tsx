@@ -1,7 +1,8 @@
 import { diceStore } from "../../../../common/stores/diceStore";
 import { nemosStore } from "../../../../common/stores/nemosStore";
-import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 import { Test } from "../../../Dice/Test";
+import { useNemosCore } from "../../../../common/scripts/nemosCore";
 
 import "./Actions.css";
 
@@ -138,18 +139,21 @@ export default function Repair() {
 
   const finalValue = sumRolled + warshipsPresent;
 
+  const { adjustNemoBy, adjustCrewBy, adjustHullBy, adjustNotorietyBy } =
+    useNemosCore();
+
   const handleClick = () => {
     // apply result
     if (finalValue <= 2) {
-      setHull(hull.value - 1);
+      adjustHullBy(-1);
     } else if (finalValue <= 6) {
     } else if (finalValue <= 8) {
-      setHull(hull.value + 1);
+      adjustHullBy(1);
       // lose 1 treasure
     } else if (finalValue <= 11) {
-      setHull(hull.value + 1);
+      adjustHullBy(1);
     } else if (finalValue >= 12) {
-      setHull(hull.value + 2);
+      adjustHullBy(2);
     }
     // adjust treasure
     setDoneRolling(false);

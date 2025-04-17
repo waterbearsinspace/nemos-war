@@ -5,7 +5,7 @@ import { nemosStore } from "../../../../common/stores/nemosStore";
 import {
   getPhaseNumber,
   getSubPhaseNumber,
-} from "../../../../common/utils/utils";
+} from "../../../../common/scripts/utils/utils";
 
 export default function Done() {
   let motive = nemosStore((state) => state.motiveName);

@@ -13,7 +13,7 @@ type action = {
 };
 
 // utils
-import { getSubPhaseNumber } from "../../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 
 // css
 import "./Actions.css";

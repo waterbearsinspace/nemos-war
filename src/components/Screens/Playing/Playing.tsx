@@ -10,7 +10,7 @@ import Move from "./Actions/Move";
 import Rest from "./Actions/Rest";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 
 // data and constants
 import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";

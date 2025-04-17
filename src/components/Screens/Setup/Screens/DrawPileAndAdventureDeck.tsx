@@ -14,7 +14,7 @@ import adventureCards from "../../../../common/data/adventureCards.json";
 import {
   getSubPhaseNumber,
   shuffleArray,
-} from "../../../../common/utils/utils";
+} from "../../../../common/scripts/utils/utils";
 
 export default function DrawPileAndAdventureDeck() {
   let motive = nemosStore((state) => state.currentMotive);

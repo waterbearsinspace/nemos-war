@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { nemosStore } from "../../../common/stores/nemosStore";
 import AdventureCard from "./AdventureCard";
-import { getSubPhaseNumber } from "../../../common/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 import { diceStore } from "../../../common/stores/diceStore";
 
 export default function AdventureCardDraw() {

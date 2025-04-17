@@ -3,10 +3,11 @@ import { nemosStore } from "../../../../common/stores/nemosStore";
 import {
   getSubPhaseNumber,
   shuffleArray,
-} from "../../../../common/utils/utils";
+} from "../../../../common/scripts/utils/utils";
 import { Test } from "../../../Dice/Test";
 
 import "./Actions.css";
+import { useNemosCore } from "../../../../common/scripts/nemosCore";
 
 function SuccessTable() {
   const doneRolling = diceStore((state) => state.doneRolling);
@@ -121,16 +122,10 @@ export default function Search() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const hull = nemosStore((state) => state.hull);
-  const crew = nemosStore((state) => state.crew);
-  const setHull = nemosStore((state) => state.setHullValue);
-  const setCrew = nemosStore((state) => state.setCrewValue);
   const treasureDrawPool = nemosStore((state) => state.treasureDrawPool);
   const setTreasureDrawPool = nemosStore((state) => state.setTreasureDrawPool);
   const setCurrentTreasures = nemosStore((state) => state.setCurrentTreasures);
   const currentTreasures = nemosStore((state) => state.currentTreasures);
-  const notoriety = nemosStore((state) => state.notoriety);
-  const setNotoriety = nemosStore((state) => state.setNotoriety);
   const oceans = nemosStore((state) => state.oceans);
   const setOceans = nemosStore((state) => state.setOceans);
 
@@ -149,6 +144,8 @@ export default function Search() {
 
   const finalValue = sumRolled + revealedCount;
 
+  const { adjustCrewBy, adjustHullBy, adjustNotorietyBy } = useNemosCore();
+
   const handleClick = () => {
     const shuffledTreasures = shuffleArray(treasureDrawPool);
     const firstDrawnTreasure = shuffledTreasures[0];
@@ -166,8 +163,8 @@ export default function Search() {
 
     // apply result
     if (finalValue <= 2) {
-      setCrew(crew.value - 1);
-      setHull(hull.value - 1);
+      adjustCrewBy(-1);
+      adjustHullBy(-1);
     } else if (finalValue <= 6) {
       // decide between one or the other
     } else if (finalValue <= 8) {
@@ -176,7 +173,7 @@ export default function Search() {
       let newOceans = [...oceans];
       newOceans[currentOceanIndex].treasureAvailable = false;
       setOceans(newOceans);
-      setNotoriety(notoriety + 1);
+      adjustNotorietyBy(1);
     } else if (finalValue <= 11) {
       setCurrentTreasures(currentTreasures.concat([firstDrawnTreasure]));
       setTreasureDrawPool(newTreasuresFirst);
