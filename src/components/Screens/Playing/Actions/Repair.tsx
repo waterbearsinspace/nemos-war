@@ -119,8 +119,6 @@ export default function Repair() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const hull = nemosStore((state) => state.hull);
-  const setHull = nemosStore((state) => state.setHullValue);
 
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
@@ -139,8 +137,7 @@ export default function Repair() {
 
   const finalValue = sumRolled + warshipsPresent;
 
-  const { adjustNemoBy, adjustCrewBy, adjustHullBy, adjustNotorietyBy } =
-    useNemosCore();
+  const { adjustHullBy } = useNemosCore();
 
   const handleClick = () => {
     // apply result

@@ -110,10 +110,6 @@ export default function Rest() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const crew = nemosStore((state) => state.crew);
-  const setCrew = nemosStore((state) => state.setCrewValue);
-  const notoriety = nemosStore((state) => state.notoriety);
-  const setNotoriety = nemosStore((state) => state.setNotoriety);
 
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
