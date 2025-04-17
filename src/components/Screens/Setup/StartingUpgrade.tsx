@@ -1,20 +1,22 @@
 // game store
-import { nemosStore } from "../../../../common/stores/nemosStore";
+import { nemosStore } from "../../../common/stores/nemosStore";
 
 // data and constants
-import upgradeData from "../../../../common/data/upgrades.json";
+import upgradeData from "../../../common/data/upgrades.json";
 const upgradeDescriptionText =
   "Would you like to purchase your motive's starting upgrade by spending any 3 Ship Resources? If not, it will be available for purchase later and you will keep your Ship Resources.";
 
 // utils
-import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
-import { useNemosCore } from "../../../../common/scripts/nemosCore";
-import UpgradeInstructions from "../../../../common/scripts/utils/UpgradeInstructions";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
+import UpgradeInstructions from "../../../common/scripts/utils/UpgradeInstructions";
 
 export default function StartingUpgrade() {
   // store selectors
-  const motive = nemosStore((state) => state.motiveName);
-  const motiveUpgrade = upgradeData.find((upgrade) => upgrade.motive == motive);
+  const motive = nemosStore((state) => state.currentMotive);
+  const motiveUpgrade = upgradeData.find(
+    (upgrade) => upgrade.motive == motive.name
+  );
   const addToCurrentUpgrades = nemosStore(
     (state) => state.addToCurrentUpgrades
   );

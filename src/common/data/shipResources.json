@@ -9,13 +9,13 @@
       "Steady",
       "Determined",
       "Strong",
-      "Nemo"
+      "NEMO"
     ],
     "exertionDRM": [0, 3, 3, 3, 2, 2, 2],
     "vp": [
       {},
       { "shipResourcesPenalty": -10 },
-      { "shipResourcesPenalty": 5 },
+      { "shipResourcesPenalty": -5 },
       {},
       {},
       { "wondersSeen": 1 },
@@ -36,7 +36,7 @@
       "Fit",
       "Fresh",
       "Fresh",
-      "Crew"
+      "CREW"
     ],
     "exertionDRM": [0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3],
     "vp": [
@@ -67,7 +67,7 @@
       "Fighting Trim",
       "Fighting Trim",
       "Shipshape",
-      "Hull"
+      "HULL"
     ],
     "exertionDRM": [0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
     "vp": [

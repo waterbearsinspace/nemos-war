@@ -1,11 +1,11 @@
 // game store
-import { nemosStore } from "../../../../common/stores/nemosStore";
+import { nemosStore } from "../../../common/stores/nemosStore";
 
 // utils
 import {
   getPhaseNumber,
   getSubPhaseNumber,
-} from "../../../../common/scripts/utils/utils";
+} from "../../../common/scripts/utils/utils";
 
 export default function Done() {
   let motive = nemosStore((state) => state.motiveName);

@@ -12,8 +12,9 @@ export type treasure = {
 
 export interface TreasuresSliceInterface {
   treasureDrawPool: treasure[];
-  setTreasureDrawPool: (to: treasure[]) => void;
   currentTreasures: treasure[];
+
+  setTreasureDrawPool: (to: treasure[]) => void;
   setCurrentTreasures: (to: treasure[]) => void;
 }
 
@@ -24,8 +25,6 @@ export const treasuresSlice: StateCreator<TreasuresSliceInterface, []> = (
   treasureDrawPool: [],
   currentTreasures: [],
 
-  setTreasureDrawPool: (newTreasureDrawPool) =>
-    set(() => ({ treasureDrawPool: newTreasureDrawPool })),
-  setCurrentTreasures: (newTreasureDrawPool) =>
-    set(() => ({ currentTreasures: newTreasureDrawPool })),
+  setTreasureDrawPool: (to) => set(() => ({ treasureDrawPool: to })),
+  setCurrentTreasures: (to) => set(() => ({ currentTreasures: to })),
 });

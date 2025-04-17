@@ -4,13 +4,14 @@ import { StateCreator } from "zustand";
 export interface GamePhaseSliceInterface {
   currentPhase: number;
   currentSubPhase: number | null;
-  setCurrentPhase: (newPhase: number) => void;
-  setCurrentSubPhase: (newSubPhase: number) => void;
   showNextPhaseButton: boolean;
-  setShowNextPhaseButton: (to: boolean) => void;
   isLullTurn: boolean;
-  setIsLullTurn: (to: boolean) => void;
   gameLost: boolean;
+
+  setCurrentPhase: (to: number) => void;
+  setCurrentSubPhase: (to: number) => void;
+  setShowNextPhaseButton: (to: boolean) => void;
+  setIsLullTurn: (to: boolean) => void;
   setGameLost: (to: boolean) => void;
 }
 
@@ -57,9 +58,8 @@ export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   isLullTurn: false,
   gameLost: false,
 
-  setCurrentPhase: (newPhase) => set(() => ({ currentPhase: newPhase })),
-  setCurrentSubPhase: (newSubPhase) =>
-    set(() => ({ currentSubPhase: newSubPhase })),
+  setCurrentPhase: (to) => set(() => ({ currentPhase: to })),
+  setCurrentSubPhase: (to) => set(() => ({ currentSubPhase: to })),
   setShowNextPhaseButton: (to) => set(() => ({ showNextPhaseButton: to })),
   setIsLullTurn: (to) => set(() => ({ isLullTurn: to })),
   setGameLost: (to) => set(() => ({ gameLost: to })),

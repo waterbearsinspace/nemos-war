@@ -6,8 +6,9 @@ import { adventureCard } from "../../../components/Cards/AdventureCard/Adventure
 export interface AdventureDeckSliceInterface {
   adventureDeck: adventureCard[];
   adventureDeckTreasuresAvailable: number;
+
   setAdventureDeck: (newDrawPile: adventureCard[]) => void;
-  adjustAdventureDeckTreasures: (by: number) => void;
+  setAdventureDeckTreasures: (to: number) => void;
 }
 
 // slice
@@ -20,10 +21,8 @@ export const adventureDeckSlice: StateCreator<
 
   setAdventureDeck: (newAdventureDeck) =>
     set(() => ({ adventureDeck: newAdventureDeck })),
-
-  adjustAdventureDeckTreasures: (by) =>
-    set((state) => ({
-      adventureDeckTreasuresAvailable:
-        state.adventureDeckTreasuresAvailable + by,
+  setAdventureDeckTreasures: (to) =>
+    set(() => ({
+      adventureDeckTreasuresAvailable: to,
     })),
 });

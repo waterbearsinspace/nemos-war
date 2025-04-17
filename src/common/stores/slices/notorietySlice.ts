@@ -4,14 +4,15 @@ import { StateCreator } from "zustand";
 // types and interfaces
 export interface NotorietySliceInterface {
   notoriety: number;
-  setNotoriety: (to: number) => void;
   reinforcementGroupEAdded: boolean;
-  setReinforcementGroupEAdded: (to: boolean) => void;
   reinforcementGroupDAdded: boolean;
-  setReinforcementGroupDAdded: (to: boolean) => void;
   warshipsFlipped: boolean;
-  setWarshipsFlipped: (to: boolean) => void;
   blackPlacementDieAdded: boolean;
+
+  setNotoriety: (to: number) => void;
+  setReinforcementGroupEAdded: (to: boolean) => void;
+  setReinforcementGroupDAdded: (to: boolean) => void;
+  setWarshipsFlipped: (to: boolean) => void;
   setBlackPlacementDieAdded: (to: boolean) => void;
 }
 
@@ -32,7 +33,6 @@ export const notorietySlice: StateCreator<NotorietySliceInterface, []> = (
     set(() => ({
       notoriety: to,
     })),
-
   setReinforcementGroupDAdded: (to) =>
     set(() => ({ reinforcementGroupDAdded: to })),
   setReinforcementGroupEAdded: (to) =>

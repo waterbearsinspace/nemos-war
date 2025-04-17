@@ -1,9 +1,9 @@
 // game store
-import { nemosStore } from "../../../../common/stores/nemosStore";
+import { nemosStore } from "../../../common/stores/nemosStore";
 
 // data and constants
-import motiveData from "../../../../common/data/motives.json";
-import upgradeData from "../../../../common/data/upgrades.json";
+import motiveData from "../../../common/data/motives.json";
+import upgradeData from "../../../common/data/upgrades.json";
 const motiveDescriptionText =
   "This represents the driving motivation behind Nemo's quest and determines the scoring multipliers at the end of the game.";
 
@@ -18,30 +18,32 @@ const motiveAdvice = [
 ];
 
 // utils
-import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 
 export default function MotiveSelector() {
   const motive = nemosStore((state) => state.currentMotive);
-  const motiveInfo = motiveData.find((motiveEntry) => {
-    return motiveEntry.id == motive;
-  });
   const setCurrentMotive = nemosStore((state) => state.setCurrentMotive);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const motiveUpgrade = upgradeData.find(
-    (upgrade) => upgrade.motive == motiveInfo?.name
+    (upgrade) => upgrade.motive == motive?.name
   )?.name;
 
   const handleCycle = (inc: number) => {
-    if (motive + inc > motiveData.length - 1) {
-      setCurrentMotive(0);
-    } else if (motive + inc < 0) {
-      setCurrentMotive(motiveData.length - 1);
-    } else setCurrentMotive(motive + inc);
+    let motiveId = motive.id;
+    if (motiveId + inc > motiveData.length - 1) {
+      setCurrentMotive(motiveData[0]);
+    } else if (motiveId + inc < 0) {
+      setCurrentMotive(motiveData[motiveData.length - 1]);
+    } else setCurrentMotive(motiveData[motiveId + inc]);
   };
 
   const handleConfirm = () => {
     setSubPhase(getSubPhaseNumber("PREP DRAW PILE AND ADVENTURE DECK"));
   };
+
+  const defaultMotive = motiveData.find((motive) => {
+    motive.name != "Explore";
+  });
 
   return (
     <div className="motive-screen-wrapper">
@@ -49,42 +51,42 @@ export default function MotiveSelector() {
       <p className="phase-description">{motiveDescriptionText}</p>
       <p className="motive-multiplier">{motiveMultiplierText}</p>
       <section className="tile">
-        <h2 className="tile-name">{motiveInfo!.name}</h2>
+        <h2 className="tile-name">{motive?.name}</h2>
         <section>
           <p>Associated Upgrade: {motiveUpgrade}</p>
         </section>
         <section className="tile-info">
           <section>
             <p>
-              Warships: {motiveInfo!.warships < 0 ? "" : "+"}
-              {motiveInfo!.warships}
+              Warships: {motive?.warships < 0 ? "" : "+"}
+              {motive?.warships}
             </p>
             <p>
-              Non-warships: {motiveInfo!.nonWarships < 0 ? "" : "+"}
-              {motiveInfo!.nonWarships}
+              Non-warships: {motive?.nonWarships < 0 ? "" : "+"}
+              {motive?.nonWarships}
             </p>
             <p>
-              Adventure Cards: {motiveInfo!.adventureCards < 0 ? "" : "+"}
-              {motiveInfo!.adventureCards}
+              Adventure Cards: {motive?.adventureCards < 0 ? "" : "+"}
+              {motive?.adventureCards}
             </p>
             <p>
-              Treasure: {motiveInfo!.treasure < 0 ? "" : "+"}
-              {motiveInfo!.treasure}
+              Treasure: {motive?.treasure < 0 ? "" : "+"}
+              {motive?.treasure}
             </p>
           </section>
           <section>
-            <p>Liberation: x{motiveInfo!.liberation}</p>
-            <p>Science Discovered: x{motiveInfo!.scienceDiscovered}</p>
-            <p>Wonders Seen: x{motiveInfo!.wondersSeen}</p>
+            <p>Liberation: x{motive?.liberation}</p>
+            <p>Science Discovered: x{motive?.scienceDiscovered}</p>
+            <p>Wonders Seen: x{motive?.wondersSeen}</p>
           </section>
         </section>
         <section>
           <p>Act One Cards: 6</p>
-          <p>Act Two Cards: {motiveInfo!.actTwoCards}</p>
-          <p>Act Three Cards: {motiveInfo!.actThreeCards + 1}</p>
+          <p>Act Two Cards: {motive?.actTwoCards}</p>
+          <p>Act Three Cards: {motive?.actThreeCards + 1}</p>
         </section>
         <div className="motive-advice">
-          <p>{motiveAdvice[motive]} </p>
+          <p>{motiveAdvice[motive?.id]} </p>
         </div>
       </section>
 

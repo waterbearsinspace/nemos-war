@@ -20,7 +20,7 @@ function checkEndGame() {
   function loseGame() {
     setGameLost(true);
     setSubPhase("GAME OVER");
-    console.log("LOST");
+    window.alert("YOU LOST THE GAME");
   }
 
   // ship resources
@@ -32,7 +32,7 @@ function checkEndGame() {
   }
 
   // notoriety
-  const motiveGameOver = nemosStore.getState().motiveGameOver;
+  const motiveGameOver = nemosStore.getState().currentMotive.gameOver;
   const notoriety = nemosStore.getState().notoriety;
   if (notoriety >= motiveGameOver) {
     loseGame();

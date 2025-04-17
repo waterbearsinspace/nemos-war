@@ -23,8 +23,8 @@ export default function Actions() {
     (state) => state.setShowNextPhaseButton
   );
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const actionPoints = nemosStore((state) => state.currentActionPoints);
-  const setActionPoints = nemosStore((state) => state.setCurrentActionPoints);
+  const actionPoints = nemosStore((state) => state.actionPointsCurrent);
+  const setActionPoints = nemosStore((state) => state.setActionPointsCurrent);
   const isLullTurn = nemosStore((state) => state.isLullTurn);
   const setNautilusMoved = nemosStore((state) => state.setNautilusMoved);
   const setHydroMoved = nemosStore((state) => state.setHydroMoved);

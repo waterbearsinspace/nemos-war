@@ -16,9 +16,9 @@ export interface UpgradesSliceInterface {
   unusedUpgrades: upgrade[];
   hydroMoved: boolean;
 
-  addToCurrentUpgrades: (newUpgrade: upgrade) => void;
-  addToPossibleUpgrades: (newUpgrade: upgrade) => void;
-  setUnusedUpgrades: (newUnusedUpgrades: upgrade[]) => void;
+  addToCurrentUpgrades: (to: upgrade) => void;
+  addToPossibleUpgrades: (to: upgrade) => void;
+  setUnusedUpgrades: (to: upgrade[]) => void;
   setHydroMoved: (to: boolean) => void;
 }
 
@@ -31,25 +31,25 @@ export const upgradesSlice: StateCreator<UpgradesSliceInterface, []> = (
   unusedUpgrades: [],
   hydroMoved: false,
 
-  addToCurrentUpgrades: (newUpgrade) => {
+  addToCurrentUpgrades: (to) => {
     set((state) => ({
-      currentUpgrades: [...state.currentUpgrades, newUpgrade],
+      currentUpgrades: [...state.currentUpgrades, to],
       possibleUpgrades: state.possibleUpgrades.filter((upgrade) => {
-        return upgrade.id != newUpgrade.id;
+        return upgrade.id != to.id;
       }),
     }));
   },
-  addToPossibleUpgrades: (newUpgrade) => {
+  addToPossibleUpgrades: (to) => {
     set((state) => ({
-      possibleUpgrades: [...state.possibleUpgrades, newUpgrade],
+      possibleUpgrades: [...state.possibleUpgrades, to],
       unusedUpgrades: state.unusedUpgrades.filter((upgrade) => {
-        return upgrade.id != newUpgrade.id;
+        return upgrade.id != to.id;
       }),
     }));
   },
-  setUnusedUpgrades: (newUnusedUpgrades) => {
+  setUnusedUpgrades: (to) => {
     set(() => ({
-      unusedUpgrades: newUnusedUpgrades,
+      unusedUpgrades: to,
     }));
   },
   setHydroMoved: (to) => {

@@ -14,6 +14,7 @@ export interface ShipResourcesSliceInterface {
   nemo: shipResource;
   hull: shipResource;
   crew: shipResource;
+
   setNemoValue: (to: number) => void;
   setCrewValue: (to: number) => void;
   setHullValue: (to: number) => void;
@@ -24,6 +25,7 @@ import shipResourceData from "../../data/shipResources.json";
 let nemoData = shipResourceData[0];
 let crewData = shipResourceData[1];
 let hullData = shipResourceData[2];
+
 const nemoMax = 6;
 const crewMax = 10;
 const hullMax = 10;

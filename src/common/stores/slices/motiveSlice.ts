@@ -1,61 +1,38 @@
 // modules
 import { StateCreator } from "zustand";
 
-// types and interfaces
+// types and
+type motive = {
+  id: number;
+  name: string;
+  warships: number;
+  nonWarships: number;
+  adventureCards: number;
+  treasure: number;
+  liberation: number;
+  scienceDiscovered: number;
+  wondersSeen: number;
+  actTwoCards: number;
+  actThreeCards: number;
+  gameOver: number;
+};
+
 export interface MotiveSliceInterface {
-  currentMotive: number;
-  motiveName: string;
-  motiveWarships: number;
-  motiveNonWarships: number;
-  motiveAdventureCards: number;
-  motiveTreasure: number;
-  motiveLiberation: number;
-  motiveScienceDiscovered: number;
-  motiveWondersSeen: number;
-  motiveActTwoCards: number;
-  motiveActThreeCards: number;
-  motiveGameOver: number;
-  setCurrentMotive: (by: number) => void;
+  currentMotive: motive;
+
+  setCurrentMotive: (to: motive) => void;
 }
 
 // data and constants
 import motiveData from "../../data/motives.json";
 
-// default motive
-const defaultMotive = motiveData.find((motive) => {
-  return motive.name == "Explore";
-});
-
 // slice
 export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
-  currentMotive: defaultMotive!.id,
-  motiveName: defaultMotive!.name,
-  motiveWarships: defaultMotive!.warships,
-  motiveNonWarships: defaultMotive!.nonWarships,
-  motiveAdventureCards: defaultMotive!.adventureCards,
-  motiveTreasure: defaultMotive!.treasure,
-  motiveLiberation: defaultMotive!.liberation,
-  motiveScienceDiscovered: defaultMotive!.scienceDiscovered,
-  motiveWondersSeen: defaultMotive!.wondersSeen,
-  motiveActTwoCards: defaultMotive!.actTwoCards,
-  motiveActThreeCards: defaultMotive!.actThreeCards,
-  motiveGameOver: defaultMotive!.gameOver,
+  currentMotive: motiveData[1],
 
-  setCurrentMotive: (newMotive: number) => {
-    let motiveProps = motiveData[newMotive];
+  setCurrentMotive: (to: motive) => {
     set(() => ({
-      currentMotive: newMotive,
-      motiveName: motiveProps.name,
-      motiveWarships: motiveProps.warships,
-      motiveNonWarships: motiveProps.nonWarships,
-      motiveAdventureCards: motiveProps.adventureCards,
-      motiveTreasure: motiveProps.treasure,
-      motiveLiberation: motiveProps.liberation,
-      motiveScienceDiscovered: motiveProps.scienceDiscovered,
-      motiveWondersSeen: motiveProps.wondersSeen,
-      motiveActTwoCards: motiveProps.actTwoCards,
-      motiveActThreeCards: motiveProps.actThreeCards,
-      motiveGameOver: motiveProps.gameOver,
+      currentMotive: to,
     }));
   },
 });

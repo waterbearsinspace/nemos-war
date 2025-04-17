@@ -2,19 +2,19 @@
 import { useEffect } from "react";
 
 // game store
-import { nemosStore } from "../../../../common/stores/nemosStore";
+import { nemosStore } from "../../../common/stores/nemosStore";
 
 // components
-import motives from "../../../../common/data/motives.json";
+import motives from "../../../common/data/motives.json";
 
 // data and constants
-import adventureCards from "../../../../common/data/adventureCards.json";
+import adventureCards from "../../../common/data/adventureCards.json";
 
 // utils
 import {
   getSubPhaseNumber,
   shuffleArray,
-} from "../../../../common/scripts/utils/utils";
+} from "../../../common/scripts/utils/utils";
 
 export default function DrawPileAndAdventureDeck() {
   let motive = nemosStore((state) => state.currentMotive);
@@ -57,14 +57,14 @@ export default function DrawPileAndAdventureDeck() {
 
     // act three: rising action + [motive]
     workingPile.push(adventureCards.find((card) => card.id == 1004));
-    pushNumCardsToWorking(motives[motive].actThreeCards);
+    pushNumCardsToWorking(motive.actThreeCards);
     workingToFinished();
 
     // second intermission
     finishedDrawPile.push(adventureCards.find((card) => card.id == 1003));
 
     // act two: rising action + [motive]
-    pushNumCardsToWorking(motives[motive].actTwoCards);
+    pushNumCardsToWorking(motive.actTwoCards);
     workingToFinished();
 
     // first intermission

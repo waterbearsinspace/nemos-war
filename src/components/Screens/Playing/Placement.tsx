@@ -27,8 +27,8 @@ export default function Placement() {
   const dice = diceStore((state) => state.dice);
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
-  const actionPoints = nemosStore((state) => state.currentActionPoints);
-  const setActionPoints = nemosStore((state) => state.setCurrentActionPoints);
+  const actionPoints = nemosStore((state) => state.actionPointsCurrent);
+  const setActionPoints = nemosStore((state) => state.setActionPointsCurrent);
   const oceans = nemosStore((state) => state.oceans);
   const setOceans = nemosStore((state) => state.setOceans);
   const currentPlacementOcean = nemosStore(

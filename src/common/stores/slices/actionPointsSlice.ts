@@ -3,9 +3,9 @@ import { StateCreator } from "zustand";
 
 // types and interfaces
 export interface ActionPointsSliceInterface {
-  lullTurn: boolean;
-  currentActionPoints: number;
-  setCurrentActionPoints: (to: number) => void;
+  actionPointsCurrent: number;
+
+  setActionPointsCurrent: (to: number) => void;
 }
 
 // data and constants
@@ -16,11 +16,10 @@ const startingActionPoints = 1;
 export const actionPointsSlice: StateCreator<ActionPointsSliceInterface, []> = (
   set
 ) => ({
-  lullTurn: false,
+  actionPointsCurrent: startingActionPoints,
 
-  currentActionPoints: startingActionPoints,
-  setCurrentActionPoints: (to) =>
+  setActionPointsCurrent: (to) =>
     set(() => ({
-      currentActionPoints: to,
+      actionPointsCurrent: to,
     })),
 });

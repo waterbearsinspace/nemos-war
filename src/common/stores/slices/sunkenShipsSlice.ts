@@ -16,8 +16,10 @@ type tonnage = {
 };
 export interface SunkenShipsSliceInterface {
   tonnage: tonnage;
-  adjustTonnage: (ocean: string, by: number) => void;
+  setTonnage: (to: tonnage) => void;
+
   salvage: number;
+  setSalvage: (to: number) => void;
 }
 
 export const sunkenShipsSlice: StateCreator<SunkenShipsSliceInterface, []> = (
@@ -33,8 +35,6 @@ export const sunkenShipsSlice: StateCreator<SunkenShipsSliceInterface, []> = (
   },
   salvage: 0,
 
-  adjustTonnage: (ocean, by) =>
-    set((state) => ({
-      tonnage: { ...state.tonnage, [ocean]: by },
-    })),
+  setTonnage: (to) => set(() => ({ tonnage: to })),
+  setSalvage: (to) => set(() => ({ salvage: to })),
 });

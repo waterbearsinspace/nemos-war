@@ -48,8 +48,8 @@ export interface ShipPoolsSliceInterface {
   currentShipPool: ship[];
   unusedShipPool: ship[];
 
-  setCurrentShipPool: (newShipPool: ship[]) => void;
-  setUnusedShipPool: (newShipPool: ship[]) => void;
+  setCurrentShipPool: (to: ship[]) => void;
+  setUnusedShipPool: (to: ship[]) => void;
 }
 
 // slice
@@ -59,8 +59,6 @@ export const shipPoolsSlice: StateCreator<ShipPoolsSliceInterface, []> = (
   currentShipPool: [],
   unusedShipPool: [],
 
-  setCurrentShipPool: (newShipPool) =>
-    set(() => ({ currentShipPool: newShipPool })),
-  setUnusedShipPool: (newShipPool) =>
-    set(() => ({ unusedShipPool: newShipPool })),
+  setCurrentShipPool: (to) => set(() => ({ currentShipPool: to })),
+  setUnusedShipPool: (to) => set(() => ({ unusedShipPool: to })),
 });

@@ -6,16 +6,12 @@ type character = {
   id: number;
   name: string;
   survivingCharacter: number;
+  sacrificed: boolean;
 };
 export interface CharacterResourcesSliceInterface {
-  chiefEngineer: character;
-  firstOfficer: character;
-  secondOfficer: character;
-  conseil: character;
-  nedLand: character;
-  professorAronnax: character;
-  sacrificed: boolean[];
-  sacrificeCharacter: (id: number) => void;
+  characterResources: character[];
+
+  setCharacterResources: (to: character[]) => void;
 }
 
 // data and constants
@@ -27,24 +23,23 @@ const conseilData = characterResourceData[3];
 const nedLandData = characterResourceData[4];
 const professorAronnaxData = characterResourceData[5];
 
+const initialCharacters: character[] = [
+  { ...chiefEngineerData, sacrificed: false },
+  { ...firstOfficerData, sacrificed: false },
+  { ...secondOfficerData, sacrificed: false },
+  { ...conseilData, sacrificed: false },
+  { ...nedLandData, sacrificed: false },
+  { ...professorAronnaxData, sacrificed: false },
+];
+
 // slice
 export const characterResourceSlice: StateCreator<
   CharacterResourcesSliceInterface,
   []
 > = (set) => ({
-  chiefEngineer: { ...chiefEngineerData },
-  firstOfficer: { ...firstOfficerData },
-  secondOfficer: { ...secondOfficerData },
-  conseil: { ...conseilData },
-  nedLand: { ...nedLandData },
-  professorAronnax: { ...professorAronnaxData },
-  sacrificed: [false, false, false, false, false, false],
+  characterResources: initialCharacters,
 
-  sacrificeCharacter: (sacrificedId) =>
-    set((state) => ({
-      sacrificed: state.sacrificed.map((characterStatus, id) => {
-        if (id == sacrificedId) return true;
-        else return characterStatus;
-      }),
-    })),
+  setCharacterResources: (to) => {
+    set(() => ({ characterResources: to }));
+  },
 });

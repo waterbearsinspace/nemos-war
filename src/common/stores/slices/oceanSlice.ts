@@ -29,12 +29,13 @@ export type ocean = {
 
 export interface OceanSliceInterface {
   oceans: ocean[];
-  setOceans: (newOceans: ocean[]) => void;
   currentNautilusOceanName: string;
-  setCurrentNautilusOceanName: (newNautilusOceanName: string) => void;
   currentPlacementOcean: string;
-  setCurrentPlacementOcean: (newOcean: string) => void;
   nautilusMoved: boolean;
+
+  setOceans: (to: ocean[]) => void;
+  setCurrentNautilusOceanName: (to: string) => void;
+  setCurrentPlacementOcean: (to: string) => void;
   setNautilusMoved: (to: boolean) => void;
 }
 
@@ -44,13 +45,13 @@ import oceanData from "../../data/oceans.json";
 // slice
 export const oceanSlice: StateCreator<OceanSliceInterface, []> = (set) => ({
   oceans: oceanData,
-  setOceans: (newOceans) => set(() => ({ oceans: newOceans })),
   currentNautilusOceanName: "Western Pacific",
-  setCurrentNautilusOceanName: (newNautilusOceanName) =>
-    set(() => ({ currentNautilusOceanName: newNautilusOceanName })),
   currentPlacementOcean: "",
-  setCurrentPlacementOcean: (newOcean) =>
-    set(() => ({ currentPlacementOcean: newOcean })),
   nautilusMoved: false,
+
+  setOceans: (to) => set(() => ({ oceans: to })),
+  setCurrentNautilusOceanName: (to) =>
+    set(() => ({ currentNautilusOceanName: to })),
+  setCurrentPlacementOcean: (to) => set(() => ({ currentPlacementOcean: to })),
   setNautilusMoved: (to) => set(() => ({ nautilusMoved: to })),
 });

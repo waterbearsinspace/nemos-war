@@ -9,7 +9,7 @@ export const useTreasure = (id: number) => {
   const setCrewValue = nemosStore((state) => state.setCrewValue);
   const setHullValue = nemosStore((state) => state.setHullValue);
   const adjustActionPoints = nemosStore(
-    (state) => state.setCurrentActionPoints
+    (state) => state.setActionPointsCurrent
   );
   const addToPossibleUpgrades = nemosStore(
     (state) => state.addToPossibleUpgrades

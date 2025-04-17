@@ -5,7 +5,8 @@ import { StateCreator } from "zustand";
 import { adventureCard } from "../../../components/Cards/AdventureCard/AdventureCard";
 export interface KeptCardsSliceInterface {
   keptCards: adventureCard[];
-  setKeptCards: (newKeptCards: adventureCard[]) => void;
+
+  setKeptCards: (to: adventureCard[]) => void;
 }
 
 // slice
@@ -14,5 +15,5 @@ export const keptCardsSlice: StateCreator<KeptCardsSliceInterface, []> = (
 ) => ({
   keptCards: [],
 
-  setKeptCards: (newKeptCards) => set(() => ({ keptCards: newKeptCards })),
+  setKeptCards: (to) => set(() => ({ keptCards: to })),
 });

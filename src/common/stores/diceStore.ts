@@ -9,13 +9,14 @@ export type dice = {
 };
 interface DiceStore {
   dice: Array<dice>;
-  setDice: (newDice: Array<dice>) => void;
   doneRolling: boolean;
+
+  setDice: (to: Array<dice>) => void;
   setDoneRolling: (to: boolean) => void;
 }
 
 // slice
-export const diceStore = create<DiceStore>()((set) => ({
+export const diceStore = create<DiceStore>()((set, get) => ({
   // Array of all dice
   dice: [
     {
@@ -44,11 +45,11 @@ export const diceStore = create<DiceStore>()((set) => ({
       placement: false,
     },
   ],
-  setDice: (newDice) => {
-    set(() => ({ dice: newDice }));
-  },
-
   doneRolling: false,
+
+  setDice: (to) => {
+    set(() => ({ dice: to }));
+  },
   setDoneRolling: (to) => {
     set(() => ({ doneRolling: to }));
   },
