@@ -41,10 +41,6 @@ export default function MotiveSelector() {
     setSubPhase(getSubPhaseNumber("PREP DRAW PILE AND ADVENTURE DECK"));
   };
 
-  const defaultMotive = motiveData.find((motive) => {
-    motive.name != "Explore";
-  });
-
   return (
     <div className="motive-screen-wrapper">
       <h1 className="sub-phase">Select a Motive</h1>
