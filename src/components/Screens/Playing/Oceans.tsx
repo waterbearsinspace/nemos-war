@@ -253,7 +253,10 @@ export default function Oceans({ placementFunction }: OceansInterface) {
                 <span>
                   <strong>{thisOcean.dieValue} </strong>
                 </span>
-                {thisOcean.name} {thisOcean.treasureAvailable ? "⟡" : ""}
+                <span>
+                  {thisOcean.name}
+                  <strong>{thisOcean.treasureAvailable ? " ⯁" : ""}</strong>
+                </span>
               </p>
               <p className="ocean-nautilus">
                 {currentNautilusOceanName == thisOcean.name

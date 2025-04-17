@@ -3,6 +3,7 @@ import { nemosStore } from "../../../../common/stores/nemosStore";
 
 // data and constants
 import motiveData from "../../../../common/data/motives.json";
+import upgradeData from "../../../../common/data/upgrades.json";
 const motiveDescriptionText =
   "This represents the driving motivation behind Nemo's quest and determines the scoring multipliers at the end of the game.";
 
@@ -26,6 +27,9 @@ export default function MotiveSelector() {
   });
   const setCurrentMotive = nemosStore((state) => state.setCurrentMotive);
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+  const motiveUpgrade = upgradeData.find(
+    (upgrade) => upgrade.motive == motiveInfo?.name
+  )?.name;
 
   const handleCycle = (inc: number) => {
     if (motive + inc > motiveData.length - 1) {
@@ -46,6 +50,9 @@ export default function MotiveSelector() {
       <p className="motive-multiplier">{motiveMultiplierText}</p>
       <section className="tile">
         <h2 className="tile-name">{motiveInfo!.name}</h2>
+        <section>
+          <p>Associated Upgrade: {motiveUpgrade}</p>
+        </section>
         <section className="tile-info">
           <section>
             <p>

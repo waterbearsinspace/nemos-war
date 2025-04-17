@@ -131,6 +131,8 @@ export default function Search() {
   const currentTreasures = nemosStore((state) => state.currentTreasures);
   const notoriety = nemosStore((state) => state.notoriety);
   const setNotoriety = nemosStore((state) => state.setNotoriety);
+  const oceans = nemosStore((state) => state.oceans);
+  const setOceans = nemosStore((state) => state.setOceans);
 
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
@@ -158,6 +160,9 @@ export default function Search() {
     const newTreasuresSecond = newTreasuresFirst.filter(
       (treasure) => treasure != secondDrawnTreasure
     );
+    const currentOceanIndex = oceans.findIndex(
+      (ocean) => ocean == currentOcean
+    );
 
     // apply result
     if (finalValue <= 2) {
@@ -168,20 +173,27 @@ export default function Search() {
     } else if (finalValue <= 8) {
       setCurrentTreasures(currentTreasures.concat([firstDrawnTreasure]));
       setTreasureDrawPool(newTreasuresFirst);
+      let newOceans = [...oceans];
+      newOceans[currentOceanIndex].treasureAvailable = false;
+      setOceans(newOceans);
       setNotoriety(notoriety + 1);
     } else if (finalValue <= 11) {
       setCurrentTreasures(currentTreasures.concat([firstDrawnTreasure]));
       setTreasureDrawPool(newTreasuresFirst);
+      let newOceans = [...oceans];
+      newOceans[currentOceanIndex].treasureAvailable = false;
+      setOceans(newOceans);
     } else if (finalValue >= 12) {
       setCurrentTreasures(currentTreasures.concat(bothDrawnTreasures));
       setTreasureDrawPool(newTreasuresSecond);
+      let newOceans = [...oceans];
+      newOceans[currentOceanIndex].treasureAvailable = false;
+      setOceans(newOceans);
     }
     // adjust treasure
     setDoneRolling(false);
     setSubPhase(getSubPhaseNumber("ACTION SELECT"));
   };
-
-  console.log(currentTreasures);
 
   return (
     <>

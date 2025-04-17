@@ -118,7 +118,7 @@ export default function Actions() {
             break;
           case "Search":
             // must be treasure available in current ocean
-            selectable == currentOcean?.treasureAvailable;
+            selectable = currentOcean?.treasureAvailable ? true : false;
             break;
         }
       }
