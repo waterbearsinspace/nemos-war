@@ -44,6 +44,10 @@ button {
   padding: 1rem 1rem;
   transition: transform 0.15s;
 
+  &:hover {
+    transform: scale(1.05);
+  }
+
   &:active {
     transform: translateY(0.1rem);
   }
