@@ -30,6 +30,10 @@ export function Test(arg: any) {
         </div>
       );
     default:
-      return <></>;
+      return (
+        <div className="test">
+          <DiceTray numDice={2} buttonText="Roll Dice" />
+        </div>
+      );
   }
 }

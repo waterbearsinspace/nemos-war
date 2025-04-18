@@ -5,7 +5,7 @@ import { getFlippedShip, getSubPhaseNumber } from "./utils/utils";
 // ============================
 // UTILS
 // ============================
-export function setSubPhase(subPhase: string) {
+function setSubPhase(subPhase: string) {
   const setCurrentSubPhase = nemosStore.getState().setCurrentSubPhase;
 
   setCurrentSubPhase(getSubPhaseNumber(subPhase));
@@ -218,11 +218,28 @@ function adjustNotorietyBy(by: number) {
   checkEndGame();
 }
 
+// ============================
+// DICE
+// ============================
+function getTestDiceResult() {
+  const testDiceNames = ["w1", "w2"];
+  const testDice = diceStore((state) =>
+    state.dice.filter((die) => {
+      testDiceNames.includes(die.id);
+    })
+  );
+  const result = testDice.reduce((sum, die) => sum + die.value, 0);
+
+  return result;
+}
+
 export const useNemosCore = () => {
   return {
     adjustNemoBy,
     adjustCrewBy,
     adjustHullBy,
     adjustNotorietyBy,
+    setSubPhase,
+    getTestDiceResult,
   };
 };
