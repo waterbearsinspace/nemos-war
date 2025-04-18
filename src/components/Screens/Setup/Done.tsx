@@ -8,7 +8,7 @@ import {
 } from "../../../common/scripts/utils/utils";
 
 export default function Done() {
-  let motive = nemosStore((state) => state.motiveName);
+  let motive = nemosStore((state) => state.currentMotive);
   let upgrades = nemosStore((state) => state.currentUpgrades);
   let nemo = nemosStore((state) => state.nemo);
   let crew = nemosStore((state) => state.crew);
@@ -24,7 +24,7 @@ export default function Done() {
   return (
     <div className="done-screen-wrapper">
       <h1>Ready to Start!</h1>
-      <h2>Motive: {motive}</h2>
+      <h2>Motive: {motive.name}</h2>
       <p className="done-screen-upgrade-text">
         Upgrade {upgrades.length > 0 ? <span>{upgrades[0].name}</span> : "Not"}{" "}
         Purchased

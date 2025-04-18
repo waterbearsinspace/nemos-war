@@ -40,9 +40,14 @@
 
       .dice-to-place-die {
         cursor: pointer;
+        transition: transform 0.15s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
 
         &:active {
-          transform: scale(1.125);
+          transform: scale(1);
         }
       }
     }
