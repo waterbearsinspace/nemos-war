@@ -6,7 +6,6 @@
   min-height: 40rem;
   height: 90%;
   border-radius: 0.25rem;
-  overflow: hidden;
   font-size: 1rem;
 
   .ocean-space-container {
@@ -38,11 +37,105 @@
 
       .ship-space {
         border: 2px dotted gray;
-        border-radius: 0.25rem;
+        border-radius: 0.5rem;
         height: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        color: white;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        font-size: 0.75rem;
+        background-color: var(--playarea-color);
+
+        &:hover:not([data-ship-group=""]) {
+          transform: scale(2);
+          z-index: 1;
+        }
+
+        p {
+          cursor: default;
+        }
+
+        .ship-space-attack,
+        .ship-space-defense {
+          position: absolute;
+          top: 0;
+          color: white;
+          width: 1.5rem;
+          height: 1.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .ship-space-attack:not(:empty) {
+          left: 0rem;
+          background-color: rgb(131, 20, 20);
+          border-radius: 0rem 0.5rem 0.75rem 0.5rem;
+          border-right: 2px solid white;
+          border-bottom: 2px solid white;
+        }
+
+        .ship-space-defense:not(:empty) {
+          right: 0rem;
+          background-color: var(--soft-black);
+          border-radius: 0.5rem 0rem 0.5rem 0.75rem;
+          border-left: 2px solid white;
+          border-bottom: 2px solid white;
+        }
+
+        &[data-ship-group="hidden"] {
+          color: var(--soft-black);
+        }
+
+        &[data-ship-group="A"] {
+          background-color: var(--ship-group-A-color);
+          color: var(--soft-black);
+        }
+
+        &[data-ship-group="B"] {
+          background-color: var(--ship-group-B-color);
+          color: var(--ship-group-B-text);
+        }
+
+        &[data-ship-group="C"] {
+          background-color: var(--ship-group-C-color);
+          color: var(--ship-group-C-text);
+        }
+
+        &[data-ship-group="D"] {
+          background-color: var(--ship-group-D-color);
+        }
+
+        &[data-ship-group="E"] {
+          background-color: var(--ship-group-E-color);
+        }
+
+        &[data-ship-group="F"] {
+          background-color: var(--ship-group-F-color);
+        }
+
+        &[data-ship-group="G"] {
+          background-color: var(--ship-group-G-color);
+        }
+
+        &[data-ship-group="H"] {
+          background-color: var(--ship-group-H-color);
+        }
+
+        &[data-ship-group="I"] {
+          background-color: var(--ship-group-I-color);
+        }
+
+        &[data-ship-group="J"] {
+          background-color: var(--ship-group-J-color);
+        }
+
+        &:not([data-ship-group=""]) {
+          border: 2px solid var(--soft-black);
+        }
       }
 
       &[data-highlight="this"] {

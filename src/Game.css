@@ -12,6 +12,18 @@
   --nemo-purple: #5b1f61;
   --crew-brown: #63480d;
   --hull-blue: #2b5dc9;
+  --ship-group-A-color: #ffffff;
+  --ship-group-B-color: #f1e46b;
+  --ship-group-B-text: #8b2626;
+  --ship-group-C-color: #ffc72c;
+  --ship-group-C-text: #8f1212;
+  --ship-group-D-color: #3657c4;
+  --ship-group-E-color: #2d7224;
+  --ship-group-F-color: #db591d;
+  --ship-group-G-color: #d11616;
+  --ship-group-H-color: var(--soft-black);
+  --ship-group-I-color: #4c1b68;
+  --ship-group-J-color: #90948e;
 
   align-items: center;
   background-color: var(--playarea-color);

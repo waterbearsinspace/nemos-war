@@ -228,11 +228,44 @@ export default function Oceans({ placementFunction }: OceansInterface) {
             for (let i = 0; i < thisOcean.maxShips; i++) {
               const thisShip = thisOcean.ships[i];
               shipSpaces.push(
-                <div className="ship-space" key={i}>
-                  <p>
-                    {typeof thisShip != "string"
-                      ? thisShip?.name
-                      : "Hidden Ship"}
+                <div
+                  className="ship-space"
+                  key={i}
+                  data-ship-group={
+                    thisShip
+                      ? typeof thisShip != "string"
+                        ? thisShip?.groupId
+                        : "hidden"
+                      : ""
+                  }
+                >
+                  <p className="ship-space-name">
+                    {thisShip
+                      ? typeof thisShip != "string"
+                        ? thisShip?.name
+                        : "Hidden Ship"
+                      : null}
+                  </p>
+                  <p className="ship-space-class">
+                    {thisShip
+                      ? typeof thisShip != "string"
+                        ? thisShip?.nationality + " " + thisShip?.shipClass
+                        : ""
+                      : null}
+                  </p>
+                  <p className="ship-space-attack">
+                    {thisShip
+                      ? typeof thisShip != "string"
+                        ? thisShip.attackStrength
+                        : ""
+                      : null}
+                  </p>
+                  <p className="ship-space-defense">
+                    {thisShip
+                      ? typeof thisShip != "string"
+                        ? thisShip.defenseStrength
+                        : ""
+                      : null}
                   </p>
                 </div>
               );
