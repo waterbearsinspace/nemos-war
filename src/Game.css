@@ -24,6 +24,8 @@
   --ship-group-H-color: var(--soft-black);
   --ship-group-I-color: #4c1b68;
   --ship-group-J-color: #90948e;
+  --highlight-color: #d3ddc3;
+  --highlight-color-dark: #abc781;
 
   align-items: center;
   background-color: var(--playarea-color);
@@ -102,4 +104,14 @@ button {
 }
 .hull-text {
   color: var(--hull-blue);
+}
+
+/* animations */
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
 }

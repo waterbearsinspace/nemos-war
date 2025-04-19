@@ -46,46 +46,45 @@
         flex-direction: column;
         position: relative;
         overflow: hidden;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         background-color: var(--playarea-color);
         transition: transform 0.125s, z-index 0.125s;
         z-index: 0;
 
-        /* &:hover:not([data-ship-group=""]) {
-          transform: scale(2);
-          z-index: 1;
-        } */
-
-        p {
-          cursor: default;
-        }
-
         .ship-space-attack,
         .ship-space-defense {
           position: absolute;
-          top: 0;
+          top: 2px;
           color: white;
-          width: 1.5rem;
-          height: 1.5rem;
+          width: 1rem;
+          height: 1rem;
+          padding: 0.125rem;
           display: flex;
           justify-content: center;
           align-items: center;
+          border-radius: 1rem;
         }
 
         .ship-space-attack:not(:empty) {
-          left: 0rem;
+          left: 2px;
           background-color: rgb(131, 20, 20);
-          border-radius: 0rem 0.5rem 0.75rem 0.5rem;
-          border-right: 2px solid white;
-          border-bottom: 2px solid white;
+          border: 1px solid white;
         }
 
         .ship-space-defense:not(:empty) {
-          right: 0rem;
+          right: 2px;
           background-color: var(--soft-black);
-          border-radius: 0.5rem 0rem 0.5rem 0.75rem;
-          border-left: 2px solid white;
-          border-bottom: 2px solid white;
+          border: 1px solid white;
+        }
+
+        &[data-placement="highlight"] {
+          cursor: pointer;
+          animation: 1s ease-in infinite alternate pulse;
+          background-color: var(--highlight-color) !important;
+
+          &:hover {
+            background-color: var(--highlight-color-dark) !important;
+          }
         }
 
         &[data-ship-group="hidden"] {
@@ -153,10 +152,11 @@
       }
 
       &[data-highlight="adjacent"] {
-        background-color: rgb(211, 221, 195);
+        background-color: var(--highlight-color);
 
         &:hover {
           cursor: pointer;
+          background-color: var(--highlight-color-dark);
         }
       }
     }

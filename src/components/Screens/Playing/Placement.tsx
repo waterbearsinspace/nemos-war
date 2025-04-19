@@ -20,6 +20,7 @@ import {
 
 // css
 import "./Placement.css";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function Placement() {
   const doneRolling = diceStore((state) => state.doneRolling);
@@ -32,7 +33,7 @@ export default function Placement() {
   const oceans = nemosStore((state) => state.oceans);
   const setOceans = nemosStore((state) => state.setOceans);
   const currentPlacementOcean = nemosStore(
-    (state) => state.currentPlacementOcean
+    (state) => state.currentPlacementOceanName
   );
   const setCurrentPlacementOcean = nemosStore(
     (state) => state.setCurrentPlacementOcean
@@ -92,29 +93,32 @@ export default function Placement() {
   }
 
   function ShipsToPlace() {
+    const { handlePlacementDieClick } = useNemosCore();
     function handleClick(selectedDie: dice) {
-      setSelectedDie(selectedDie);
-      const oceanToPlaceIn = oceans.find(
-        (ocean) => ocean.id == selectedDie.value
-      );
+      // setSelectedDie(selectedDie);
+      // const oceanToPlaceIn = oceans.find(
+      //   (ocean) => ocean.id == selectedDie.value
+      // );
 
-      // hidden ship placeable
-      const numShipsInOcean = oceanToPlaceIn!.ships.length;
-      const maxNumShipsInOcean = oceanToPlaceIn!.maxShips;
-      if (numShipsInOcean < maxNumShipsInOcean) {
-        const newOceanToPlaceIn = {
-          ...oceanToPlaceIn!,
-          ships: oceanToPlaceIn!.ships.concat(["Hidden Ship"]),
-        };
-        const newOceans = oceans.map((ocean) => {
-          if (ocean != oceanToPlaceIn) return ocean;
-          else return newOceanToPlaceIn;
-        });
-        setOceans(newOceans);
-        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
-      } else {
-        setCurrentPlacementOcean(oceanToPlaceIn!.name);
-      }
+      // // hidden ship placeable
+      // const numShipsInOcean = oceanToPlaceIn!.ships.length;
+      // const maxNumShipsInOcean = oceanToPlaceIn!.maxShips;
+      // if (numShipsInOcean < maxNumShipsInOcean) {
+      //   const newOceanToPlaceIn = {
+      //     ...oceanToPlaceIn!,
+      //     ships: oceanToPlaceIn!.ships.concat(["Hidden Ship"]),
+      //   };
+      //   const newOceans = oceans.map((ocean) => {
+      //     if (ocean != oceanToPlaceIn) return ocean;
+      //     else return newOceanToPlaceIn;
+      //   });
+      //   setOceans(newOceans);
+      //   setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
+      // } else {
+      //   // hidden ship not placeable
+      //   setCurrentPlacementOcean(oceanToPlaceIn!.name);
+      // }
+      handlePlacementDieClick(selectedDie.value);
     }
 
     return (
@@ -140,18 +144,25 @@ export default function Placement() {
 
   function ShipPlacement() {
     // placement when hidden ship not placeable
-    function placeShip(selectedPlacementOcean: string) {
+    function placeShipInOcean(selectedPlacementOcean: string) {
       const oceanToPlaceIn = oceans.find(
         (ocean) => ocean.name == selectedPlacementOcean
       );
       const adjacentOceans = oceans.filter((ocean) => {
-        return oceanToPlaceIn?.adjacentMovementOceans
+        return oceanToPlaceIn?.adjacentOceans
           .map((ocean) => {
             return ocean.name;
           })
           .includes(ocean.name);
       });
       const hiddenShipsRevealable =
+        oceanToPlaceIn?.ships.includes("Hidden Ship") &&
+        adjacentOceans.map((ocean) => {
+          if (!ocean.ships.includes("Hidden Ship")) {
+            return false;
+          }
+        });
+      const nonWarshipsFlippable =
         oceanToPlaceIn?.ships.includes("Hidden Ship") &&
         adjacentOceans.map((ocean) => {
           if (!ocean.ships.includes("Hidden Ship")) {
@@ -196,6 +207,23 @@ export default function Placement() {
       }
 
       // get hostile
+      else if (nonWarshipsFlippable) {
+        const shipPoolCopy = shuffleArray(shipPool);
+        const drawnShip = shipPoolCopy.shift();
+        const shipToReplaceIndex = oceanToPlaceIn?.ships.findIndex(
+          (ship) => ship == "Hidden Ship"
+        );
+        let shipsWithReplaced = oceanToPlaceIn?.ships;
+        shipsWithReplaced![shipToReplaceIndex!] = drawnShip;
+
+        const newOcean = oceans.map((ocean) => {
+          if (ocean != oceanToPlaceIn) return ocean;
+          else return { ...oceanToPlaceIn, ships: shipsWithReplaced! };
+        });
+        setOceans(newOcean);
+        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
+      }
+
       // go hunting
 
       // remove ship die
@@ -205,7 +233,7 @@ export default function Placement() {
     const noMoreShips = activeDice.length == 0;
     return (
       <>
-        <Oceans placementFunction={placeShip} />
+        <Oceans />
         <div className="placement-side-pane">
           <h2>Ship Placement</h2>
           {noMoreShips ? <p>Done Placing Ships</p> : <ShipsToPlace />}

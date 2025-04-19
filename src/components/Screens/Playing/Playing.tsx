@@ -19,6 +19,7 @@ import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
 import "./Playing.css";
 import Repair from "./Actions/Repair";
 import Search from "./Actions/Search";
+import GameOver from "../GameOver";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
@@ -125,6 +126,9 @@ export default function Playing() {
 
       case getSubPhaseNumber("SEARCH"):
         return <Search />;
+
+      case getSubPhaseNumber("GAME OVER"):
+        return <GameOver />;
 
       default:
         return (

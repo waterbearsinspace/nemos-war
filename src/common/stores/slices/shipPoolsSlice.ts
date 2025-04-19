@@ -25,14 +25,14 @@ import { vp } from "../../scripts/calculateVictoryPoints";
 
 export type ship = {
   id: number;
-  name: string;
-  attackStrength: number | null;
-  defenseStrength: number;
-  notoriety: number;
-  groupId: string;
-  nationality: string;
-  shipClass: string;
-  vp: vp;
+  name?: string;
+  attackStrength?: number | null;
+  defenseStrength?: number;
+  notoriety?: number;
+  groupId?: string;
+  nationality?: string;
+  shipClass?: string;
+  vp?: vp;
   flipName?: string;
   flipAttackStrength?: number | null;
   flipDefenseStrength?: number;
