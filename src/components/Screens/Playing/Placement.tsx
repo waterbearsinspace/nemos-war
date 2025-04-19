@@ -13,16 +13,14 @@ import Oceans from "./Oceans";
 import { maxSavedActionPoints } from "../../../common/stores/slices/actionPointsSlice";
 
 // utils
-import {
-  getSubPhaseNumber,
-  shuffleArray,
-} from "../../../common/scripts/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 
 // css
 import "./Placement.css";
 import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function Placement() {
+  const oceans = nemosStore((state) => state.oceans);
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const dice = diceStore((state) => state.dice);
@@ -30,16 +28,11 @@ export default function Placement() {
   const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const actionPoints = nemosStore((state) => state.actionPointsCurrent);
   const setActionPoints = nemosStore((state) => state.setActionPointsCurrent);
-  const oceans = nemosStore((state) => state.oceans);
-  const setOceans = nemosStore((state) => state.setOceans);
   const currentPlacementOcean = nemosStore(
     (state) => state.currentPlacementOceanName
   );
-  const setCurrentPlacementOcean = nemosStore(
-    (state) => state.setCurrentPlacementOcean
-  );
-  const shipPool = nemosStore((state) => state.currentShipPool);
   const setLullTurn = nemosStore((state) => state.setIsLullTurn);
+  const clickedOcean = nemosStore((state) => state.clickedOcean);
 
   const differential = Math.abs(
     dice.find((die) => die.id == "w1")!.value -
@@ -49,7 +42,6 @@ export default function Placement() {
   const [activeDice, setActiveDice] = useState(
     dice.filter((die) => die.placement)
   );
-  const [selectedDie, setSelectedDie] = useState(dice[0]);
 
   const handleFinishedPlacementRollClick = () => {
     setDoneRolling(false);
@@ -95,147 +87,65 @@ export default function Placement() {
   function ShipsToPlace() {
     const { handlePlacementDieClick } = useNemosCore();
     function handleClick(selectedDie: dice) {
-      // setSelectedDie(selectedDie);
-      // const oceanToPlaceIn = oceans.find(
-      //   (ocean) => ocean.id == selectedDie.value
-      // );
-
-      // // hidden ship placeable
-      // const numShipsInOcean = oceanToPlaceIn!.ships.length;
-      // const maxNumShipsInOcean = oceanToPlaceIn!.maxShips;
-      // if (numShipsInOcean < maxNumShipsInOcean) {
-      //   const newOceanToPlaceIn = {
-      //     ...oceanToPlaceIn!,
-      //     ships: oceanToPlaceIn!.ships.concat(["Hidden Ship"]),
-      //   };
-      //   const newOceans = oceans.map((ocean) => {
-      //     if (ocean != oceanToPlaceIn) return ocean;
-      //     else return newOceanToPlaceIn;
-      //   });
-      //   setOceans(newOceans);
-      //   setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
-      // } else {
-      //   // hidden ship not placeable
-      //   setCurrentPlacementOcean(oceanToPlaceIn!.name);
-      // }
-      handlePlacementDieClick(selectedDie.value);
+      if (!clickedOcean) {
+        handlePlacementDieClick(selectedDie.value);
+        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
+      }
     }
 
     return (
-      <div className="dice-to-place-wrapper">
-        <div className="dice-to-place-dice-wrapper">
-          {activeDice.map((die, index) => {
-            return (
-              <div
-                className="dice-to-place-die"
-                onClick={() => {
-                  currentPlacementOcean ? () => {} : handleClick(die);
-                }}
-                key={index}
-              >
-                <Die die={die} key={index} />
+      <>
+        {!clickedOcean ? (
+          <>
+            <h2 className="underline">Ships to Place</h2>
+            <div className="dice-to-place-wrapper">
+              <div className="dice-to-place-dice-wrapper">
+                {activeDice.map((die, index) => {
+                  return (
+                    <div
+                      className="dice-to-place-die"
+                      onClick={() => {
+                        currentPlacementOcean ? () => {} : handleClick(die);
+                      }}
+                      key={index}
+                      data-die-selected={clickedOcean ? clickedOcean : "none"}
+                    >
+                      <Die die={die} key={index} />
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-      </div>
+            </div>
+          </>
+        ) : (
+          <div className="dice-show-placing">
+            <h2 className="dice-show-placing-text bold">
+              {
+                oceans.find((ocean) => {
+                  return ocean.id == clickedOcean.id;
+                })?.name
+              }
+            </h2>
+            <Die
+              die={
+                dice.find((die) => {
+                  return die.value == clickedOcean.dieValue;
+                })!
+              }
+            />
+          </div>
+        )}
+      </>
     );
   }
 
   function ShipPlacement() {
-    // placement when hidden ship not placeable
-    function placeShipInOcean(selectedPlacementOcean: string) {
-      const oceanToPlaceIn = oceans.find(
-        (ocean) => ocean.name == selectedPlacementOcean
-      );
-      const adjacentOceans = oceans.filter((ocean) => {
-        return oceanToPlaceIn?.adjacentOceans
-          .map((ocean) => {
-            return ocean.name;
-          })
-          .includes(ocean.name);
-      });
-      const hiddenShipsRevealable =
-        oceanToPlaceIn?.ships.includes("Hidden Ship") &&
-        adjacentOceans.map((ocean) => {
-          if (!ocean.ships.includes("Hidden Ship")) {
-            return false;
-          }
-        });
-      const nonWarshipsFlippable =
-        oceanToPlaceIn?.ships.includes("Hidden Ship") &&
-        adjacentOceans.map((ocean) => {
-          if (!ocean.ships.includes("Hidden Ship")) {
-            return false;
-          }
-        });
+    const noMoreShips = activeDice.length == 0 && !clickedOcean;
 
-      // spread out
-      // if ocean to place in has room for hidden ships
-      const oceanNotEmpty =
-        oceanToPlaceIn!.ships.length < oceanToPlaceIn!.maxShips;
-      if (oceanNotEmpty) {
-        const newOceanToPlaceIn = {
-          ...oceanToPlaceIn!,
-          ships: oceanToPlaceIn!.ships.concat(["Hidden Ship"]),
-        };
-        const newOceans = oceans.map((ocean) => {
-          if (ocean != oceanToPlaceIn) return ocean;
-          else return newOceanToPlaceIn;
-        });
-        setOceans(newOceans);
-        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
-      }
-
-      // reveal
-      // if selected ocean and adjacent oceans have hidden ships to reveal
-      else if (hiddenShipsRevealable) {
-        const shipPoolCopy = shuffleArray(shipPool);
-        const drawnShip = shipPoolCopy.shift();
-        const shipToReplaceIndex = oceanToPlaceIn?.ships.findIndex(
-          (ship) => ship == "Hidden Ship"
-        );
-        let shipsWithReplaced = oceanToPlaceIn?.ships;
-        shipsWithReplaced![shipToReplaceIndex!] = drawnShip;
-
-        const newOcean = oceans.map((ocean) => {
-          if (ocean != oceanToPlaceIn) return ocean;
-          else return { ...oceanToPlaceIn, ships: shipsWithReplaced! };
-        });
-        setOceans(newOcean);
-        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
-      }
-
-      // get hostile
-      else if (nonWarshipsFlippable) {
-        const shipPoolCopy = shuffleArray(shipPool);
-        const drawnShip = shipPoolCopy.shift();
-        const shipToReplaceIndex = oceanToPlaceIn?.ships.findIndex(
-          (ship) => ship == "Hidden Ship"
-        );
-        let shipsWithReplaced = oceanToPlaceIn?.ships;
-        shipsWithReplaced![shipToReplaceIndex!] = drawnShip;
-
-        const newOcean = oceans.map((ocean) => {
-          if (ocean != oceanToPlaceIn) return ocean;
-          else return { ...oceanToPlaceIn, ships: shipsWithReplaced! };
-        });
-        setOceans(newOcean);
-        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
-      }
-
-      // go hunting
-
-      // remove ship die
-      else setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
-    }
-
-    const noMoreShips = activeDice.length == 0;
     return (
       <>
         <Oceans />
         <div className="placement-side-pane">
-          <h2>Ship Placement</h2>
           {noMoreShips ? <p>Done Placing Ships</p> : <ShipsToPlace />}
         </div>
         {noMoreShips && (

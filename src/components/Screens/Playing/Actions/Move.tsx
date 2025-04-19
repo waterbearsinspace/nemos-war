@@ -9,6 +9,7 @@ import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 
 // css
 import "./Actions.css";
+import { useNemosCore } from "../../../../common/scripts/nemosCore";
 
 export default function Move() {
   const setShowNextPhaseButton = nemosStore(
@@ -28,24 +29,34 @@ export default function Move() {
     ? "Select Ocean to Move To"
     : "Moved to " + currentNautilusOceanName;
 
+  const { resetMovement } = useNemosCore();
+
   return (
-    <div className="actions-select">
+    <div className="move-select">
       <Oceans />
-      <div className="actions-select-side-pane">
+      <div className="move-select-side-pane">
         <h2>{moveText}</h2>
-        <p>
+        <div>
           {hasHydroMovement &&
             nautilusMoved &&
-            (!hydroMoved
-              ? "Move to another ocean thanks to your Hydro Drive upgrade or Continue"
-              : "")}
-        </p>
+            (!hydroMoved ? (
+              <>
+                <p>You may move to a second ocean for free</p>
+                <p>
+                  using your <strong>Hydro Drive Upgrade</strong>
+                </p>
+              </>
+            ) : (
+              ""
+            ))}
+        </div>
       </div>
       {nautilusMoved && (
         <div className="next-phase-wrapper">
           <button
             className="next-phase-button"
             onClick={() => {
+              resetMovement();
               setShowNextPhaseButton(false);
               setSubPhase(getSubPhaseNumber("ACTION SELECT"));
             }}

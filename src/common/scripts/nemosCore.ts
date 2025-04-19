@@ -257,7 +257,7 @@ function drawShip() {
 
   // remove drawn ship from ship pool
   const newShipPool = shipPool.filter((ship, index) => {
-    return index != 0;
+    if (index != 0) return ship;
   });
   setShipPool(newShipPool);
 
@@ -270,9 +270,9 @@ function drawShip() {
 // ============================
 // handle click of a placement die
 function handlePlacementDieClick(value: number) {
-  const setPlacementType = nemosStore.getState().setPlacementType;
-  const setPlacementOcean = nemosStore.getState().setPlacementOcean;
-  const setPlacementOptions = nemosStore.getState().setPlacementOptions;
+  const setOceanClickType = nemosStore.getState().setOceanClickType;
+  const setClickedOcean = nemosStore.getState().setClickedOcean;
+  const setOceanClickOptions = nemosStore.getState().setOceanClickOptions;
 
   // all oceans
   const oceans = nemosStore.getState().oceans;
@@ -368,9 +368,9 @@ function handlePlacementDieClick(value: number) {
 
   // set placement ocean, placement type, and placement options
   // set to Place Hidden if ocean is empty - hidden ship in ocean
-  setPlacementOcean(placementOcean);
+  setClickedOcean(placementOcean);
   if (placementOceanNotFull) {
-    setPlacementType("Place Hidden");
+    setOceanClickType("Place Hidden");
     const setOceans = nemosStore.getState().setOceans;
     const newShips = placementOceanShips!.concat("Hidden Ship");
     setOceans(
@@ -380,14 +380,14 @@ function handlePlacementDieClick(value: number) {
           : ocean;
       })
     );
-    setPlacementType("");
-    setPlacementOcean(null);
+    setOceanClickType("");
+    setClickedOcean(null);
   }
   // else Spread Out if ocean is full and adjacent oceans are not full - hidden ship in adjacent ocean
   else if (!placementOceanNotFull && adjacentOceansNotFull) {
-    setPlacementType("Spread Out");
+    setOceanClickType("Spread Out");
     // highlight adjacent oceans that are not full
-    setPlacementOptions(adjacentOceansThatAreNotFull);
+    setOceanClickOptions(adjacentOceansThatAreNotFull);
   }
   // else Reveal if ocean is full and adjacent oceans are full there is a hidden ship revealable in any - reveal hidden ship
   else if (
@@ -395,9 +395,9 @@ function handlePlacementDieClick(value: number) {
     !adjacentOceansNotFull &&
     (placementOceanHasHiddenShip || adjacentOceansHaveHiddenShip)
   ) {
-    setPlacementType("Reveal");
+    setOceanClickType("Reveal");
     // highlight adjacent oceans that have a hidden ship
-    setPlacementOptions(
+    setOceanClickOptions(
       adjacentOceansThatHaveAHiddenShip.concat(
         placementOceanHasHiddenShip ? [placementOcean] : []
       )
@@ -411,9 +411,9 @@ function handlePlacementDieClick(value: number) {
     !adjacentOceansHaveHiddenShip &&
     (placementOceanHasNonWarship || adjacentOceansHaveNonWarship)
   ) {
-    setPlacementType("Get Hostile");
+    setOceanClickType("Get Hostile");
     // highlight white ships in ocean and adjacent oceans
-    setPlacementOptions(
+    setOceanClickOptions(
       nonWarshipsInPlacementOcean.concat(nonWarshipsInAdjacentOceans)
     );
   }
@@ -427,9 +427,9 @@ function handlePlacementDieClick(value: number) {
     !adjacentOceansHaveNonWarship &&
     existsNonEmptyOceans
   ) {
-    setPlacementType("Go Hunting");
+    setOceanClickType("Go Hunting");
     // highlight non full oceans
-    setPlacementOptions(nonEmptyOceans);
+    setOceanClickOptions(nonEmptyOceans);
   }
   // else lose the game
   else {
@@ -441,30 +441,30 @@ function handlePlacementDieClick(value: number) {
 
 function handlePlacementOptionClick(option: ocean | ship) {
   const oceans = nemosStore.getState().oceans;
-  const placementType = nemosStore.getState().placementType;
+  const oceanClickType = nemosStore.getState().oceanClickType;
   const oceanOption = option as ocean;
 
   const setOceans = nemosStore.getState().setOceans;
-  const setPlacementType = nemosStore.getState().setPlacementType;
-  const setPlacementOcean = nemosStore.getState().setPlacementOcean;
-  const setPlacementOptions = nemosStore.getState().setPlacementOptions;
+  const setOceanClickType = nemosStore.getState().setOceanClickType;
+  const setClickedOcean = nemosStore.getState().setClickedOcean;
+  const setOceanClickOptions = nemosStore.getState().setOceanClickOptions;
 
   const setAttackingPlacedShip = nemosStore.getState().setAttackingPlacedShip;
 
   // set placement type none
   function resetPlacement() {
-    setPlacementOcean(null);
-    setPlacementType("");
-    setPlacementOptions([]);
+    setClickedOcean(null);
+    setOceanClickType("");
+    setOceanClickOptions([]);
   }
 
   // select option
   // if Place Hidden
-  if (placementType == "Place Hidden") {
+  if (oceanClickType == "Place Hidden") {
     // do nothing, handled in die click
   }
   // if Spread Out
-  if (placementType == "Spread Out") {
+  if (oceanClickType == "Spread Out") {
     // on clicking ocean, place hidden ship
     const newShips = oceanOption.ships.concat("Hidden Ship");
     const newOcean = { ...oceanOption, ships: newShips };
@@ -475,7 +475,7 @@ function handlePlacementOptionClick(option: ocean | ship) {
     resetPlacement();
   }
   // if Reveal
-  if (placementType == "Reveal") {
+  if (oceanClickType == "Reveal") {
     // on clicking ocean, reveal hidden ship
     // ships of ocean option
     const oceanOptionsShips = oceanOption.ships;
@@ -495,7 +495,7 @@ function handlePlacementOptionClick(option: ocean | ship) {
     resetPlacement();
   }
   // if Get Hostile
-  if (placementType == "Get Hostile") {
+  if (oceanClickType == "Get Hostile") {
     // on clicking ship, flip ship
     // ocean containing ship
     const containingOcean = oceans.filter((ocean) => {
@@ -524,10 +524,19 @@ function handlePlacementOptionClick(option: ocean | ship) {
     setAttackingPlacedShip(option as ship);
   }
   // if Go Hunting
-  if (placementType == "Go Hunting") {
+  if (oceanClickType == "Go Hunting") {
     // on clicking ocean, place warship
     const optionOcean = option as ocean;
-    const newShips = optionOcean.ships.concat("Hidden Ship");
+    const drawnShip = drawShip();
+
+    const finalDrawnShip =
+      typeof drawnShip != "string"
+        ? drawnShip.groupId == "A"
+          ? getFlippedShip(drawnShip)
+          : drawnShip
+        : drawnShip;
+
+    const newShips = optionOcean.ships.concat(finalDrawnShip);
     setOceans(
       oceans.map((ocean) => {
         return ocean == optionOcean
@@ -537,6 +546,100 @@ function handlePlacementOptionClick(option: ocean | ship) {
     );
     resetPlacement();
   }
+}
+
+// ============================
+// MOVEMENT
+// ============================
+function resetMovement() {
+  const setNautilusMoved = nemosStore.getState().setNautilusMoved;
+  const setHydroMoved = nemosStore.getState().setHydroMoved;
+
+  setNautilusMoved(false);
+  setHydroMoved(false);
+}
+function handleMovementScreenOptions() {
+  const oceans = nemosStore.getState().oceans;
+  const nautilusOceanName = nemosStore.getState().currentNautilusOceanName;
+  const nautilusOcean = oceans.find((ocean) => {
+    return ocean.name == nautilusOceanName;
+  });
+  const nautilusAdjancentOceanNames = nautilusOcean!.adjacentOceans.map(
+    (ocean) => {
+      if (!ocean.placementOnly) {
+        return ocean.name;
+      }
+    }
+  );
+  const nautilusAdjancentOceans = oceans.filter((ocean) => {
+    return nautilusAdjancentOceanNames.includes(ocean.name);
+  });
+  const nautilusMoved = nemosStore.getState().nautilusMoved;
+  const currentUpgrades = nemosStore.getState().currentUpgrades;
+  const hasHydroMovement = currentUpgrades.find((upgrade) => {
+    return upgrade.name == "Hydro Drive";
+  });
+  const hydroMoved = nemosStore.getState().hydroMoved;
+  const setOceanClickOptions = nemosStore.getState().setOceanClickOptions;
+
+  // if nautlius hasn't moved yet
+  if (!nautilusMoved) {
+    // update options
+    setOceanClickOptions(nautilusAdjancentOceans);
+  } else if (nautilusMoved) {
+    // if nautilus doesn't have hydro move
+    if (!hasHydroMovement) {
+      // hide options
+      setOceanClickOptions([]);
+    }
+    // else if nautilus has hydro movement
+    else if (hasHydroMovement) {
+      // update options
+      setOceanClickOptions(nautilusAdjancentOceans);
+      // else if nautilus hydro moved
+      if (!hydroMoved) {
+        // do nothing
+      } else if (hydroMoved) {
+        // hide options
+        setOceanClickOptions([]);
+      }
+    }
+  }
+}
+
+function moveNautilus(ocean: ocean) {
+  const nautilusMoved = nemosStore.getState().nautilusMoved;
+  const setNautilusMoved = nemosStore.getState().setNautilusMoved;
+  const currentUpgrades = nemosStore.getState().currentUpgrades;
+  const hasHydroMovement = currentUpgrades.find((upgrade) => {
+    return upgrade.name == "Hydro Drive";
+  });
+  const hydroMoved = nemosStore.getState().hydroMoved;
+  const setHydroMoved = nemosStore.getState().setHydroMoved;
+
+  const setNautilusOcean = nemosStore.getState().setCurrentNautilusOceanName;
+
+  // if nautlius hasn't moved yet
+  if (!nautilusMoved) {
+    // move nautilus to ocean
+    setNautilusOcean(ocean.name);
+    // set movement true
+    setNautilusMoved(true);
+  }
+  // else if nautilus has moved
+  else if (nautilusMoved) {
+    // if has hydro movement
+    if (hasHydroMovement) {
+      // if nautilus hasn't hydro moved yet
+      if (!hydroMoved) {
+        // move nautilus to ocean
+        setNautilusOcean(ocean.name);
+        // set hydro moved true
+        setHydroMoved(true);
+      }
+    }
+  }
+  handleMovementScreenOptions();
 }
 
 export const useNemosCore = () => {
@@ -549,5 +652,8 @@ export const useNemosCore = () => {
     getTestDiceResult,
     handlePlacementDieClick,
     handlePlacementOptionClick,
+    resetMovement,
+    handleMovementScreenOptions,
+    moveNautilus,
   };
 };

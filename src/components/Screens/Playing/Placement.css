@@ -46,10 +46,25 @@
           transform: scale(1.05);
         }
 
+        &:not([data-die-selected="none"]) {
+          transform: none;
+          cursor: default;
+          opacity: 0.5;
+        }
+
         &:active {
           transform: scale(1);
         }
       }
+    }
+
+    .dice-show-placing {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
     }
   }
 }

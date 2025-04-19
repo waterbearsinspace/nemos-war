@@ -83,6 +83,10 @@ button {
   font-weight: 900;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .text-red {
   color: var(--dark-red);
 }

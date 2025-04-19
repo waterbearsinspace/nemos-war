@@ -32,20 +32,20 @@ export interface OceanSliceInterface {
   currentNautilusOceanName: string;
   currentPlacementOceanName: string;
   nautilusMoved: boolean;
-  placementType: string;
-  placementOptions: (ocean | ship | string)[];
-  placementOcean: ocean | null;
-  highlightPlacementOcean: boolean;
+  oceanClickType: string;
+  oceanClickOptions: (ocean | ship | string)[];
+  clickedOcean: ocean | null;
+  highlightClickOcean: boolean;
   attackingPlacedShip: ship | null;
 
   setOceans: (to: ocean[]) => void;
   setCurrentNautilusOceanName: (to: string) => void;
   setCurrentPlacementOcean: (to: string) => void;
   setNautilusMoved: (to: boolean) => void;
-  setPlacementType: (to: string) => void;
-  setPlacementOcean: (to: ocean | null) => void;
-  setPlacementOptions: (to: (ocean | ship | string)[]) => void;
-  setHighlightPlacementOcean: (to: boolean) => void;
+  setOceanClickType: (to: string) => void;
+  setClickedOcean: (to: ocean | null) => void;
+  setOceanClickOptions: (to: (ocean | ship | string)[]) => void;
+  setHighlightClickOcean: (to: boolean) => void;
   setAttackingPlacedShip: (to: ship | null) => void;
 }
 
@@ -58,10 +58,10 @@ export const oceanSlice: StateCreator<OceanSliceInterface, []> = (set) => ({
   currentNautilusOceanName: "Western Pacific",
   currentPlacementOceanName: "",
   nautilusMoved: false,
-  placementType: "",
-  placementOptions: [],
-  placementOcean: null,
-  highlightPlacementOcean: false,
+  oceanClickType: "",
+  oceanClickOptions: [],
+  clickedOcean: null,
+  highlightClickOcean: false,
   attackingPlacedShip: null,
 
   setOceans: (to) => set(() => ({ oceans: to })),
@@ -70,10 +70,9 @@ export const oceanSlice: StateCreator<OceanSliceInterface, []> = (set) => ({
   setCurrentPlacementOcean: (to) =>
     set(() => ({ currentPlacementOceanName: to })),
   setNautilusMoved: (to) => set(() => ({ nautilusMoved: to })),
-  setPlacementType: (to) => set(() => ({ placementType: to })),
-  setPlacementOcean: (to) => set(() => ({ placementOcean: to })),
-  setPlacementOptions: (to) => set(() => ({ placementOptions: to })),
-  setHighlightPlacementOcean: (to) =>
-    set(() => ({ highlightPlacementOcean: to })),
+  setOceanClickType: (to) => set(() => ({ oceanClickType: to })),
+  setClickedOcean: (to) => set(() => ({ clickedOcean: to })),
+  setOceanClickOptions: (to) => set(() => ({ oceanClickOptions: to })),
+  setHighlightClickOcean: (to) => set(() => ({ highlightClickOcean: to })),
   setAttackingPlacedShip: (to) => set(() => ({ attackingPlacedShip: to })),
 });

@@ -1,6 +1,7 @@
 // game store
 import { diceStore } from "../../../../common/stores/diceStore";
 import { nemosStore } from "../../../../common/stores/nemosStore";
+import { useNemosCore } from "../../../../common/scripts/nemosCore";
 
 // components
 import Oceans from "../Oceans";
@@ -36,6 +37,8 @@ export default function Actions() {
   const currentOcean = nemosStore((state) =>
     state.oceans.find((ocean) => ocean.name == currentOceanName)
   );
+
+  const { handleMovementScreenOptions } = useNemosCore();
 
   function Actions() {
     const actionNames = [
@@ -141,6 +144,7 @@ export default function Actions() {
             break;
           case "Move":
             setSubPhase(getSubPhaseNumber("MOVE"));
+            handleMovementScreenOptions();
             break;
           case "Rest":
             setSubPhase(getSubPhaseNumber("REST"));

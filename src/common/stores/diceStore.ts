@@ -16,7 +16,7 @@ interface DiceStore {
 }
 
 // slice
-export const diceStore = create<DiceStore>()((set, get) => ({
+export const diceStore = create<DiceStore>()((set) => ({
   // Array of all dice
   dice: [
     {

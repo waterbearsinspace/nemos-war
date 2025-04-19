@@ -32,6 +32,10 @@
       }
     }
   }
+
+  .move-select-side-pane {
+    gap: 2rem;
+  }
 }
 
 .test-table {
