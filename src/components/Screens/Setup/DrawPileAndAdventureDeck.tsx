@@ -12,12 +12,14 @@ import {
   getSubPhaseNumber,
   shuffleArray,
 } from "../../../common/scripts/utils/utils";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function DrawPileAndAdventureDeck() {
   let motive = nemosStore((state) => state.currentMotive);
   let setDrawPile = nemosStore((state) => state.setDrawPile);
   let setAdventureDeck = nemosStore((state) => state.setAdventureDeck);
-  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+
+  const { setSubPhase } = useNemosCore();
 
   let setupDrawPile = () => {
     let finishedDrawPile: any = [];
@@ -86,7 +88,7 @@ export default function DrawPileAndAdventureDeck() {
 
   useEffect(() => {
     setupDrawPile();
-    setSubPhase(getSubPhaseNumber("SELECT UPGRADE"));
+    setSubPhase("SELECT UPGRADE");
   });
 
   return <div></div>;

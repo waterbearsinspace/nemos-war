@@ -118,7 +118,6 @@ function SuccessTable() {
 export default function Repair() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
 
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
@@ -137,7 +136,7 @@ export default function Repair() {
 
   const finalValue = sumRolled + warshipsPresent;
 
-  const { adjustHullBy } = useNemosCore();
+  const { adjustHullBy, setSubPhase } = useNemosCore();
 
   const handleClick = () => {
     // apply result
@@ -154,7 +153,7 @@ export default function Repair() {
     }
     // adjust treasure
     setDoneRolling(false);
-    setSubPhase(getSubPhaseNumber("ACTION SELECT"));
+    setSubPhase("ACTION SELECT");
   };
 
   return (

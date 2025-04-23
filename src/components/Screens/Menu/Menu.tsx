@@ -9,14 +9,16 @@ import {
 
 // css
 import "./Menu.css";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function Menu() {
   const setPhase = nemosStore((state) => state.setCurrentPhase);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+
+  const { setSubPhase } = useNemosCore();
 
   const handleClick = () => {
     setPhase(getPhaseNumber("SETUP"));
-    setSubPhase(getSubPhaseNumber("SELECT MOTIVE"));
+    setSubPhase("SELECT MOTIVE");
   };
 
   return (

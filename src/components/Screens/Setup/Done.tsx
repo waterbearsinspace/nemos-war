@@ -6,6 +6,7 @@ import {
   getPhaseNumber,
   getSubPhaseNumber,
 } from "../../../common/scripts/utils/utils";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function Done() {
   let motive = nemosStore((state) => state.currentMotive);
@@ -14,11 +15,12 @@ export default function Done() {
   let crew = nemosStore((state) => state.crew);
   let hull = nemosStore((state) => state.hull);
   let setPhase = nemosStore((state) => state.setCurrentPhase);
-  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
+
+  const { setSubPhase } = useNemosCore();
 
   const handleContinue = () => {
     setPhase(getPhaseNumber("EVENT"));
-    setSubPhase(getSubPhaseNumber("DRAW EVENT CARD"));
+    setSubPhase("DRAW EVENT CARD");
   };
 
   return (

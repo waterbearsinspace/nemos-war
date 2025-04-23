@@ -121,7 +121,6 @@ function SuccessTable() {
 export default function Search() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const treasureDrawPool = nemosStore((state) => state.treasureDrawPool);
   const setTreasureDrawPool = nemosStore((state) => state.setTreasureDrawPool);
   const setCurrentTreasures = nemosStore((state) => state.setCurrentTreasures);
@@ -144,7 +143,8 @@ export default function Search() {
 
   const finalValue = sumRolled + revealedCount;
 
-  const { adjustCrewBy, adjustHullBy, adjustNotorietyBy } = useNemosCore();
+  const { adjustCrewBy, adjustHullBy, adjustNotorietyBy, setSubPhase } =
+    useNemosCore();
 
   const handleClick = () => {
     const shuffledTreasures = shuffleArray(treasureDrawPool);
@@ -189,7 +189,7 @@ export default function Search() {
     }
     // adjust treasure
     setDoneRolling(false);
-    setSubPhase(getSubPhaseNumber("ACTION SELECT"));
+    setSubPhase("ACTION SELECT");
   };
 
   return (

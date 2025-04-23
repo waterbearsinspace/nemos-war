@@ -19,14 +19,16 @@ const motiveAdvice = [
 
 // utils
 import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function MotiveSelector() {
   const motive = nemosStore((state) => state.currentMotive);
   const setCurrentMotive = nemosStore((state) => state.setCurrentMotive);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const motiveUpgrade = upgradeData.find(
     (upgrade) => upgrade.motive == motive?.name
   )?.name;
+
+  const { setSubPhase } = useNemosCore();
 
   const handleCycle = (inc: number) => {
     let motiveId = motive.id;
@@ -38,7 +40,7 @@ export default function MotiveSelector() {
   };
 
   const handleConfirm = () => {
-    setSubPhase(getSubPhaseNumber("PREP DRAW PILE AND ADVENTURE DECK"));
+    setSubPhase("PREP DRAW PILE AND ADVENTURE DECK");
   };
 
   return (

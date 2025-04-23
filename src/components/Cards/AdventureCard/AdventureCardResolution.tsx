@@ -11,6 +11,7 @@ import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 
 // css
 import "./AdventureCardResolution.css";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 interface AdventureCardResolutionInterface {
   card: adventureCard;
@@ -20,7 +21,6 @@ export default function AdventurCardResolution({
   card,
 }: AdventureCardResolutionInterface) {
   const subPhase = nemosStore((state) => state.currentSubPhase);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
   const dice = diceStore((state) => state.dice);
   const setDice = diceStore((state) => state.setDice);
@@ -34,6 +34,8 @@ export default function AdventurCardResolution({
   const oceans = nemosStore((state) => state.oceans);
   const doneRolling = diceStore((state) => state.doneRolling);
 
+  const { setSubPhase } = useNemosCore();
+
   function ResolveDisplay() {
     switch (card.id) {
       case 1001: {
@@ -42,7 +44,7 @@ export default function AdventurCardResolution({
           let drawPileCopy = drawPile;
           drawPileCopy.shift();
           setDrawPile(drawPileCopy);
-          setSubPhase(getSubPhaseNumber("DRAW EVENT CARD"));
+          setSubPhase("DRAW EVENT CARD");
         };
         return (
           <div>
@@ -155,12 +157,12 @@ export default function AdventurCardResolution({
       let drawPileCopy = drawPile;
       drawPileCopy.shift();
       setDrawPile(drawPileCopy);
-      setSubPhase(getSubPhaseNumber("PLACEMENT DICE ROLL"));
+      setSubPhase("PLACEMENT DICE ROLL");
     } else {
       let adventureDeckCopy = adventureDeck;
       adventureDeckCopy.shift();
       setAdventureDeck(adventureDeckCopy);
-      setSubPhase(getSubPhaseNumber("ACTION SELECT"));
+      setSubPhase("ACTION SELECT");
     }
   };
 

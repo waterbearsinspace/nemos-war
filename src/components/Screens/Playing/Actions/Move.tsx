@@ -15,7 +15,6 @@ export default function Move() {
   const setShowNextPhaseButton = nemosStore(
     (state) => state.setShowNextPhaseButton
   );
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const nautilusMoved = nemosStore((state) => state.nautilusMoved);
   const hydroMoved = nemosStore((state) => state.hydroMoved);
   const currentNautilusOceanName = nemosStore(
@@ -29,7 +28,7 @@ export default function Move() {
     ? "Select Ocean to Move To"
     : "Moved to " + currentNautilusOceanName;
 
-  const { resetMovement } = useNemosCore();
+  const { resetMovement, setSubPhase } = useNemosCore();
 
   return (
     <div className="move-select">
@@ -58,7 +57,7 @@ export default function Move() {
             onClick={() => {
               resetMovement();
               setShowNextPhaseButton(false);
-              setSubPhase(getSubPhaseNumber("ACTION SELECT"));
+              setSubPhase("ACTION SELECT");
             }}
           >
             <p>Continue</p>

@@ -25,7 +25,6 @@ export default function Placement() {
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const dice = diceStore((state) => state.dice);
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const actionPoints = nemosStore((state) => state.actionPointsCurrent);
   const setActionPoints = nemosStore((state) => state.setActionPointsCurrent);
   const currentPlacementOcean = nemosStore(
@@ -33,6 +32,8 @@ export default function Placement() {
   );
   const setLullTurn = nemosStore((state) => state.setIsLullTurn);
   const clickedOcean = nemosStore((state) => state.clickedOcean);
+
+  const { setSubPhase } = useNemosCore();
 
   const differential = Math.abs(
     dice.find((die) => die.id == "w1")!.value -
@@ -47,10 +48,10 @@ export default function Placement() {
     setDoneRolling(false);
     if (differential != 0) {
       setLullTurn(false);
-      setSubPhase(getSubPhaseNumber("STANDARD PLACEMENT"));
+      setSubPhase("STANDARD PLACEMENT");
     } else {
       setLullTurn(true);
-      setSubPhase(getSubPhaseNumber("LULL PLACEMENT"));
+      setSubPhase("LULL PLACEMENT");
     }
   };
 
@@ -58,7 +59,7 @@ export default function Placement() {
     setActionPoints(actionPoints > 0 ? differential + 1 : differential);
     if (actionPoints > maxSavedActionPoints)
       setActionPoints(maxSavedActionPoints);
-    setSubPhase(getSubPhaseNumber("ACTION SELECT"));
+    setSubPhase("ACTION SELECT");
   };
 
   function PlacementRoll() {

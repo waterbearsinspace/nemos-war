@@ -3,16 +3,18 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 import AdventureCard from "./AdventureCard";
 import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 import { diceStore } from "../../../common/stores/diceStore";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 export default function AdventureCardDraw() {
   const subPhase = nemosStore((state) => state.currentSubPhase);
   const drawPile = nemosStore((state) => state.drawPile);
   const adventureDeck = nemosStore((state) => state.adventureDeck);
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const setShowNextPhaseButton = nemosStore(
     (state) => state.setShowNextPhaseButton
   );
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
+
+  const { setSubPhase } = useNemosCore();
 
   const [flipped, setFlipped] = useState(false);
 
@@ -38,8 +40,8 @@ export default function AdventureCardDraw() {
     setDoneRolling(false);
     setSubPhase(
       subPhase == getSubPhaseNumber("DRAW EVENT CARD")
-        ? getSubPhaseNumber("RESOLVE EVENT CARD")
-        : getSubPhaseNumber("RESOLVE ADVENTURE CARD")
+        ? "RESOLVE EVENT CARD"
+        : "RESOLVE ADVENTURE CARD"
     );
   };
 

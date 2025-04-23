@@ -8,8 +8,11 @@ import { getFlippedShip, getSubPhaseNumber } from "./utils/utils";
 // UTILS
 // ============================
 function setSubPhase(subPhase: string) {
+  const currentSubPhase = nemosStore.getState().currentSubPhase;
+  const setPreviousSubPhase = nemosStore.getState().setPreviousSubPhase;
   const setCurrentSubPhase = nemosStore.getState().setCurrentSubPhase;
 
+  setPreviousSubPhase(currentSubPhase as number);
   setCurrentSubPhase(getSubPhaseNumber(subPhase));
 }
 

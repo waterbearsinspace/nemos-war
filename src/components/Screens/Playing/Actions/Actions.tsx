@@ -23,7 +23,6 @@ export default function Actions() {
   const setShowNextPhaseButton = nemosStore(
     (state) => state.setShowNextPhaseButton
   );
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const actionPoints = nemosStore((state) => state.actionPointsCurrent);
   const setActionPoints = nemosStore((state) => state.setActionPointsCurrent);
   const isLullTurn = nemosStore((state) => state.isLullTurn);
@@ -38,7 +37,7 @@ export default function Actions() {
     state.oceans.find((ocean) => ocean.name == currentOceanName)
   );
 
-  const { handleMovementScreenOptions } = useNemosCore();
+  const { handleMovementScreenOptions, setSubPhase } = useNemosCore();
 
   function Actions() {
     const actionNames = [
@@ -140,20 +139,20 @@ export default function Actions() {
 
         switch (action.name) {
           case "Adventure":
-            setSubPhase(getSubPhaseNumber("DRAW ADVENTURE CARD"));
+            setSubPhase("DRAW ADVENTURE CARD");
             break;
           case "Move":
-            setSubPhase(getSubPhaseNumber("MOVE"));
+            setSubPhase("MOVE");
             handleMovementScreenOptions();
             break;
           case "Rest":
-            setSubPhase(getSubPhaseNumber("REST"));
+            setSubPhase("REST");
             break;
           case "Repair":
-            setSubPhase(getSubPhaseNumber("REPAIR"));
+            setSubPhase("REPAIR");
             break;
           case "Search":
-            setSubPhase(getSubPhaseNumber("SEARCH"));
+            setSubPhase("SEARCH");
             break;
           default:
             break;
@@ -204,7 +203,7 @@ export default function Actions() {
             className="next-phase-button"
             onClick={() => {
               setShowNextPhaseButton(false);
-              setSubPhase(getSubPhaseNumber("DRAW EVENT CARD"));
+              setSubPhase("DRAW EVENT CARD");
             }}
           >
             <p>Continue</p>

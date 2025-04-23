@@ -7,7 +7,6 @@ const upgradeDescriptionText =
   "Would you like to purchase your motive's starting upgrade by spending any 3 Ship Resources? If not, it will be available for purchase later and you will keep your Ship Resources.";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
 import { useNemosCore } from "../../../common/scripts/nemosCore";
 import UpgradeInstructions from "../../../common/scripts/utils/UpgradeInstructions";
 
@@ -20,7 +19,6 @@ export default function StartingUpgrade() {
   const addToCurrentUpgrades = nemosStore(
     (state) => state.addToCurrentUpgrades
   );
-  const setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   const nemoValue = nemosStore((state) => state.nemo.value);
   const crewValue = nemosStore((state) => state.crew.value);
   const hullValue = nemosStore((state) => state.hull.value);
@@ -43,10 +41,11 @@ export default function StartingUpgrade() {
     if (!resourcesPayable) {
       addToCurrentUpgrades(motiveUpgrade!);
     }
-    setSubPhase(getSubPhaseNumber("PREP SHIPS"));
+    setSubPhase("PREP SHIPS");
   };
 
-  const { adjustNemoBy, adjustCrewBy, adjustHullBy } = useNemosCore();
+  const { adjustNemoBy, adjustCrewBy, adjustHullBy, setSubPhase } =
+    useNemosCore();
 
   return (
     <div className="upgrade-screen-wrapper">

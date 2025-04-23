@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
+import { useNemosCore } from "../../../common/scripts/nemosCore";
 
 // data and constants
 import shipData from "../../../common/data/ships.json";
@@ -19,12 +20,13 @@ import {
 
 export default function ShipPools() {
   // store selectors
-  let setSubPhase = nemosStore((state) => state.setCurrentSubPhase);
   let setCurrentShipPool = nemosStore((state) => state.setCurrentShipPool);
   let setUnusedShipPool = nemosStore((state) => state.setUnusedShipPool);
   let setTreasureDrawlPool = nemosStore((state) => state.setTreasureDrawPool);
   let oceans = nemosStore((state) => state.oceans);
   let setOceans = nemosStore((state) => state.setOceans);
+
+  const { setSubPhase } = useNemosCore();
 
   function setupShipPool() {
     let starterShipPool = shipData.filter(
@@ -104,7 +106,7 @@ export default function ShipPools() {
     setupShipPool();
     setupOceans();
     getStartingTreasureDrawPool();
-    setSubPhase(getSubPhaseNumber("CONFIRM SETUP"));
+    setSubPhase("CONFIRM SETUP");
   });
 
   return (
