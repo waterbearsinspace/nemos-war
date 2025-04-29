@@ -179,6 +179,7 @@ export default function Attack() {
         break;
       case 4:
       case 5:
+      case 6:
         adjustHullBy(-1);
         break;
     }
