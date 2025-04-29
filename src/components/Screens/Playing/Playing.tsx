@@ -109,11 +109,11 @@ export default function Playing() {
 
   return (
     <section className="game-screen-wrapper">
-      {/* <section className="overlay-bar overlay-bar-top">
+      <section className="overlay-bar overlay-bar-top">
         <section className="overlay-bar-content-wrapper">
           <p>{gameSubPhases[currentSubPhase as keyof typeof gameSubPhases]}</p>
         </section>
-      </section> */}
+      </section>
       <div className="playarea">
         <Render />
       </div>

@@ -8,7 +8,7 @@ import "./Oceans.css";
 import { ship } from "../../../common/stores/slices/shipPoolsSlice";
 import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 import ShipToken from "../../Ships/ShipToken";
-import { selectShipInOcean } from "../../../common/scripts/nemosCore/nemosCoreOceansShips";
+import { setShipAsAttackTarget } from "../../../common/scripts/nemosCore/nemosCoreOceansShips";
 
 export default function Oceans() {
   // game store selectors
@@ -42,20 +42,28 @@ export default function Oceans() {
           }
           break;
         case getSubPhaseNumber("ATTACK"):
-          if (!attackTarget) {
-            if (thisOcean == currentNautilusOcean) {
-              if (typeof thisShip == "string")
-                revealHiddenShipInOcean(thisShip, thisOcean);
-              else selectShipInOcean(thisShip);
-              updateAttackOptions();
+          if (thisOcean == currentNautilusOcean) {
+            if (typeof thisShip == "string") {
+              const targetShip = revealHiddenShipInOcean(thisShip, thisOcean);
+              setShipAsAttackTarget(targetShip);
               if (!attackType) {
                 setCombatPhase("Selecting Attack Type");
               } else {
-                if ((thisShip as ship).groupId != "A") {
+                if (targetShip?.groupId != "A") {
+                  setCombatPhase("Warship Attacking");
+                } else setCombatPhase("Nautilus Attacking");
+              }
+            } else {
+              setShipAsAttackTarget(thisShip);
+              if (!attackType) {
+                setCombatPhase("Selecting Attack Type");
+              } else {
+                if (thisShip?.groupId != "A") {
                   setCombatPhase("Warship Attacking");
                 } else setCombatPhase("Nautilus Attacking");
               }
             }
+            updateAttackOptions();
           }
           break;
       }

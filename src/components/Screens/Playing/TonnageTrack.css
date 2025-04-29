@@ -95,13 +95,23 @@
 
   transform: scale(1);
 
+  &:hover {
+    cursor: pointer;
+  }
+
   > p {
     transform: scale(1);
     transition: all 0.7s cubic-bezier(0.075, 0.82, 0.15, 1);
   }
 
   &:hover > p {
-    cursor: pointer;
     transform: scale(1.125);
   }
+}
+
+.tonnage-select-track {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

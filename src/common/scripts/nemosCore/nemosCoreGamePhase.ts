@@ -18,7 +18,7 @@ export function setSubPhase(subPhase: string | number) {
   resetCombat();
 
   if (gameLost) {
-    setSubPhase("GAME OVER");
+    setCurrentSubPhase(getSubPhaseNumber("GAME OVER"));
   } else if (typeof subPhase == "string") {
     setCurrentSubPhase(getSubPhaseNumber(subPhase));
   } else {

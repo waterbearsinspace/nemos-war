@@ -1,11 +1,11 @@
-import { addSalvage, addTonnage, updateAttackOptions } from "./nemoscoreCombat";
+import { addSalvage, addTonnage, updateAttackOptions } from "./nemosCoreCombat";
 import { applyFailedTestPenalty, exertionDRM } from "./nemosCoreDice";
 import { setSubPhase } from "./nemosCoreGamePhase";
 import { handleMovementScreenOptions, moveNautilus } from "./nemosCoreMovement";
 import { adjustNotorietyBy } from "./nemosCoreNotoriety";
 import {
   revealHiddenShipInOcean,
-  selectShipInOcean,
+  setShipAsAttackTarget,
 } from "./nemosCoreOceansShips";
 import {
   handlePlacementDieClick,
@@ -39,7 +39,7 @@ export const useNemosCore = () => {
 
     // oceans ships
     revealHiddenShipInOcean,
-    selectShipInOcean,
+    selectShipInOcean: setShipAsAttackTarget,
 
     // placement
     handlePlacementDieClick,

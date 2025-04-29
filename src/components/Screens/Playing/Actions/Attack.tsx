@@ -12,15 +12,12 @@ import { diceStore } from "../../../../common/stores/diceStore";
 import TableAndTest from "../../../Dice/TableAndTest";
 import { adjustNotorietyBy } from "../../../../common/scripts/nemosCore/nemosCoreNotoriety";
 import TonnageTrack from "../TonnageTrack";
-import { updateAttackOptions } from "../../../../common/scripts/nemosCore/nemoscoreCombat";
 
 export default function Attack() {
   const setShowNextPhaseButton = nemosStore(
     (state) => state.setShowNextPhaseButton
   );
   const previousSubPhase = nemosStore((state) => state.previousSubPhase);
-  const doneAttacking = nemosStore((state) => state.doneAttacking);
-  const setDoneAttacking = nemosStore((state) => state.setDoneAttacking);
   const attackTarget = nemosStore((state) => state.attackTarget);
   const oceans = nemosStore((state) => state.oceans);
   const setOceans = nemosStore((state) => state.setOceans);
@@ -106,6 +103,16 @@ export default function Attack() {
 
   const lowestDieValue = Math.min(...dieValues);
 
+  const warshipAttackValue =
+    (hasReinforcedArmor ? 1 : 0) + (otherWarshipsPresent ? -1 : 0) + sumRolled;
+
+  const nautilusAttackValue =
+    (attackType == "Stalk" ? 1 : 0) +
+    exertionDRM +
+    (hasStrengthenedProw ? 1 : 0) +
+    (otherWarshipsPresent ? -1 : 0) +
+    sumRolled;
+
   const {
     setSubPhase,
     adjustNemoBy,
@@ -114,32 +121,54 @@ export default function Attack() {
     resetCombat,
     addTonnage,
     addSalvage,
+    updateAttackOptions,
   } = useNemosCore();
 
-  const OceanSelect = () => {
+  function OceanSelect() {
     return (
       <>
         <Oceans />
         <div className="move-select-side-pane">
-          <h2>{selectTargetText}</h2>
+          {!attackTarget ? (
+            <h2>{selectTargetText}</h2>
+          ) : (
+            <div>
+              <h2>Target Selected</h2>
+              <div className="next-phase-wrapper">
+                <button
+                  className="next-phase-button"
+                  onClick={() => {
+                    if (!attackType) {
+                      setCombatPhase("Selecting Attack Type");
+                    } else {
+                      if (attackTarget.groupId != "A") {
+                        setCombatPhase("Warship Attacking");
+                      } else setCombatPhase("Nautilus Attacking");
+                    }
+                  }}
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </>
     );
-  };
+  }
 
-  const setStartingCombatPhase = (type: string) => {
-    setAttackType(type);
-    if (attackTarget?.groupId != "A") {
-      setCombatPhase("Warship Attacking");
-    } else setCombatPhase("Nautilus Attacking");
-  };
-
-  const AttackTypeSelect = () => {
+  function AttackTypeSelect() {
+    const handleClick = (type: string) => {
+      setAttackType(type);
+      if (attackTarget?.groupId != "A") {
+        setCombatPhase("Warship Attacking");
+      } else setCombatPhase("Nautilus Attacking");
+    };
     return (
       <div className="move-select-side-pane">
         <div className="attack-target-info">
           <h2>Attacking</h2>
-          <ShipToken thisShip={attackTarget!} />
+          <ShipToken thisShip={attackTarget!} size="large" />
           <p>
             with <strong>{currentNautilusOcean!.ships.length - 1} </strong>
             ship(s) remaining in the <strong>Nautilus</strong>'s ocean
@@ -150,14 +179,14 @@ export default function Attack() {
           <div className="attack-type-buttons">
             <button
               onClick={() => {
-                setStartingCombatPhase("Bold");
+                handleClick("Bold");
               }}
             >
               Bold Attack
             </button>
             <button
               onClick={() => {
-                setStartingCombatPhase("Stalk");
+                handleClick("Stalk");
               }}
             >
               Stalk Attack
@@ -166,156 +195,15 @@ export default function Attack() {
         </div>
       </div>
     );
-  };
-
-  function applyWarshipHit() {
-    switch (activeDiceArray[0].value) {
-      case 1:
-        adjustNemoBy(-1);
-        break;
-      case 2:
-      case 3:
-        adjustCrewBy(-1);
-        break;
-      case 4:
-      case 5:
-      case 6:
-        adjustHullBy(-1);
-        break;
-    }
   }
 
-  function RolltoApplyWarshipHits() {
-    return (
-      <div className="apply-hits-roll-area">
-        {hitAmount == null && (
-          <>
-            <TableAndTest id={"Roll for Number of Hits"} />
-            {doneRolling && (
-              <div className="next-phase-wrapper">
-                <button
-                  className="next-phase-button"
-                  onClick={() => {
-                    setDoneRolling(false);
-                    setHitAmount(activeDiceArray[0].value);
-                  }}
-                >
-                  <p>Apply Hits</p>
-                </button>
-              </div>
-            )}
-          </>
-        )}
-        {hitAmount != null &&
-          (hitAmount > 0 ? (
-            <>
-              <TableAndTest id={"Roll to Apply Hits"} />
-              {hitAmount > 0 && doneRolling && (
-                <div className="next-phase-wrapper">
-                  <button
-                    className="next-phase-button"
-                    onClick={() => {
-                      setDoneRolling(false);
-                      applyWarshipHit();
-                      setHitAmount(hitAmount - 1);
-                      if (hitAmount - 1 == 0) setResolving(false);
-                    }}
-                  >
-                    <p>Apply Hit</p>
-                  </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <h2>Done Applying Hits!</h2>
-            </>
-          ))}
-      </div>
-    );
-  }
-
-  function SelectTonnageSalvage() {
-    const salvageable = nemosStore((state) => state.salvage) < 4;
-    const foughtSeaSerpent = attackTarget?.name == "Sea Serpent";
-    const seaSerpentSunk = "slain";
-    const seaSerpentWreckage = "corpse";
-
-    function selectTonnage() {
-      if (currentNautilusOcean?.dieValue) {
-        addTonnage(currentNautilusOcean.name);
-        setResolving(false);
-      }
-      setCombatPhase("Placing Tonnage");
-    }
-    function selectSalvage() {
-      addSalvage(attackTarget!);
-      setCombatPhase("Salvaged");
-    }
-
-    return (
-      <div className="select-tonnage-salvage-area">
-        <h2>
-          You've {foughtSeaSerpent ? seaSerpentSunk : "sunk"} the{" "}
-          {attackTarget?.name}!
-        </h2>
-        <ShipToken thisShip={attackTarget!} size={"large"} />
-        {salvageable ? (
-          <p>
-            Claim the <strong>{attackTarget?.name}'s </strong>{" "}
-            {foughtSeaSerpent ? seaSerpentWreckage : "wreckage"} as{" "}
-            <strong>Tonnage</strong> to earn its
-            <strong> Victory Points</strong>? Or use it as{" "}
-            <strong>Salvage</strong>, forgoing its{" "}
-            <strong>Victory Points</strong> so you may put it towards purchasing
-            an <strong>Upgrade</strong>?
-          </p>
-        ) : (
-          <>
-            <p>
-              Claim the sunken <strong>Ship</strong> as <strong>Tonnage</strong>{" "}
-              to earn its
-              <strong> Victory Points</strong>!
-            </p>
-            <p>
-              (You are at the maximum amount of <strong>Salvage</strong> and
-              cannot claim the {attackTarget?.name} as such)
-            </p>
-          </>
-        )}
-
-        <section className="select-tonnage-salvage-buttons">
-          <button onClick={selectTonnage}>Tonnage</button>
-          {salvageable && <button onClick={selectSalvage}>Salvage</button>}
-        </section>
-      </div>
-    );
-  }
-
-  const CombatScreen = () => {
-    const warshipAttackValue =
-      (hasReinforcedArmor ? 1 : 0) +
-      (otherWarshipsPresent ? -1 : 0) +
-      sumRolled;
-
-    const nautilusAttackValue =
-      (attackType == "Stalk" ? 1 : 0) +
-      exertionDRM +
-      (hasStrengthenedProw ? 1 : 0) +
-      (otherWarshipsPresent ? -1 : 0) +
-      sumRolled;
-
+  function WarshipAttacking() {
     function resolveWarshipAttack() {
       setHitAmount(null);
-      // if greater than or equal to ship attack
-      if (warshipAttackValue >= attackTarget?.attackStrength!) {
-        // no effect
-        setCombatPhase("Nautilus Attacking");
-      }
-      // else if snake eyes
-      else if (sumRolled == 2) {
+      // if snake eyes
+      if (sumRolled == 2) {
         // suffer 1d6 hits
-        setCombatPhase("Suffer Warship Hits");
+        setCombatPhase("Roll For Number of Hits");
       }
       // else if less than target attack
       else if (warshipAttackValue < attackTarget?.attackStrength!) {
@@ -323,11 +211,120 @@ export default function Attack() {
         setHitAmount(lowestDieValue);
         setCombatPhase("Suffer Warship Hits");
       }
+      // if greater than or equal to ship attack
+      else if (warshipAttackValue >= attackTarget?.attackStrength!) {
+        // no effect
+        setCombatPhase("Nautilus Attacking");
+      }
       // end attack
-      setDoneRolling(false);
       setResolving(true);
+      setDoneRolling(false);
     }
+    return (
+      <div className="combat-screen">
+        <TableAndTest id="Warship Attacking" />
+        {doneRolling && (
+          <div className="next-phase-wrapper">
+            <button
+              className="next-phase-button"
+              onClick={() => {
+                resolveWarshipAttack();
+              }}
+            >
+              <p>Continue</p>
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
+  function RollForNumberOfHits() {
+    return (
+      <div className="apply-hits-roll-area">
+        <>
+          <TableAndTest id={"Roll for Number of Hits"} />
+          {doneRolling && (
+            <div className="next-phase-wrapper">
+              <button
+                className="next-phase-button"
+                onClick={() => {
+                  setDoneRolling(false);
+                  setHitAmount(activeDiceArray[0].value);
+                  setCombatPhase("Suffer Warship Hits");
+                }}
+              >
+                <p>Apply Hits</p>
+              </button>
+            </div>
+          )}
+        </>
+      </div>
+    );
+  }
+
+  function SufferWarshipHits() {
+    function applyHitAtLocation() {
+      switch (activeDiceArray[0].value) {
+        case 1:
+          adjustNemoBy(-1);
+          break;
+        case 2:
+        case 3:
+          adjustCrewBy(-1);
+          break;
+        case 4:
+        case 5:
+        case 6:
+          adjustHullBy(-1);
+          break;
+      }
+    }
+    return (
+      <>
+        <div className="combat-screen">
+          {hitAmount! >= 1 && resolving && (
+            <>
+              <TableAndTest id={"Roll to Apply Hits"} />
+              {doneRolling && (
+                <div className="next-phase-wrapper">
+                  <button
+                    className="next-phase-button"
+                    onClick={() => {
+                      if (hitAmount! - 1 != 0) setDoneRolling(false);
+                      applyHitAtLocation();
+                      setHitAmount(hitAmount! - 1);
+                      if (hitAmount! - 1 == 0) setResolving(false);
+                    }}
+                  >
+                    <p>Apply Hit</p>
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+          {!resolving && (
+            <>
+              <h2>All hits applied!</h2>
+              <div className="next-phase-wrapper">
+                <button
+                  className="next-phase-button"
+                  onClick={() => {
+                    setDoneRolling(false);
+                    setCombatPhase("Nautilus Attacking");
+                  }}
+                >
+                  <p>Continue</p>
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </>
+    );
+  }
+
+  function NautilusAttacking() {
     function resolveNautilusAttack() {
       const newCurrentOceanShips = currentNautilusOcean?.ships.filter(
         (ship) => {
@@ -350,235 +347,251 @@ export default function Attack() {
             : attackTarget?.notoriety!
         );
         setOceans(newOceans);
-      }
-      // else if snake eyes
-      else if (sumRolled == 2) {
-        // gain two notoriety
-        adjustNotorietyBy(2);
-        // lose two exerted ship resources
-        if (nemoExerted) adjustNemoBy(-2);
-        if (crewExerted) adjustCrewBy(-2);
-        if (hullExerted) adjustHullBy(-2);
-        // finish attack
-        setShowNextPhaseButton(false);
-        setSubPhase(previousSubPhase);
-      }
-      // else if less than target defense
-      else if (nautilusAttackValue < attackTarget?.defenseStrength!) {
-        // gain one notoriety
-        adjustNotorietyBy(1);
-        // if lowest die roll is 1
-        if (lowestDieValue == 1) {
-          // lose 1 exerted ship resource
-          if (nemoExerted) adjustNemoBy(-1);
-          if (crewExerted) adjustCrewBy(-1);
-          if (hullExerted) adjustHullBy(-1);
-        }
-        // else lose 2 exerted ship resource
-        else {
+        setResolving(true);
+        setCombatPhase("Select Tonnage Salvage");
+      } else {
+        // else if snake eyes
+        if (sumRolled == 2) {
+          // gain two notoriety
+          adjustNotorietyBy(2);
+          // lose two exerted ship resources
           if (nemoExerted) adjustNemoBy(-2);
           if (crewExerted) adjustCrewBy(-2);
           if (hullExerted) adjustHullBy(-2);
+        }
+        // else if less than target defense
+        else if (nautilusAttackValue < attackTarget?.defenseStrength!) {
+          // gain one notoriety
+          adjustNotorietyBy(1);
+          // if lowest die roll is 1
+          if (lowestDieValue == 1) {
+            // lose 1 exerted ship resource
+            if (nemoExerted) adjustNemoBy(-1);
+            if (crewExerted) adjustCrewBy(-1);
+            if (hullExerted) adjustHullBy(-1);
+          }
+          // else lose 2 exerted ship resource
+          else {
+            if (nemoExerted) adjustNemoBy(-2);
+            if (crewExerted) adjustCrewBy(-2);
+            if (hullExerted) adjustHullBy(-2);
+          }
         }
         // finish attack
         setShowNextPhaseButton(false);
         setSubPhase(previousSubPhase);
       }
     }
+    return (
+      <div className="combat-screen">
+        <TableAndTest id="Nautilus Attacking" />
+        {doneRolling && (
+          <div className="next-phase-wrapper">
+            <button
+              className="next-phase-button"
+              onClick={() => {
+                resolveNautilusAttack();
+              }}
+            >
+              <p>Continue</p>
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
-    function boldContinue() {
+  function SelectTonnageSalvage() {
+    const salvageable = nemosStore((state) => state.salvage) < 4;
+    const foughtSeaSerpent = attackTarget?.name == "Sea Serpent";
+    const seaSerpentSunk = "slain";
+    const seaSerpentWreckage = "corpse";
+
+    function selectTonnage() {
+      if (currentNautilusOcean?.dieValue) {
+        addTonnage(currentNautilusOcean.name);
+        setResolving(false);
+      } else {
+        setResolving(true);
+      }
+      setCombatPhase("Placing Tonnage");
+    }
+    function selectSalvage() {
+      addSalvage(attackTarget!);
+      setCombatPhase("Claiming Salvage");
+    }
+
+    return (
+      <div className="combat-screen">
+        <div className="select-tonnage-salvage-area">
+          <h2>
+            You've {foughtSeaSerpent ? seaSerpentSunk : "sunk"} the{" "}
+            {attackTarget?.name}!
+          </h2>
+          <ShipToken thisShip={attackTarget!} size={"large"} />
+          {salvageable ? (
+            <p>
+              Claim the <strong>{attackTarget?.name}'s </strong>{" "}
+              {foughtSeaSerpent ? seaSerpentWreckage : "wreckage"} as{" "}
+              <strong>Tonnage</strong> to earn its
+              <strong> Victory Points</strong>? Or use it as{" "}
+              <strong>Salvage</strong>, forgoing its{" "}
+              <strong>Victory Points</strong> so you may put it towards
+              purchasing an <strong>Upgrade</strong>?
+            </p>
+          ) : (
+            <>
+              <p>
+                Claim the sunken <strong>Ship</strong> as{" "}
+                <strong>Tonnage</strong> to earn its
+                <strong> Victory Points</strong>!
+              </p>
+              <p>
+                (You are at the maximum amount of <strong>Salvage</strong> and
+                cannot claim the {attackTarget?.name} as such)
+              </p>
+            </>
+          )}
+
+          <section className="select-tonnage-salvage-buttons">
+            <button onClick={selectTonnage}>Tonnage</button>
+            {salvageable && <button onClick={selectSalvage}>Salvage</button>}
+          </section>
+        </div>
+      </div>
+    );
+  }
+
+  function PlacingTonnage() {
+    function handleClick() {
       if (attackType == "Bold" && currentNautilusOcean?.ships.length! > 0) {
-        resetCombat();
-        setAttackType("Bold");
         setCombatPhase("Bold Continue");
       } else {
         setShowNextPhaseButton(false);
         setSubPhase(previousSubPhase);
       }
     }
-
-    if (combatPhase == "Warship Attacking") {
-      return (
-        <div className="combat-screen">
-          <TableAndTest id="Warship Attacking" />
-          {doneRolling && (
-            <div className="next-phase-wrapper">
-              <button
-                className="next-phase-button"
-                onClick={() => {
-                  resolveWarshipAttack();
-                }}
-              >
-                <p>Continue</p>
-              </button>
+    return (
+      <div className="tonnage-screen">
+        <TonnageTrack />
+        <div className="tonnage-side-pane">
+          {resolving && (
+            <div className="tonnage-select-track">
+              <p>
+                Select a <strong>Tonnage</strong> track to place
+              </p>
+              <ShipToken thisShip={attackTarget!} size="large" />
             </div>
           )}
-        </div>
-      );
-    } else if (combatPhase == "Suffer Warship Hits") {
-      return (
-        <div className="combat-screen">
-          <RolltoApplyWarshipHits />
           {!resolving && (
-            <div className="next-phase-wrapper">
-              <button
-                className="next-phase-button"
-                onClick={() => {
-                  setDoneRolling(false);
-                  setCombatPhase("Nautilus Attacking");
-                }}
-              >
-                <p>Continue</p>
-              </button>
+            <div className="tonnage-placed">
+              <p>
+                The <strong>{attackTarget?.name}</strong>
+              </p>
+              <p>
+                claimed as <strong>Tonnage</strong>
+              </p>
             </div>
           )}
         </div>
-      );
-    } else if (combatPhase == "Nautilus Attacking") {
-      if (!doneAttacking) {
-        return (
-          <div className="combat-screen">
-            <TableAndTest id="Nautilus Attacking" />
-            {doneRolling && (
-              <div className="next-phase-wrapper">
-                <button
-                  className="next-phase-button"
-                  onClick={() => {
-                    resolveNautilusAttack();
-                    setDoneAttacking(true);
-                    setResolving(true);
-                  }}
-                >
-                  <p>Continue</p>
-                </button>
-              </div>
-            )}
-          </div>
-        );
-      } else {
-        return (
-          <div className="combat-screen">
-            <SelectTonnageSalvage />
-            {!resolving && (
-              <div className="next-phase-wrapper">
-                <button
-                  className="next-phase-button"
-                  onClick={() => {
-                    setShowNextPhaseButton(false);
-                    setSubPhase(previousSubPhase);
-                  }}
-                >
-                  <p>Continue</p>
-                </button>
-              </div>
-            )}
-          </div>
-        );
-      }
-    } else if (combatPhase == "Placing Tonnage") {
-      return (
-        <div className="tonnage-screen">
-          <TonnageTrack />
-          <div className="tonnage-side-pane">
-            {resolving && (
-              <div className="tonnage-select-track">
-                <p>
-                  Select a <strong>Tonnage</strong> track to place
-                </p>
-                <ShipToken thisShip={attackTarget!} size="large" />
-              </div>
-            )}
-            {!resolving && (
-              <div className="tonnage-placed">
-                <p>
-                  The <strong>{attackTarget?.name}</strong>
-                </p>
-                <p>
-                  claimed as <strong>Tonnage</strong>
-                </p>
-              </div>
-            )}
-          </div>
-          {!resolving && (
-            <div className="next-phase-wrapper">
-              <button
-                className="next-phase-button"
-                onClick={() => {
-                  boldContinue();
-                }}
-              >
-                <p>Continue</p>
-              </button>
-            </div>
-          )}
-        </div>
-      );
-    } else if (combatPhase == "Salvaged") {
-      return (
-        <div>
-          <h2>
-            {attackTarget?.name} taken as <strong>Salvage</strong>!
-          </h2>
-
+        {!resolving && (
           <div className="next-phase-wrapper">
             <button
               className="next-phase-button"
               onClick={() => {
-                setShowNextPhaseButton(false);
-                setSubPhase(previousSubPhase);
+                handleClick();
               }}
             >
               <p>Continue</p>
             </button>
           </div>
+        )}
+      </div>
+    );
+  }
+
+  function ClaimingSalvage() {
+    return (
+      <div>
+        <h2>
+          {attackTarget?.name} taken as <strong>Salvage</strong>!
+        </h2>
+
+        <div className="next-phase-wrapper">
+          <button
+            className="next-phase-button"
+            onClick={() => {
+              setShowNextPhaseButton(false);
+              setSubPhase(previousSubPhase);
+            }}
+          >
+            <p>Continue</p>
+          </button>
         </div>
-      );
-    } else if (combatPhase == "Bold Continue") {
-      return (
-        <div className="bold-continue-screen">
-          <h2>Continue to attack?</h2>
-          <p>There are {currentOceanShips.length} ships remaining.</p>
-          <div className="bold-continue-buttons">
-            <button>
-              <p
-                className="text-red"
-                onClick={() => {
-                  setShowNextPhaseButton(false);
-                  setSubPhase(previousSubPhase);
-                }}
-              >
-                No
-              </p>
-            </button>
-            <button>
-              <p
-                className="text-green"
-                onClick={() => {
-                  setCombatPhase("Selecting Target");
-                  setAttackType("Bold");
-                  updateAttackOptions();
-                }}
-              >
-                Yes
-              </p>
-            </button>
-          </div>
-        </div>
-      );
+      </div>
+    );
+  }
+
+  function BoldAttackContinue() {
+    function handleContinueAttack() {
+      resetCombat();
+      setAttackType("Bold");
+      setCombatPhase("Selecting Target");
+      updateAttackOptions();
     }
-  };
+    return (
+      <div className="bold-continue-screen">
+        <h2>Continue to attack?</h2>
+        <p>There are {currentOcean.ships.length} ship(s) remaining.</p>
+        <div className="bold-continue-buttons">
+          <button
+            onClick={() => {
+              setShowNextPhaseButton(false);
+              setSubPhase(previousSubPhase);
+            }}
+          >
+            <span className="text-red">No</span>
+          </button>
+          <button
+            onClick={() => {
+              handleContinueAttack();
+            }}
+          >
+            <span className="text-green">Yes</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  function Render() {
+    switch (combatPhase) {
+      case "Selecting Target":
+        return <OceanSelect />;
+      case "Selecting Attack Type":
+        return <AttackTypeSelect />;
+      case "Warship Attacking":
+        return <WarshipAttacking />;
+      case "Roll For Number of Hits":
+        return <RollForNumberOfHits />;
+      case "Suffer Warship Hits":
+        return <SufferWarshipHits />;
+      case "Nautilus Attacking":
+        return <NautilusAttacking />;
+      case "Select Tonnage Salvage":
+        return <SelectTonnageSalvage />;
+      case "Placing Tonnage":
+        return <PlacingTonnage />;
+      case "Claiming Salvage":
+        return <ClaimingSalvage />;
+      case "Bold Continue":
+        return <BoldAttackContinue />;
+    }
+  }
 
   return (
     <div className="move-select">
-      <>
-        {combatPhase == "Selecting Target" ? (
-          <OceanSelect />
-        ) : combatPhase == "Selecting Attack Type" ? (
-          <AttackTypeSelect />
-        ) : (
-          <CombatScreen />
-        )}
-      </>
+      <Render />
     </div>
   );
 }

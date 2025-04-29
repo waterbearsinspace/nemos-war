@@ -7,6 +7,20 @@ import "./TonnageTrack.css";
 export default function TonnageTrack() {
   const resolving = nemosStore((state) => state.resolving);
   const setResolving = nemosStore((state) => state.setResolving);
+  const curentOcean = nemosStore((state) =>
+    state.oceans.find((ocean) => {
+      return ocean.name == state.currentNautilusOceanName;
+    })
+  );
+  const adjacentOceans = nemosStore(
+    (state) =>
+      state.oceans.find((ocean) => {
+        return ocean.name == state.currentNautilusOceanName;
+      })?.adjacentOceans
+  );
+  const adjacentOceanNames = adjacentOceans?.map((ocean) => {
+    return ocean.name;
+  });
 
   const { addTonnage } = useNemosCore();
 
@@ -45,6 +59,8 @@ export default function TonnageTrack() {
     let spaces = [];
     const latestTrackSpace = track.length;
 
+    const isValid = adjacentOceanNames?.includes(oceanNames[index]);
+
     const handleClick = () => {
       addTonnage(oceanNames[index]);
       setResolving(false);
@@ -54,18 +70,18 @@ export default function TonnageTrack() {
       if (i == latestTrackSpace) {
       }
       spaces.push(
-        <div className="tonnage-track-space">
+        <div className="tonnage-track-space" key={i + 1 * index}>
           {track[i] ? (
             <ShipToken thisShip={track[i]} />
           ) : resolving && i == latestTrackSpace ? (
             <div>
               <div
-                className="tonnage-track-click-space"
+                className={`${isValid ? `tonnage-track-click-space` : ``}`}
                 onClick={() => {
-                  resolving ? handleClick() : {};
+                  resolving && isValid ? handleClick() : {};
                 }}
               >
-                <p>Place here</p>
+                <p>{isValid ? "Place here" : ""}</p>
               </div>
             </div>
           ) : (
@@ -90,7 +106,7 @@ export default function TonnageTrack() {
           <div className="tonnage-track-grid">
             {tonnageTrackLabels.map((label) => {
               return (
-                <div className="tonnage-track-head">
+                <div className="tonnage-track-head" key={label.label}>
                   <p>{label.value}</p>
                   <p>{label.label}</p>
                 </div>

@@ -27,7 +27,6 @@ export function revealHiddenShipInOcean(hiddenShip: string, shipOcean: ocean) {
   const oceans = nemosStore.getState().oceans;
   const oceanShips = shipOcean.ships;
   const setOceans = nemosStore.getState().setOceans;
-  const setAttackTarget = nemosStore.getState().setAttackTarget;
 
   const indexOfHiddenShip = oceanShips.indexOf(hiddenShip);
 
@@ -37,16 +36,16 @@ export function revealHiddenShipInOcean(hiddenShip: string, shipOcean: ocean) {
     return index == indexOfHiddenShip ? drawnShip : ship;
   });
 
-  setAttackTarget(drawnShip);
-
   setOceans(
     oceans.map((ocean) => {
       return ocean == shipOcean ? { ...shipOcean, ships: newShips } : ocean;
     })
   );
+
+  return drawnShip;
 }
 
-export function selectShipInOcean(thisShip: ship) {
+export function setShipAsAttackTarget(thisShip: ship) {
   const setAttackTarget = nemosStore.getState().setAttackTarget;
 
   setAttackTarget(thisShip);
