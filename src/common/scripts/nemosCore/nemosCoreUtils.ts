@@ -1,8 +1,9 @@
-// types and interfaces
 import { ship } from "../../stores/slices/shipPoolsSlice";
-
-// constants
 import { gamePhases, gameSubPhases } from "../../stores/slices/gamePhaseSlice";
+
+// ============================
+// UTILS
+// ============================
 
 // shuffle array
 // credit to geeksforgeeks for fisher-yates algorithm implementation
@@ -30,6 +31,8 @@ export function getSubPhaseNumber(phaseName: string) {
   });
   return Number(foundPhase![0]);
 }
+
+// get flipped ship
 
 export function getFlippedShip(ship: ship) {
   const flippedShip = {

@@ -7,12 +7,8 @@ import { nemosStore } from "../../../common/stores/nemosStore";
 // data and constants
 import adventureCards from "../../../common/data/adventureCards.json";
 
-// utils
-import {
-  getSubPhaseNumber,
-  shuffleArray,
-} from "../../../common/scripts/utils/utils";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
+import { shuffleArray } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 export default function DrawPileAndAdventureDeck() {
   let motive = nemosStore((state) => state.currentMotive);

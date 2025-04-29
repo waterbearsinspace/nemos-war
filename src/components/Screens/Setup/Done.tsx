@@ -2,11 +2,9 @@
 import { nemosStore } from "../../../common/stores/nemosStore";
 
 // utils
-import {
-  getPhaseNumber,
-  getSubPhaseNumber,
-} from "../../../common/scripts/utils/utils";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { getPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
+
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 
 export default function Done() {
   let motive = nemosStore((state) => state.currentMotive);

@@ -9,7 +9,7 @@ import ShipPools from "./ShipPoolsAndTreasures";
 import Done from "./Done";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 // css
 import "./Setup.css";

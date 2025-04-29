@@ -24,6 +24,7 @@
 .roll-all {
   background-color: #ececec;
   width: 10rem;
+  text-align: center;
 }
 
 .roll-all:hover .roll-all > *:hover :not(disabled) {
@@ -34,9 +35,8 @@
 .dice-space {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 1rem;
+  gap: 1rem;
   justify-content: center;
-  padding: 1rem;
 }
 
 /* dice tray */
@@ -47,15 +47,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 24rem;
+  gap: 3rem;
+  padding: 1rem 2rem;
 }
 
-.dice-tray > * {
-  margin: 20px 20px;
-}
-.dice-tray > * > * {
-  margin: 0px 20px;
-}
 .dice-tray:has(.roll-all:hover:not(.disabled)) .die {
   transform: rotate(4deg);
 }
@@ -66,4 +61,114 @@
   background-color: #1b1b1b;
   border-radius: 50%;
   display: inline-block;
+}
+
+.resource-space {
+  display: flex;
+  gap: 8rem;
+  height: 4rem;
+  padding-inline: 2rem;
+  align-items: center;
+}
+
+.resource-wrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  height: 130%;
+  width: 100%;
+}
+
+.resource-circle-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+
+  &:hover:not(.disabled) {
+    cursor: pointer;
+  }
+
+  .resource-circle::after {
+    content: "";
+    position: absolute;
+    border: 4px solid var(--soft-black);
+    border-radius: 50%;
+    top: calc(0.125rem - 4px);
+    left: calc(0rem - 0.125rem - 4px);
+    width: 5rem;
+    height: 5rem;
+    transition: all 0.7s cubic-bezier(0.075, 0.82, 0.15, 1);
+  }
+
+  &[data-exerting="exerting"] {
+    .resource-circle::after {
+      left: calc(100% - 4.875rem - 4px);
+    }
+  }
+
+  &.disabled {
+    opacity: 0;
+  }
+}
+
+.resource-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  width: 8.5em;
+}
+
+.resource-info-name,
+.resource-info-drm {
+  border: 2px solid var(--soft-black);
+  border-radius: 50%;
+  height: 4.5rem;
+  width: 4.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+  transition: all 0.7s cubic-bezier(0.075, 0.82, 0.15, 1);
+
+  &:hover:not(.disabled) {
+    cursor: pointer;
+  }
+
+  &.shrink {
+    transform: scale(0.75);
+    &:hover:not(.disabled) {
+      transform: scale(0.9);
+    }
+  }
+}
+
+[data-resource="nemo"] {
+  background-color: var(--nemo-purple);
+}
+[data-resource="crew"] {
+  background-color: var(--crew-brown);
+}
+[data-resource="hull"] {
+  background-color: var(--hull-blue);
+}
+
+[data-resource="nemo"],
+[data-resource="crew"],
+[data-resource="hull"] {
+  color: white;
+
+  &.disabled {
+    background-color: var(--disabled-color);
+    color: var(--disabled-color-text);
+    cursor: default;
+  }
+}
+
+.resource-info-name {
+  font-size: 0.8rem;
 }

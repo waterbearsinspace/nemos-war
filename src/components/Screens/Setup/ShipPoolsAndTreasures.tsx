@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 
 // data and constants
 import shipData from "../../../common/data/ships.json";
@@ -11,12 +11,7 @@ import treasures from "../../../common/data/treasures.json";
 
 // types and interfaces
 import { treasure } from "../../../common/stores/slices/treasuresSlice";
-
-// utils
-import {
-  getSubPhaseNumber,
-  shuffleArray,
-} from "../../../common/scripts/utils/utils";
+import { shuffleArray } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 export default function ShipPools() {
   // store selectors

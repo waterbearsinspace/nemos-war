@@ -1,13 +1,14 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
 import { ocean } from "../../../common/stores/slices/oceanSlice";
-import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 // css
 import "./Oceans.css";
 import { ship } from "../../../common/stores/slices/shipPoolsSlice";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 import ShipToken from "../../Ships/ShipToken";
+import { selectShipInOcean } from "../../../common/scripts/nemosCore/nemosCoreOceansShips";
 
 export default function Oceans() {
   // game store selectors
@@ -16,14 +17,47 @@ export default function Oceans() {
   const currentNautilusOceanName = nemosStore(
     (state) => state.currentNautilusOceanName
   );
+  const currentNautilusOcean = nemosStore((state) =>
+    state.oceans.find((ocean) => ocean.name == currentNautilusOceanName)
+  );
   const placementOptions = nemosStore((state) => state.oceanClickOptions);
+  const attackTarget = nemosStore((state) => state.attackTarget);
+  const attackType = nemosStore((state) => state.attackType);
+  const setCombatPhase = nemosStore((state) => state.setCombatPhase);
 
-  const { handlePlacementOptionClick, moveNautilus } = useNemosCore();
+  const {
+    handlePlacementOptionClick,
+    moveNautilus,
+    revealHiddenShipInOcean,
+    updateAttackOptions,
+  } = useNemosCore();
 
   function OceanSpaces() {
-    const handleClickShip = (thisShip: ship) => {
-      if (placementOptions.includes(thisShip)) {
-        handlePlacementOptionClick(thisShip);
+    const handleClickShip = (thisShip: ship | string, thisOcean: ocean) => {
+      switch (currentSubPhase) {
+        case getSubPhaseNumber("STANDARD PLACEMENT"):
+        case getSubPhaseNumber("LULL PLACEMENT"):
+          if (placementOptions.includes(thisShip)) {
+            handlePlacementOptionClick(thisShip as ship);
+          }
+          break;
+        case getSubPhaseNumber("ATTACK"):
+          if (!attackTarget) {
+            if (thisOcean == currentNautilusOcean) {
+              if (typeof thisShip == "string")
+                revealHiddenShipInOcean(thisShip, thisOcean);
+              else selectShipInOcean(thisShip);
+              updateAttackOptions();
+              if (!attackType) {
+                setCombatPhase("Selecting Attack Type");
+              } else {
+                if ((thisShip as ship).groupId != "A") {
+                  setCombatPhase("Warship Attacking");
+                } else setCombatPhase("Nautilus Attacking");
+              }
+            }
+          }
+          break;
       }
     };
 
@@ -38,7 +72,10 @@ export default function Oceans() {
                 <ShipToken
                   thisShip={thisShip as ship}
                   key={i}
-                  handleClickShip={handleClickShip}
+                  handleClickShip={() => {
+                    handleClickShip(thisShip, thisOcean);
+                  }}
+                  currentOcean={thisOcean}
                 />
               );
             }

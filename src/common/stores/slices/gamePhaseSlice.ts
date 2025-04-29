@@ -9,6 +9,9 @@ export interface GamePhaseSliceInterface {
   isLullTurn: boolean;
   gameLost: boolean;
   gameLostMessage: string;
+  resolving: boolean;
+  resolvingSelected: string[];
+  currentAct: number;
 
   setCurrentPhase: (to: number) => void;
   setCurrentSubPhase: (to: number) => void;
@@ -17,6 +20,9 @@ export interface GamePhaseSliceInterface {
   setIsLullTurn: (to: boolean) => void;
   setGameLost: (to: boolean) => void;
   setGameLostMessage: (to: string) => void;
+  setResolving: (to: boolean) => void;
+  setResolvingSelected: (to: string[]) => void;
+  setCurrentAct: (to: number) => void;
 }
 
 // data and constants
@@ -63,6 +69,9 @@ export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   isLullTurn: false,
   gameLost: false,
   gameLostMessage: "",
+  resolving: false,
+  resolvingSelected: [],
+  currentAct: 0,
 
   setCurrentPhase: (to) => set(() => ({ currentPhase: to })),
   setCurrentSubPhase: (to) => set(() => ({ currentSubPhase: to })),
@@ -71,4 +80,7 @@ export const gamePhaseSlice: StateCreator<GamePhaseSliceInterface, []> = (
   setIsLullTurn: (to) => set(() => ({ isLullTurn: to })),
   setGameLost: (to) => set(() => ({ gameLost: to })),
   setGameLostMessage: (to) => set(() => ({ gameLostMessage: to })),
+  setResolving: (to) => set(() => ({ resolving: to })),
+  setResolvingSelected: (to) => set(() => ({ resolvingSelected: to })),
+  setCurrentAct: (to) => set(() => ({ currentAct: to })),
 });

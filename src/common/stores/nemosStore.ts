@@ -14,6 +14,7 @@ import {
   characterResourceSlice,
   CharacterResourcesSliceInterface,
 } from "./slices/characterResourcesSlice";
+import { combatSlice, CombatSliceInterface } from "./slices/combatSlice";
 import { drawPileSlice, DrawPileSliceInterface } from "./slices/drawPileSlice";
 import {
   gamePhaseSlice,
@@ -52,6 +53,7 @@ export const nemosStore = create<
   ActionPointsSliceInterface &
     AdventureDeckSliceInterface &
     CharacterResourcesSliceInterface &
+    CombatSliceInterface &
     DrawPileSliceInterface &
     GamePhaseSliceInterface &
     KeptCardsSliceInterface &
@@ -67,6 +69,7 @@ export const nemosStore = create<
   ...actionPointsSlice(...a),
   ...adventureDeckSlice(...a),
   ...characterResourceSlice(...a),
+  ...combatSlice(...a),
   ...drawPileSlice(...a),
   ...gamePhaseSlice(...a),
   ...keptCardsSlice(...a),

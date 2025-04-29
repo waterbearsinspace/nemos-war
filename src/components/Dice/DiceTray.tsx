@@ -11,6 +11,7 @@ import DiceFace6 from "../../common/assets/dice/DiceFace6";
 
 // css
 import "./Dice.css";
+import { ResourceExert } from "../Resources/ResourceExert";
 
 export function Die({ die }: { die: dice }) {
   let faces = [
@@ -33,12 +34,19 @@ interface DiceTrayInterface {
   testValue?: number;
   numDice?: number;
   buttonText?: string;
+  nemoExertable?: boolean;
+  crewExertable?: boolean;
+  hullExertable?: boolean;
+  amountExertable?: number;
 }
 
 export default function DiceTray({
-  testValue,
   numDice,
   buttonText,
+  nemoExertable,
+  crewExertable,
+  hullExertable,
+  amountExertable,
 }: DiceTrayInterface) {
   const dice = diceStore((state) => state.dice);
   const setDice = diceStore((state) => state.setDice);
@@ -112,50 +120,71 @@ export default function DiceTray({
     }
 
     setDice(getRolledDice());
-    setTimeout(() => {
-      setDice(getRolledDice());
-    }, 100);
-    setTimeout(() => {
-      setDice(getRolledDice());
-    }, 200);
-    setTimeout(() => {
-      setDice(getRolledDice());
-    }, 300);
-    setTimeout(() => {
-      setDice(getRolledDice());
-    }, 500);
-    setTimeout(() => {
-      setDice(getRolledDice());
-    }, 700);
-    setTimeout(() => {
-      setDice(getRolledDice());
-    }, 1000);
+    // setTimeout(() => {
+    //   setDice(getRolledDice());
+    // }, 100);
+    // setTimeout(() => {
+    //   setDice(getRolledDice());
+    // }, 200);
+    // setTimeout(() => {
+    //   setDice(getRolledDice());
+    // }, 300);
+    // setTimeout(() => {
+    //   setDice(getRolledDice());
+    // }, 500);
+    // setTimeout(() => {
+    //   setDice(getRolledDice());
+    // }, 700);
+    // setTimeout(() => {
+    //   setDice(getRolledDice());
+    // }, 1000);
   }
 
   function handleClick() {
     rollAll();
   }
 
+  const resourcesExertable = nemoExertable || crewExertable || hullExertable;
+
   return (
-    <div>
-      <div className="dice-tray">
-        <div>{testValue ? "Test: " + testValue : ""}</div>
-        <div className="dice-space">
-          {dice
-            .filter((die) => {
-              return activeDice.includes(die.id);
-            })
-            .map((die) => {
-              return <Die die={die} key={die.id} />;
-            })}
+    <div className="dice-tray">
+      {resourcesExertable && (
+        <div className="resource-space">
+          {nemoExertable && (
+            <ResourceExert
+              option="nemo"
+              amountExertable={amountExertable ? amountExertable : 3}
+            />
+          )}
+          {crewExertable && (
+            <ResourceExert
+              option="crew"
+              amountExertable={amountExertable ? amountExertable : 3}
+            />
+          )}
+          {hullExertable && (
+            <ResourceExert
+              option="hull"
+              amountExertable={amountExertable ? amountExertable : 3}
+            />
+          )}
         </div>
-        <button
-          className={`roll-all ${doneRolling ? "disabled" : ""}`}
-          onClick={doneRolling ? () => {} : handleClick}
-        >
-          <p>{buttonText ? buttonText : "Roll Dice"}</p>
-        </button>
+      )}
+      <div className="dice-space">
+        {dice
+          .filter((die) => {
+            return activeDice.includes(die.id);
+          })
+          .map((die) => {
+            return <Die die={die} key={die.id} />;
+          })}
       </div>
+      <button
+        className={`roll-all ${doneRolling ? "disabled" : ""}`}
+        onClick={doneRolling ? () => {} : handleClick}
+      >
+        <p>{buttonText ? buttonText : "Roll Dice"}</p>
+      </button>
     </div>
   );
 }

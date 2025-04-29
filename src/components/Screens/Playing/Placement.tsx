@@ -1,6 +1,3 @@
-// modules
-import { useState } from "react";
-
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
 import { dice, diceStore } from "../../../common/stores/diceStore";
@@ -13,11 +10,11 @@ import Oceans from "./Oceans";
 import { maxSavedActionPoints } from "../../../common/stores/slices/actionPointsSlice";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 // css
 import "./Placement.css";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 
 export default function Placement() {
   const oceans = nemosStore((state) => state.oceans);
@@ -32,6 +29,8 @@ export default function Placement() {
   );
   const setLullTurn = nemosStore((state) => state.setIsLullTurn);
   const clickedOcean = nemosStore((state) => state.clickedOcean);
+  const activeDice = diceStore((state) => state.activeDice);
+  const setActiveDice = diceStore((state) => state.setActiveDice);
 
   const { setSubPhase } = useNemosCore();
 
@@ -40,12 +39,13 @@ export default function Placement() {
       dice.find((die) => die.id == "w2")!.value
   );
 
-  const [activeDice, setActiveDice] = useState(
-    dice.filter((die) => die.placement)
-  );
-
   const handleFinishedPlacementRollClick = () => {
     setDoneRolling(false);
+    setActiveDice(
+      dice.filter((die) => {
+        return die.placement;
+      })
+    );
     if (differential != 0) {
       setLullTurn(false);
       setSubPhase("STANDARD PLACEMENT");
@@ -89,8 +89,12 @@ export default function Placement() {
     const { handlePlacementDieClick } = useNemosCore();
     function handleClick(selectedDie: dice) {
       if (!clickedOcean) {
-        handlePlacementDieClick(selectedDie.value);
-        setActiveDice(activeDice.filter((die) => die.id != selectedDie.id));
+        handlePlacementDieClick(selectedDie);
+        setActiveDice(
+          activeDice.filter((die) => {
+            return die.id != selectedDie.id;
+          })
+        );
       }
     }
 

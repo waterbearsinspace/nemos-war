@@ -4,37 +4,47 @@
 
 // modules
 import { StateCreator } from "zustand";
+import { ship } from "./shipPoolsSlice";
 
 // types and interfaces
-type tonnage = {
-  westernPacific: number;
-  easternPacific: number;
-  northAtlantic: number;
-  southAtlantic: number;
-  europeanSeas: number;
-  indianOcean: number;
-};
 export interface SunkenShipsSliceInterface {
-  tonnage: tonnage;
-  setTonnage: (to: tonnage) => void;
-
+  westernPacificTonnage: ship[];
+  easternPacificTonnage: ship[];
+  northAtlanticTonnage: ship[];
+  southAtlanticTonnage: ship[];
+  europeanSeasTonnage: ship[];
+  indianOceanTonnage: ship[];
   salvage: number;
+  salvagedShips: ship[];
+
+  setWesternPacificTonnage: (to: ship[]) => void;
+  setEasternPacificTonnage: (to: ship[]) => void;
+  setNorthAtlanticTonnage: (to: ship[]) => void;
+  setSouthAtlanticTonnage: (to: ship[]) => void;
+  setEuropeanSeasTonnage: (to: ship[]) => void;
+  setIndianOceanTonnage: (to: ship[]) => void;
   setSalvage: (to: number) => void;
+  setSalvagedShips: (to: ship[]) => void;
 }
 
 export const sunkenShipsSlice: StateCreator<SunkenShipsSliceInterface, []> = (
   set
 ) => ({
-  tonnage: {
-    westernPacific: 0,
-    easternPacific: 0,
-    northAtlantic: 0,
-    southAtlantic: 0,
-    europeanSeas: 0,
-    indianOcean: 0,
-  },
+  westernPacificTonnage: [],
+  easternPacificTonnage: [],
+  northAtlanticTonnage: [],
+  southAtlanticTonnage: [],
+  europeanSeasTonnage: [],
+  indianOceanTonnage: [],
   salvage: 0,
+  salvagedShips: [],
 
-  setTonnage: (to) => set(() => ({ tonnage: to })),
+  setWesternPacificTonnage: (to) => set({ westernPacificTonnage: to }),
+  setEasternPacificTonnage: (to) => set({ easternPacificTonnage: to }),
+  setNorthAtlanticTonnage: (to) => set({ northAtlanticTonnage: to }),
+  setSouthAtlanticTonnage: (to) => set({ southAtlanticTonnage: to }),
+  setEuropeanSeasTonnage: (to) => set({ europeanSeasTonnage: to }),
+  setIndianOceanTonnage: (to) => set({ indianOceanTonnage: to }),
   setSalvage: (to) => set(() => ({ salvage: to })),
+  setSalvagedShips: (to) => set(() => ({ salvagedShips: to })),
 });

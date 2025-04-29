@@ -7,11 +7,11 @@ import { Test } from "../../Dice/Test";
 import AdventureCard, { adventureCard } from "./AdventureCard";
 
 // utils
-import { getSubPhaseNumber } from "../../../common/scripts/utils/utils";
+import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 // css
 import "./AdventureCardResolution.css";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 
 interface AdventureCardResolutionInterface {
   card: adventureCard;
@@ -33,6 +33,7 @@ export default function AdventurCardResolution({
   );
   const oceans = nemosStore((state) => state.oceans);
   const doneRolling = diceStore((state) => state.doneRolling);
+  const setActiveDice = diceStore((state) => state.setActiveDice);
 
   const { setSubPhase } = useNemosCore();
 
@@ -164,6 +165,12 @@ export default function AdventurCardResolution({
       setAdventureDeck(adventureDeckCopy);
       setSubPhase("ACTION SELECT");
     }
+
+    setActiveDice(
+      dice.filter((die) => {
+        return die.placement;
+      })
+    );
   };
 
   return (

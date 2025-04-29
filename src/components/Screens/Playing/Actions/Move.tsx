@@ -4,12 +4,9 @@ import { nemosStore } from "../../../../common/stores/nemosStore";
 // components
 import Oceans from "../Oceans";
 
-// utils
-import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
-
 // css
 import "./Actions.css";
-import { useNemosCore } from "../../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../../common/scripts/nemosCore/useNemosCore";
 
 export default function Move() {
   const setShowNextPhaseButton = nemosStore(
@@ -28,7 +25,7 @@ export default function Move() {
     ? "Select Ocean to Move To"
     : "Moved to " + currentNautilusOceanName;
 
-  const { resetMovement, setSubPhase } = useNemosCore();
+  const { setSubPhase } = useNemosCore();
 
   return (
     <div className="move-select">
@@ -55,7 +52,6 @@ export default function Move() {
           <button
             className="next-phase-button"
             onClick={() => {
-              resetMovement();
               setShowNextPhaseButton(false);
               setSubPhase("ACTION SELECT");
             }}

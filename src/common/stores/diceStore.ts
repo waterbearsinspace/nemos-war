@@ -10,9 +10,17 @@ export type dice = {
 interface DiceStore {
   dice: Array<dice>;
   doneRolling: boolean;
+  exertingNemo: boolean;
+  exertingCrew: boolean;
+  exertingHull: boolean;
+  activeDice: Array<dice>;
 
   setDice: (to: Array<dice>) => void;
   setDoneRolling: (to: boolean) => void;
+  setExertingNemo: (to: boolean) => void;
+  setExertingCrew: (to: boolean) => void;
+  setExertingHull: (to: boolean) => void;
+  setActiveDice: (to: Array<dice>) => void;
 }
 
 // slice
@@ -46,6 +54,10 @@ export const diceStore = create<DiceStore>()((set) => ({
     },
   ],
   doneRolling: false,
+  exertingNemo: false,
+  exertingCrew: false,
+  exertingHull: false,
+  activeDice: [],
 
   setDice: (to) => {
     set(() => ({ dice: to }));
@@ -53,4 +65,14 @@ export const diceStore = create<DiceStore>()((set) => ({
   setDoneRolling: (to) => {
     set(() => ({ doneRolling: to }));
   },
+  setExertingNemo: (to) => {
+    set(() => ({ exertingNemo: to }));
+  },
+  setExertingCrew: (to) => {
+    set(() => ({ exertingCrew: to }));
+  },
+  setExertingHull: (to) => {
+    set(() => ({ exertingHull: to }));
+  },
+  setActiveDice: (to) => set(() => ({ activeDice: to })),
 }));

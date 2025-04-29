@@ -2,7 +2,7 @@
 import { StateCreator } from "zustand";
 
 // types and interfaces
-type shipResource = {
+export type shipResource = {
   id: number;
   name: string;
   value: number;

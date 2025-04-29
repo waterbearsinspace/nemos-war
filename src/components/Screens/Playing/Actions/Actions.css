@@ -65,7 +65,7 @@
     }
 
     .result-info {
-      text-align: left;
+      text-align: center;
       padding-inline: 0.5rem;
     }
 
@@ -99,4 +99,43 @@
       font-size: 1.5rem;
     }
   }
+}
+
+.snake-eyes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  > * {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.325rem;
+    background-color: white;
+  }
+}
+
+.table-and-test {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-width: 70rem;
+  align-items: stretch;
+}
+
+.drm-unmet {
+  color: var(--soft-black) !important;
+  opacity: 0.3;
+
+  * {
+    color: var(--soft-black) !important;
+  }
+}
+
+.ship-and-dice-tray {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
 }

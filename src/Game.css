@@ -9,9 +9,9 @@
   --dark-green: #2b692b;
   --card-height: 25rem;
   --card-width: 36rem;
-  --nemo-purple: #5b1f61;
-  --crew-brown: #63480d;
-  --hull-blue: #2b5dc9;
+  --nemo-purple: #7c4681;
+  --crew-brown: #463525;
+  --hull-blue: #4368b8;
   --ship-group-A-color: #ffffff;
   --ship-group-B-color: #f1e46b;
   --ship-group-B-text: #8b2626;
@@ -26,6 +26,12 @@
   --ship-group-J-color: #90948e;
   --highlight-color: #d3ddc3;
   --highlight-color-dark: #abc781;
+  --disabled-color: #aaaaaa;
+  --disabled-color-text: #666666;
+  --ship-height: 4rem;
+  --ship-width: 10.75rem;
+  --ship-font-size: 0.8rem;
+  --large-ship-multiplier: 1.25;
 
   align-items: center;
   background-color: var(--playarea-color);
@@ -34,6 +40,7 @@
   flex-basis: 100%;
   justify-content: center;
   text-wrap: pretty;
+  cursor: default;
 }
 
 div,
@@ -67,10 +74,10 @@ button {
   }
 
   &.disabled {
-    background-color: #aaaaaa;
-    color: #666666;
+    background-color: var(--disabled-color);
+    color: var(--disabled-color-text);
     cursor: default;
-    border-color: #aaaaaa;
+    border-color: var(--disabled-color);
 
     &:not(disabled) {
       transform: translateY(0rem);
@@ -108,6 +115,14 @@ button {
 }
 .hull-text {
   color: var(--hull-blue);
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.no-hover {
+  cursor: default !important;
 }
 
 /* animations */

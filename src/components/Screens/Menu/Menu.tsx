@@ -1,15 +1,10 @@
 // game store
 import { nemosStore } from "../../../common/stores/nemosStore";
 
-//utils
-import {
-  getPhaseNumber,
-  getSubPhaseNumber,
-} from "../../../common/scripts/utils/utils";
-
 // css
 import "./Menu.css";
-import { useNemosCore } from "../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
+import { getPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
 export default function Menu() {
   const setPhase = nemosStore((state) => state.setCurrentPhase);

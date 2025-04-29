@@ -1,7 +1,7 @@
 // game store
 import { diceStore } from "../../../../common/stores/diceStore";
 import { nemosStore } from "../../../../common/stores/nemosStore";
-import { useNemosCore } from "../../../../common/scripts/nemosCore";
+import { useNemosCore } from "../../../../common/scripts/nemosCore/useNemosCore";
 
 // components
 import Oceans from "../Oceans";
@@ -12,9 +12,6 @@ type action = {
   normalCost: number;
   lullCost: number;
 };
-
-// utils
-import { getSubPhaseNumber } from "../../../../common/scripts/utils/utils";
 
 // css
 import "./Actions.css";
@@ -36,8 +33,10 @@ export default function Actions() {
   const currentOcean = nemosStore((state) =>
     state.oceans.find((ocean) => ocean.name == currentOceanName)
   );
+  const setCombatPhase = nemosStore((state) => state.setCombatPhase);
 
-  const { handleMovementScreenOptions, setSubPhase } = useNemosCore();
+  const { handleMovementScreenOptions, setSubPhase, updateAttackOptions } =
+    useNemosCore();
 
   function Actions() {
     const actionNames = [
@@ -98,8 +97,10 @@ export default function Actions() {
             selectable = adventureDeck.length > 0 ? true : false;
             break;
           case "Attack":
-            // not implemented
-            selectable = false;
+            if (currentOcean!.ships.length <= 0) {
+              // check if there are ships in the current ocean
+              selectable = false;
+            }
             break;
           case "Incite":
             // not implemented
@@ -140,6 +141,11 @@ export default function Actions() {
         switch (action.name) {
           case "Adventure":
             setSubPhase("DRAW ADVENTURE CARD");
+            break;
+          case "Attack":
+            setSubPhase("ATTACK");
+            setCombatPhase("Selecting Target");
+            updateAttackOptions();
             break;
           case "Move":
             setSubPhase("MOVE");
