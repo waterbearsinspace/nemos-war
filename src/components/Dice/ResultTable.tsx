@@ -4,9 +4,10 @@ import { Die } from "./DiceTray";
 
 interface ResultTableInterface {
   id: string;
+  testValue?: number;
 }
 
-export default function ResultTable({ id }: ResultTableInterface) {
+export default function ResultTable({ id, testValue }: ResultTableInterface) {
   const doneRolling = diceStore((state) => state.doneRolling);
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
@@ -65,6 +66,18 @@ export default function ResultTable({ id }: ResultTableInterface) {
   let finalValue: number;
 
   switch (id) {
+    case "1":
+    case "9":
+    case "12":
+    case "15":
+    case "21":
+    case "24":
+    case "29":
+    case "34":
+      {
+        finalValue = exertionDRM + (warshipsPresent ? -1 : 0) + sumRolled;
+      }
+      break;
     case "Repair":
       {
         finalValue =
@@ -347,6 +360,171 @@ export default function ResultTable({ id }: ResultTableInterface) {
           </tr>
         );
       }
+
+      // ===============================================
+      // ADVENTURE CARDS
+      // ===============================================
+      // nemo only
+      case "1":
+      case "21": {
+        return (
+          <tr>
+            <td className="test-header" colSpan={5}>
+              <div className="test">
+                <ul>
+                  <li
+                    className={`${
+                      nemoExerted || crewExerted || hullExerted
+                        ? ""
+                        : "drm-unmet"
+                    }`}
+                  >
+                    <span className="text-green bold">+X</span> for{" "}
+                    <strong>Exerting</strong>{" "}
+                    <span className="nemo-text">Nemo</span>{" "}
+                  </li>
+                  <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
+                    <span className="text-red bold">-1</span> if <em>any</em>{" "}
+                    <strong>Warships</strong> present
+                  </li>
+                </ul>
+                <div className="test-roll-display">
+                  Total Result: {finalValue}
+                </div>
+              </div>
+            </td>
+          </tr>
+        );
+      }
+      // crew only
+      case "15": {
+        return (
+          <tr>
+            <td className="test-header" colSpan={5}>
+              <div className="test">
+                <ul>
+                  <li
+                    className={`${
+                      nemoExerted || crewExerted || hullExerted
+                        ? ""
+                        : "drm-unmet"
+                    }`}
+                  >
+                    <span className="text-green bold">+X</span> for{" "}
+                    <strong>Exerting</strong>{" "}
+                    <span className="crew-text">Crew</span>{" "}
+                  </li>
+                  <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
+                    <span className="text-red bold">-1</span> if <em>any</em>{" "}
+                    <strong>Warships</strong> present
+                  </li>
+                </ul>
+                <div className="test-roll-display">
+                  Total Result: {finalValue}
+                </div>
+              </div>
+            </td>
+          </tr>
+        );
+      }
+      // nemo and crew
+      case "9": {
+        return (
+          <tr>
+            <td className="test-header" colSpan={5}>
+              <div className="test">
+                <ul>
+                  <li
+                    className={`${
+                      nemoExerted || crewExerted || hullExerted
+                        ? ""
+                        : "drm-unmet"
+                    }`}
+                  >
+                    <span className="text-green bold">+X</span> for{" "}
+                    <strong>Exerting</strong>{" "}
+                    <span className="nemo-text">Nemo</span> and/or
+                    <span className="crew-text"> Crew</span>{" "}
+                  </li>
+                  <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
+                    <span className="text-red bold">-1</span> if <em>any</em>{" "}
+                    <strong>Warships</strong> present
+                  </li>
+                </ul>
+                <div className="test-roll-display">
+                  Total Result: {finalValue}
+                </div>
+              </div>
+            </td>
+          </tr>
+        );
+      }
+      // nemo and hull
+      case "12":
+      case "24": {
+        return (
+          <tr>
+            <td className="test-header" colSpan={5}>
+              <div className="test">
+                <ul>
+                  <li
+                    className={`${
+                      nemoExerted || crewExerted || hullExerted
+                        ? ""
+                        : "drm-unmet"
+                    }`}
+                  >
+                    <span className="text-green bold">+X</span> for{" "}
+                    <strong>Exerting</strong>{" "}
+                    <span className="nemo-text">Nemo</span> and/or
+                    <span className="hull-text"> Hull</span>{" "}
+                  </li>
+                  <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
+                    <span className="text-red bold">-1</span> if <em>any</em>{" "}
+                    <strong>Warships</strong> present
+                  </li>
+                </ul>
+                <div className="test-roll-display">
+                  Total Result: {finalValue}
+                </div>
+              </div>
+            </td>
+          </tr>
+        );
+      }
+      // crew and hull
+      case "29":
+      case "34": {
+        return (
+          <tr>
+            <td className="test-header" colSpan={5}>
+              <div className="test">
+                <ul>
+                  <li
+                    className={`${
+                      nemoExerted || crewExerted || hullExerted
+                        ? ""
+                        : "drm-unmet"
+                    }`}
+                  >
+                    <span className="text-green bold">+X</span> for{" "}
+                    <strong>Exerting</strong>{" "}
+                    <span className="crew-text">Crew</span> and/or
+                    <span className="hull-text"> Hull</span>{" "}
+                  </li>
+                  <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
+                    <span className="text-red bold">-1</span> if <em>any</em>{" "}
+                    <strong>Warships</strong> present
+                  </li>
+                </ul>
+                <div className="test-roll-display">
+                  Total Result: {finalValue}
+                </div>
+              </div>
+            </td>
+          </tr>
+        );
+      }
     }
   }
 
@@ -424,6 +602,29 @@ export default function ResultTable({ id }: ResultTableInterface) {
             <th className={`nemo-text ${isSelected(1, 1)}`}>1</th>
             <th className={`crew-text ${isSelected(2, 3)}`}>2 - 3</th>
             <th className={`hull-text ${isSelected(4, 6)}`}>4 - 6</th>
+          </tr>
+        );
+      }
+
+      // ===============================================
+      // ADVENTURE CARDS
+      // ===============================================
+      case "1":
+      case "9":
+      case "12":
+      case "15":
+      case "21":
+      case "24":
+      case "29":
+      case "34": {
+        return (
+          <tr className="result-numbers">
+            <th className={`text-red ${isSelected(-999, testValue! - 1)}`}>
+              ≤ {testValue! - 1}
+            </th>
+            <th className={`text-green ${isSelected(testValue!, 999)}`}>
+              ≥ {testValue!}
+            </th>
           </tr>
         );
       }
@@ -647,6 +848,29 @@ export default function ResultTable({ id }: ResultTableInterface) {
               <p className="result-info">
                 Lose <strong>1</strong> <span className="hull-text">Hull</span>
               </p>
+            </td>
+          </tr>
+        );
+      }
+
+      // ===============================================
+      // ADVENTURE CARDS
+      // ===============================================
+      case "1":
+      case "9":
+      case "12":
+      case "15":
+      case "21":
+      case "24":
+      case "29":
+      case "34": {
+        return (
+          <tr>
+            <td className={`${isSelected(-999, testValue! - 1)}`}>
+              <p className="result-title text-red">FAIL</p>
+            </td>
+            <td className={`${isSelected(testValue!, 999)}`}>
+              <p className="result-title text-green">PASS</p>
             </td>
           </tr>
         );

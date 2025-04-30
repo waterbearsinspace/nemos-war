@@ -60,7 +60,7 @@ export default function StartingUpgrade() {
       </section>
       <header>
         <p>
-          Pay any <strong>{resourcesToPay}</strong> Resources below or Pass
+          Pay from any <strong>{resourcesToPay}</strong> Resources below or Pass
         </p>
       </header>
       <div className="upgrade-screen-resources">

@@ -16,17 +16,81 @@ import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUt
 import "./Placement.css";
 import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 
-export default function Placement() {
+export function ShipsToPlace() {
   const oceans = nemosStore((state) => state.oceans);
+  const { handlePlacementDieClick } = useNemosCore();
+  const clickedOcean = nemosStore((state) => state.clickedOcean);
+  const currentPlacementOcean = nemosStore(
+    (state) => state.currentPlacementOceanName
+  );
+  const activeDice = diceStore((state) => state.activeDice);
+  const setActiveDice = diceStore((state) => state.setActiveDice);
+  const dice = diceStore((state) => state.dice);
+
+  function handleClick(selectedDie: dice) {
+    if (!clickedOcean) {
+      handlePlacementDieClick(selectedDie);
+      setActiveDice(
+        activeDice.filter((die) => {
+          return die.id != selectedDie.id;
+        })
+      );
+    }
+  }
+
+  return (
+    <>
+      {!clickedOcean ? (
+        <>
+          <h2 className="underline">Ships to Place</h2>
+          <div className="dice-to-place-wrapper">
+            <div className="dice-to-place-dice-wrapper">
+              {activeDice.map((die, index) => {
+                return (
+                  <div
+                    className="dice-to-place-die"
+                    onClick={() => {
+                      currentPlacementOcean ? () => {} : handleClick(die);
+                    }}
+                    key={index}
+                    data-die-selected={clickedOcean ? clickedOcean : "none"}
+                  >
+                    <Die die={die} key={index} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="dice-show-placing">
+          <h2 className="dice-show-placing-text bold">
+            {
+              oceans.find((ocean) => {
+                return ocean.id == clickedOcean.id;
+              })?.name
+            }
+          </h2>
+          <Die
+            die={
+              dice.find((die) => {
+                return die.value == clickedOcean.dieValue;
+              })!
+            }
+          />
+        </div>
+      )}
+    </>
+  );
+}
+
+export default function Placement() {
   const doneRolling = diceStore((state) => state.doneRolling);
   const setDoneRolling = diceStore((state) => state.setDoneRolling);
   const dice = diceStore((state) => state.dice);
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const actionPoints = nemosStore((state) => state.actionPointsCurrent);
   const setActionPoints = nemosStore((state) => state.setActionPointsCurrent);
-  const currentPlacementOcean = nemosStore(
-    (state) => state.currentPlacementOceanName
-  );
   const setLullTurn = nemosStore((state) => state.setIsLullTurn);
   const clickedOcean = nemosStore((state) => state.clickedOcean);
   const activeDice = diceStore((state) => state.activeDice);
@@ -82,65 +146,6 @@ export default function Placement() {
           </div>
         )}
       </div>
-    );
-  }
-
-  function ShipsToPlace() {
-    const { handlePlacementDieClick } = useNemosCore();
-    function handleClick(selectedDie: dice) {
-      if (!clickedOcean) {
-        handlePlacementDieClick(selectedDie);
-        setActiveDice(
-          activeDice.filter((die) => {
-            return die.id != selectedDie.id;
-          })
-        );
-      }
-    }
-
-    return (
-      <>
-        {!clickedOcean ? (
-          <>
-            <h2 className="underline">Ships to Place</h2>
-            <div className="dice-to-place-wrapper">
-              <div className="dice-to-place-dice-wrapper">
-                {activeDice.map((die, index) => {
-                  return (
-                    <div
-                      className="dice-to-place-die"
-                      onClick={() => {
-                        currentPlacementOcean ? () => {} : handleClick(die);
-                      }}
-                      key={index}
-                      data-die-selected={clickedOcean ? clickedOcean : "none"}
-                    >
-                      <Die die={die} key={index} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </>
-        ) : (
-          <div className="dice-show-placing">
-            <h2 className="dice-show-placing-text bold">
-              {
-                oceans.find((ocean) => {
-                  return ocean.id == clickedOcean.id;
-                })?.name
-              }
-            </h2>
-            <Die
-              die={
-                dice.find((die) => {
-                  return die.value == clickedOcean.dieValue;
-                })!
-              }
-            />
-          </div>
-        )}
-      </>
     );
   }
 

@@ -15,6 +15,9 @@ import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUt
 // data and constants
 import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
 
+// TESTING DATA
+import cards from "../../../common/data/adventureCards.json";
+
 // css
 import "./Playing.css";
 import Repair from "./Actions/Repair";
@@ -43,6 +46,7 @@ export default function Playing() {
         return (
           <>
             <AdventurCardResolution card={drawPile[0]} />
+            {/* <AdventurCardResolution card={cards[23]} /> */}
           </>
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):

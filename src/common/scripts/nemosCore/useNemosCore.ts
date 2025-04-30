@@ -7,6 +7,7 @@ import {
   revealHiddenShipInOcean,
   setShipAsAttackTarget,
 } from "./nemosCoreOceansShips";
+import { failCard, passCard } from "./nemosCorePassAndFailPiles";
 import {
   handlePlacementDieClick,
   handlePlacementOptionClick,
@@ -17,6 +18,7 @@ import {
   adjustHullBy,
   adjustNemoBy,
 } from "./nemosCoreShipResources";
+import { gainXTreasures } from "./nemosCoreTreasure";
 
 export const useNemosCore = () => {
   return {
@@ -45,6 +47,10 @@ export const useNemosCore = () => {
     handlePlacementDieClick,
     handlePlacementOptionClick,
 
+    // pass and fail piles
+    passCard,
+    failCard,
+
     // resets
     resetCombat,
     resetResolving,
@@ -57,5 +63,8 @@ export const useNemosCore = () => {
     // sunkenShips
     addTonnage,
     addSalvage,
+
+    // treasure
+    gainXTreasures,
   };
 };

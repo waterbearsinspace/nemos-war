@@ -125,6 +125,19 @@ button {
   cursor: default !important;
 }
 
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+
+  &.row {
+    flex-direction: row;
+  }
+}
+
 /* animations */
 @keyframes pulse {
   from {

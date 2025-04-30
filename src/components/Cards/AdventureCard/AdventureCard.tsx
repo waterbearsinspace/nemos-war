@@ -2,6 +2,8 @@ import AdventureCardInstructions from "../../../common/scripts/utils/AdventureCa
 
 import "./AdventureCard.css";
 
+import testCardInfo from "../../../common/data/testCards.json";
+
 export type adventureCard = {
   id: number;
   title: string;
@@ -53,6 +55,12 @@ export default function AdventureCard({ card }: { card: adventureCard }) {
     }
   }
 
+  function getTestInfo(id: number) {
+    let info = testCardInfo.find((card) => card.id == id);
+
+    return info;
+  }
+
   return (
     <div className="card-wrapper">
       <div className="card-inner-border">
@@ -81,10 +89,47 @@ export default function AdventureCard({ card }: { card: adventureCard }) {
                 ![1001, 1002, 1003, 1004].includes(card.id) ? "true" : "false"
               }
             >
-              <p className="card-type">{card?.type}</p>
+              <div>
+                <p className="card-type">{card?.type.toUpperCase()}</p>
+              </div>
+              {getTestInfo(card.id) ? (
+                <p className="test-value-circle">
+                  {getTestInfo(card.id)?.testValue}
+                </p>
+              ) : (
+                ""
+              )}
+              {getTestInfo(card.id) ? (
+                <p className="exertable-circle-wrapper-wrapper">
+                  {getTestInfo(card.id) ? <span>{"{"}</span> : ""}
+                  <span className="exertable-circle-wrapper">
+                    {getTestInfo(card.id)?.exertable
+                      ? getTestInfo(card.id)!.exertable.map((exertable) => {
+                          return (
+                            <span
+                              key={exertable}
+                              className={`exertable-circle ${
+                                exertable == "nemo"
+                                  ? "nemo"
+                                  : exertable == "crew"
+                                  ? "crew"
+                                  : "hull"
+                              }`}
+                            >
+                              {exertable[0].toUpperCase()}
+                            </span>
+                          );
+                        })
+                      : ""}
+                  </span>
+                  {getTestInfo(card.id)?.exertable ? <span>{"}"}</span> : ""}
+                </p>
+              ) : (
+                ""
+              )}
             </header>
             <article className="card-content card-content-right">
-              {AdventureCardInstructions(card.id)}
+              <AdventureCardInstructions id={card.id} />
             </article>
           </section>
         </section>

@@ -110,11 +110,12 @@
       height: 2.25rem;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
       font-size: 1rem;
       height: 3rem;
       text-align: center;
       color: var(--soft-black);
+      font-size: 1.45rem;
 
       .card-title {
         font-size: 1.35rem;
@@ -181,5 +182,104 @@
     .draw-card-sides-front {
       transform: rotateY(180deg);
     }
+  }
+}
+
+.card-content {
+  position: relative;
+}
+
+.circle::after {
+  display: inline-block;
+  text-align: center;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 1rem;
+  color: white;
+  padding: 0.125rem;
+  font-size: 0.8rem;
+}
+
+.circle.p {
+  &::after {
+    content: "P";
+    background-color: var(--dark-green);
+  }
+}
+.circle.f {
+  &::after {
+    content: "F";
+    background-color: var(--dark-red);
+  }
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 1.5em;
+  width: 0.75em;
+  border-radius: 0 1.5rem 1.5rem 0;
+}
+
+.bubble.green {
+  &::after {
+    background-color: var(--dark-green);
+  }
+}
+.bubble.red {
+  &::after {
+    background-color: var(--dark-red);
+  }
+}
+
+.test-value-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 2.5rem;
+  width: 2.5rem;
+
+  border-radius: 2rem;
+
+  color: white;
+  background-color: var(--dark-red);
+}
+
+.exertable-circle-wrapper-wrapper {
+  display: flex;
+}
+
+.exertable-circle-wrapper {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.exertable-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+
+  height: 1.5rem;
+  width: 1.5rem;
+
+  color: white;
+
+  border-radius: 1rem;
+
+  box-shadow: inset 0px 0px 0px 1px white;
+
+  &.nemo {
+    background-color: var(--nemo-purple);
+  }
+
+  &.crew {
+    background-color: var(--crew-brown);
+  }
+
+  &.hull {
+    background-color: var(--hull-blue);
   }
 }

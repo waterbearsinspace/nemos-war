@@ -3,20 +3,16 @@ import { ResourceSelect } from "../Resources/ResourceSelect";
 import ShipToken from "../Ships/ShipToken";
 import DiceTray from "./DiceTray";
 
-export function Test(arg: any) {
+interface TestInterface {
+  id: string;
+  numDice?: number;
+  exertables?: string[];
+}
+export function Test({ id, numDice, exertables }: TestInterface) {
   const attackTarget = nemosStore((state) => state.attackTarget);
   const resolving = nemosStore((state) => state.resolving);
 
-  switch (arg.id) {
-    case "Act One":
-      return (
-        <div className="test">
-          <DiceTray
-            numDice={arg.numDice}
-            buttonText="Roll for Starting Ocean"
-          />
-        </div>
-      );
+  switch (id) {
     case "Rest":
       return (
         <div className="test">
@@ -115,6 +111,40 @@ export function Test(arg: any) {
             </div>
           </div>
         </>
+      );
+
+    // ===============================================
+    // ADVENTURE CARDS
+    // ===============================================
+    case "1":
+    case "9":
+    case "12":
+    case "15":
+    case "21":
+    case "24":
+    case "34":
+      return (
+        <div className="test">
+          <DiceTray
+            numDice={2}
+            buttonText="Roll Dice"
+            nemoExertable={exertables?.includes("nemo")}
+            crewExertable={exertables?.includes("crew")}
+            hullExertable={exertables?.includes("hull")}
+            amountExertable={exertables?.length}
+          />
+        </div>
+      );
+
+    // ===============================================
+    // ACT CARDS
+    // ===============================================
+
+    case "1001":
+      return (
+        <div className="test">
+          <DiceTray numDice={numDice} buttonText="Roll for Starting Ocean" />
+        </div>
       );
 
     default:

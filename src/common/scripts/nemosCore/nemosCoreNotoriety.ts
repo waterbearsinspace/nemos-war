@@ -133,7 +133,8 @@ export function adjustNotorietyBy(by: number) {
 
   if (newNotoriety > maxNotoriety) {
     setNotorietyValue(maxNotoriety);
-  } else setNotorietyValue(newNotoriety);
+  } else if (newNotoriety <= 0) setNotorietyValue(0);
+  else setNotorietyValue(newNotoriety);
 
   checkNotoriety(newNotoriety);
   checkEndGame("Notoriety", newNotoriety);

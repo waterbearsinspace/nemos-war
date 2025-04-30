@@ -41,6 +41,7 @@
 .test-table {
   border-collapse: collapse;
   background-color: rgb(235, 235, 235);
+  min-width: 50rem;
 
   th {
     height: 1rem;
@@ -120,8 +121,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  min-width: 70rem;
   align-items: stretch;
+  gap: 2rem;
 }
 
 .drm-unmet {

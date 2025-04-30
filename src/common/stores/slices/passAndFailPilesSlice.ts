@@ -1,7 +1,7 @@
 // modules
 import { StateCreator } from "zustand";
 
-export interface MotiveSliceInterface {
+export interface PassAndFailePileSliceInterface {
   passPile: adventureCard[];
   failPile: adventureCard[];
 
@@ -13,7 +13,10 @@ export interface MotiveSliceInterface {
 import { adventureCard } from "../../../components/Cards/AdventureCard/AdventureCard";
 
 // slice
-export const motiveSlice: StateCreator<MotiveSliceInterface, []> = (set) => ({
+export const passAndFailePileSlice: StateCreator<
+  PassAndFailePileSliceInterface,
+  []
+> = (set) => ({
   passPile: [],
   failPile: [],
 

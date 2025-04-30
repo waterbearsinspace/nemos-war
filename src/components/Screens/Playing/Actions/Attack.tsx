@@ -122,6 +122,7 @@ export default function Attack() {
     addTonnage,
     addSalvage,
     updateAttackOptions,
+    applyFailedTestPenalty,
   } = useNemosCore();
 
   function OceanSelect() {
@@ -363,19 +364,7 @@ export default function Attack() {
         else if (nautilusAttackValue < attackTarget?.defenseStrength!) {
           // gain one notoriety
           adjustNotorietyBy(1);
-          // if lowest die roll is 1
-          if (lowestDieValue == 1) {
-            // lose 1 exerted ship resource
-            if (nemoExerted) adjustNemoBy(-1);
-            if (crewExerted) adjustCrewBy(-1);
-            if (hullExerted) adjustHullBy(-1);
-          }
-          // else lose 2 exerted ship resource
-          else {
-            if (nemoExerted) adjustNemoBy(-2);
-            if (crewExerted) adjustCrewBy(-2);
-            if (hullExerted) adjustHullBy(-2);
-          }
+          applyFailedTestPenalty();
         }
         // finish attack
         setShowNextPhaseButton(false);
