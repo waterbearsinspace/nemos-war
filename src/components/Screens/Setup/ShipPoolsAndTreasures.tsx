@@ -82,14 +82,12 @@ export default function ShipPools() {
     let startingTreasureDrawPool: treasure[] = [];
 
     treasures.map((treasure: any) => {
-      for (let i = 0; i < (treasure.amount ? treasure.amount : 1); i++) {
-        startingTreasureDrawPool.push({
-          id: treasure.id,
-          type: treasure.type,
-          name: treasure?.name,
-          vp: treasure?.vp,
-        });
-      }
+      startingTreasureDrawPool.push({
+        id: treasure.id,
+        type: treasure.type,
+        name: treasure?.name,
+        vp: treasure?.vp,
+      });
     });
 
     let shuffledTreasure = shuffleArray(startingTreasureDrawPool);

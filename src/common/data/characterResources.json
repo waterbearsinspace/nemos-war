@@ -2,31 +2,31 @@
   {
     "id": 0,
     "name": "Chief Engineer",
-    "survivingCharacter": 5
+    "survivingCharacterVp": 5
   },
   {
     "id": 1,
     "name": "First Officer",
-    "survivingCharacter": 7
+    "survivingCharacterVp": 7
   },
   {
     "id": 2,
     "name": "Second Officer",
-    "survivingCharacter": 3
+    "survivingCharacterVp": 3
   },
   {
     "id": 3,
     "name": "Conseil",
-    "survivingCharacter": 4
+    "survivingCharacterVp": 4
   },
   {
     "id": 4,
     "name": "Ned Land",
-    "survivingCharacter": 4
+    "survivingCharacterVp": 4
   },
   {
     "id": 5,
     "name": "Professor Aronnax",
-    "survivingCharacter": 5
+    "survivingCharacterVp": 5
   }
 ]

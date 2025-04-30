@@ -1,3 +1,4 @@
+import TreasureIcon from "../../common/assets/TreasureIcon";
 import { diceStore } from "../../common/stores/diceStore";
 import { nemosStore } from "../../common/stores/nemosStore";
 import { Die } from "./DiceTray";
@@ -173,7 +174,8 @@ export default function ResultTable({ id, testValue }: ResultTableInterface) {
                     <strong>
                       <em>one </em>
                     </strong>
-                    spent <strong>Treasure</strong> token's VP value
+                    spent <TreasureIcon text={true} />
+                    's VP value
                   </li>
                   <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
                     <span className="text-red bold">-1</span> if <em>any</em>{" "}
@@ -214,7 +216,8 @@ export default function ResultTable({ id, testValue }: ResultTableInterface) {
                     <strong>
                       <em>one </em>
                     </strong>
-                    spent <strong>Treasure</strong> token's VP value
+                    spent <TreasureIcon text={true} />
+                    's VP value
                   </li>
                   <li className={`${warshipsPresent ? "" : "drm-unmet"}`}>
                     <span className="text-red bold">-1</span> if <em>any</em>{" "}
@@ -652,7 +655,9 @@ export default function ResultTable({ id, testValue }: ResultTableInterface) {
               <p className="result-title text-green">EXPENSIVE</p>
               <p className="result-info">
                 Gain <span className="hull-text">1 Hull</span> but Lose{" "}
-                <strong>1 Treasure</strong>
+                <strong>
+                  1 <TreasureIcon />
+                </strong>
               </p>
             </td>
             <td className={`${isSelected(9, 11)}`}>
@@ -719,14 +724,20 @@ export default function ResultTable({ id, testValue }: ResultTableInterface) {
             <td className={`${isSelected(7, 8)}`}>
               <p className="result-title text-green">SUSPECTED</p>
               <p className="result-info">
-                Collect <strong>1 Treasure </strong>
+                Collect{" "}
+                <strong>
+                  1 <TreasureIcon />{" "}
+                </strong>
                 but <strong>+1 Notoriety</strong>
               </p>
             </td>
             <td className={`${isSelected(9, 11)}`}>
               <p className="result-title text-green">SUCCESS</p>
               <p className="result-info">
-                Collect <strong>1 Treasure </strong>
+                Collect{" "}
+                <strong>
+                  1 <TreasureIcon />{" "}
+                </strong>
               </p>
             </td>
             <td className={`${isSelected(12, 999)}`}>

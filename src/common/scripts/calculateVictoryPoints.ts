@@ -37,4 +37,6 @@ export type vp = {
   liberation?: number;
   scienceDiscovered?: number;
   wondersSeen?: number;
+  shipResourcesPenalty?: number;
+  survivingCharacter?: number;
 };

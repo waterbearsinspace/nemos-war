@@ -12,6 +12,7 @@
   --nemo-purple: #7c4681;
   --crew-brown: #463525;
   --hull-blue: #4368b8;
+  --treasure-blue: #1e3b97;
   --ship-group-A-color: #ffffff;
   --ship-group-B-color: #f1e46b;
   --ship-group-B-text: #8b2626;
@@ -32,6 +33,8 @@
   --ship-width: 10.75rem;
   --ship-font-size: 0.8rem;
   --large-ship-multiplier: 1.25;
+  --treasure-width: 5.25rem;
+  --treasure-height: 3.5rem;
 
   align-items: center;
   background-color: var(--playarea-color);
@@ -47,7 +50,8 @@ div,
 h1,
 h2,
 p,
-section {
+section,
+svg {
   margin: 0;
   padding: 0;
 }
@@ -135,6 +139,16 @@ button {
 
   &.row {
     flex-direction: row;
+
+    &.text {
+      gap: 0.25ch;
+
+      &.left {
+        width: 100%;
+        justify-content: start;
+        align-items: center;
+      }
+    }
   }
 }
 

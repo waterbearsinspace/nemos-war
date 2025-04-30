@@ -5,7 +5,7 @@ import { StateCreator } from "zustand";
 type character = {
   id: number;
   name: string;
-  survivingCharacter: number;
+  survivingCharacterVp: number;
   sacrificed: boolean;
 };
 export interface CharacterResourcesSliceInterface {

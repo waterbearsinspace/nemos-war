@@ -52,6 +52,7 @@ import {
   TreasuresSliceInterface,
 } from "./slices/treasuresSlice";
 import { upgradesSlice, UpgradesSliceInterface } from "./slices/upgradesSlice";
+import { utilitySlice, UtilitySliceInterface } from "./slices/utilitySlice";
 // store
 export const nemosStore = create<
   ActionPointsSliceInterface &
@@ -69,7 +70,8 @@ export const nemosStore = create<
     ShipResourcesSliceInterface &
     SunkenShipsSliceInterface &
     TreasuresSliceInterface &
-    UpgradesSliceInterface
+    UpgradesSliceInterface &
+    UtilitySliceInterface
 >()((...a) => ({
   ...actionPointsSlice(...a),
   ...adventureDeckSlice(...a),
@@ -87,4 +89,5 @@ export const nemosStore = create<
   ...sunkenShipsSlice(...a),
   ...treasuresSlice(...a),
   ...upgradesSlice(...a),
+  ...utilitySlice(...a),
 }));

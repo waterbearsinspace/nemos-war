@@ -25,3 +25,10 @@ export function setSubPhase(subPhase: string | number) {
     setCurrentSubPhase(subPhase);
   }
 }
+
+export function adjustActionPointsBy(by: number) {
+  const actionPointsCurrent = nemosStore.getState().actionPointsCurrent;
+  const setActionPointsCurrent = nemosStore.getState().setActionPointsCurrent;
+
+  setActionPointsCurrent(actionPointsCurrent + by);
+}

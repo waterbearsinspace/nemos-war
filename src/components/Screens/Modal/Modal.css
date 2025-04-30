@@ -1,0 +1,51 @@
+.modal-screen {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: hsl(from black 0 0 0 / 0.5);
+}
+
+.modal-wrapper {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: calc(
+    100% - var(--overlay-bar-top-height) - var(--overlay-bar-bottom-height)
+  );
+
+  top: var(--overlay-bar-top-height);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  width: 32rem;
+  height: 18rem;
+
+  background-color: var(--playarea-color);
+  border-radius: 0.5rem;
+}
+
+.use-treasure-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  > button {
+    width: 5rem;
+  }
+}

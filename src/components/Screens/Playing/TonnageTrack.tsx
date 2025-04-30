@@ -7,11 +7,6 @@ import "./TonnageTrack.css";
 export default function TonnageTrack() {
   const resolving = nemosStore((state) => state.resolving);
   const setResolving = nemosStore((state) => state.setResolving);
-  const curentOcean = nemosStore((state) =>
-    state.oceans.find((ocean) => {
-      return ocean.name == state.currentNautilusOceanName;
-    })
-  );
   const adjacentOceans = nemosStore(
     (state) =>
       state.oceans.find((ocean) => {

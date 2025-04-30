@@ -27,7 +27,7 @@ export function ShipsToPlace() {
   const setActiveDice = diceStore((state) => state.setActiveDice);
   const dice = diceStore((state) => state.dice);
 
-  function handleClick(selectedDie: dice) {
+  function handleDieClick(selectedDie: dice) {
     if (!clickedOcean) {
       handlePlacementDieClick(selectedDie);
       setActiveDice(
@@ -50,7 +50,7 @@ export function ShipsToPlace() {
                   <div
                     className="dice-to-place-die"
                     onClick={() => {
-                      currentPlacementOcean ? () => {} : handleClick(die);
+                      currentPlacementOcean ? () => {} : handleDieClick(die);
                     }}
                     key={index}
                     data-die-selected={clickedOcean ? clickedOcean : "none"}

@@ -90,113 +90,364 @@
   {
     "id": 11,
     "type": "retain",
+    "name": "X to gain 1 Nemo",
     "vp": {
-      "treasure": 4
-    },
-    "amount": 2
+      "treasures": 4
+    }
   },
   {
     "id": 12,
+    "name": "X to gain 1 Nemo",
     "type": "retain",
     "vp": {
-      "treasure": 3
+      "treasures": 4
     }
   },
   {
     "id": 13,
     "type": "retain",
+    "name": "X to gain 1 Crew",
     "vp": {
-      "treasure": 3
+      "treasures": 3
     }
   },
   {
     "id": 14,
+    "name": "X to gain 1 Hull",
     "type": "retain",
     "vp": {
-      "treasure": 2
-    },
-    "amount": 4
+      "treasures": 3
+    }
   },
   {
     "id": 15,
+    "name": "X to gain 1 Action",
     "type": "retain",
     "vp": {
-      "treasure": 4
-    },
-    "amount": 4
+      "treasures": 2
+    }
   },
   {
     "id": 16,
+    "name": "X to gain 1 Action",
     "type": "retain",
     "vp": {
-      "treasure": 3
+      "treasures": 2
     }
   },
   {
     "id": 17,
-    "type": "discard",
-    "amount": 3
+    "name": "X to gain 1 Action",
+    "type": "retain",
+    "vp": {
+      "treasures": 2
+    }
   },
   {
     "id": 18,
-    "type": "discard"
+    "name": "X to gain 1 Action",
+    "type": "retain",
+    "vp": {
+      "treasures": 2
+    }
   },
   {
     "id": 19,
-    "type": "discard"
+    "name": "X to gain 1 Re-Roll",
+    "type": "retain",
+    "vp": {
+      "treasures": 4
+    }
   },
   {
     "id": 20,
-    "type": "discard"
+    "name": "X to gain 1 Re-Roll",
+    "type": "retain",
+    "vp": {
+      "treasures": 4
+    }
   },
   {
     "id": 21,
-    "type": "discard"
+    "name": "X to gain 1 Re-Roll",
+    "type": "retain",
+    "vp": {
+      "treasures": 4
+    }
   },
   {
     "id": 22,
-    "type": "vp",
+    "name": "X to gain 1 Re-Roll",
+    "type": "retain",
     "vp": {
-      "treasure": 0
+      "treasures": 4
     }
   },
   {
     "id": 23,
-    "type": "vp",
+    "name": "X to reveal 1 Upgrade",
+    "type": "retain",
     "vp": {
-      "treasure": 1
-    },
-    "amount": 3
+      "treasures": 3
+    }
   },
   {
     "id": 24,
-    "type": "vp",
-    "vp": {
-      "treasure": 2
-    },
-    "amount": 9
+    "name": "X and draw two Treasure Tokens",
+    "type": "discard"
   },
   {
     "id": 25,
-    "type": "vp",
-    "vp": {
-      "treasure": 3
-    },
-    "amount": 10
+    "name": "X and draw two Treasure Tokens",
+    "type": "discard"
   },
   {
     "id": 26,
-    "type": "vp",
-    "vp": {
-      "treasure": 4
-    },
-    "amount": 4
+    "name": "X and draw two Treasure Tokens",
+    "type": "discard"
   },
   {
     "id": 27,
+    "name": "X and lose 1 Resource or Character",
+    "type": "discard"
+  },
+  {
+    "id": 28,
+    "name": "X and gain 2 Notoriety",
+    "type": "discard"
+  },
+  {
+    "id": 29,
+    "name": "X and gain 3 Notoriety",
+    "type": "discard"
+  },
+  {
+    "id": 30,
+    "name": "X and place 1 Uprising Cube in any available location",
+    "type": "discard"
+  },
+  {
+    "id": 31,
+    "name": "VP 0",
     "type": "vp",
     "vp": {
-      "treasure": 5
+      "treasures": 0
+    }
+  },
+  {
+    "id": 32,
+    "name": "VP 1",
+    "type": "vp",
+    "vp": {
+      "treasures": 1
+    }
+  },
+  {
+    "id": 33,
+    "name": "VP 1",
+    "type": "vp",
+    "vp": {
+      "treasures": 1
+    }
+  },
+  {
+    "id": 34,
+    "name": "VP 1",
+    "type": "vp",
+    "vp": {
+      "treasures": 1
+    }
+  },
+  {
+    "id": 35,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 36,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 37,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 38,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 39,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 40,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 41,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 42,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 43,
+    "name": "VP 2",
+    "type": "vp",
+    "vp": {
+      "treasures": 2
+    }
+  },
+  {
+    "id": 44,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 45,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 46,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 47,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 48,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 49,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 50,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 51,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 52,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 53,
+    "name": "VP 3",
+    "type": "vp",
+    "vp": {
+      "treasures": 3
+    }
+  },
+  {
+    "id": 54,
+    "name": "VP 4",
+    "type": "vp",
+    "vp": {
+      "treasures": 4
+    }
+  },
+  {
+    "id": 55,
+    "name": "VP 4",
+    "type": "vp",
+    "vp": {
+      "treasures": 4
+    }
+  },
+  {
+    "id": 56,
+    "name": "VP 4",
+    "type": "vp",
+    "vp": {
+      "treasures": 4
+    }
+  },
+  {
+    "id": 57,
+    "name": "VP 4",
+    "type": "vp",
+    "vp": {
+      "treasures": 4
+    }
+  },
+  {
+    "id": 58,
+    "name": "VP 4",
+    "type": "vp",
+    "vp": {
+      "treasures": 5
     }
   }
 ]

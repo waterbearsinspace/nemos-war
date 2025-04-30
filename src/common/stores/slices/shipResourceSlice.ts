@@ -8,7 +8,7 @@ export type shipResource = {
   value: number;
   statuses: string[];
   exertionDRM: number[];
-  vp: Object[];
+  vp: vp[];
 };
 export interface ShipResourcesSliceInterface {
   nemo: shipResource;
@@ -22,6 +22,7 @@ export interface ShipResourcesSliceInterface {
 
 // data and constants
 import shipResourceData from "../../data/shipResources.json";
+import { vp } from "../../scripts/calculateVictoryPoints";
 let nemoData = shipResourceData[0];
 let crewData = shipResourceData[1];
 let hullData = shipResourceData[2];

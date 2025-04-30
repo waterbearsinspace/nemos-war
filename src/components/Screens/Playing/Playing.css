@@ -1,42 +1,188 @@
 .game-screen-wrapper {
   position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: auto;
+}
+
+.overlay-bar {
+  background-color: var(--overlay-bar-color);
   width: 100%;
+  z-index: 10;
+}
+
+.overlay-bar-top {
+  height: var(--overlay-bar-top-height);
+  position: relative;
+}
+
+.overlay-bar-bottom {
+  bottom: 0%;
+  height: var(--overlay-bar-bottom-height);
+}
+
+/* content wrappers */
+.overlay-bar-content-wrapper {
+  display: flex;
+  color: white;
+  overflow: hidden;
   height: 100%;
 
-  .overlay-bar {
-    background-color: var(--overlay-bar-color);
+  > * {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.overlay-bar-top > .overlay-bar-content-wrapper {
+  width: calc(100%);
+  height: calc(100%);
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-info {
+  position: absolute;
+
+  height: 1.75rem;
+
+  border-radius: 1rem;
+
+  &.phase {
+    left: 1.5rem;
+  }
+  &.notoriety {
+  }
+  &.score {
+    right: 1rem;
+    width: 8rem;
+
+    background-color: hsl(from var(--soft-black) h s calc(l * 0.75));
+
+    &:hover {
+      cursor: pointer;
+      background-color: hsl(from var(--soft-black) h s calc(l * 0.5));
+    }
+  }
+}
+
+.overlay-bar-bottom > .overlay-bar-content-wrapper {
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.overlay-ship-resources-wrapper {
+  justify-content: space-between;
+  align-items: start;
+  border-right: 1px solid white;
+  padding-right: 1rem;
+  width: 50%;
+}
+
+.overlay-treasures-header {
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}
+
+.overlay-treasures-wrapper {
+  align-items: end;
+  justify-content: center;
+  padding-left: 1rem;
+  width: 50%;
+  height: 100%;
+}
+
+.overlay-treasures-treasures {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--treasure-width), 1fr));
+  padding: 0.25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  gap: 0.35rem;
+  direction: rtl;
+}
+
+.overlay-treasures-empty {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.treasure-token {
+  --border-radius: 0.5rem;
+
+  width: var(--treasure-width);
+  height: var(--treasure-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--treasure-blue);
+  color: white;
+
+  text-align: center;
+  border-radius: var(--border-radius);
+
+  &:has(.treasure-token-sides) {
+    background-color: transparent;
+  }
+
+  p {
+    width: 10ch;
+  }
+
+  &:hover > .treasure-token-sides {
+    transform: rotateY(180deg);
+  }
+
+  .treasure-token-sides {
+    position: relative;
+    height: 100%;
     width: 100%;
     display: flex;
-    justify-content: stretch;
-    align-items: stretch;
-    z-index: 10;
+    transform-style: preserve-3d;
+    transition: transform 0.25s;
 
-    &.overlay-bar-top {
-      height: var(--overlay-bar-top-height);
-
-      .overlay-bar-content-wrapper {
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
-    &.overlay-bar-bottom {
-      bottom: 0%;
-      height: var(--overlay-bar-bottom-height);
-
-      .overlay-bar-content-wrapper {
-        justify-content: space-evenly;
-      }
-    }
-
-    /* content wrappers */
-    .overlay-bar-content-wrapper {
+    .treasure-token-sides-front,
+    .treasure-token-sides-back {
+      position: absolute;
       display: flex;
-      padding: 1rem;
-      flex: 1 1 auto;
-      color: white;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: var(--treasure-height);
+      width: var(--treasure-width);
+      backface-visibility: hidden;
+      border-radius: var(--border-radius);
+      background-color: var(--treasure-blue);
     }
+
+    .treasure-token-sides-front {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.smaller-text {
+  font-size: 0.6rem;
+  transform: scale(1);
+  transition: all 0.7s cubic-bezier(0.075, 0.82, 0.15, 1);
+}
+
+.treasure-x {
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
   }
 }
 
@@ -45,7 +191,7 @@
     100% - (var(--overlay-bar-bottom-height) + var(--overlay-bar-top-height))
   );
   z-index: 1;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;

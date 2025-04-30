@@ -18,7 +18,6 @@ const motiveAdvice = [
 ];
 
 // utils
-import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/utils";
 import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 
 export default function MotiveSelector() {

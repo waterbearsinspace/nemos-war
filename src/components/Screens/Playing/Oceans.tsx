@@ -21,7 +21,6 @@ export default function Oceans() {
     state.oceans.find((ocean) => ocean.name == currentNautilusOceanName)
   );
   const placementOptions = nemosStore((state) => state.oceanClickOptions);
-  const attackTarget = nemosStore((state) => state.attackTarget);
   const attackType = nemosStore((state) => state.attackType);
   const setCombatPhase = nemosStore((state) => state.setCombatPhase);
 

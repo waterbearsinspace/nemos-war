@@ -15,7 +15,6 @@ import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 import TableAndTest from "../../Dice/TableAndTest";
 
 import testCardInfo from "../../../common/data/testCards.json";
-import Oceans from "../../Screens/Playing/Oceans";
 import { useState } from "react";
 
 interface AdventureCardResolutionInterface {
@@ -27,9 +26,6 @@ export default function AdventurCardResolution({
 }: AdventureCardResolutionInterface) {
   const subPhase = nemosStore((state) => state.currentSubPhase);
   const showNextPhaseButton = nemosStore((state) => state.showNextPhaseButton);
-  const setShowNextPhaseButton = nemosStore(
-    (state) => state.setShowNextPhaseButton
-  );
   const dice = diceStore((state) => state.dice);
   const setDice = diceStore((state) => state.setDice);
   const drawPile = nemosStore((state) => state.drawPile);
@@ -73,8 +69,6 @@ export default function AdventurCardResolution({
     (nemoExerted ? nemoExertionValue : 0) +
     (crewExerted ? crewExertionValue : 0) +
     (hullExerted ? hullExertionValue : 0);
-
-  const clickedOcean = nemosStore((state) => state.clickedOcean);
 
   const {
     setSubPhase,
@@ -135,60 +129,20 @@ export default function AdventurCardResolution({
         );
       }
 
-      case 2: {
-        const noMoreShips = activeDice.length == 0 && !clickedOcean;
+      // case 2: {
+      //   const noMoreShips = activeDice.length == 0 && !clickedOcean;
 
-        if (noMoreShips) setShowNextPhaseButton(true);
+      //   if (noMoreShips) setShowNextPhaseButton(true);
 
-        setShowNextPhaseButton(true);
+      //   setShowNextPhaseButton(true);
 
-        return (
-          <>
-            <Oceans />
-            <p>TO IMPLEMENT</p>
-          </>
-        );
-      }
-
-      case 3: {
-        return <p>To Implement</p>;
-      }
-
-      case 4: {
-        return <p>To Implement</p>;
-      }
-
-      case 5: {
-        return <p>To Implement</p>;
-      }
-
-      case 6: {
-        return <p>To Implement</p>;
-      }
-
-      case 7: {
-        return <p>To Implement</p>;
-      }
-
-      case 8: {
-        return <p>To Implement</p>;
-      }
-
-      case 10: {
-        return <p>To Implement</p>;
-      }
-
-      case 11: {
-        return <p>To Implement</p>;
-      }
-
-      case 13: {
-        return <p>To Implement</p>;
-      }
-
-      case 14: {
-        return <p>To Implement</p>;
-      }
+      //   return (
+      //     <>
+      //       <Oceans />
+      //       <p>TO IMPLEMENT</p>
+      //     </>
+      //   );
+      // }
 
       case 21: {
         const [needToDecide, setNeedToDecide] = useState(false);
@@ -629,7 +583,7 @@ export default function AdventurCardResolution({
       case 1001: {
         return (
           <div>
-            <Test id={"Act One"} numDice={1} />
+            <Test id={"1001"} numDice={1} />
             {doneRolling && (
               <div className="next-phase-wrapper">
                 <button

@@ -84,6 +84,18 @@
       display: flex;
       justify-content: space-between;
       flex-direction: row;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;
+        height: 100%;
+
+        li {
+          flex-grow: 1;
+        }
+      }
     }
 
     ul {

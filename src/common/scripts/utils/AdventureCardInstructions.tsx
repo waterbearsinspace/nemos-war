@@ -1,3 +1,5 @@
+import TreasureIcon from "../../assets/TreasureIcon";
+
 interface AdventureCardInstructionsInterface {
   id: number;
 }
@@ -33,7 +35,10 @@ export default function AdventureCardInstructions({
             <p className="text-green bold">Pass</p>
             <p>
               <span className="circle p" /> and collect{" "}
-              <strong>+2 Treasures</strong>.
+              <strong>
+                +2 <TreasureIcon text={true} />
+              </strong>
+              .
             </p>
           </div>
           <br />
@@ -54,7 +59,11 @@ export default function AdventureCardInstructions({
             <p className="text-green bold">Pass</p>
             <p>
               <span className="circle p" />, <strong>+1 Notoriety</strong>, and
-              collect <strong>+1 Treasure</strong>.
+              collect{" "}
+              <strong>
+                +1 <TreasureIcon text={true} />
+              </strong>
+              .
             </p>
           </div>
           <br />
@@ -155,7 +164,10 @@ export default function AdventureCardInstructions({
             <p className="text-green bold">Pass</p>
             <p>
               <span className="circle p"></span> and collect{" "}
-              <strong>+2 Treasures</strong>.
+              <strong>
+                +2 <TreasureIcon text={true} />
+              </strong>
+              .
             </p>
           </div>
           <br />

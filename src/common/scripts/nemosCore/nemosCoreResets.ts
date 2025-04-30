@@ -55,11 +55,14 @@ export function resetRolls() {
   const setExertingCrew = diceStore.getState().setExertingCrew;
   const setExertingHull = diceStore.getState().setExertingHull;
   const setDoneRolling = diceStore.getState().setDoneRolling;
+  const setCurrentlyUsedTreasure =
+    nemosStore.getState().setCurrentlyUsedTreasure;
 
   setExertingNemo(false);
   setExertingCrew(false);
   setExertingHull(false);
   setDoneRolling(false);
+  setCurrentlyUsedTreasure(null);
 }
 
 // ============================

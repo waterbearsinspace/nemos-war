@@ -120,24 +120,24 @@ export default function DiceTray({
     }
 
     setDice(getRolledDice());
-    // setTimeout(() => {
-    //   setDice(getRolledDice());
-    // }, 100);
-    // setTimeout(() => {
-    //   setDice(getRolledDice());
-    // }, 200);
-    // setTimeout(() => {
-    //   setDice(getRolledDice());
-    // }, 300);
-    // setTimeout(() => {
-    //   setDice(getRolledDice());
-    // }, 500);
-    // setTimeout(() => {
-    //   setDice(getRolledDice());
-    // }, 700);
-    // setTimeout(() => {
-    //   setDice(getRolledDice());
-    // }, 1000);
+    setTimeout(() => {
+      setDice(getRolledDice());
+    }, 100);
+    setTimeout(() => {
+      setDice(getRolledDice());
+    }, 200);
+    setTimeout(() => {
+      setDice(getRolledDice());
+    }, 300);
+    setTimeout(() => {
+      setDice(getRolledDice());
+    }, 500);
+    setTimeout(() => {
+      setDice(getRolledDice());
+    }, 700);
+    setTimeout(() => {
+      setDice(getRolledDice());
+    }, 1000);
   }
 
   function handleClick() {

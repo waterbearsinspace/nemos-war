@@ -12,9 +12,6 @@ import Rest from "./Actions/Rest";
 // utils
 import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
-// data and constants
-import { gameSubPhases } from "../../../common/stores/slices/gamePhaseSlice";
-
 // TESTING DATA
 import cards from "../../../common/data/adventureCards.json";
 
@@ -24,15 +21,16 @@ import Repair from "./Actions/Repair";
 import Search from "./Actions/Search";
 import GameOver from "../GameOver";
 import Attack from "./Actions/Attack";
+import OverlayBarBottom from "../../Resources/OverlayBarBottom";
+import OverlayBarTop from "../../Resources/OverlayBarTop";
+import Modal from "../Modal/Modal";
 
 export default function Playing() {
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
   const drawPile = nemosStore((state) => state.drawPile);
   const adventureDeck = nemosStore((state) => state.adventureDeck);
-  const notoriety = nemosStore((state) => state.notoriety);
-  const nemoValue = nemosStore((state) => state.nemo.value);
-  const crewValue = nemosStore((state) => state.crew.value);
-  const hullValue = nemosStore((state) => state.hull.value);
+  const showModal = nemosStore((state) => state.showModal);
+  const setShowModal = nemosStore((state) => state.setShowModal);
 
   function Render() {
     switch (currentSubPhase) {
@@ -45,8 +43,8 @@ export default function Playing() {
       case getSubPhaseNumber("RESOLVE EVENT CARD"):
         return (
           <>
-            <AdventurCardResolution card={drawPile[0]} />
-            {/* <AdventurCardResolution card={cards[23]} /> */}
+            {/* <AdventurCardResolution card={drawPile[0]} /> */}
+            <AdventurCardResolution card={cards[33]} />
           </>
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):
@@ -113,21 +111,15 @@ export default function Playing() {
 
   return (
     <section className="game-screen-wrapper">
+      {showModal && <Modal />}
       <section className="overlay-bar overlay-bar-top">
-        <section className="overlay-bar-content-wrapper">
-          <p>{gameSubPhases[currentSubPhase as keyof typeof gameSubPhases]}</p>
-        </section>
+        <OverlayBarTop />
       </section>
       <div className="playarea">
         <Render />
       </div>
       <section className="overlay-bar overlay-bar-bottom">
-        <section className="overlay-bar-content-wrapper">
-          <p>NOTORIETY: {notoriety}</p>
-          <p>NEMO: {nemoValue}</p>
-          <p>CREW: {crewValue}</p>
-          <p>HULL: {hullValue}</p>
-        </section>
+        <OverlayBarBottom />
       </section>
     </section>
   );

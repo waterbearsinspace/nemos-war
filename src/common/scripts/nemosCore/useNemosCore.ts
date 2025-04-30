@@ -13,12 +13,13 @@ import {
   handlePlacementOptionClick,
 } from "./nemosCorePlacement";
 import { resetCombat, resetResolving } from "./nemosCoreResets";
+import { getScore, getTotalScore } from "./nemosCoreScore";
 import {
   adjustCrewBy,
   adjustHullBy,
   adjustNemoBy,
 } from "./nemosCoreShipResources";
-import { gainXTreasures } from "./nemosCoreTreasure";
+import { gainXTreasures, useTreasure } from "./nemosCoreTreasure";
 
 export const useNemosCore = () => {
   return {
@@ -60,11 +61,16 @@ export const useNemosCore = () => {
     adjustCrewBy,
     adjustHullBy,
 
+    // score
+    getScore,
+    getTotalScore,
+
     // sunkenShips
     addTonnage,
     addSalvage,
 
     // treasure
     gainXTreasures,
+    useTreasure,
   };
 };

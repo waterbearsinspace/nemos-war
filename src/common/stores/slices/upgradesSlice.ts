@@ -1,12 +1,13 @@
 // modules
 import { StateCreator } from "zustand";
+import { vp } from "../../scripts/calculateVictoryPoints";
 
 // types and interfaces
 type upgrade = {
   id: number;
   name: string;
   flavorText: string;
-  vp?: Object;
+  vp?: vp;
   cost: number;
   motive?: string;
 };
