@@ -40,14 +40,19 @@ export const getScore = () => {
 
   const sunkenWarshipScore = allTonnageShips.reduce(
     (score, ship) =>
-      score + (ship.vp?.warships ? ship.vp.warships * motive.warships : 0),
+      score +
+      (ship.vp?.warships
+        ? getModifiedScore(ship.vp.warships, motive.warships)
+        : 0),
     0
   );
 
   const sunkenNonWarshipScore = allTonnageShips.reduce(
     (score, ship) =>
       score +
-      (ship.vp?.nonWarships ? ship.vp.nonWarships * motive.nonWarships : 0),
+      (ship.vp?.nonWarships
+        ? getModifiedScore(ship.vp.nonWarships, motive.nonWarships)
+        : 0),
     0
   );
 
@@ -137,7 +142,8 @@ export const getScore = () => {
     currentTreasures.length > 0
       ? currentTreasures?.reduce(
           (score, treasure) =>
-            score + (treasure.vp?.treasures ?? 0) * motive.treasure,
+            score +
+            getModifiedScore(treasure.vp?.treasures ?? 0, motive.treasure),
           0
         )
       : 0;
