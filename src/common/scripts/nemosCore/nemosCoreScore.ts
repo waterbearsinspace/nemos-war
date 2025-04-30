@@ -43,7 +43,6 @@ export const getScore = () => {
       score + (ship.vp?.warships ? ship.vp.warships * motive.warships : 0),
     0
   );
-  console.log(allTonnageShips);
 
   const sunkenNonWarshipScore = allTonnageShips.reduce(
     (score, ship) =>
