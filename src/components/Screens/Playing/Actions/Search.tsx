@@ -23,6 +23,20 @@ export default function Search() {
     return upgrade.name == "Arcane Library";
   });
 
+  const nemoExertionValue =
+    nemosStore.getState().nemo.exertionDRM[nemosStore.getState().nemo.value];
+  const crewExertionValue =
+    nemosStore.getState().crew.exertionDRM[nemosStore.getState().crew.value];
+  const hullExertionValue =
+    nemosStore.getState().hull.exertionDRM[nemosStore.getState().hull.value];
+  const nemoExerted = diceStore.getState().exertingNemo;
+  const crewExerted = diceStore.getState().exertingCrew;
+  const hullExerted = diceStore.getState().exertingHull;
+  const exertionDRM =
+    (nemoExerted ? nemoExertionValue : 0) +
+    (crewExerted ? crewExertionValue : 0) +
+    (hullExerted ? hullExertionValue : 0);
+
   const activeDice = ["w1", "w2"];
   const activeDiceArray = diceStore((state) => state.dice).filter((die) =>
     activeDice.includes(die.id)
@@ -42,7 +56,6 @@ export default function Search() {
     adjustNotorietyBy,
     setSubPhase,
     applyFailedTestPenalty,
-    exertionDRM,
   } = useNemosCore();
 
   const finalValue =
@@ -100,6 +113,8 @@ export default function Search() {
     setDoneRolling(false);
     setSubPhase("ACTION SELECT");
   };
+
+  console.log(finalValue);
 
   const needToResolve = finalValue > 2 && finalValue <= 6;
 

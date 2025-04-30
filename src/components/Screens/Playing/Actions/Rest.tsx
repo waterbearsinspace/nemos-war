@@ -24,12 +24,25 @@ export default function Rest() {
     ? -1
     : 0;
 
+  const nemoExertionValue =
+    nemosStore.getState().nemo.exertionDRM[nemosStore.getState().nemo.value];
+  const crewExertionValue =
+    nemosStore.getState().crew.exertionDRM[nemosStore.getState().crew.value];
+  const hullExertionValue =
+    nemosStore.getState().hull.exertionDRM[nemosStore.getState().hull.value];
+  const nemoExerted = diceStore.getState().exertingNemo;
+  const crewExerted = diceStore.getState().exertingCrew;
+  const hullExerted = diceStore.getState().exertingHull;
+  const exertionDRM =
+    (nemoExerted ? nemoExertionValue : 0) +
+    (crewExerted ? crewExertionValue : 0) +
+    (hullExerted ? hullExertionValue : 0);
+
   const {
     adjustCrewBy,
     adjustNotorietyBy,
     setSubPhase,
     applyFailedTestPenalty,
-    exertionDRM,
   } = useNemosCore();
 
   const finalValue = sumRolled + exertionDRM + warshipsPresent;
