@@ -9,7 +9,7 @@
     "nationality": "British",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Dictator",
     "flipAttackStrength": 7,
@@ -34,7 +34,7 @@
     "nationality": "British",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Agincourt",
     "flipAttackStrength": 6,
@@ -57,7 +57,7 @@
     "nationality": "American",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Lancaster",
     "flipAttackStrength": 6,
@@ -81,7 +81,7 @@
     "nationality": "British",
     "shipClass": "Clipper Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Minotaur",
     "flipAttackStrength": 6,
@@ -105,7 +105,7 @@
     "nationality": "American",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Delaware",
     "flipAttackStrength": 6,
@@ -129,7 +129,7 @@
     "nationality": "British",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Bristol",
     "flipAttackStrength": 6,
@@ -153,7 +153,7 @@
     "nationality": "British",
     "shipClass": "Mail Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Ertugrul",
     "flipAttackStrength": 6,
@@ -177,7 +177,7 @@
     "nationality": "British",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Wivern",
     "flipAttackStrength": 7,
@@ -201,7 +201,7 @@
     "nationality": "British",
     "shipClass": "Clipper Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "La Couronne",
     "flipAttackStrength": 6,
@@ -225,7 +225,7 @@
     "nationality": "Russian",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Danmark",
     "flipAttackStrength": 7,
@@ -249,7 +249,7 @@
     "nationality": "American",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Tennesse",
     "flipAttackStrength": 6,
@@ -273,7 +273,7 @@
     "nationality": "British",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Black Prince",
     "flipAttackStrength": 6,
@@ -297,7 +297,7 @@
     "nationality": "French",
     "shipClass": "Whaler Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Marengo",
     "flipAttackStrength": 7,
@@ -321,7 +321,7 @@
     "nationality": "American",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Monadnock",
     "flipAttackStrength": 6,
@@ -345,7 +345,7 @@
     "nationality": "British",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Independencia",
     "flipAttackStrength": 7,
@@ -369,7 +369,7 @@
     "nationality": "Norwegian",
     "shipClass": "Slaver Ship",
     "vp": {
-      "non-warships": 0
+      "nonWarships": 0
     },
     "flipName": "Minin",
     "flipAttackStrength": 7,
@@ -393,7 +393,7 @@
     "nationality": "British",
     "shipClass": "Ghost Ship",
     "vp": {
-      "non-warships": 0,
+      "nonWarships": 0,
       "wondersSeen": 1
     },
     "flipName": "Re de Portogallo",
@@ -418,7 +418,7 @@
     "nationality": "French",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Redoubtable",
     "flipAttackStrength": 6,
@@ -442,7 +442,7 @@
     "nationality": "American",
     "shipClass": "Whaler Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Suffren",
     "flipAttackStrength": 7,
@@ -466,7 +466,7 @@
     "nationality": "British",
     "shipClass": "Mail Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Warrior",
     "flipAttackStrength": 6,
@@ -490,7 +490,7 @@
     "nationality": "British",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Ister",
     "flipAttackStrength": 6,
@@ -514,7 +514,7 @@
     "nationality": "British",
     "shipClass": "Freighter Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Pensacola",
     "flipAttackStrength": 6,
@@ -538,7 +538,7 @@
     "nationality": "British",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 4
+      "nonWarships": 4
     },
     "flipName": "Inconstant",
     "flipAttackStrength": 6,
@@ -562,7 +562,7 @@
     "nationality": "British",
     "shipClass": "Slaver Ship",
     "vp": {
-      "non-warships": 0
+      "nonWarships": 0
     },
     "flipName": "Enterprise",
     "flipAttackStrength": 7,
@@ -586,7 +586,7 @@
     "nationality": "British",
     "shipClass": "Clipper Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Normandie",
     "flipAttackStrength": 6,
@@ -610,7 +610,7 @@
     "nationality": "British",
     "shipClass": "Clipper Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Gloire",
     "flipAttackStrength": 6,
@@ -634,7 +634,7 @@
     "nationality": "British",
     "shipClass": "Mail Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Endymion",
     "flipAttackStrength": 6,
@@ -658,7 +658,7 @@
     "nationality": "British",
     "shipClass": "Whaler Ship",
     "vp": {
-      "non-warships": 1
+      "nonWarships": 1
     },
     "flipName": "Ocean",
     "flipAttackStrength": 7,
@@ -682,7 +682,7 @@
     "nationality": "British",
     "shipClass": "Mail Ship",
     "vp": {
-      "non-warships": 3
+      "nonWarships": 3
     },
     "flipName": "Undaunted",
     "flipAttackStrength": 6,
@@ -706,7 +706,7 @@
     "nationality": "British",
     "shipClass": "Passenger Ship",
     "vp": {
-      "non-warships": 2
+      "nonWarships": 2
     },
     "flipName": "Achilles",
     "flipAttackStrength": 6,

@@ -33,11 +33,19 @@
   align-items: center;
   gap: 2rem;
 
+  position: relative;
+
   width: 32rem;
   height: 18rem;
 
   background-color: var(--playarea-color);
   border-radius: 0.5rem;
+
+  &.large {
+    width: 64rem;
+    height: auto;
+    padding-block: 2rem;
+  }
 }
 
 .use-treasure-buttons {
@@ -47,5 +55,29 @@
 
   > button {
     width: 5rem;
+  }
+}
+
+.exit-modal {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+
+  color: white;
+
+  height: 1.75rem;
+  width: 1.75rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 1.75rem;
+
+  background-color: hsl(from var(--soft-black) 0 0 0 / 0.5);
+
+  &:hover {
+    cursor: pointer;
+    background-color: hsl(from var(--soft-black) 0 0 0 / 0.65);
   }
 }

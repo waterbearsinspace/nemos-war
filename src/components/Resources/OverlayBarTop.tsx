@@ -6,6 +6,13 @@ export default function OverlayBarTop() {
   const notoriety = nemosStore((state) => state.notoriety);
   const { getTotalScore } = useNemosCore();
   const currentSubPhase = nemosStore((state) => state.currentSubPhase);
+  const setShowModal = nemosStore((state) => state.setShowModal);
+  const setModalContentsId = nemosStore((state) => state.setModalContentsId);
+
+  const showScores = () => {
+    setShowModal(true);
+    setModalContentsId("score");
+  };
 
   return (
     <section className="overlay-bar-content-wrapper">
@@ -13,7 +20,9 @@ export default function OverlayBarTop() {
         {gameSubPhases[currentSubPhase as keyof typeof gameSubPhases]}
       </div>
       <div className="overlay-info notoriety">NOTORIETY: {notoriety}</div>
-      <div className="overlay-info score">SCORE: {getTotalScore()}</div>
+      <div className="overlay-info score" onClick={showScores}>
+        SCORE: {getTotalScore()}
+      </div>
     </section>
   );
 }

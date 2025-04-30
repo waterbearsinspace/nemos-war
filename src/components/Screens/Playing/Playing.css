@@ -54,8 +54,6 @@
   &.phase {
     left: 1.5rem;
   }
-  &.notoriety {
-  }
   &.score {
     right: 1rem;
     width: 8rem;
@@ -79,7 +77,7 @@
 }
 
 .overlay-ship-resources-wrapper {
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: start;
   border-right: 1px solid white;
   padding-right: 1rem;

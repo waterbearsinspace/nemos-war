@@ -2,6 +2,7 @@ import TreasureIcon from "../../../common/assets/TreasureIcon";
 import { useNemosCore } from "../../../common/scripts/nemosCore/useNemosCore";
 import { nemosStore } from "../../../common/stores/nemosStore";
 import { TreasureToken } from "../../Resources/TreasureToken";
+import ScoreScreen from "../ScoreScreen";
 import "./Modal.css";
 
 export default function Modal() {
@@ -20,7 +21,11 @@ export default function Modal() {
   const dismissModal = () => {
     setShowModal(false);
     setModalContentsId(null);
+  };
+
+  const handleDontUseTreasure = () => {
     setCurrentlyUsedTreasure(null);
+    dismissModal();
   };
 
   const handleUseTreasure = () => {
@@ -31,7 +36,7 @@ export default function Modal() {
   function UseTreasureButtons() {
     return (
       <div className="use-treasure-buttons">
-        <button onClick={dismissModal}>No</button>
+        <button onClick={handleDontUseTreasure}>No</button>
         <button onClick={handleUseTreasure}>Yes</button>
       </div>
     );
@@ -130,13 +135,22 @@ export default function Modal() {
           </>
         );
       }
+    } else if (modalContentsId == "score") {
+      return (
+        <div className="score-screen">
+          <div className="exit-modal" onClick={dismissModal}>
+            X
+          </div>
+          <ScoreScreen />
+        </div>
+      );
     }
   }
 
   return (
     <div className="modal-screen">
       <div className="modal-wrapper">
-        <div className="modal">
+        <div className={`modal ${modalContentsId == "score" ? "large" : ""}`}>
           <ModalContents />
         </div>
       </div>

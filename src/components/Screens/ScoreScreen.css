@@ -1,0 +1,29 @@
+.score-screen {
+  --padding: 3rem;
+  height: calc(100% - var(--padding) * 2);
+  width: calc(100% - var(--padding) * 2);
+  padding: calc(--padding);
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 1rem;
+
+  :nth-child(even) {
+    text-align: right;
+  }
+
+  :nth-child(n + 1) {
+    &:not(.empty) {
+      border-bottom: 1px solid rgb(158, 158, 158);
+    }
+  }
+
+  :nth-child(4n - 2) {
+    margin-right: 0.5rem;
+  }
+  :nth-child(4n - 1) {
+    margin-left: 0.5rem;
+  }
+}

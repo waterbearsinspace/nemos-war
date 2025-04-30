@@ -43,6 +43,7 @@ export const getScore = () => {
       score + (ship.vp?.warships ? ship.vp.warships * motive.warships : 0),
     0
   );
+  console.log(allTonnageShips);
 
   const sunkenNonWarshipScore = allTonnageShips.reduce(
     (score, ship) =>
@@ -242,13 +243,11 @@ export const getScore = () => {
 
 export const getTotalScore = () => {
   const scoreValues = Object.values(getScore());
-
-  console.log(getScore());
-
-  const scoreSum = scoreValues.reduce(
-    (sum, score) => sum + (score ? score : 0),
-    0
-  );
+  const scoreSum =
+    scoreValues.reduce((sum, score) => sum + (score ? score : 0), 0) -
+    getScore().penaltyNemo * 2 -
+    getScore().penaltyCrew * 2 -
+    getScore().penaltyHull * 2;
 
   return scoreSum;
 };

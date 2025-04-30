@@ -726,7 +726,7 @@ export default function ResultTable({ id, testValue }: ResultTableInterface) {
               <p className="result-info">
                 Collect{" "}
                 <strong>
-                  1 <TreasureIcon />{" "}
+                  1 <TreasureIcon text={true} />
                 </strong>
                 but <strong>+1 Notoriety</strong>
               </p>
@@ -736,14 +736,17 @@ export default function ResultTable({ id, testValue }: ResultTableInterface) {
               <p className="result-info">
                 Collect{" "}
                 <strong>
-                  1 <TreasureIcon />{" "}
+                  1 <TreasureIcon text={true} />
                 </strong>
               </p>
             </td>
             <td className={`${isSelected(12, 999)}`}>
               <p className="result-title text-green">EUREKA!</p>
               <p className="result-info">
-                Collect <strong>2 Treasures </strong>
+                Collect{" "}
+                <strong>
+                  2 <TreasureIcon text={true} />
+                </strong>
               </p>
             </td>
           </tr>

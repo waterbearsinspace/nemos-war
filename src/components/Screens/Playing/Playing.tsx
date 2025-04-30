@@ -12,8 +12,8 @@ import Rest from "./Actions/Rest";
 // utils
 import { getSubPhaseNumber } from "../../../common/scripts/nemosCore/nemosCoreUtils";
 
-// TESTING DATA
-import cards from "../../../common/data/adventureCards.json";
+// // TESTING DATA
+// import cards from "../../../common/data/adventureCards.json";
 
 // css
 import "./Playing.css";
@@ -30,7 +30,6 @@ export default function Playing() {
   const drawPile = nemosStore((state) => state.drawPile);
   const adventureDeck = nemosStore((state) => state.adventureDeck);
   const showModal = nemosStore((state) => state.showModal);
-  const setShowModal = nemosStore((state) => state.setShowModal);
 
   function Render() {
     switch (currentSubPhase) {
@@ -43,8 +42,8 @@ export default function Playing() {
       case getSubPhaseNumber("RESOLVE EVENT CARD"):
         return (
           <>
-            {/* <AdventurCardResolution card={drawPile[0]} /> */}
-            <AdventurCardResolution card={cards[33]} />
+            <AdventurCardResolution card={drawPile[0]} />
+            {/* <AdventurCardResolution card={cards[33]} /> */}
           </>
         );
       case getSubPhaseNumber("PLACEMENT DICE ROLL"):
